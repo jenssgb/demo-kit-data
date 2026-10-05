@@ -21,6 +21,32 @@ One demo on its own (folder `Demo-<id>`): `... -Demo onenote-copilot`.
 Works with Windows PowerShell 5.1 and PowerShell 7, no admin rights, no modules.
 Optional: `-Target <folder>`, `-Branch <branch>`, `-NoExplorer`.
 
+## Straight into the tenant (`-Tenant`)
+
+On a demo VM signed in as the demo admin (e.g. **MOD Administrator** in a CDX tenant) the same command with `-Tenant`
+also creates what the demos need **in the tenant** – no manual mailing, no .onepkg import:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Bundle bpw -Tenant
+```
+
+| What | How (official APIs) |
+| --- | --- |
+| Files | uploaded to the signed-in user's OneDrive (`Demo-BPW\<demo-id>`) with Microsoft Graph; unchanged files are skipped by `quickXorHash` |
+| Mails | real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**) |
+| Senders | existing users by display name (Megan Bowen, Alex Wilber); missing people become **shared mailboxes** (Exchange Online PowerShell) |
+| Meetings | Graph `POST /me/events` with attendees (next matching weekday) |
+| OneNote | notebook, section and pages via Graph (delegated) |
+| Not possible by API | sensitivity labels and DLP, .onepkg import, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript – printed as a checklist at the end |
+
+- Two sign-ins: Microsoft Graph (consent to the listed permissions) and Exchange Online. Needs Exchange admin rights (Global Admin is fine).
+- `-Language de` sends the German mails (default `en`). `-WhatIf` shows everything without changing the tenant.
+- Modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if missing.
+- "Send As" on new shared mailboxes can take a while; the script waits up to 20 minutes, otherwise it says "run again later".
+- Run it again any time: nothing is created twice. Log: `%LOCALAPPDATA%\DemoKit\logs\tenant-<time>.log`.
+- Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
+  Neither is part of the file download.
+
 ## Bundles
 
 | Bundle id | Deck | Folder |
@@ -50,7 +76,8 @@ Optional: `-Target <folder>`, `-Branch <branch>`, `-NoExplorer`.
    Run it again after every `tools/build-*.py` run.
 5. Add the demo to the deck (`"demoData": { "demo": "<demo-id>" }`) and update the bundle:
    `.\tools\Update-Bundle.ps1 -Bundle bpw -Deck <path>\decks\bpw-ai-multiplikatoren.json`
-6. Commit and push. The bundle one-liner stays the same.
+6. Needs data in the tenant (mails, meetings, OneNote, manual steps)? Add `<demo-id>/tenant.json` – copy `onenote-copilot/tenant.json`.
+7. Commit and push. The bundle one-liner stays the same.
 
 New customer deck: `Update-Bundle.ps1 -Bundle <id> -Deck <deck.json> -Folder Demo-<Customer>`, then set
 `"files": { "demoData": { "demo": "<first-demo>", "bundle": "<id>" } }` in the deck.
@@ -67,6 +94,11 @@ The repo uses `.gitattributes` `* -text` so files are stored byte for byte and t
 Alle Demos des Kundendecks landen in `OneDrive\Demo-BPW\<demo-id>` (ohne OneDrive auf dem Desktop), danach öffnet sich der Ordner.
 Jederzeit erneut ausführen: neue Demos und geänderte Dateien kommen dazu, unveränderte werden übersprungen. Der Befehl bleibt immer gleich.
 
+**Direkt in den Tenant:** Auf der Demo-VM als Admin (z. B. MOD Administrator im CDX-Tenant) denselben Befehl mit `-Tenant` ausführen.
+Das Skript lädt die Dateien per Graph in den OneDrive des angemeldeten Benutzers. Es legt die Mails mit den echten Absendern an
+(fehlende Personen als freigegebene Postfächer mit „Senden als“), dazu den Termin und das OneNote-Notizbuch. Am Ende listet es, was noch
+von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff). `-Language de` für deutsche Mails, `-WhatIf` zum Ausprobieren.
+
 **Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
 `.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,
-`.\tools\Update-Bundle.ps1 -Bundle <bundle> -Deck <deck.json>` ausführen und pushen.
+`.\tools\Update-Bundle.ps1 -Bundle <bundle> -Deck <deck.json>` ausführen, bei Tenant-Daten `tenant.json` pflegen und pushen.
