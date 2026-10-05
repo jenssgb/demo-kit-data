@@ -20,6 +20,7 @@ Optional: `-Target <folder>`, `-Branch <branch>`.
 | Demo id | Content | Source / license |
 | --- | --- | --- |
 | `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
+| `powerpoint-copilot` | Fictional Contoso brand guidelines (.docx), logos, brand background, a branded deck and an off-brand draft deck (Fargo scenario) | Created for the Demo Kit, rebuild with `python tools/build-powerpoint-copilot.py` |
 
 ## Add a demo
 

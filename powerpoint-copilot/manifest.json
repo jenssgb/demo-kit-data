@@ -1,0 +1,27 @@
+{
+  "title": {
+    "en": "What's new in Copilot in PowerPoint – Contoso brand kit",
+    "de": "Neu in Copilot in PowerPoint – Contoso Brand Kit"
+  },
+  "next": {
+    "en": [
+      "Create a brand kit from Contoso_Brand_Guidelines.docx (logos, colors and background are in this folder).",
+      "Keep this folder in OneDrive so Copilot can reference the decks and the brand guidelines.",
+      "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
+    ],
+    "de": [
+      "Aus Contoso_Brand_Guidelines.docx ein Brand Kit anlegen (Logos, Farben und Hintergrund liegen in diesem Ordner).",
+      "Den Ordner in OneDrive lassen, damit Copilot die Decks und die Brand Guidelines findet.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
+    ]
+  },
+  "files": [
+    "Contoso_Brand_Background.png",
+    "Contoso_Brand_Guidelines.docx",
+    "Contoso_Fargo_Update_Branded.pptx",
+    "Contoso_Icon.png",
+    "Contoso_Logo_White.png",
+    "Contoso_Logo.png",
+    "Contoso_Vendor_Access_Draft.pptx"
+  ]
+}
