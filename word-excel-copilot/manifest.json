@@ -1,30 +1,48 @@
 {
-    "title":  {
-                  "en":  "Edit with Copilot in Word and Excel – Contoso Fargo",
-                  "de":  "Edit with Copilot in Word und Excel – Contoso Fargo"
-              },
-    "next":  {
-                 "en":  [
-                            "Upload the files to OneDrive or SharePoint and make sure AutoSave is on before using Edit with Copilot in Word or Excel.",
-                            "Word demo: open Contoso_Fargo_Runbook_Source_Pack.docx in Word, then use Home \u003e Copilot with Allow editing on.",
-                            "Excel demo: open Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel, then use the Copilot button in the lower-right corner and keep Allow editing on.",
-                            "Emails: optional context. Open each .eml in mails-en, address it to yourself and send it before the demo so Copilot can reference recent email context.",
-                            "Check that Anthropic/Claude models are enabled for the presenter if you want to show model choice."
-                        ],
-                 "de":  [
-                            "Dateien in OneDrive oder SharePoint hochladen und AutoSave einschalten, bevor Edit with Copilot in Word oder Excel genutzt wird.",
-                            "Word-Demo: Contoso_Fargo_Runbook_Source_Pack.docx in Word öffnen, dann Start \u003e Copilot mit aktivem Bearbeiten erlauben nutzen.",
-                            "Excel-Demo: Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel öffnen, dann den Copilot-Button unten rechts nutzen und Bearbeiten erlauben eingeschaltet lassen.",
-                            "Mails: optionaler Kontext. Jede .eml in mails-en öffnen, an dich selbst adressieren und vor der Demo senden, damit Copilot aktuelle Mails referenzieren kann.",
-                            "Prüfen, ob Anthropic-/Claude-Modelle für den Presenter freigeschaltet sind, falls die Modellwahl gezeigt werden soll."
-                        ]
-             },
-    "files":  [
-                  "Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx",
-                  "Contoso_Fargo_Runbook_Source_Pack.docx",
-                  "mails-en/1_Dock_3_cutover_carrier_plan_for_Apr_27.eml",
-                  "mails-en/2_New_wing_construction_update.eml",
-                  "mails-en/3_Safety_prep_before_go-live.eml",
-                  "mails-en/4_Scanner_and_Wi-Fi_readiness.eml"
-              ]
+  "title": {
+    "en": "Edit with Copilot in Word and Excel – Contoso Fargo",
+    "de": "Edit with Copilot in Word und Excel – Contoso Fargo"
+  },
+  "next": {
+    "en": [
+      "Upload the files to OneDrive or SharePoint and make sure AutoSave is on before using Edit with Copilot in Word or Excel.",
+      "Word demo: open Contoso_Fargo_Runbook_Source_Pack.docx in Word, then use Home > Copilot with Allow editing on.",
+      "Excel demo: open Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel, then use the Copilot button in the lower-right corner and keep Allow editing on.",
+      "Emails: optional context. Open each .eml in mails-en, address it to yourself and send it before the demo so Copilot can reference recent email context.",
+      "Check that Anthropic/Claude models are enabled for the presenter if you want to show model choice."
+    ],
+    "de": [
+      "Dateien in OneDrive oder SharePoint hochladen und AutoSave einschalten, bevor Edit with Copilot in Word oder Excel genutzt wird.",
+      "Word-Demo: Contoso_Fargo_Runbook_Source_Pack.docx in Word öffnen, dann Start > Copilot mit aktivem Bearbeiten erlauben nutzen.",
+      "Excel-Demo: Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel öffnen, dann den Copilot-Button unten rechts nutzen und Bearbeiten erlauben eingeschaltet lassen.",
+      "Mails: optionaler Kontext. Jede .eml in mails-en öffnen, an dich selbst adressieren und vor der Demo senden, damit Copilot aktuelle Mails referenzieren kann.",
+      "Prüfen, ob Anthropic-/Claude-Modelle für den Presenter freigeschaltet sind, falls die Modellwahl gezeigt werden soll."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx",
+      "sha256": "ec77e7ac451c7af7a53611fbc4dae87c23e85ed544a0e81a8d49f17f7b45c6a4"
+    },
+    {
+      "path": "Contoso_Fargo_Runbook_Source_Pack.docx",
+      "sha256": "f7b8e496b271a392ad097890fdc6ee7267e0dc4e0cfb08fdae4bf6bf63cf0eaf"
+    },
+    {
+      "path": "mails-en/1_Dock_3_cutover_carrier_plan_for_Apr_27.eml",
+      "sha256": "dba6191f0e7976368183542bbe96be4c04bc4278e95c1634b1f65cc7bda9d791"
+    },
+    {
+      "path": "mails-en/2_New_wing_construction_update.eml",
+      "sha256": "51351b34fa2492744aaa36ebdeedf7d327ffc77625b1952628cc754a9dd51962"
+    },
+    {
+      "path": "mails-en/3_Safety_prep_before_go-live.eml",
+      "sha256": "d17b7fd013b4b4200307469f879e458ab7c454e26379a9abc3fa69f91f68fc5f"
+    },
+    {
+      "path": "mails-en/4_Scanner_and_Wi-Fi_readiness.eml",
+      "sha256": "b47463537793f576acebf223f9c56c56544e7e9d2706c69b1a95e44f484902db"
+    }
+  ]
 }

@@ -18,14 +18,41 @@
     ]
   },
   "files": [
-    "Contoso_Brand_Background.png",
-    "Contoso_Brand_Guidelines.docx",
-    "Contoso_Brand_Guidelines.pdf",
-    "Contoso_Fargo_Update_Branded.pptx",
-    "Contoso_Icon.png",
-    "Contoso_Logo_White.png",
-    "Contoso_Logo.png",
-    "Contoso_Vendor_Access_Draft.pptx",
-    "skills/contoso-site-update/SKILL.md"
+    {
+      "path": "Contoso_Brand_Background.png",
+      "sha256": "fa4525c06157cf2f05448b79874937d2491fb7eae878177f68ca3304e505be9e"
+    },
+    {
+      "path": "Contoso_Brand_Guidelines.docx",
+      "sha256": "4a8d1ba0e55a77f1d0e6855b99fe96100b0b744f8fdf3269d53d9d53d507b563"
+    },
+    {
+      "path": "Contoso_Brand_Guidelines.pdf",
+      "sha256": "ca7dad788951e43572b737bd6d759ea87d7a35127e0e8102a529eb2a637790a6"
+    },
+    {
+      "path": "Contoso_Fargo_Update_Branded.pptx",
+      "sha256": "f920ae423bf12fd37d49dff999931903518359d5fa97dfea21cb73e5832ab5fc"
+    },
+    {
+      "path": "Contoso_Icon.png",
+      "sha256": "5f01d5a070054cc3e5e71bfc6ef02aacf0f60a49b832cbf3dee8a04541f16a51"
+    },
+    {
+      "path": "Contoso_Logo_White.png",
+      "sha256": "7583dbffb1f7cd962ccec6a6c7f4a90525cd75db6dfba2443bdd95b9655b4b22"
+    },
+    {
+      "path": "Contoso_Logo.png",
+      "sha256": "3210947ca621b6e7bc932a8914c7453c8bdac5f10600f2fe30e0e8d71bbbd651"
+    },
+    {
+      "path": "Contoso_Vendor_Access_Draft.pptx",
+      "sha256": "7755b508b4d2e27911eada22b94ebb34bf835c3011d16cce4e5bb56d4005c681"
+    },
+    {
+      "path": "skills/contoso-site-update/SKILL.md",
+      "sha256": "9affd21367f8dd0c95a37a313e4439d25b92f26a0e13e6e0cf24d3e39374db5b"
+    }
   ]
 }

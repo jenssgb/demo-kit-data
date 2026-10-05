@@ -1,24 +1,36 @@
 {
-    "title":  {
-                  "en":  "Governance \u0026 trust for Microsoft Copilot",
-                  "de":  "Governance \u0026 Vertrauen für Microsoft Copilot"
-              },
-    "next":  {
-                 "en":  [
-                            "Apply the labels named in README_setup.md before the session.",
-                            "Confirm the Purview DLP policy blocks Highly Confidential content for Microsoft 365 Copilot and Copilot Chat.",
-                            "Use the demo page prompts to show label inheritance first, then the DLP block, then the admin dashboards."
-                        ],
-                 "de":  [
-                            "Die Labels aus README_setup.md vor der Session anwenden.",
-                            "Prüfen, dass die Purview-DLP-Richtlinie Highly-Confidential-Inhalte für Microsoft 365 Copilot and Copilot Chat blockiert.",
-                            "Mit den Prompts der Demoseite zuerst Label-Vererbung, dann den DLP-Block und danach die Admin-Dashboards zeigen."
-                        ]
-             },
-    "files":  [
-                  "Contoso_Fargo_Highly_Confidential_MA_Note.docx",
-                  "Contoso_Fargo_Public_Site_Fact_Sheet.docx",
-                  "Fargo_Labor_Costs_Confidential.xlsx",
-                  "README_setup.md"
-              ]
+  "title": {
+    "en": "Governance & trust for Microsoft Copilot",
+    "de": "Governance & Vertrauen für Microsoft Copilot"
+  },
+  "next": {
+    "en": [
+      "Apply the labels named in README_setup.md before the session.",
+      "Confirm the Purview DLP policy blocks Highly Confidential content for Microsoft 365 Copilot and Copilot Chat.",
+      "Use the demo page prompts to show label inheritance first, then the DLP block, then the admin dashboards."
+    ],
+    "de": [
+      "Die Labels aus README_setup.md vor der Session anwenden.",
+      "Prüfen, dass die Purview-DLP-Richtlinie Highly-Confidential-Inhalte für Microsoft 365 Copilot and Copilot Chat blockiert.",
+      "Mit den Prompts der Demoseite zuerst Label-Vererbung, dann den DLP-Block und danach die Admin-Dashboards zeigen."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Fargo_Highly_Confidential_MA_Note.docx",
+      "sha256": "8b03605d41a75506e2822f514b1f40e8f1b82e4ec698cd99060ff77968d5ee44"
+    },
+    {
+      "path": "Contoso_Fargo_Public_Site_Fact_Sheet.docx",
+      "sha256": "60bbbb9c1bcabc115ba64e3884e1a66a5757ae19a5105e8f32da3562aafc0c28"
+    },
+    {
+      "path": "Fargo_Labor_Costs_Confidential.xlsx",
+      "sha256": "83dc82f48b83555ea97a3c4314723e2088cb200e3e810fe7c8b8e8fd393e5a9a"
+    },
+    {
+      "path": "README_setup.md",
+      "sha256": "71e9a1e971528ea7fa111540e4cc6d8ca8bf6f4e2529d7758f74175c9c0ef16c"
+    }
+  ]
 }

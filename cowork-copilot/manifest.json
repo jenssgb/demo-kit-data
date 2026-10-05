@@ -20,17 +20,53 @@
     ]
   },
   "files": [
-    "Contoso_Construction_Weekly_Week16.docx",
-    "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
-    "mails-de/1_Megan_Carrier_Update.eml",
-    "mails-de/2_Riley_Construction_Delay.eml",
-    "mails-de/3_Anne_Safety_Training.eml",
-    "mails-de/4_TailspinToys_Quote_Request.eml",
-    "mails-en/1_Megan_Carrier_Update.eml",
-    "mails-en/2_Riley_Construction_Delay.eml",
-    "mails-en/3_Anne_Safety_Training.eml",
-    "mails-en/4_TailspinToys_Quote_Request.eml",
-    "SAP_Demo_Placeholders.md",
-    "skills/contoso-golive-readiness/SKILL.md"
+    {
+      "path": "Contoso_Construction_Weekly_Week16.docx",
+      "sha256": "05286e940683a13537381b358b5166d05952faac631620c0870f178995ca5140"
+    },
+    {
+      "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+      "sha256": "9ba8e956863e416c64f28197a8ff450c2ebb253829eecd6746588777416f0dd0"
+    },
+    {
+      "path": "mails-de/1_Megan_Carrier_Update.eml",
+      "sha256": "18bf554f2ea4a5b6a2020723c5333c5b176733de0494802fee870d8e206b7567"
+    },
+    {
+      "path": "mails-de/2_Riley_Construction_Delay.eml",
+      "sha256": "fc3d0c7627417804b54504358d0c0fa186f269a04970c956dc6184b1c011c620"
+    },
+    {
+      "path": "mails-de/3_Anne_Safety_Training.eml",
+      "sha256": "49734a2fbd2ae0b3aa9d5d3fc23b742f8d6dbb733b61a6b8eb8f7d901d90e483"
+    },
+    {
+      "path": "mails-de/4_TailspinToys_Quote_Request.eml",
+      "sha256": "2992773d209b006258dd7ea3e416b83916dd75bb5323b57b3f3a1cd511b24e59"
+    },
+    {
+      "path": "mails-en/1_Megan_Carrier_Update.eml",
+      "sha256": "071c2edce4913d96fff4c2b897d2cae5e3e9b065e163be40820b31903b6570eb"
+    },
+    {
+      "path": "mails-en/2_Riley_Construction_Delay.eml",
+      "sha256": "524b401c0eb03eeb9d1f285f0c421d0a7344da264b2aedf6843eda550dcd1bb9"
+    },
+    {
+      "path": "mails-en/3_Anne_Safety_Training.eml",
+      "sha256": "35397253dc1757efb9be4a02ec4ed34be2abd97c18ed2bcfd90676add71fbf77"
+    },
+    {
+      "path": "mails-en/4_TailspinToys_Quote_Request.eml",
+      "sha256": "5650d5802da19ce479cfc91587cb53a2496b0761c65afa73ca570ac4b0b96fe9"
+    },
+    {
+      "path": "SAP_Demo_Placeholders.md",
+      "sha256": "ac175ffe01e4e6274f28fb73e0844c1d876f16cd61706c891de17307cddaa4cd"
+    },
+    {
+      "path": "skills/contoso-golive-readiness/SKILL.md",
+      "sha256": "ec13dd807070aaafb0e948804a5ecd81a7aea8b7aef51e25ace389a7ee9313ea"
+    }
   ]
 }

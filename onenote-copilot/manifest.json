@@ -16,14 +16,41 @@
     ]
   },
   "files": [
-    "Contoso Expansion Safety Procedures.onepkg",
-    "Contoso_Expansion_FAQ_Reference.docx",
-    "Contoso_Expansion_Knowledge_Pack.docx",
-    "Contoso_Expansion_Project_Overview.docx",
-    "Contoso_Inventory_Move_Schedule.xlsx",
-    "Contoso_Safety_Protocol_Updates.docx",
-    "Contoso_Temporary_Evacuation_Routes.docx",
-    "Contoso_Vendor_Access_and_Hours.docx",
-    "LICENSE-MS-4004.txt"
+    {
+      "path": "Contoso Expansion Safety Procedures.onepkg",
+      "sha256": "09f4035bd81e8601ea04d56896be891dd3307ddc847e55917670b1d2ea7ea5a7"
+    },
+    {
+      "path": "Contoso_Expansion_FAQ_Reference.docx",
+      "sha256": "71820f45804e3a640ca04d8e3b628522c13e2996c5c265fec718c210748fc0d7"
+    },
+    {
+      "path": "Contoso_Expansion_Knowledge_Pack.docx",
+      "sha256": "a0b81bc4e8bc45764a36acfc4f454e9eb90bf2d12387d5ea9be8c78df20b16e2"
+    },
+    {
+      "path": "Contoso_Expansion_Project_Overview.docx",
+      "sha256": "c71863cdd5d03ecc9c504c6c293944ccfa23790e46bca808968f65dfc9d296c7"
+    },
+    {
+      "path": "Contoso_Inventory_Move_Schedule.xlsx",
+      "sha256": "10b1119cb5cc53458b476f2824d9475acc03bfc366ebcad7efe7c173d3b72e82"
+    },
+    {
+      "path": "Contoso_Safety_Protocol_Updates.docx",
+      "sha256": "a6c3c681f91c6c0e076307dbf2e3e7d7308ec8a38f80256c7012bcc31b1cbcc7"
+    },
+    {
+      "path": "Contoso_Temporary_Evacuation_Routes.docx",
+      "sha256": "dc39103cb75e9676af7df13e1c967a15ab0e4655c4dd52aaa91928a170b26f68"
+    },
+    {
+      "path": "Contoso_Vendor_Access_and_Hours.docx",
+      "sha256": "a3eff10725c9ee282fa0756f083005d0ab6602dee926f5fde31f529a124cb4c4"
+    },
+    {
+      "path": "LICENSE-MS-4004.txt",
+      "sha256": "0c3b2c2968af279f7aa628f0445c65bdf5aa440f8c965df400610cf56f1b6b26"
+    }
   ]
 }

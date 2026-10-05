@@ -1,26 +1,38 @@
 {
-    "title":  {
-                  "en":  "Agent Builder – Contoso Fargo Site Assistant",
-                  "de":  "Agent Builder – Contoso Fargo Site Assistant"
-              },
-    "next":  {
-                 "en":  [
-                            "Upload Contoso_Fargo_Safety_Handbook.docx and Contoso_Fargo_GoLive_Readiness_Tracker.xlsx to the same SharePoint site or OneDrive folder.",
-                            "Import Fargo_Dock_Schedule.csv into SharePoint as a list named Fargo dock schedule (or keep Fargo_Dock_Schedule.xlsx as the fallback knowledge file).",
-                            "Copy the text from Fargo_Site_Assistant_Instructions.txt into Agent Builder instructions.",
-                            "Continue with the preparation steps in the Demo Kit."
-                        ],
-                 "de":  [
-                            "Contoso_Fargo_Safety_Handbook.docx und Contoso_Fargo_GoLive_Readiness_Tracker.xlsx in dieselbe SharePoint-Site oder denselben OneDrive-Ordner hochladen.",
-                            "Fargo_Dock_Schedule.csv als SharePoint-Liste Fargo dock schedule importieren (oder Fargo_Dock_Schedule.xlsx als Fallback-Wissensdatei behalten).",
-                            "Den Text aus Fargo_Site_Assistant_Instructions.txt in die Agent-Builder-Anweisungen kopieren.",
-                            "Mit den Vorbereitungsschritten im Demo Kit weitermachen."
-                        ]
-             },
-    "files":  [
-                  "Contoso_Fargo_Safety_Handbook.docx",
-                  "Fargo_Dock_Schedule.csv",
-                  "Fargo_Dock_Schedule.xlsx",
-                  "Fargo_Site_Assistant_Instructions.txt"
-              ]
+  "title": {
+    "en": "Agent Builder – Contoso Fargo Site Assistant",
+    "de": "Agent Builder – Contoso Fargo Site Assistant"
+  },
+  "next": {
+    "en": [
+      "Upload Contoso_Fargo_Safety_Handbook.docx and Contoso_Fargo_GoLive_Readiness_Tracker.xlsx to the same SharePoint site or OneDrive folder.",
+      "Import Fargo_Dock_Schedule.csv into SharePoint as a list named Fargo dock schedule (or keep Fargo_Dock_Schedule.xlsx as the fallback knowledge file).",
+      "Copy the text from Fargo_Site_Assistant_Instructions.txt into Agent Builder instructions.",
+      "Continue with the preparation steps in the Demo Kit."
+    ],
+    "de": [
+      "Contoso_Fargo_Safety_Handbook.docx und Contoso_Fargo_GoLive_Readiness_Tracker.xlsx in dieselbe SharePoint-Site oder denselben OneDrive-Ordner hochladen.",
+      "Fargo_Dock_Schedule.csv als SharePoint-Liste Fargo dock schedule importieren (oder Fargo_Dock_Schedule.xlsx als Fallback-Wissensdatei behalten).",
+      "Den Text aus Fargo_Site_Assistant_Instructions.txt in die Agent-Builder-Anweisungen kopieren.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Fargo_Safety_Handbook.docx",
+      "sha256": "a499e4b321784e635ca4bf0c10e418e3022baa29f4bb5edddce139283fe72571"
+    },
+    {
+      "path": "Fargo_Dock_Schedule.csv",
+      "sha256": "55b829b62a5c40ff910bdced30dc6d91e8e8bf19b244e897449ded422579cf48"
+    },
+    {
+      "path": "Fargo_Dock_Schedule.xlsx",
+      "sha256": "a6f0a5332fe3e2636feefc7570f9cf8bf77b3ce7c7a2d77bb523d3d9f97f7001"
+    },
+    {
+      "path": "Fargo_Site_Assistant_Instructions.txt",
+      "sha256": "4766094e004de2715ddf579240bf545633360a2f95dc0673ae7b558d4bcd5b5a"
+    }
+  ]
 }

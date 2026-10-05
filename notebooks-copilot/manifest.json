@@ -1,25 +1,96 @@
 {
-    "title":  {
-                  "en":  "Copilot Notebooks – Contoso Fargo go-live",
-                  "de":  "Copilot Notebooks – Go-live Contoso Fargo"
-              },
-    "next":  {
-                 "en":  [
-                            "Keep these files in the OneDrive folder Demo-notebooks-copilot.",
-                            "Also run the existing one-liners for Demo-cowork-copilot and Demo-powerpoint-copilot; the notebook references the tracker, weekly notes, emails, and brand guidelines from those folders.",
-                            "In Teams, use Dock_3_GoLive_Sync_Transcript.docx or Dock_3_GoLive_Sync.vtt as the transcript source for a demo meeting recap if a real Teams recap is not available.",
-                            "Use Fargo_Night_Shift_Handover_Template.docx as the source/template when Copilot creates the handover page."
-                        ],
-                 "de":  [
-                            "Diese Dateien im OneDrive-Ordner Demo-notebooks-copilot lassen.",
-                            "Zusätzlich die vorhandenen One-Liner für Demo-cowork-copilot und Demo-powerpoint-copilot ausführen; das Notebook referenziert Tracker, Jour-fixe-Notizen, Mails und Brand Guidelines aus diesen Ordnern.",
-                            "In Teams Dock_3_GoLive_Sync_Transcript.docx oder Dock_3_GoLive_Sync.vtt als Transcript-Quelle für einen Demo-Meeting-Recap nutzen, falls kein echter Teams-Recap vorhanden ist.",
-                            "Fargo_Night_Shift_Handover_Template.docx als Quelle/Vorlage verwenden, wenn Copilot die Handover Page erstellt."
-                        ]
-             },
-    "files":  [
-                  "Dock_3_GoLive_Sync.vtt",
-                  "Dock_3_GoLive_Sync_Transcript.docx",
-                  "Fargo_Night_Shift_Handover_Template.docx"
-              ]
+  "title": {
+    "en": "Copilot Notebooks – Contoso Fargo go-live",
+    "de": "Copilot Notebooks – Go-live Contoso Fargo"
+  },
+  "next": {
+    "en": [
+      "Keep these files in this OneDrive folder.",
+      "The tracker, weekly notes, emails and brand guidelines the notebook references are already in this folder (copies from cowork-copilot and powerpoint-copilot).",
+      "In Teams, use Dock_3_GoLive_Sync_Transcript.docx or Dock_3_GoLive_Sync.vtt as the transcript source for a demo meeting recap if a real Teams recap is not available.",
+      "Use Fargo_Night_Shift_Handover_Template.docx as the source/template when Copilot creates the handover page."
+    ],
+    "de": [
+      "Diese Dateien in diesem OneDrive-Ordner lassen.",
+      "Tracker, Jour-fixe-Notizen, Mails und Brand Guidelines, auf die das Notebook verweist, liegen schon in diesem Ordner (Kopien aus cowork-copilot und powerpoint-copilot).",
+      "In Teams Dock_3_GoLive_Sync_Transcript.docx oder Dock_3_GoLive_Sync.vtt als Transcript-Quelle für einen Demo-Meeting-Recap nutzen, falls kein echter Teams-Recap vorhanden ist.",
+      "Fargo_Night_Shift_Handover_Template.docx als Quelle/Vorlage verwenden, wenn Copilot die Handover Page erstellt."
+    ]
+  },
+  "files": [
+    {
+      "path": "Dock_3_GoLive_Sync_Transcript.docx",
+      "sha256": "0ada6ea50607665156c39618023aa9dc2c8f8ae18e6603d387c01269fe5529e8"
+    },
+    {
+      "path": "Dock_3_GoLive_Sync.vtt",
+      "sha256": "0e6f041016ad563b080998718315b5eaa27f0e6c683f59771bfdd34c87d844a1"
+    },
+    {
+      "path": "Fargo_Night_Shift_Handover_Template.docx",
+      "sha256": "c44cbb2f1a86c2c0a2c37ba72dad6862b2bd0ed33232ae642cd139a4ee5bc86a"
+    }
+  ],
+  "shared": [
+    {
+      "from": "cowork-copilot",
+      "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+      "sha256": "9ba8e956863e416c64f28197a8ff450c2ebb253829eecd6746588777416f0dd0"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "Contoso_Construction_Weekly_Week16.docx",
+      "sha256": "05286e940683a13537381b358b5166d05952faac631620c0870f178995ca5140"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/1_Megan_Carrier_Update.eml",
+      "sha256": "071c2edce4913d96fff4c2b897d2cae5e3e9b065e163be40820b31903b6570eb"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/2_Riley_Construction_Delay.eml",
+      "sha256": "524b401c0eb03eeb9d1f285f0c421d0a7344da264b2aedf6843eda550dcd1bb9"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/3_Anne_Safety_Training.eml",
+      "sha256": "35397253dc1757efb9be4a02ec4ed34be2abd97c18ed2bcfd90676add71fbf77"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/4_TailspinToys_Quote_Request.eml",
+      "sha256": "5650d5802da19ce479cfc91587cb53a2496b0761c65afa73ca570ac4b0b96fe9"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/1_Megan_Carrier_Update.eml",
+      "sha256": "18bf554f2ea4a5b6a2020723c5333c5b176733de0494802fee870d8e206b7567"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/2_Riley_Construction_Delay.eml",
+      "sha256": "fc3d0c7627417804b54504358d0c0fa186f269a04970c956dc6184b1c011c620"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/3_Anne_Safety_Training.eml",
+      "sha256": "49734a2fbd2ae0b3aa9d5d3fc23b742f8d6dbb733b61a6b8eb8f7d901d90e483"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/4_TailspinToys_Quote_Request.eml",
+      "sha256": "2992773d209b006258dd7ea3e416b83916dd75bb5323b57b3f3a1cd511b24e59"
+    },
+    {
+      "from": "powerpoint-copilot",
+      "path": "Contoso_Brand_Guidelines.pdf",
+      "sha256": "ca7dad788951e43572b737bd6d759ea87d7a35127e0e8102a529eb2a637790a6"
+    },
+    {
+      "from": "powerpoint-copilot",
+      "path": "Contoso_Brand_Guidelines.docx",
+      "sha256": "4a8d1ba0e55a77f1d0e6855b99fe96100b0b744f8fdf3269d53d9d53d507b563"
+    }
+  ]
 }
