@@ -6,6 +6,7 @@
     .\tools\Update-Manifest.ps1 -All
 
   files  : every file in the demo folder as { path, sha256 } (installer skips unchanged files).
+  Not listed (only used by install.ps1 -Tenant): <demo>/tenant.json and the <demo>/tenant/ folder.
   shared : optional <demo>/shared.json – a list of "<other-demo>/<path>" entries. Those files are
            copied into this demo folder too, so every demo folder is self-contained.
 #>
@@ -27,7 +28,8 @@ function Update-One([string]$id) {
     }
 
     $files = Get-ChildItem $dir -Recurse -File |
-        Where-Object { $_.Name -notin @('manifest.json', 'shared.json') } |
+        Where-Object { $_.Name -notin @('manifest.json', 'shared.json', 'tenant.json') -and
+                       $_.FullName.Substring($dir.Length + 1) -notmatch '^tenant\\' } |
         Sort-Object { $_.FullName.Substring($dir.Length + 1) -replace '\\', '/' } |
         ForEach-Object { [ordered]@{ path = ($_.FullName.Substring($dir.Length + 1) -replace '\\', '/'); sha256 = (Get-Sha $_.FullName) } }
 

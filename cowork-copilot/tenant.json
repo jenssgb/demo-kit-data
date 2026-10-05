@@ -1,0 +1,22 @@
+{
+  "mails": [
+    "mails-{lang}/1_Megan_Carrier_Update.eml",
+    "mails-{lang}/2_Riley_Construction_Delay.eml",
+    "mails-{lang}/3_Anne_Safety_Training.eml",
+    "mails-{lang}/4_TailspinToys_Quote_Request.eml"
+  ],
+  "manual": {
+    "de": [
+      "**Admin**: Spending Policy mit **Cowork** aktivieren (**Microsoft 365 Admin Center › Copilot › Cost Management**).",
+      "**Admin**: **Cowork Browsing** einschalten (**Copilot › Settings › View All › Cowork settings › Allow browser access**) und am Vortag in Edge bei **Contoso Atlas** anmelden.",
+      "SAP-Abschnitt: Plugin **arnold** (enosix) hinzufügen und einmal anmelden.",
+      "Skill **skills\\contoso-golive-readiness\\SKILL.md** in der Demo hochladen (**Customize › Skills › Upload skill**)."
+    ],
+    "en": [
+      "**Admin**: turn on a spending policy that includes **Cowork** (**Microsoft 365 admin center › Copilot › Cost Management**).",
+      "**Admin**: turn on **Cowork Browsing** (**Copilot › Settings › View All › Cowork settings › Allow browser access**) and sign in to **Contoso Atlas** in Edge the day before.",
+      "SAP section: add the **arnold** plugin (enosix) and sign in once.",
+      "Upload the skill **skills\\contoso-golive-readiness\\SKILL.md** during the demo (**Customize › Skills › Upload skill**)."
+    ]
+  }
+}

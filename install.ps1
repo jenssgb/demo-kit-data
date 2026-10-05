@@ -18,6 +18,13 @@
   in OneDrive for work or school (falls back to personal OneDrive, then the Desktop).
   Every demo folder is self-contained: files shared with other demos ("shared" in the manifest) are copied too.
   Running it again updates: new and changed files are downloaded, unchanged files (same SHA-256) are skipped.
+
+  -Tenant (demo VM, signed in as the demo admin, e.g. MOD Administrator in a CDX tenant):
+    & ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Bundle bpw -Tenant
+  Files are cached in %LOCALAPPDATA%\DemoKit and uploaded to the signed-in user's OneDrive with Microsoft Graph;
+  then tenant.ps1 creates what the demos need in the tenant (mails, meetings, OneNote, see <demo>/tenant.json)
+  and prints the steps that have to be done by hand. -Language de|en picks the mail language (default en).
+  -WhatIf shows what would happen without changing the tenant. Log: %LOCALAPPDATA%\DemoKit\logs.
 #>
 param(
     [string]$Demo,
@@ -25,7 +32,10 @@ param(
     [string]$Repo = 'jenssgb/demo-kit-data',
     [string]$Branch = 'main',
     [string]$Target,
-    [switch]$NoExplorer
+    [switch]$NoExplorer,
+    [switch]$Tenant,
+    [ValidateSet('en', 'de')] [string]$Language = 'en',
+    [switch]$WhatIf
 )
 
 $ErrorActionPreference = 'Stop'
@@ -40,6 +50,14 @@ function Url($path) { "$raw/" + ((($path -split '/') | ForEach-Object { [uri]::E
 
 if (-not $Demo -and -not $Bundle) {
     throw (T 'Use -Bundle <bundle-id> or -Demo <demo-id>.' 'Bitte -Bundle <bundle-id> oder -Demo <demo-id> angeben.')
+}
+
+if ($Tenant) {
+    $logDir = Join-Path $env:LOCALAPPDATA 'DemoKit\logs'
+    New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+    $log = Join-Path $logDir ("tenant-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
+    Start-Transcript -Path $log | Out-Null
+    if (-not $Target) { $Target = Join-Path $env:LOCALAPPDATA 'DemoKit' }
 }
 
 if (-not $Target) {
@@ -82,6 +100,7 @@ function Install-File($srcPath, $relPath, $sha, $dir, $stats) {
 }
 
 $summary = @()
+$items = @()
 foreach ($d in $demos) {
     try { $manifest = Invoke-RestMethod -Uri (Url "$d/manifest.json") -UseBasicParsing }
     catch { throw "Demo '$d' not found in $Repo ($Branch). / Demo '$d' nicht gefunden." }
@@ -113,6 +132,8 @@ foreach ($d in $demos) {
         foreach ($step in $next) { $n++; Write-Host "  $n. $step" }
     }
     $summary += [pscustomobject]@{ Demo = $d; New = $stats.new; Updated = $stats.updated; Unchanged = $stats.same }
+    $drivePath = if ($Bundle) { "$($bundleInfo.folder)/$d" } else { "Demo-$d" }
+    $items += @{ id = $d; dir = $dir; drivePath = $drivePath }
 }
 
 Write-Host ""
@@ -120,6 +141,20 @@ $summary | Format-Table -AutoSize | Out-String | Write-Host
 if ($Bundle -and -not $Demo) {
     Write-Host (T '  Next steps per demo: see the Demo Kit page of each demo.' '  Naechste Schritte je Demo: siehe die jeweilige Seite im Demo Kit.') -ForegroundColor Cyan
     Write-Host ""
+}
+
+if ($Tenant) {
+    try {
+        $code = (Invoke-WebRequest -Uri (Url 'tenant.ps1') -UseBasicParsing).Content
+        if ($code -is [byte[]]) { $code = [Text.Encoding]::UTF8.GetString($code) }
+        & ([scriptblock]::Create($code)) -Items $items -Raw $raw -Language $Language -WhatIf:$WhatIf
+    } catch {
+        Write-Host ("  " + (T 'Tenant step failed: ' 'Tenant-Schritt fehlgeschlagen: ') + $_) -ForegroundColor Red
+    } finally {
+        Write-Host ("  Log: $log") -ForegroundColor DarkGray
+        Stop-Transcript | Out-Null
+    }
+    return
 }
 
 $open = if ($Bundle -and -not $Demo) { $root } elseif ($Bundle) { Join-Path $root $Demo } else { Join-Path $root "Demo-$Demo" }

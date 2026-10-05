@@ -1,0 +1,12 @@
+{
+  "manual": {
+    "de": [
+      "**Einen Tag vorher**: Brand-Manager-Richtlinie setzen und das Brand Kit **Contoso** aus **Contoso_Brand_Guidelines.pdf** anlegen (Abschnitt „Brand Kit“ im Demo Kit).",
+      "Den Skill **skills\\contoso-site-update\\SKILL.md** in PowerPoint hinzufügen."
+    ],
+    "en": [
+      "**The day before**: set the brand manager policy and create the **Contoso** brand kit from **Contoso_Brand_Guidelines.pdf** (\"Brand kit\" section in the Demo Kit).",
+      "Add the skill **skills\\contoso-site-update\\SKILL.md** in PowerPoint."
+    ]
+  }
+}
