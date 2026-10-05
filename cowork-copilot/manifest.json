@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Contoso Fargo go-live",
+    "de": "Copilot Cowork – Go-live Contoso Fargo"
+  },
+  "next": {
+    "en": [
+      "Emails: open each .eml in mails-en (classic Outlook opens it as a draft), enter your own address in To and send it. Do this the day before so Copilot can find them.",
+      "Keep Contoso_Fargo_GoLive_Readiness_Tracker.xlsx and Contoso_Construction_Weekly_Week16.docx in this OneDrive folder; Cowork edits the tracker in place.",
+      "Custom skill: in Cowork open Customize > Skills > arrow next to Add > Upload skill and choose skills\\contoso-golive-readiness\\SKILL.md.",
+      "SAP via arnold: read SAP_Demo_Placeholders.md and swap customer and material for real data from your SAP demo system.",
+      "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
+    ],
+    "de": [
+      "Mails: jede .eml in mails-de öffnen (klassisches Outlook öffnet sie als Entwurf), deine eigene Adresse bei An eintragen und senden. Am Vortag erledigen, damit Copilot sie findet.",
+      "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx und Contoso_Construction_Weekly_Week16.docx in diesem OneDrive-Ordner lassen; Cowork bearbeitet den Tracker direkt.",
+      "Custom Skill: in Cowork Customize > Skills > Pfeil neben Add > Upload skill und skills\\contoso-golive-readiness\\SKILL.md wählen.",
+      "SAP über arnold: SAP_Demo_Placeholders.md lesen und Kunde und Material durch echte Daten aus deinem SAP-Demosystem ersetzen.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
+    ]
+  },
+  "files": [
+    "Contoso_Construction_Weekly_Week16.docx",
+    "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+    "mails-de/1_Megan_Carrier_Update.eml",
+    "mails-de/2_Riley_Construction_Delay.eml",
+    "mails-de/3_Anne_Safety_Training.eml",
+    "mails-de/4_TailspinToys_Quote_Request.eml",
+    "mails-en/1_Megan_Carrier_Update.eml",
+    "mails-en/2_Riley_Construction_Delay.eml",
+    "mails-en/3_Anne_Safety_Training.eml",
+    "mails-en/4_TailspinToys_Quote_Request.eml",
+    "SAP_Demo_Placeholders.md",
+    "skills/contoso-golive-readiness/SKILL.md"
+  ]
+}

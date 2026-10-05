@@ -21,6 +21,7 @@ Optional: `-Target <folder>`, `-Branch <branch>`.
 | --- | --- | --- |
 | `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
 | `powerpoint-copilot` | Fictional Contoso brand guidelines (.docx + .pdf for brand kits), logos, brand background, a branded deck, an off-brand draft deck (Fargo scenario) and a sample PowerPoint skill (`skills/contoso-site-update/SKILL.md`) | Created for the Demo Kit, rebuild with `python tools/build-powerpoint-copilot.py` |
+| `cowork-copilot` | Fargo go-live for Copilot Cowork: four emails as .eml (EN + DE, incl. a Tailspin Toys quote request for the SAP/arnold part), readiness tracker (.xlsx), construction weekly week 16 (.docx), Cowork skill (`skills/contoso-golive-readiness/SKILL.md`), SAP placeholder list | Created for the Demo Kit, rebuild with `python tools/build-cowork-copilot.py` |
 
 ## Add a demo
 
