@@ -1,0 +1,29 @@
+{
+  "title": {
+    "en": "OneNote with Copilot – Contoso Fargo expansion",
+    "de": "OneNote mit Copilot – Contoso Erweiterung Fargo"
+  },
+  "next": {
+    "en": [
+      "Open the .onepkg file in OneNote for Windows (File > Open) and save the notebook to OneDrive.",
+      "Wait a few minutes so Copilot Chat can find the new files and notes.",
+      "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
+    ],
+    "de": [
+      "Die .onepkg-Datei in OneNote für Windows öffnen (Datei > Öffnen) und das Notizbuch in OneDrive speichern.",
+      "Ein paar Minuten warten, damit Copilot Chat die neuen Dateien und Notizen findet.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
+    ]
+  },
+  "files": [
+    "Contoso Expansion Safety Procedures.onepkg",
+    "Contoso_Expansion_FAQ_Reference.docx",
+    "Contoso_Expansion_Knowledge_Pack.docx",
+    "Contoso_Expansion_Project_Overview.docx",
+    "Contoso_Inventory_Move_Schedule.xlsx",
+    "Contoso_Safety_Protocol_Updates.docx",
+    "Contoso_Temporary_Evacuation_Routes.docx",
+    "Contoso_Vendor_Access_and_Hours.docx",
+    "LICENSE-MS-4004.txt"
+  ]
+}
