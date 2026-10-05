@@ -24,7 +24,7 @@
     },
     {
       "path": "Fargo_Dock_Schedule.csv",
-      "sha256": "55b829b62a5c40ff910bdced30dc6d91e8e8bf19b244e897449ded422579cf48"
+      "sha256": "cd304675843df8e6739f390e707c97ce2c2fa798a00b9837ba1dbde776494ef6"
     },
     {
       "path": "Fargo_Dock_Schedule.xlsx",
@@ -32,7 +32,7 @@
     },
     {
       "path": "Fargo_Site_Assistant_Instructions.txt",
-      "sha256": "4766094e004de2715ddf579240bf545633360a2f95dc0673ae7b558d4bcd5b5a"
+      "sha256": "b726f0a77be25322937d5df2636ab7e970c3a602834a7e81311175266ee7ad0f"
     }
   ]
 }
