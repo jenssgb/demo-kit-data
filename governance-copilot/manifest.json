@@ -1,0 +1,24 @@
+{
+    "title":  {
+                  "en":  "Governance \u0026 trust for Microsoft Copilot",
+                  "de":  "Governance \u0026 Vertrauen für Microsoft Copilot"
+              },
+    "next":  {
+                 "en":  [
+                            "Apply the labels named in README_setup.md before the session.",
+                            "Confirm the Purview DLP policy blocks Highly Confidential content for Microsoft 365 Copilot and Copilot Chat.",
+                            "Use the demo page prompts to show label inheritance first, then the DLP block, then the admin dashboards."
+                        ],
+                 "de":  [
+                            "Die Labels aus README_setup.md vor der Session anwenden.",
+                            "Prüfen, dass die Purview-DLP-Richtlinie Highly-Confidential-Inhalte für Microsoft 365 Copilot and Copilot Chat blockiert.",
+                            "Mit den Prompts der Demoseite zuerst Label-Vererbung, dann den DLP-Block und danach die Admin-Dashboards zeigen."
+                        ]
+             },
+    "files":  [
+                  "Contoso_Fargo_Highly_Confidential_MA_Note.docx",
+                  "Contoso_Fargo_Public_Site_Fact_Sheet.docx",
+                  "Fargo_Labor_Costs_Confidential.xlsx",
+                  "README_setup.md"
+              ]
+}

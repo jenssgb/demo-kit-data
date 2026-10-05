@@ -1,0 +1,24 @@
+{
+    "title":  {
+                  "en":  "Copilot Chat prompt pack – Contoso Fargo",
+                  "de":  "Copilot Chat Prompt Pack – Contoso Fargo"
+              },
+    "next":  {
+                 "en":  [
+                            "Upload or keep Contoso_Fargo_Prompt_Pack.docx in OneDrive so champions can open it during the prompt gallery demo.",
+                            "Use the Markdown file as the source for organizational prompts or for a Teams post to the AI champions team.",
+                            "Before the live demo, create or identify a Microsoft Teams team named Contoso Fargo Go-Live Champions for prompt sharing.",
+                            "Prepare a Monday 7:30 scheduled prompt in Copilot Chat if your tenant UI is available; otherwise demonstrate the scheduling dialog without saving."
+                        ],
+                 "de":  [
+                            "Contoso_Fargo_Prompt_Pack.docx in OneDrive ablegen, damit Champions es während der Prompt-Gallery-Demo öffnen können.",
+                            "Die Markdown-Datei als Quelle für Organisationsprompts oder für einen Teams-Beitrag an das AI-Champions-Team nutzen.",
+                            "Vor der Live-Demo ein Microsoft-Team Contoso Fargo Go-Live Champions anlegen oder auswählen, um Prompt-Sharing zu zeigen.",
+                            "Wenn die Tenant-UI verfügbar ist, den Montag-7:30-Prompt in Copilot Chat vorbereiten; sonst nur den Planungsdialog zeigen und nicht speichern."
+                        ]
+             },
+    "files":  [
+                  "Contoso_Fargo_Prompt_Pack.docx",
+                  "Contoso_Fargo_Prompt_Pack.md"
+              ]
+}

@@ -1,0 +1,21 @@
+{
+    "title":  {
+                  "en":  "Researcher + Vision – Contoso Fargo floor plan",
+                  "de":  "Researcher + Vision – Contoso Fargo Grundriss"
+              },
+    "next":  {
+                 "en":  [
+                            "Use existing cowork-copilot files for the Researcher briefing: the readiness tracker, week 16 construction notes and sent demo emails.",
+                            "Use Contoso_Fargo_Floor_Plan_Dock3_Gate4.png for the Vision part: open it, start a voice chat in Copilot and share the screen, or show it to the mobile camera.",
+                            "Check that Researcher, model choice and Vision are enabled in the tenant before the session. Some features require Frontier or Anthropic admin settings."
+                        ],
+                 "de":  [
+                            "Für das Researcher-Briefing die bestehenden cowork-copilot-Dateien nutzen: Readiness-Tracker, Bau-Jour-fixe KW 16 und gesendete Demo-Mails.",
+                            "Contoso_Fargo_Floor_Plan_Dock3_Gate4.png für den Vision-Teil nutzen: öffnen, Sprachchat in Copilot starten und Bildschirm teilen oder mit der mobilen Kamera zeigen.",
+                            "Vor dem Termin prüfen, ob Researcher, Modellauswahl und Vision im Tenant aktiv sind. Einige Funktionen brauchen Frontier oder die Anthropic-Adminfreigabe."
+                        ]
+             },
+    "files":  [
+                  "Contoso_Fargo_Floor_Plan_Dock3_Gate4.png"
+              ]
+}
