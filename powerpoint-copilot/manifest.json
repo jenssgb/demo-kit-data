@@ -5,23 +5,27 @@
   },
   "next": {
     "en": [
-      "Create a brand kit from Contoso_Brand_Guidelines.docx (logos, colors and background are in this folder).",
-      "Keep this folder in OneDrive so Copilot can reference the decks and the brand guidelines.",
+      "Brand kit: upload Contoso_Brand_Guidelines.pdf in the Microsoft 365 Copilot app (Create > More > Brand kits); add the logos and background from this folder.",
+      "Custom skill: in PowerPoint, Copilot pane > + > Choose skills > Manage skills > Add skill, then upload skills\\contoso-site-update\\SKILL.md.",
+      "Keep this folder in OneDrive so Copilot can reference the two decks.",
       "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
     ],
     "de": [
-      "Aus Contoso_Brand_Guidelines.docx ein Brand Kit anlegen (Logos, Farben und Hintergrund liegen in diesem Ordner).",
-      "Den Ordner in OneDrive lassen, damit Copilot die Decks und die Brand Guidelines findet.",
+      "Brand Kit: Contoso_Brand_Guidelines.pdf in der Microsoft 365 Copilot App hochladen (Erstellen > Mehr > Brand Kits); Logos und Hintergrund aus diesem Ordner ergänzen.",
+      "Custom Skill: in PowerPoint Copilot-Bereich > + > Skills auswählen > Skills verwalten > Skill hinzufügen, dann skills\\contoso-site-update\\SKILL.md hochladen.",
+      "Den Ordner in OneDrive lassen, damit Copilot die beiden Decks referenzieren kann.",
       "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
     ]
   },
   "files": [
     "Contoso_Brand_Background.png",
     "Contoso_Brand_Guidelines.docx",
+    "Contoso_Brand_Guidelines.pdf",
     "Contoso_Fargo_Update_Branded.pptx",
     "Contoso_Icon.png",
     "Contoso_Logo_White.png",
     "Contoso_Logo.png",
-    "Contoso_Vendor_Access_Draft.pptx"
+    "Contoso_Vendor_Access_Draft.pptx",
+    "skills/contoso-site-update/SKILL.md"
   ]
 }

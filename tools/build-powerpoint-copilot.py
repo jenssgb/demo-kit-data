@@ -302,8 +302,21 @@ def build_deck():
     prs2.save(OUT / "Contoso_Vendor_Access_Draft.pptx")
 
 
+def export_pdf():
+    """Brand kits ingest a guidelines PDF; export the .docx with Word (Windows only)."""
+    import subprocess
+    src, dst = OUT / "Contoso_Brand_Guidelines.docx", OUT / "Contoso_Brand_Guidelines.pdf"
+    ps = (
+        "$w=New-Object -ComObject Word.Application;$w.Visible=$false;"
+        f"try{{$d=$w.Documents.Open('{src}',$false,$true);$d.ExportAsFixedFormat('{dst}',17);$d.Close($false)}}"
+        "finally{$w.Quit()}"
+    )
+    subprocess.run(["powershell", "-NoProfile", "-Command", ps], check=True)
+
+
 if __name__ == "__main__":
     build_logos()
     build_guidelines()
+    export_pdf()
     build_deck()
     print("built:", sorted(p.name for p in OUT.iterdir()))
