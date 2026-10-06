@@ -1,0 +1,48 @@
+{
+  "title": {
+    "en": "Edit with Copilot in Word and Excel – Contoso Fargo",
+    "de": "Edit with Copilot in Word und Excel – Contoso Fargo"
+  },
+  "next": {
+    "en": [
+      "Upload the files to OneDrive or SharePoint and make sure AutoSave is on before using Edit with Copilot in Word or Excel.",
+      "Word demo: open Contoso_Fargo_Runbook_Source_Pack.docx in Word, then use Home > Copilot with Allow editing on.",
+      "Excel demo: open Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel, then use the Copilot button in the lower-right corner and keep Allow editing on.",
+      "Emails: optional context. Open each .eml in mails-en, address it to yourself and send it before the demo so Copilot can reference recent email context.",
+      "Check that Anthropic/Claude models are enabled for the presenter if you want to show model choice."
+    ],
+    "de": [
+      "Dateien in OneDrive oder SharePoint hochladen und AutoSave einschalten, bevor Edit with Copilot in Word oder Excel genutzt wird.",
+      "Word-Demo: Contoso_Fargo_Runbook_Source_Pack.docx in Word öffnen, dann Start > Copilot mit aktivem Bearbeiten erlauben nutzen.",
+      "Excel-Demo: Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx in Excel öffnen, dann den Copilot-Button unten rechts nutzen und Bearbeiten erlauben eingeschaltet lassen.",
+      "Mails: optionaler Kontext. Jede .eml in mails-en öffnen, an dich selbst adressieren und vor der Demo senden, damit Copilot aktuelle Mails referenzieren kann.",
+      "Prüfen, ob Anthropic-/Claude-Modelle für den Presenter freigeschaltet sind, falls die Modellwahl gezeigt werden soll."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx",
+      "sha256": "ec77e7ac451c7af7a53611fbc4dae87c23e85ed544a0e81a8d49f17f7b45c6a4"
+    },
+    {
+      "path": "Contoso_Fargo_Runbook_Source_Pack.docx",
+      "sha256": "52e2f3fa50630d49c6b036de8ae652cdc261c29d88db43f4cc97d26ffe735bcb"
+    },
+    {
+      "path": "mails-en/1_Dock_3_cutover_carrier_plan_for_Apr_27.eml",
+      "sha256": "12014db8a5cfee36a07d8b3fbd658729949d8f52d9efa8fafa39de573efd11fe"
+    },
+    {
+      "path": "mails-en/2_New_wing_construction_update.eml",
+      "sha256": "f5d05fdbadafacc6466c164a479a5d54331de4881613eb206839caa2f2a38f7d"
+    },
+    {
+      "path": "mails-en/3_Safety_prep_before_go-live.eml",
+      "sha256": "679bd883603a22c7e572af12fbfd4deabe2dd4b85d44a32b99d35548b29241d8"
+    },
+    {
+      "path": "mails-en/4_Scanner_and_Wi-Fi_readiness.eml",
+      "sha256": "af35be75efc07803516a1526d674a1edd37873fb36aef7bd7ab0a95809e5850c"
+    }
+  ]
+}

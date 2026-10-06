@@ -1,0 +1,72 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Contoso Fargo go-live",
+    "de": "Copilot Cowork – Go-live Contoso Fargo"
+  },
+  "next": {
+    "en": [
+      "Emails: open each .eml in mails-en (classic Outlook opens it as a draft), enter your own address in To and send it. Do this the day before so Copilot can find them.",
+      "Keep Contoso_Fargo_GoLive_Readiness_Tracker.xlsx and Contoso_Construction_Weekly_Week16.docx in this OneDrive folder; Cowork edits the tracker in place.",
+      "Custom skill: in Cowork open Customize > Skills > arrow next to Add > Upload skill and choose skills\\contoso-golive-readiness\\SKILL.md.",
+      "SAP via arnold: read SAP_Demo_Placeholders.md and swap customer and material for real data from your SAP demo system.",
+      "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
+    ],
+    "de": [
+      "Mails: jede .eml in mails-de öffnen (klassisches Outlook öffnet sie als Entwurf), deine eigene Adresse bei An eintragen und senden. Am Vortag erledigen, damit Copilot sie findet.",
+      "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx und Contoso_Construction_Weekly_Week16.docx in diesem OneDrive-Ordner lassen; Cowork bearbeitet den Tracker direkt.",
+      "Custom Skill: in Cowork Customize > Skills > Pfeil neben Add > Upload skill und skills\\contoso-golive-readiness\\SKILL.md wählen.",
+      "SAP über arnold: SAP_Demo_Placeholders.md lesen und Kunde und Material durch echte Daten aus deinem SAP-Demosystem ersetzen.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Construction_Weekly_Week16.docx",
+      "sha256": "8409dc20c9387786120f1ab10a1567b569ee6e0b57fbc2bb7764c192df716c8e"
+    },
+    {
+      "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+      "sha256": "f52fea08fdd8a22f9e762b4a52ebed8c2c4e443621816c10e49f01caacf5d4e0"
+    },
+    {
+      "path": "mails-de/1_Megan_Carrier_Update.eml",
+      "sha256": "6dbc1fe9eb3e5a54c1d0c2ecd2c968303338ae3e78d273b0c941f03abb4c74a3"
+    },
+    {
+      "path": "mails-de/2_Riley_Construction_Delay.eml",
+      "sha256": "3bc3b0feff35e5a768f5d3e424af7f53dbd1821e49168a233e99a6f05ee929eb"
+    },
+    {
+      "path": "mails-de/3_Anne_Safety_Training.eml",
+      "sha256": "d0ae21c517b6026da3cca277b0ce8ee710f47b62e0e2ba02d56e83915c665618"
+    },
+    {
+      "path": "mails-de/4_TailspinToys_Quote_Request.eml",
+      "sha256": "e7637e4cae7c9eeaa42ab3de5771edf136452e00fc7f795b69e31d1ed01ebadb"
+    },
+    {
+      "path": "mails-en/1_Megan_Carrier_Update.eml",
+      "sha256": "4aadf3aabe0f756a6d1226df27a5ae8feb49c34a5acfcff494ba2fe2fa5a0df7"
+    },
+    {
+      "path": "mails-en/2_Riley_Construction_Delay.eml",
+      "sha256": "be607320b833ed6592a7d590a57ae6fecf4d1c6f95fe1b75d3d7afa830dac9bf"
+    },
+    {
+      "path": "mails-en/3_Anne_Safety_Training.eml",
+      "sha256": "c896fcabdf1ac4a54aa0937aa21033318de1858b04a427bd8ef8ccd8aad33f05"
+    },
+    {
+      "path": "mails-en/4_TailspinToys_Quote_Request.eml",
+      "sha256": "dc85c62456c4aa35e5f4d537a45895bf2f330fec01dca7d08526b6ce24642fb7"
+    },
+    {
+      "path": "SAP_Demo_Placeholders.md",
+      "sha256": "fb0573130070a3eca52ed1387e2da5b6b8a1c988f3d4e526f8ffe866d0236bf8"
+    },
+    {
+      "path": "skills/contoso-golive-readiness/SKILL.md",
+      "sha256": "e38f403a8ae03cb4f145a44184cedd1a83d16579bdd8e45181a7383e6a67c954"
+    }
+  ]
+}

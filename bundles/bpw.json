@@ -15,5 +15,6 @@
     "prompts-copilot",
     "agent-builder-copilot",
     "governance-copilot"
-  ]
+  ],
+  "profile": "cdx"
 }

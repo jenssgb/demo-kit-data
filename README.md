@@ -47,11 +47,25 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
   Neither is part of the file download.
 
+## Tenant casts (profiles)
+
+Demo people (Megan Bowen, Riley Johnson, …) can be played by real users of a demo tenant, so mails come from real
+mailboxes and Copilot finds the people. The deck defines `personas` (default names) and `profiles.<id>.people`
+(real users); `files.demoData.profile` is the cast the bundle installs by default.
+
+- `profiles/<id>.json` – written by `Update-Bundle.ps1` from the deck.
+- `profiles/<id>/<demo-id>/` – copy of every demo with the names and e-mail addresses swapped (text, .eml, Word/Excel/PowerPoint).
+  Rebuild after every change to demo files or the cast:
+  `python tools\build_profile.py <id>; .\tools\Update-Manifest.ps1 -All -Root profiles\<id>`.
+  The build fails if a default name is left over (e.g. split across Word runs). File names and binaries (.onepkg, .pdf) stay unchanged.
+- `install.ps1` uses the bundle's profile; `-Profile <id>` picks another one, `-Profile default` the Contoso names.
+- `-Tenant` resolves senders by display name: real users get "Send As", only people missing in the tenant become shared mailboxes.
+
 ## Bundles
 
-| Bundle id | Deck | Folder |
-| --- | --- | --- |
-| `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` |
+| Bundle id | Deck | Folder | Profile |
+| --- | --- | --- | --- |
+| `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` | `cdx` (CDX tenant M365CPI98544940) |
 
 ## Demos
 
@@ -78,6 +92,7 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
    `.\tools\Update-Bundle.ps1 -Bundle bpw -Deck <path>\decks\bpw-ai-multiplikatoren.json`
 6. Needs data in the tenant (mails, meetings, OneNote, manual steps)? Add `<demo-id>/tenant.json` – copy `onenote-copilot/tenant.json`.
 7. Commit and push. The bundle one-liner stays the same.
+8. Deck has tenant casts? Rebuild them: `python tools\build_profile.py <profile>; .\tools\Update-Manifest.ps1 -All -Root profiles\<profile>`.
 
 New customer deck: `Update-Bundle.ps1 -Bundle <id> -Deck <deck.json> -Folder Demo-<Customer>`, then set
 `"files": { "demoData": { "demo": "<first-demo>", "bundle": "<id>" } }` in the deck.
@@ -98,6 +113,10 @@ Jederzeit erneut ausführen: neue Demos und geänderte Dateien kommen dazu, unve
 Das Skript lädt die Dateien per Graph in den OneDrive des angemeldeten Benutzers. Es legt die Mails mit den echten Absendern an
 (fehlende Personen als freigegebene Postfächer mit „Senden als“), dazu den Termin und das OneNote-Notizbuch. Am Ende listet es, was noch
 von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff). `-Language de` für deutsche Mails, `-WhatIf` zum Ausprobieren.
+
+**Echte Tenant-Benutzer (Profile):** Das Deck legt fest, welche echten Benutzer die Demo-Personen spielen (`personas` + `profiles`).
+Das Bundle installiert dann `profiles/<profil>/` mit ausgetauschten Namen und Adressen; `-Profile default` holt die Contoso-Namen.
+Nach Änderungen: `python tools\build_profile.py <profil>; .\tools\Update-Manifest.ps1 -All -Root profiles\<profil>`.
 
 **Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
 `.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,

@@ -1,0 +1,58 @@
+{
+  "title": {
+    "en": "What's new in Copilot in PowerPoint – Contoso brand kit",
+    "de": "Neu in Copilot in PowerPoint – Contoso Brand Kit"
+  },
+  "next": {
+    "en": [
+      "Brand kit: upload Contoso_Brand_Guidelines.pdf in the Microsoft 365 Copilot app (Create > More > Brand kits); add the logos and background from this folder.",
+      "Custom skill: in PowerPoint, Copilot pane > + > Choose skills > Manage skills > Add skill, then upload skills\\contoso-site-update\\SKILL.md.",
+      "Keep this folder in OneDrive so Copilot can reference the two decks.",
+      "Continue with the preparation steps in the Demo Kit (Agenda & Setup)."
+    ],
+    "de": [
+      "Brand Kit: Contoso_Brand_Guidelines.pdf in der Microsoft 365 Copilot App hochladen (Erstellen > Mehr > Brand Kits); Logos und Hintergrund aus diesem Ordner ergänzen.",
+      "Custom Skill: in PowerPoint Copilot-Bereich > + > Skills auswählen > Skills verwalten > Skill hinzufügen, dann skills\\contoso-site-update\\SKILL.md hochladen.",
+      "Den Ordner in OneDrive lassen, damit Copilot die beiden Decks referenzieren kann.",
+      "Mit den Vorbereitungsschritten im Demo Kit weitermachen (Agenda & Setup)."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Brand_Background.png",
+      "sha256": "fa4525c06157cf2f05448b79874937d2491fb7eae878177f68ca3304e505be9e"
+    },
+    {
+      "path": "Contoso_Brand_Guidelines.docx",
+      "sha256": "4a8d1ba0e55a77f1d0e6855b99fe96100b0b744f8fdf3269d53d9d53d507b563"
+    },
+    {
+      "path": "Contoso_Brand_Guidelines.pdf",
+      "sha256": "ca7dad788951e43572b737bd6d759ea87d7a35127e0e8102a529eb2a637790a6"
+    },
+    {
+      "path": "Contoso_Fargo_Update_Branded.pptx",
+      "sha256": "6a8257f73ea3a5ac4190861548a6ba2328286ee77062b1a73bda12330ec50d7e"
+    },
+    {
+      "path": "Contoso_Icon.png",
+      "sha256": "5f01d5a070054cc3e5e71bfc6ef02aacf0f60a49b832cbf3dee8a04541f16a51"
+    },
+    {
+      "path": "Contoso_Logo_White.png",
+      "sha256": "7583dbffb1f7cd962ccec6a6c7f4a90525cd75db6dfba2443bdd95b9655b4b22"
+    },
+    {
+      "path": "Contoso_Logo.png",
+      "sha256": "3210947ca621b6e7bc932a8914c7453c8bdac5f10600f2fe30e0e8d71bbbd651"
+    },
+    {
+      "path": "Contoso_Vendor_Access_Draft.pptx",
+      "sha256": "7755b508b4d2e27911eada22b94ebb34bf835c3011d16cce4e5bb56d4005c681"
+    },
+    {
+      "path": "skills/contoso-site-update/SKILL.md",
+      "sha256": "74bcb26c2eee2d875027fe0b0d6f33eda72f3537c43c9cee05d7dd4f4c318e87"
+    }
+  ]
+}

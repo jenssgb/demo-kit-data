@@ -1,0 +1,76 @@
+{
+  "title": {
+    "en": "Researcher + Vision – Contoso Fargo floor plan",
+    "de": "Researcher + Vision – Contoso Fargo Grundriss"
+  },
+  "next": {
+    "en": [
+      "For the Researcher briefing, use the readiness tracker, the week 16 construction notes and the emails (mails-en / mails-de) in this folder; they are the same files as in cowork-copilot.",
+      "Use Contoso_Fargo_Floor_Plan_Dock3_Gate4.png for the Vision part: open it, start a voice chat in Copilot and share the screen, or show it to the mobile camera.",
+      "Check that Researcher, model choice and Vision are enabled in the tenant before the session. Some features require Frontier or Anthropic admin settings."
+    ],
+    "de": [
+      "Für das Researcher-Briefing den Readiness-Tracker, die Bau-Jour-fixe-Notizen KW 16 und die Mails (mails-de / mails-en) in diesem Ordner nutzen; es sind dieselben Dateien wie in cowork-copilot.",
+      "Contoso_Fargo_Floor_Plan_Dock3_Gate4.png für den Vision-Teil nutzen: öffnen, Sprachchat in Copilot starten und Bildschirm teilen oder mit der mobilen Kamera zeigen.",
+      "Vor dem Termin prüfen, ob Researcher, Modellauswahl und Vision im Tenant aktiv sind. Einige Funktionen brauchen Frontier oder die Anthropic-Adminfreigabe."
+    ]
+  },
+  "files": [
+    {
+      "path": "Contoso_Fargo_Floor_Plan_Dock3_Gate4.png",
+      "sha256": "01fe3ba29a8fc13b061ccedb02426baa89e56913660f48668a33e94046f980ed"
+    }
+  ],
+  "shared": [
+    {
+      "from": "cowork-copilot",
+      "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+      "sha256": "f52fea08fdd8a22f9e762b4a52ebed8c2c4e443621816c10e49f01caacf5d4e0"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "Contoso_Construction_Weekly_Week16.docx",
+      "sha256": "8409dc20c9387786120f1ab10a1567b569ee6e0b57fbc2bb7764c192df716c8e"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/1_Megan_Carrier_Update.eml",
+      "sha256": "4aadf3aabe0f756a6d1226df27a5ae8feb49c34a5acfcff494ba2fe2fa5a0df7"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/2_Riley_Construction_Delay.eml",
+      "sha256": "be607320b833ed6592a7d590a57ae6fecf4d1c6f95fe1b75d3d7afa830dac9bf"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/3_Anne_Safety_Training.eml",
+      "sha256": "c896fcabdf1ac4a54aa0937aa21033318de1858b04a427bd8ef8ccd8aad33f05"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-en/4_TailspinToys_Quote_Request.eml",
+      "sha256": "dc85c62456c4aa35e5f4d537a45895bf2f330fec01dca7d08526b6ce24642fb7"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/1_Megan_Carrier_Update.eml",
+      "sha256": "6dbc1fe9eb3e5a54c1d0c2ecd2c968303338ae3e78d273b0c941f03abb4c74a3"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/2_Riley_Construction_Delay.eml",
+      "sha256": "3bc3b0feff35e5a768f5d3e424af7f53dbd1821e49168a233e99a6f05ee929eb"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/3_Anne_Safety_Training.eml",
+      "sha256": "d0ae21c517b6026da3cca277b0ce8ee710f47b62e0e2ba02d56e83915c665618"
+    },
+    {
+      "from": "cowork-copilot",
+      "path": "mails-de/4_TailspinToys_Quote_Request.eml",
+      "sha256": "e7637e4cae7c9eeaa42ab3de5771edf136452e00fc7f795b69e31d1ed01ebadb"
+    }
+  ]
+}
