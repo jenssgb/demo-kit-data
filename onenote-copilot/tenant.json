@@ -44,11 +44,11 @@
   },
   "manual": {
     "de": [
-      "Notizbuch **Safety Procedures** einmal im Browser öffnen (**onenote.cloud.microsoft**) und prüfen, ob **Start › Copilot** klickbar ist.",
+      "Notizbuch **Safety Procedures** erscheint in OneNote für Windows erst nach einmaligem Öffnen: **Datei › Öffnen** › **Safety Procedures** (oder Link-Seite auf dem Desktop › **In Desktop-App öffnen**). Dann prüfen, ob **Start › Copilot** klickbar ist.",
       "Ein paar Minuten warten und prüfen, ob Copilot die Mail von Teresa und den Termin am Donnerstag findet."
     ],
     "en": [
-      "Open the **Safety Procedures** notebook once in the browser (**onenote.cloud.microsoft**) and check that **Home › Copilot** can be selected.",
+      "The **Safety Procedures** notebook only shows up in OneNote for Windows after you open it once: **File › Open** › **Safety Procedures** (or Desktop link page › **Open in Desktop App**). Then check that **Home › Copilot** can be selected.",
       "Wait a few minutes and check that Copilot finds Teresa's email and the Thursday meeting."
     ]
   }
