@@ -253,7 +253,7 @@ if ($others.Count) {
     $tmpIn = [IO.Path]::GetTempFileName(); $tmpOut = [IO.Path]::GetTempFileName(); $tmpPs = [IO.Path]::GetTempFileName() + '.ps1'
     [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; domain = $domain; names = $others; whatIf = [bool]$WhatIf }))
     [IO.File]::WriteAllText($tmpPs, @'
-param($In, $Out)
+param($In, $Out, [switch]$NoWam)
 $ErrorActionPreference = 'Stop'
 $cfg = Get-Content $In -Raw | ConvertFrom-Json
 if (-not (Get-Module -ListAvailable ExchangeOnlineManagement)) {
@@ -262,7 +262,16 @@ if (-not (Get-Module -ListAvailable ExchangeOnlineManagement)) {
     Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force -AllowClobber
 }
 Import-Module ExchangeOnlineManagement
-Connect-ExchangeOnline -UserPrincipalName $cfg.upn -ShowBanner:$false
+$conn = @{ UserPrincipalName = $cfg.upn; ShowBanner = $false }
+if ($NoWam) { $conn.DisableWAM = $true }
+try { Connect-ExchangeOnline @conn }
+catch {
+    # WAM sign-in (default in newer EXO modules) fails on hosts without a window handle; the parent retries in a new process with -NoWam
+    if (-not $NoWam -and "$_" -match 'window handle' -and (Get-Command Connect-ExchangeOnline).Parameters.ContainsKey('DisableWAM')) {
+        [IO.File]::WriteAllText($Out, 'WAM'); exit
+    }
+    throw
+}
 $res = @()
 foreach ($n in $cfg.names) {
     $o = [ordered]@{ name = $n; address = $null; created = $false; granted = $false; error = $null }
@@ -286,6 +295,11 @@ Disconnect-ExchangeOnline -Confirm:$false | Out-Null
 '@)
     $exe = (Get-Process -Id $PID).Path
     & $exe -NoProfile -ExecutionPolicy Bypass -File $tmpPs -In $tmpIn -Out $tmpOut | Out-Host
+    if ((Get-Item $tmpOut).Length -gt 0 -and (Get-Content $tmpOut -Raw).Trim() -eq 'WAM') {
+        Say (T '    Windows sign-in (WAM) not available here - signing in via browser instead ...' '    Windows-Anmeldung (WAM) hier nicht moeglich - Anmeldung stattdessen im Browser ...') DarkYellow
+        [IO.File]::WriteAllText($tmpOut, '')
+        & $exe -NoProfile -ExecutionPolicy Bypass -File $tmpPs -In $tmpIn -Out $tmpOut -NoWam | Out-Host
+    }
     $result = @()
     if ((Get-Item $tmpOut).Length -gt 0) { $result = @(Get-Content $tmpOut -Raw | ConvertFrom-Json) }
     Remove-Item $tmpIn, $tmpOut, $tmpPs -ErrorAction SilentlyContinue
