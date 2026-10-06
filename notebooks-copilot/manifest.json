@@ -5,14 +5,14 @@
   },
   "next": {
     "en": [
-      "Keep these files in this OneDrive folder.",
-      "The tracker, weekly notes, emails and brand guidelines the notebook references are already in this folder (copies from cowork-copilot and powerpoint-copilot).",
+      "Keep these files in the OneDrive folder Demo-notebooks-copilot.",
+      "Also run the existing one-liners for Demo-cowork-copilot and Demo-powerpoint-copilot; the notebook references the tracker, weekly notes, emails, and brand guidelines from those folders.",
       "In Teams, use Dock_3_GoLive_Sync_Transcript.docx or Dock_3_GoLive_Sync.vtt as the transcript source for a demo meeting recap if a real Teams recap is not available.",
       "Use Fargo_Night_Shift_Handover_Template.docx as the source/template when Copilot creates the handover page."
     ],
     "de": [
-      "Diese Dateien in diesem OneDrive-Ordner lassen.",
-      "Tracker, Jour-fixe-Notizen, Mails und Brand Guidelines, auf die das Notebook verweist, liegen schon in diesem Ordner (Kopien aus cowork-copilot und powerpoint-copilot).",
+      "Diese Dateien im OneDrive-Ordner Demo-notebooks-copilot lassen.",
+      "Zusätzlich die vorhandenen One-Liner für Demo-cowork-copilot und Demo-powerpoint-copilot ausführen; das Notebook referenziert Tracker, Jour-fixe-Notizen, Mails und Brand Guidelines aus diesen Ordnern.",
       "In Teams Dock_3_GoLive_Sync_Transcript.docx oder Dock_3_GoLive_Sync.vtt als Transcript-Quelle für einen Demo-Meeting-Recap nutzen, falls kein echter Teams-Recap vorhanden ist.",
       "Fargo_Night_Shift_Handover_Template.docx als Quelle/Vorlage verwenden, wenn Copilot die Handover Page erstellt."
     ]
@@ -20,42 +20,42 @@
   "files": [
     {
       "path": "Dock_3_GoLive_Sync_Transcript.docx",
-      "sha256": "0ada6ea50607665156c39618023aa9dc2c8f8ae18e6603d387c01269fe5529e8"
+      "sha256": "16d82616356aad56a04676b71b3d4df4ffa3d885223486820ce37b50f38bb613"
     },
     {
       "path": "Dock_3_GoLive_Sync.vtt",
-      "sha256": "f84158971737437cfa7e347769cc24b3b80eb0cd66dd4757d201c77e943c80ab"
+      "sha256": "7cadc07e94dd3eaa418461a5f8783c7c431dd9fc565fb9cfac7e12f2948fecf2"
     },
     {
       "path": "Fargo_Night_Shift_Handover_Template.docx",
-      "sha256": "c44cbb2f1a86c2c0a2c37ba72dad6862b2bd0ed33232ae642cd139a4ee5bc86a"
+      "sha256": "6b7db49544a20e2dd6b1a646f6e84839ecf8b57b2104abc633a6141b551eed03"
     }
   ],
   "shared": [
     {
       "from": "cowork-copilot",
       "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
-      "sha256": "9ba8e956863e416c64f28197a8ff450c2ebb253829eecd6746588777416f0dd0"
+      "sha256": "e7d4f44c742e34b14801129e73bea4c9b160000418c1d84ec94b70e54cfc16c5"
     },
     {
       "from": "cowork-copilot",
       "path": "Contoso_Construction_Weekly_Week16.docx",
-      "sha256": "05286e940683a13537381b358b5166d05952faac631620c0870f178995ca5140"
+      "sha256": "780a3656e1fdf85d7a36bbf9cd6e20a1b1ff18e7cbc6d3691a132f4f4318a6f1"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-en/1_Megan_Carrier_Update.eml",
-      "sha256": "071c2edce4913d96fff4c2b897d2cae5e3e9b065e163be40820b31903b6570eb"
+      "path": "mails-en/1_Lisa_Carrier_Update.eml",
+      "sha256": "658f936fcd3b18ba28ca5af3fd14ddbb10a328ba875b4cd1b8a5a2cae813b1a5"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-en/2_Riley_Construction_Delay.eml",
-      "sha256": "524b401c0eb03eeb9d1f285f0c421d0a7344da264b2aedf6843eda550dcd1bb9"
+      "path": "mails-en/2_Kai_Construction_Delay.eml",
+      "sha256": "0e5fd38bf1d8c053e1a628c0a714ab6108f53eae085176f75f725485ddcf7f90"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-en/3_Anne_Safety_Training.eml",
-      "sha256": "35397253dc1757efb9be4a02ec4ed34be2abd97c18ed2bcfd90676add71fbf77"
+      "path": "mails-en/3_Sonia_Safety_Training.eml",
+      "sha256": "7fe21f9fd2397b89b053baea843f53d858b9b670f1ad3bc3c62e33910e603acb"
     },
     {
       "from": "cowork-copilot",
@@ -64,18 +64,18 @@
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-de/1_Megan_Carrier_Update.eml",
-      "sha256": "18bf554f2ea4a5b6a2020723c5333c5b176733de0494802fee870d8e206b7567"
+      "path": "mails-de/1_Lisa_Carrier_Update.eml",
+      "sha256": "f9611b8edbfe286d778fa4813c885548708373744ab5b14c939053ab7a73635f"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-de/2_Riley_Construction_Delay.eml",
-      "sha256": "fc3d0c7627417804b54504358d0c0fa186f269a04970c956dc6184b1c011c620"
+      "path": "mails-de/2_Kai_Construction_Delay.eml",
+      "sha256": "334b5934c80827dc919775292dbcbc058a17804a9b75fae4b030009fc5fae649"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-de/3_Anne_Safety_Training.eml",
-      "sha256": "49734a2fbd2ae0b3aa9d5d3fc23b742f8d6dbb733b61a6b8eb8f7d901d90e483"
+      "path": "mails-de/3_Sonia_Safety_Training.eml",
+      "sha256": "de1917e822945a2225cd0d657f9ca671c317b7d1fb11fac7b353e0f3b41e87c2"
     },
     {
       "from": "cowork-copilot",
@@ -85,12 +85,12 @@
     {
       "from": "powerpoint-copilot",
       "path": "Contoso_Brand_Guidelines.pdf",
-      "sha256": "ca7dad788951e43572b737bd6d759ea87d7a35127e0e8102a529eb2a637790a6"
+      "sha256": "78aa50e3250cfbcfdba4dc760d430727f1a9b982c9aa251319650b11ca8c1e6a"
     },
     {
       "from": "powerpoint-copilot",
       "path": "Contoso_Brand_Guidelines.docx",
-      "sha256": "4a8d1ba0e55a77f1d0e6855b99fe96100b0b744f8fdf3269d53d9d53d507b563"
+      "sha256": "5ccecc597c615dd9ce6520df2da71fe80e03b20b5ca5ed00425033c38527bd5a"
     }
   ]
 }

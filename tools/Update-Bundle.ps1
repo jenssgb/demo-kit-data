@@ -36,29 +36,6 @@ $deckId = [IO.Path]::GetFileNameWithoutExtension($Deck)
 
 $out = [ordered]@{ title = $title; folder = $Folder; deck = $deckId; demos = @($ids) }
 
-# Tenant casts (deck.personas + deck.profiles) -> profiles/<id>.json for tools/build_profile.py;
-# deck.files.demoData.profile becomes the profile the bundle installs by default.
-function Text($v) { if ($v -is [string]) { $v } elseif ($v.en) { $v.en } else { "$v" } }
-if ($deckObj.personas -and $deckObj.profiles) {
-    $pdir = Join-Path $root 'profiles'
-    New-Item -ItemType Directory -Force -Path $pdir | Out-Null
-    foreach ($p in $deckObj.profiles.PSObject.Properties) {
-        $prof = [ordered]@{
-            label = [ordered]@{ en = (Text $p.Value.label); de = $(if ($p.Value.label.de) { $p.Value.label.de } else { Text $p.Value.label }) }
-            tenant = $p.Value.tenant
-            personas = $deckObj.personas
-            people = $p.Value.people
-        }
-        [IO.File]::WriteAllText((Join-Path $pdir "$($p.Name).json"), ($prof | ConvertTo-Json -Depth 6) + "`n", $utf8)
-        Write-Host "profiles/$($p.Name).json -> run: python tools\build_profile.py $($p.Name); .\tools\Update-Manifest.ps1 -All -Root profiles\$($p.Name)"
-    }
-}
-$bundleProfile = $deckObj.files.demoData.profile
-if ($bundleProfile) {
-    if (-not $deckObj.profiles.$bundleProfile) { throw "files.demoData.profile '$bundleProfile' is not in deck.profiles." }
-    $out.profile = $bundleProfile
-}
-
 [IO.File]::WriteAllText($path, ($out | ConvertTo-Json -Depth 5) + "`n", $utf8)
 Write-Host "bundles/$Bundle.json: $(@($ids).Count) demos -> $Folder"
 $ids | ForEach-Object { Write-Host "  $_" }

@@ -49,8 +49,8 @@ def build_transcript_docx():
         ("Risk", "Northwind Freight still arrives at 5:30, outside the 6:00–20:00 vendor window. Safety exception needed."),
         ("Dependency", "Sprinkler test moved to Apr 20; Facility and insurance approval still open."),
         ("Dependency", "Electrical completion moved to May 22. Wi-Fi and scanner setup cannot finish before electrical is signed off."),
-        ("Action", "Anne to confirm evacuation drill timing for Jun 15 before the go/no-go meeting."),
-        ("Action", "Megan to confirm four forklift drivers for the May 9 Saturday shift."),
+        ("Action", "Sonia to confirm evacuation drill timing for Jun 15 before the go/no-go meeting."),
+        ("Action", "Lisa to confirm four forklift drivers for the May 9 Saturday shift."),
         ("Action", "Ops lead to prepare a night-shift handover page by Apr 26."),
     ]
     table = doc.add_table(rows=1, cols=2)
@@ -63,10 +63,10 @@ def build_transcript_docx():
         cells[1].text = note
     doc.add_heading("Transcript excerpt", level=1)
     lines = [
-        ("Megan Bowen", "The main thing for logistics is that Dock 3 is effectively out from Monday morning. Fabrikam can switch to Gate 4 on Apr 30, but the first three days are tight."),
-        ("Riley Johnson", "Gate 4 markings happen Apr 24 and 25. Please do not route carriers there until I confirm the paint is cured and the cones are removed."),
-        ("Anne Weiler", "Northwind at 5:30 is before the approved vendor window. I can support an exception, but I need the new Dock 2 marshal plan attached."),
-        ("Alex Wilber", "Scanner setup depends on electrical sign-off. If May 22 slips, Wi-Fi in the new wing becomes a red risk."),
+        ("Lisa Taylor", "The main thing for logistics is that Dock 3 is effectively out from Monday morning. Fabrikam can switch to Gate 4 on Apr 30, but the first three days are tight."),
+        ("Kai Carter", "Gate 4 markings happen Apr 24 and 25. Please do not route carriers there until I confirm the paint is cured and the cones are removed."),
+        ("Sonia Rees", "Northwind at 5:30 is before the approved vendor window. I can support an exception, but I need the new Dock 2 marshal plan attached."),
+        ("Alex Weyer", "Scanner setup depends on electrical sign-off. If May 22 slips, Wi-Fi in the new wing becomes a red risk."),
         ("Ops Lead", "I'll put all of this in the Fargo notebook and create a night-shift handover so supervisors can run the same checklist."),
     ]
     for speaker, text in lines:
@@ -80,19 +80,19 @@ def build_vtt():
     text = f"""WEBVTT
 
 00:00:00.000 --> 00:00:05.000
-Megan Bowen: Dock 3 is effectively out from Monday morning, April 27.
+Lisa Taylor: Dock 3 is effectively out from Monday morning, April 27.
 
 00:00:05.500 --> 00:00:12.000
-Megan Bowen: Fabrikam can switch to Gate 4 on April 30, but April 27 to 29 need a Dock 2 slot from 7 to 9.
+Lisa Taylor: Fabrikam can switch to Gate 4 on April 30, but April 27 to 29 need a Dock 2 slot from 7 to 9.
 
 00:00:12.500 --> 00:00:19.500
-Riley Johnson: Gate 4 markings happen April 24 and 25. Do not route carriers there until the cones are removed.
+Kai Carter: Gate 4 markings happen April 24 and 25. Do not route carriers there until the cones are removed.
 
 00:00:20.000 --> 00:00:28.000
-Anne Weiler: Northwind at 5:30 is before the approved vendor window. I need the Dock 2 marshal plan before approving the exception.
+Sonia Rees: Northwind at 5:30 is before the approved vendor window. I need the Dock 2 marshal plan before approving the exception.
 
 00:00:28.500 --> 00:00:36.500
-Alex Wilber: Scanner setup depends on electrical sign-off. If May 22 slips, Wi-Fi in the new wing becomes a red risk.
+Alex Weyer: Scanner setup depends on electrical sign-off. If May 22 slips, Wi-Fi in the new wing becomes a red risk.
 
 00:00:37.000 --> 00:00:44.000
 Ops Lead: I'll put this in the Fargo notebook and create a night-shift handover page for supervisors.
@@ -117,9 +117,9 @@ def build_handover_template():
     for i, h in enumerate(["Area", "Check", "Owner", "Done"]):
         table.rows[0].cells[i].text = h
     for row in [
-        ("Inbound", "Confirm Dock 2 slots for Apr 27–29", "Megan", "☐"),
-        ("Safety", "Attach marshal plan to Northwind exception", "Anne", "☐"),
-        ("Construction", "Confirm Gate 4 markings are open", "Riley", "☐"),
+        ("Inbound", "Confirm Dock 2 slots for Apr 27–29", "Lisa", "☐"),
+        ("Safety", "Attach marshal plan to Northwind exception", "Sonia", "☐"),
+        ("Construction", "Confirm Gate 4 markings are open", "Kai", "☐"),
         ("IT", "Escalate if electrical sign-off moves after May 22", "Alex", "☐"),
         ("Ops", "Update readiness tracker before 06:00", "Ops lead", "☐"),
     ]:

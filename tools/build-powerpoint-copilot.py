@@ -241,9 +241,9 @@ def build_deck():
     s = content_slide("Dock 3 closes on Apr 27 – inbound moves to Dock 2")
     text(s, PI(0.7), PI(1.8), PI(11.5), PI(4), [
         "All inbound trucks use Gate 4 and Dock 2 from Apr 27.",
-        "Carriers are informed; two still need confirmation (Megan).",
+        "Carriers are informed; two still need confirmation (Lisa).",
         "Extra Saturday shifts at Dock 2 for wave 1 (A items).",
-        "Yellow forklift floor markings in Hall 2 ordered (Riley).",
+        "Yellow forklift floor markings in Hall 2 ordered (Kai).",
     ], 22)
 
     # 4 safety
@@ -252,7 +252,7 @@ def build_deck():
         "Detour via mezzanine A and the north stairs.",
         "New assembly point: C.",
         "PPE required in all zones next to the construction site.",
-        "Updated evacuation maps go up in every hall this week (Anne).",
+        "Updated evacuation maps go up in every hall this week (Sonia).",
     ], 22)
     warn = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, PI(8.4), PI(1.9), PI(4.2), PI(2.0))
     warn.fill.solid(); warn.fill.fore_color.rgb = rgb(AMBER); warn.line.fill.background()
@@ -264,10 +264,10 @@ def build_deck():
     # 5 next steps
     s = content_slide("Next steps")
     rows = [("What", "Who", "By"),
-            ("Confirm remaining carriers for Dock 2", "Megan", "Apr 20"),
+            ("Confirm remaining carriers for Dock 2", "Lisa", "Apr 20"),
             ("Approve sprinkler test", "Facility + insurer", "Apr 10"),
-            ("Train shift leads on new safety rules", "Anne", "Apr 24"),
-            ("Floor markings Hall 2", "Riley", "Apr 17")]
+            ("Train shift leads on new safety rules", "Sonia", "Apr 24"),
+            ("Floor markings Hall 2", "Kai", "Apr 17")]
     tbl = s.shapes.add_table(len(rows), 3, PI(0.7), PI(1.8), PI(11.5), PI(3.2)).table
     for r, row in enumerate(rows):
         for c, val in enumerate(row):

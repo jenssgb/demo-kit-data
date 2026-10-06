@@ -34,7 +34,7 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 | --- | --- |
 | Files | uploaded to the signed-in user's OneDrive (`Demo-BPW\<demo-id>`) with Microsoft Graph; unchanged files are skipped by `quickXorHash` |
 | Mails | real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**) |
-| Senders | existing users by display name (Megan Bowen, Alex Wilber); missing people become **shared mailboxes** (Exchange Online PowerShell) |
+| Senders | existing users by display name (Lisa Taylor, Alex Weyer); missing people become **shared mailboxes** (Exchange Online PowerShell) |
 | Meetings | Graph `POST /me/events` with attendees (next matching weekday) |
 | OneNote | notebook, section and pages via Graph (delegated) |
 | Not possible by API | sensitivity labels and DLP, .onepkg import, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript – printed as a checklist at the end |
@@ -47,26 +47,20 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
   Neither is part of the file download.
 
-## Tenant casts (profiles)
+## Demo people = real users of the CDX demo tenant
 
-Demo people (Megan Bowen, Riley Johnson, …) can be played by real users of a demo tenant, so mails come from real
-mailboxes and Copilot finds the people. The deck defines `personas` (default names) and `profiles.<id>.people`
-(real users); `files.demoData.profile` is the cast the bundle installs by default.
-
-- `profiles/<id>.json` – written by `Update-Bundle.ps1` from the deck.
-- `profiles/<id>/<demo-id>/` – copy of every demo with the names and e-mail addresses swapped (text, .eml, Word/Excel/PowerPoint).
-  Rebuild after every change to demo files or the cast:
-  `python tools\build_profile.py <id>; .\tools\Update-Manifest.ps1 -All -Root profiles\<id>`.
-  The build fails if a default name is left over (e.g. split across Word runs). File names and binaries (.onepkg, .pdf) stay unchanged.
-- `install.ps1` uses the bundle's profile; `-Profile <id>` picks another one, `-Profile default` the Contoso names.
-- `-Tenant` resolves senders by display name: real users get "Send As", only people missing in the tenant become shared mailboxes.
+All mails, prompts, files and meetings use the **real users of the CDX demo tenant M365CPI98544940** directly
+(Lisa Taylor, Kai Carter, Sonia Rees, Alex Weyer, Hadar Caspit – addresses `<alias>@M365CPI98544940.OnMicrosoft.com`).
+There is no mapping layer: what you see in the files is what's in the tenant. `-Tenant` finds them by display name and
+grants "Send As"; only the external Tailspin Toys customer (Jordan Mitchell) becomes a shared mailbox.
+New demo tenant? Rewrite the names once in the files and `tools/build-*.py`, then `Update-Manifest.ps1 -All`.
 
 ## Bundles
 
-| Bundle id | Deck | Folder | Profile |
-| --- | --- | --- | --- |
-| `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` | `cdx` (CDX tenant M365CPI98544940) |
-| `dhl` | `dhl-innovation-briefing` (DHL Innovation Briefing – Copilot Cowork live) | `Demo-DHL` | `cdx` (CDX tenant M365CPI98544940) |
+| Bundle id | Deck | Folder |
+| --- | --- | --- |
+| `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` |
+| `dhl` | `dhl-innovation-briefing` (DHL Innovation Briefing – Copilot Cowork live) | `Demo-DHL` |
 
 ## Demos
 
@@ -93,7 +87,6 @@ mailboxes and Copilot finds the people. The deck defines `personas` (default nam
    `.\tools\Update-Bundle.ps1 -Bundle bpw -Deck <path>\decks\bpw-ai-multiplikatoren.json`
 6. Needs data in the tenant (mails, meetings, OneNote, manual steps)? Add `<demo-id>/tenant.json` – copy `onenote-copilot/tenant.json`.
 7. Commit and push. The bundle one-liner stays the same.
-8. Deck has tenant casts? Rebuild them: `python tools\build_profile.py <profile>; .\tools\Update-Manifest.ps1 -All -Root profiles\<profile>`.
 
 New customer deck: `Update-Bundle.ps1 -Bundle <id> -Deck <deck.json> -Folder Demo-<Customer>`, then set
 `"files": { "demoData": { "demo": "<first-demo>", "bundle": "<id>" } }` in the deck.
@@ -115,9 +108,8 @@ Das Skript lädt die Dateien per Graph in den OneDrive des angemeldeten Benutzer
 (fehlende Personen als freigegebene Postfächer mit „Senden als“), dazu den Termin und das OneNote-Notizbuch. Am Ende listet es, was noch
 von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff). `-Language de` für deutsche Mails, `-WhatIf` zum Ausprobieren.
 
-**Echte Tenant-Benutzer (Profile):** Das Deck legt fest, welche echten Benutzer die Demo-Personen spielen (`personas` + `profiles`).
-Das Bundle installiert dann `profiles/<profil>/` mit ausgetauschten Namen und Adressen; `-Profile default` holt die Contoso-Namen.
-Nach Änderungen: `python tools\build_profile.py <profil>; .\tools\Update-Manifest.ps1 -All -Root profiles\<profil>`.
+**Demo-Personen = echte Benutzer des CDX-Tenants** (Lisa Taylor, Kai Carter, Sonia Rees, Alex Weyer, Hadar Caspit) – direkt
+in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan Mitchell, Tailspin Toys) wird ein freigegebenes Postfach.
 
 **Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
 `.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,

@@ -20,11 +20,11 @@
   "files": [
     {
       "path": "Contoso_Fargo_Prompt_Pack.docx",
-      "sha256": "674914ded9fcdb13873b5ef36308190dfc7828e4809164524ea723acecc7d4cf"
+      "sha256": "d5ce928000a28caa1b58bea4cdd8e517289f2fcfc56eb9346768ab7e90827e1d"
     },
     {
       "path": "Contoso_Fargo_Prompt_Pack.md",
-      "sha256": "6d6e1357f5a9de926d5fe657c8c5e338324d3732b67d987071dab8989d9efd2c"
+      "sha256": "0b548eeadb4fc8cde53790c822760127c6f287f66a4f3f71a89261e7801d1edc"
     }
   ]
 }

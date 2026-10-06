@@ -25,10 +25,7 @@
   then tenant.ps1 creates what the demos need in the tenant (mails, meetings, OneNote, see <demo>/tenant.json)
   and prints the steps that have to be done by hand. -Language de|en picks the mail language (default en).
   -WhatIf shows what would happen without changing the tenant. Log: %LOCALAPPDATA%\DemoKit\logs.
-
-  -Profile (tenant cast): demo people are played by real users of a demo tenant (profiles/<id>/, built from the deck).
-  A bundle uses its own profile ("profile" in bundles/<bundle>.json); -Profile <id> picks another one,
-  -Profile default installs the Contoso names.
+  Demo people are the real users of the CDX demo tenant (Lisa Taylor, Kai Carter, ...), written directly into the files.
 #>
 param(
     [string]$Demo,
@@ -39,7 +36,6 @@ param(
     [switch]$NoExplorer,
     [switch]$Tenant,
     [ValidateSet('en', 'de')] [string]$Language = 'en',
-    [string]$Profile,
     [switch]$WhatIf
 )
 
@@ -52,8 +48,6 @@ $de = (Get-Culture).TwoLetterISOLanguageName -eq 'de'
 function T($en, $deText) { if ($de) { $deText } else { $en } }
 function Loc($o) { if ($null -eq $o) { return $null }; if ($de -and $o.de) { $o.de } else { $o.en } }
 function Url($path) { "$raw/" + ((($path -split '/') | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/') }
-# Demo files come from profiles/<profile>/ when a tenant cast is active (bundle default or -Profile).
-function DataUrl($path) { $(if ($dataRaw) { $dataRaw } else { $raw }) + '/' + ((($path -split '/') | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/') }
 
 if (-not $Demo -and -not $Bundle) {
     throw (T 'Use -Bundle <bundle-id> or -Demo <demo-id>.' 'Bitte -Bundle <bundle-id> oder -Demo <demo-id> angeben.')
@@ -86,15 +80,6 @@ if ($Bundle) {
     $demos = @($Demo)
 }
 
-if (-not $Profile -and $Bundle) { $Profile = $bundleInfo.profile }
-$dataRaw = $null
-if ($Profile -and $Profile -ne 'default') {
-    try { $profileInfo = Invoke-RestMethod -Uri (Url "profiles/$Profile.json") -UseBasicParsing }
-    catch { throw "Profile '$Profile' not found in $Repo ($Branch). / Profil '$Profile' nicht gefunden." }
-    $dataRaw = "$raw/profiles/$Profile"
-    Write-Host ("  " + (T 'Demo people: ' 'Demo-Personen: ') + (Loc $profileInfo.label)) -ForegroundColor DarkGray
-}
-
 function Get-Sha([string]$file) {
     $sha = [Security.Cryptography.SHA256]::Create()
     $stream = [IO.File]::OpenRead($file)
@@ -109,7 +94,7 @@ function Install-File($srcPath, $relPath, $sha, $dir, $stats) {
     if ($exists -and $sha -and ((Get-Sha $dest) -eq $sha)) { $stats.same++; return }
     $parent = Split-Path $dest -Parent
     if (-not (Test-Path $parent)) { New-Item -ItemType Directory -Force -Path $parent | Out-Null }
-    Invoke-WebRequest -Uri (DataUrl $srcPath) -OutFile $dest -UseBasicParsing
+    Invoke-WebRequest -Uri (Url $srcPath) -OutFile $dest -UseBasicParsing
     if ($exists) { $stats.updated++; $tag = T 'updated' 'aktualisiert'; $color = 'Yellow' }
     else { $stats.new++; $tag = T 'new' 'neu'; $color = 'Green' }
     Write-Host ("    {0,-13} {1}" -f $tag, $relPath) -ForegroundColor $color
@@ -118,7 +103,7 @@ function Install-File($srcPath, $relPath, $sha, $dir, $stats) {
 $summary = @()
 $items = @()
 foreach ($d in $demos) {
-    try { $manifest = Invoke-RestMethod -Uri (DataUrl "$d/manifest.json") -UseBasicParsing }
+    try { $manifest = Invoke-RestMethod -Uri (Url "$d/manifest.json") -UseBasicParsing }
     catch { throw "Demo '$d' not found in $Repo ($Branch). / Demo '$d' nicht gefunden." }
 
     $dir = if ($Bundle) { Join-Path $root $d } else { Join-Path $root "Demo-$d" }
@@ -163,7 +148,7 @@ if ($Tenant) {
     try {
         $code = (Invoke-WebRequest -Uri (Url 'tenant.ps1') -UseBasicParsing).Content
         if ($code -is [byte[]]) { $code = [Text.Encoding]::UTF8.GetString($code) }
-        & ([scriptblock]::Create($code)) -Items $items -Raw $(if ($dataRaw) { $dataRaw } else { $raw }) -Language $Language -WhatIf:$WhatIf
+        & ([scriptblock]::Create($code)) -Items $items -Raw $raw -Language $Language -WhatIf:$WhatIf
     } catch {
         Write-Host ("  " + (T 'Tenant step failed: ' 'Tenant-Schritt fehlgeschlagen: ') + $_) -ForegroundColor Red
     } finally {

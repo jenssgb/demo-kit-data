@@ -4,18 +4,16 @@
   Run after adding, changing or removing demo files (also after the build-*.py scripts):
     .\tools\Update-Manifest.ps1 -Demo onenote-copilot
     .\tools\Update-Manifest.ps1 -All
-    .\tools\Update-Manifest.ps1 -All -Root profiles\cdx      (after tools/build_profile.py cdx)
 
   files  : every file in the demo folder as { path, sha256 } (installer skips unchanged files).
   Not listed (only used by install.ps1 -Tenant): <demo>/tenant.json and the <demo>/tenant/ folder.
   shared : optional <demo>/shared.json – a list of "<other-demo>/<path>" entries. Those files are
            copied into this demo folder too, so every demo folder is self-contained.
 #>
-param([string]$Demo, [switch]$All, [string]$Root)
+param([string]$Demo, [switch]$All)
 
 $ErrorActionPreference = 'Stop'
-$repo = Split-Path $PSScriptRoot -Parent
-$root = if ($Root) { (Resolve-Path (Join-Path $repo $Root)).Path } else { $repo }
+$root = Split-Path $PSScriptRoot -Parent
 $utf8 = New-Object Text.UTF8Encoding $false
 
 function Get-Sha([string]$file) { (Get-FileHash -Algorithm SHA256 -LiteralPath $file).Hash.ToLowerInvariant() }
