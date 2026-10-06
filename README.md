@@ -66,6 +66,7 @@ mailboxes and Copilot finds the people. The deck defines `personas` (default nam
 | Bundle id | Deck | Folder | Profile |
 | --- | --- | --- | --- |
 | `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` | `cdx` (CDX tenant M365CPI98544940) |
+| `dhl` | `dhl-innovation-briefing` (DHL Innovation Briefing – Copilot Cowork live) | `Demo-DHL` | `cdx` (CDX tenant M365CPI98544940) |
 
 ## Demos
 
