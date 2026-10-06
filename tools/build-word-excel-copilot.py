@@ -24,18 +24,18 @@ RED = "FDE7E9"
 GREEN = "DFF6DD"
 
 PEOPLE = {
-    "Lisa Taylor": "Logistics",
-    "Kai Carter": "Construction",
+    "Teresa Sac": "Logistics",
+    "Vance DeLeon": "Construction",
     "Sonia Rees": "Safety",
-    "Alex Weyer": "IT",
+    "Billie Vester": "IT",
     "Ops lead": "Operations",
 }
 
 EMAILS = [
-    ("Lisa Taylor", "Dock 3 cutover: carrier plan for Apr 27", "Dock 3 closes after Friday Apr 26. Northwind keeps the 5:30 am inbound slot, Fabrikam Logistics needs 7-9 am coverage at Dock 2 for Apr 27-29, and Gate 4 opens for Fabrikam from Apr 30. I am worried about Dock 2 on Mondays once Dock 3 traffic moves over."),
-    ("Kai Carter", "New wing construction update", "Electrical completion moves to May 22. Sprinkler test is now Apr 20 and still needs Facility and insurance sign-off. Gate 4 floor markings are Apr 24-25, so do not schedule inbound there then."),
+    ("Teresa Sac", "Dock 3 cutover: carrier plan for Apr 27", "Dock 3 closes after Friday Apr 26. Northwind keeps the 5:30 am inbound slot, Fabrikam Logistics needs 7-9 am coverage at Dock 2 for Apr 27-29, and Gate 4 opens for Fabrikam from Apr 30. I am worried about Dock 2 on Mondays once Dock 3 traffic moves over."),
+    ("Vance DeLeon", "New wing construction update", "Electrical completion moves to May 22. Sprinkler test is now Apr 20 and still needs Facility and insurance sign-off. Gate 4 floor markings are Apr 24-25, so do not schedule inbound there then."),
     ("Sonia Rees", "Safety prep before go-live", "All 12 shift leads need training in the week of Jun 7. Evacuation drill for the new wing is planned for Jun 15, before the go/no-go meeting."),
-    ("Alex Weyer", "Scanner and Wi-Fi readiness", "Wi-Fi install depends on electrical completion. If electrical holds at May 22, scanner testing can start Jun 1 and still finish before go/no-go."),
+    ("Billie Vester", "Scanner and Wi-Fi readiness", "Wi-Fi install depends on electrical completion. If electrical holds at May 22, scanner testing can start Jun 1 and still finish before go/no-go."),
 ]
 
 # ---------------------------------------------------------------- docx source pack
@@ -57,11 +57,11 @@ def build_docx():
     p.add_run("New warehouse wing in Fargo. Dock 3 closes on Apr 27; inbound moves to Dock 2 / Gate 4. Go/no-go Jun 15, go-live Jun 22.")
     doc.add_heading("Construction weekly – week 16", level=1)
     rows = [
-        ("Construction", "Electrical", "May 22", "Kai", "Late cable trays; buffer reduced to one week."),
-        ("Construction", "Sprinkler test", "Apr 20", "Kai", "Facility and insurance approval still missing."),
-        ("Logistics", "Gate 4 markings", "Apr 24-25", "Lisa", "Gate closed while floor markings are applied."),
+        ("Construction", "Electrical", "May 22", "Vance", "Late cable trays; buffer reduced to one week."),
+        ("Construction", "Sprinkler test", "Apr 20", "Vance", "Facility and insurance approval still missing."),
+        ("Logistics", "Gate 4 markings", "Apr 24-25", "Teresa", "Gate closed while floor markings are applied."),
         ("Safety", "Shift lead training", "Week of Jun 7", "Sonia", "Three 90-minute sessions, four leads each."),
-        ("IT", "Scanner / Wi-Fi test", "Jun 1", "Alex", "Depends on electrical completion."),
+        ("IT", "Scanner / Wi-Fi test", "Jun 1", "Billie", "Depends on electrical completion."),
     ]
     table = doc.add_table(rows=1, cols=5)
     table.style = "Table Grid"

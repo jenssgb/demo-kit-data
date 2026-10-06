@@ -25,22 +25,22 @@
     {
       "from": "cowork-copilot",
       "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
-      "sha256": "e7d4f44c742e34b14801129e73bea4c9b160000418c1d84ec94b70e54cfc16c5"
+      "sha256": "b0b47a62e129b4c3cc0811a7d3bf536c875f3069b1e91648709b4095c736c35f"
     },
     {
       "from": "cowork-copilot",
       "path": "Contoso_Construction_Weekly_Week16.docx",
-      "sha256": "780a3656e1fdf85d7a36bbf9cd6e20a1b1ff18e7cbc6d3691a132f4f4318a6f1"
+      "sha256": "3e59cdeb413ef72d4efbbb441b9eee42bfba4003c2ec2c1b0db7d40e90a2d0bb"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-en/1_Lisa_Carrier_Update.eml",
-      "sha256": "658f936fcd3b18ba28ca5af3fd14ddbb10a328ba875b4cd1b8a5a2cae813b1a5"
+      "path": "mails-en/1_Teresa_Carrier_Update.eml",
+      "sha256": "026f7fb0ae04293b4773bca98bbb482ce0498140ecf37daf29b93f0e456aacdb"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-en/2_Kai_Construction_Delay.eml",
-      "sha256": "0e5fd38bf1d8c053e1a628c0a714ab6108f53eae085176f75f725485ddcf7f90"
+      "path": "mails-en/2_Vance_Construction_Delay.eml",
+      "sha256": "5e0d673d5a1c2cd3f3f72eac8d14374e11e923c5726ffd6ec995502343e8e860"
     },
     {
       "from": "cowork-copilot",
@@ -54,13 +54,13 @@
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-de/1_Lisa_Carrier_Update.eml",
-      "sha256": "f9611b8edbfe286d778fa4813c885548708373744ab5b14c939053ab7a73635f"
+      "path": "mails-de/1_Teresa_Carrier_Update.eml",
+      "sha256": "4448e9e1846c749b4dfb11611139b936d2dc51b3a7ca76b48ace5541175852fe"
     },
     {
       "from": "cowork-copilot",
-      "path": "mails-de/2_Kai_Construction_Delay.eml",
-      "sha256": "334b5934c80827dc919775292dbcbc058a17804a9b75fae4b030009fc5fae649"
+      "path": "mails-de/2_Vance_Construction_Delay.eml",
+      "sha256": "e0515c17a7523482072b948c0881b3b2deb370897c2efc3dbd1361829c0c183f"
     },
     {
       "from": "cowork-copilot",

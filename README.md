@@ -34,7 +34,7 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 | --- | --- |
 | Files | uploaded to the signed-in user's OneDrive (`Demo-BPW\<demo-id>`) with Microsoft Graph; unchanged files are skipped by `quickXorHash` |
 | Mails | real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**) |
-| Senders | existing users by display name (Lisa Taylor, Alex Weyer); missing people become **shared mailboxes** (Exchange Online PowerShell) |
+| Senders | existing mailboxes by display name (Teresa Sac, Billie Vester); people not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox |
 | Meetings | Graph `POST /me/events` with attendees (next matching weekday) |
 | OneNote | notebook, section and pages via Graph (delegated) |
 | Not possible by API | sensitivity labels and DLP, .onepkg import, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript – printed as a checklist at the end |
@@ -43,14 +43,16 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 - `-Language de` sends the German mails (default `en`). `-WhatIf` shows everything without changing the tenant.
 - Modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if missing.
 - "Send As" on new shared mailboxes can take a while; the script waits up to 20 minutes, otherwise it says "run again later".
-- Run it again any time: nothing is created twice. Log: `%LOCALAPPDATA%\DemoKit\logs\tenant-<time>.log`.
+- Run it again any time: nothing is created twice. Every run (with or without `-Tenant`) writes a log to `Desktop\DemoKit-Logs\<bundle>-<time>.log` (last 20 kept) – send that file when something goes wrong.
+- Set-up senders are cached in `%LOCALAPPDATA%\DemoKit\senders-v2-<domain>.json`, so reruns skip the Exchange sign-in.
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
   Neither is part of the file download.
 
 ## Demo people = real users of the CDX demo tenant
 
 All mails, prompts, files and meetings use the **real users of the CDX demo tenant M365CPI98544940** directly
-(Lisa Taylor, Kai Carter, Sonia Rees, Alex Weyer, Hadar Caspit – addresses `<alias>@M365CPI98544940.OnMicrosoft.com`).
+(Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney Mattos – addresses `<alias>@M365CPI98544940.OnMicrosoft.com`).
+Only use users **with an Exchange mailbox** (license with Exchange Online, e.g. Microsoft 365 E5) – Teams-only users can't send mails.
 There is no mapping layer: what you see in the files is what's in the tenant. `-Tenant` finds them by display name and
 grants "Send As"; only the external Tailspin Toys customer (Jordan Mitchell) becomes a shared mailbox.
 New demo tenant? Rewrite the names once in the files and `tools/build-*.py`, then `Update-Manifest.ps1 -All`.
@@ -108,8 +110,9 @@ Das Skript lädt die Dateien per Graph in den OneDrive des angemeldeten Benutzer
 (fehlende Personen als freigegebene Postfächer mit „Senden als“), dazu den Termin und das OneNote-Notizbuch. Am Ende listet es, was noch
 von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff). `-Language de` für deutsche Mails, `-WhatIf` zum Ausprobieren.
 
-**Demo-Personen = echte Benutzer des CDX-Tenants** (Lisa Taylor, Kai Carter, Sonia Rees, Alex Weyer, Hadar Caspit) – direkt
-in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan Mitchell, Tailspin Toys) wird ein freigegebenes Postfach.
+**Demo-Personen = echte Benutzer des CDX-Tenants** (Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney Mattos) – direkt
+in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan Mitchell, Tailspin Toys) wird ein freigegebenes Postfach. Nur Benutzer **mit Postfach** nehmen
+(Lizenz mit Exchange Online, z. B. E5). Jeder Lauf schreibt ein Log nach `Desktop\DemoKit-Logs` – bei Fehlern diese Datei schicken.
 
 **Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
 `.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,

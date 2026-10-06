@@ -24,8 +24,9 @@
   Files are cached in %LOCALAPPDATA%\DemoKit and uploaded to the signed-in user's OneDrive with Microsoft Graph;
   then tenant.ps1 creates what the demos need in the tenant (mails, meetings, OneNote, see <demo>/tenant.json)
   and prints the steps that have to be done by hand. -Language de|en picks the mail language (default en).
-  -WhatIf shows what would happen without changing the tenant. Log: %LOCALAPPDATA%\DemoKit\logs.
-  Demo people are the real users of the CDX demo tenant (Lisa Taylor, Kai Carter, ...), written directly into the files.
+  -WhatIf shows what would happen without changing the tenant.
+  Every run writes a log to Desktop\DemoKit-Logs (last 20 kept) - send that file when something goes wrong.
+  Demo people are the real users of the CDX demo tenant (Teresa Sac, Vance DeLeon, ...), written directly into the files.
 #>
 param(
     [string]$Demo,
@@ -49,17 +50,27 @@ function T($en, $deText) { if ($de) { $deText } else { $en } }
 function Loc($o) { if ($null -eq $o) { return $null }; if ($de -and $o.de) { $o.de } else { $o.en } }
 function Url($path) { "$raw/" + ((($path -split '/') | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/') }
 
+# ---------- log on the Desktop (every run) ----------
+$log = $null; $failed = $false
+try {
+    $logDir = Join-Path ([Environment]::GetFolderPath('Desktop')) 'DemoKit-Logs'
+    New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+    $name = if ($Bundle) { $Bundle } elseif ($Demo) { $Demo } else { 'run' }
+    $log = Join-Path $logDir ("{0}{1}-{2:yyyyMMdd-HHmmss}.log" -f $name, $(if ($Tenant) { '-tenant' } else { '' }), (Get-Date))
+    Get-ChildItem $logDir -Filter *.log | Sort-Object LastWriteTime -Descending | Select-Object -Skip 19 | Remove-Item -Force -ErrorAction SilentlyContinue
+    Start-Transcript -Path $log | Out-Null
+    $commit = try { (Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/commits/$Branch" -UseBasicParsing -TimeoutSec 5).sha.Substring(0, 7) } catch { '?' }
+    $os = try { (Get-CimInstance Win32_OperatingSystem).Caption } catch { [Environment]::OSVersion.VersionString }
+    Write-Host ("  Demo Kit data | {0:yyyy-MM-dd HH:mm:ss} | {1} | {2}\{3} | {4} | PowerShell {5} | {6}@{7} ({8})" -f (Get-Date), $env:COMPUTERNAME, $env:USERDOMAIN, $env:USERNAME, $os, $PSVersionTable.PSVersion, $Repo, $Branch, $commit) -ForegroundColor DarkGray
+    Write-Host ("  Bundle={0} Demo={1} Tenant={2} Language={3} WhatIf={4} Target={5}" -f $Bundle, $Demo, [bool]$Tenant, $Language, [bool]$WhatIf, $Target) -ForegroundColor DarkGray
+} catch { $log = $null }
+
+try {
 if (-not $Demo -and -not $Bundle) {
     throw (T 'Use -Bundle <bundle-id> or -Demo <demo-id>.' 'Bitte -Bundle <bundle-id> oder -Demo <demo-id> angeben.')
 }
 
-if ($Tenant) {
-    $logDir = Join-Path $env:LOCALAPPDATA 'DemoKit\logs'
-    New-Item -ItemType Directory -Force -Path $logDir | Out-Null
-    $log = Join-Path $logDir ("tenant-{0:yyyyMMdd-HHmmss}.log" -f (Get-Date))
-    Start-Transcript -Path $log | Out-Null
-    if (-not $Target) { $Target = Join-Path $env:LOCALAPPDATA 'DemoKit' }
-}
+if ($Tenant -and -not $Target) { $Target = Join-Path $env:LOCALAPPDATA 'DemoKit' }
 
 if (-not $Target) {
     $base = @($env:OneDriveCommercial, $env:OneDrive) | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
@@ -151,12 +162,25 @@ if ($Tenant) {
         & ([scriptblock]::Create($code)) -Items $items -Raw $raw -Language $Language -WhatIf:$WhatIf
     } catch {
         Write-Host ("  " + (T 'Tenant step failed: ' 'Tenant-Schritt fehlgeschlagen: ') + $_) -ForegroundColor Red
-    } finally {
-        Write-Host ("  Log: $log") -ForegroundColor DarkGray
-        Stop-Transcript | Out-Null
+        Write-Host ($_.ScriptStackTrace) -ForegroundColor DarkGray
+        $failed = $true
     }
     return
 }
 
 $open = if ($Bundle -and -not $Demo) { $root } elseif ($Bundle) { Join-Path $root $Demo } else { Join-Path $root "Demo-$Demo" }
 if (-not $NoExplorer) { Start-Process explorer.exe -ArgumentList "`"$open`"" }
+} catch {
+    $failed = $true
+    Write-Host ""
+    Write-Host ("  " + (T 'Error: ' 'Fehler: ') + $_) -ForegroundColor Red
+    Write-Host ($_ | Format-List * -Force | Out-String) -ForegroundColor DarkGray
+    Write-Host ($_.ScriptStackTrace) -ForegroundColor DarkGray
+} finally {
+    if ($log) {
+        Write-Host ""
+        if ($failed) { Write-Host ("  " + (T 'Something went wrong - please send this log file: ' 'Etwas ist schiefgelaufen - bitte diese Log-Datei schicken: ') + $log) -ForegroundColor Yellow }
+        else { Write-Host ("  Log: " + $log) -ForegroundColor DarkGray }
+        try { Stop-Transcript | Out-Null } catch { }
+    }
+}

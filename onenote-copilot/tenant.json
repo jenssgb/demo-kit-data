@@ -1,6 +1,6 @@
 {
   "mails": [
-    "tenant/mails-{lang}/1_Lisa_Dock3_Carrier_Feedback.eml"
+    "tenant/mails-{lang}/1_Teresa_Dock3_Carrier_Feedback.eml"
   ],
   "events": [
     {
@@ -12,9 +12,9 @@
       "start": "10:00",
       "minutes": 30,
       "attendees": [
-        "Lisa Taylor",
+        "Teresa Sac",
         "Sonia Rees",
-        "Kai Carter"
+        "Vance DeLeon"
       ],
       "body": {
         "de": "Agenda:\n1. Umstellung Wareneingang auf Dock 2 / Tor 4 ab 27.04.\n2. Ausnahmen Dienstleisterzeiten\n3. Samstagsschichten Welle 1",
@@ -45,11 +45,11 @@
   "manual": {
     "de": [
       "Notizbuch **Safety Procedures** einmal im Browser öffnen (**onenote.cloud.microsoft**) und prüfen, ob **Start › Copilot** klickbar ist.",
-      "Ein paar Minuten warten und prüfen, ob Copilot die Mail von Lisa und den Termin am Donnerstag findet."
+      "Ein paar Minuten warten und prüfen, ob Copilot die Mail von Teresa und den Termin am Donnerstag findet."
     ],
     "en": [
       "Open the **Safety Procedures** notebook once in the browser (**onenote.cloud.microsoft**) and check that **Home › Copilot** can be selected.",
-      "Wait a few minutes and check that Copilot finds Lisa's email and the Thursday meeting."
+      "Wait a few minutes and check that Copilot finds Teresa's email and the Thursday meeting."
     ]
   }
 }

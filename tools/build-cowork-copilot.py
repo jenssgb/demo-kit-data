@@ -26,8 +26,8 @@ NAVY = "0B3D91"
 
 # ---------------------------------------------------------------- emails
 MAILS = {
-    "1_Lisa_Carrier_Update": {
-        "from": "Lisa Taylor <LisaT@M365CPI98544940.OnMicrosoft.com>",
+    "1_Teresa_Carrier_Update": {
+        "from": "Teresa Sac <TeresaS@M365CPI98544940.OnMicrosoft.com>",
         "en": (
             "Dock 3 – carrier update and Saturday shifts",
             """Hi,
@@ -41,7 +41,7 @@ quick update on the carriers before Dock 3 closes on April 27:
 I've added all of this to the readiness tracker.
 
 Thanks,
-Lisa""",
+Teresa""",
         ),
         "de": (
             "Dock 3 – Update Speditionen und Samstagsschichten",
@@ -56,11 +56,11 @@ kurzes Update zu den Speditionen, bevor Dock 3 am 27. April schließt:
 Ich hab alles im Readiness-Tracker eingetragen.
 
 Danke,
-Lisa""",
+Teresa""",
         ),
     },
-    "2_Kai_Construction_Delay": {
-        "from": "Kai Carter <KaiC@M365CPI98544940.OnMicrosoft.com>",
+    "2_Vance_Construction_Delay": {
+        "from": "Vance DeLeon <VanceD@M365CPI98544940.OnMicrosoft.com>",
         "en": (
             "New wing – electrical one week late, sprinkler test moved",
             """Hi,
@@ -71,7 +71,7 @@ Two more things:
 - The sprinkler test moves from April 13 to April 20. We still need the approval from Facility and the insurance. Who signs this on our side?
 - Floor markings for Gate 4 are planned for April 24–25 (Friday/Saturday). Gate 4 is closed during that time.
 
-Kai""",
+Vance""",
         ),
         "de": (
             "Neuer Flügel – Elektrik eine Woche später, Sprinklertest verschoben",
@@ -83,7 +83,7 @@ Zwei Dinge noch:
 - Der Sprinklertest wird vom 13. auf den 20. April verschoben. Wir brauchen weiterhin die Freigabe von Facility und Versicherung. Wer unterschreibt das bei uns?
 - Die Bodenmarkierungen an Tor 4 sind für den 24.–25. April (Freitag/Samstag) geplant. Tor 4 ist in der Zeit zu.
 
-Kai""",
+Vance""",
         ),
     },
     "3_Sonia_Safety_Training": {
@@ -165,18 +165,18 @@ def build_mails():
 
 # ---------------------------------------------------------------- tracker
 ROWS = [
-    ("R01", "Logistics", "Move inbound to Dock 2 / Gate 4", "Lisa", (4, 27), "In progress", "Amber", "Northwind 5:30 am exception still open"),
-    ("R02", "Logistics", "Carrier confirmations (Northwind, Fabrikam Logistics)", "Lisa", (4, 24), "In progress", "Amber", "Fabrikam Gate 4 from Apr 30; needs Dock 2 slot Apr 27–29"),
-    ("R03", "Logistics", "Saturday shifts wave 1", "Lisa", (5, 2), "Open", "Amber", "4 forklift drivers missing for May 9"),
-    ("R04", "Construction", "Electrical new wing", "Kai", (5, 15), "In progress", "Red", "Cable trays late, new date May 22"),
-    ("R05", "Construction", "Floor markings Gate 4", "Kai", (4, 25), "Open", "Amber", "Gate 4 closed Apr 24–25"),
-    ("R06", "Construction", "Sprinkler test new wing", "Kai", (4, 13), "Open", "Red", "Facility + insurance approval missing"),
+    ("R01", "Logistics", "Move inbound to Dock 2 / Gate 4", "Teresa", (4, 27), "In progress", "Amber", "Northwind 5:30 am exception still open"),
+    ("R02", "Logistics", "Carrier confirmations (Northwind, Fabrikam Logistics)", "Teresa", (4, 24), "In progress", "Amber", "Fabrikam Gate 4 from Apr 30; needs Dock 2 slot Apr 27–29"),
+    ("R03", "Logistics", "Saturday shifts wave 1", "Teresa", (5, 2), "Open", "Amber", "4 forklift drivers missing for May 9"),
+    ("R04", "Construction", "Electrical new wing", "Vance", (5, 15), "In progress", "Red", "Cable trays late, new date May 22"),
+    ("R05", "Construction", "Floor markings Gate 4", "Vance", (4, 25), "Open", "Amber", "Gate 4 closed Apr 24–25"),
+    ("R06", "Construction", "Sprinkler test new wing", "Vance", (4, 13), "Open", "Red", "Facility + insurance approval missing"),
     ("R07", "Safety", "Detour signage east corridor escape route", "Sonia", (4, 10), "Done", "Green", ""),
     ("R08", "Safety", "Shift lead training new safety rules", "Sonia", (6, 12), "Open", "Amber", "12 shift leads, dates tbd"),
     ("R09", "Safety", "Evacuation drill new wing", "Sonia", (6, 15), "Open", "Green", ""),
-    ("R10", "Inventory", "Wave 1 move (A items)", "Lisa", (5, 9), "Open", "Amber", "Depends on Saturday shifts"),
-    ("R11", "Inventory", "Wave 2 move (B/C items)", "Lisa", (6, 5), "Open", "Green", ""),
-    ("R12", "IT", "Scanners and Wi-Fi new wing", "Alex", (6, 1), "Open", "Green", "Needs electrical done"),
+    ("R10", "Inventory", "Wave 1 move (A items)", "Teresa", (5, 9), "Open", "Amber", "Depends on Saturday shifts"),
+    ("R11", "Inventory", "Wave 2 move (B/C items)", "Teresa", (6, 5), "Open", "Green", ""),
+    ("R12", "IT", "Scanners and Wi-Fi new wing", "Billie", (6, 1), "Open", "Green", "Needs electrical done"),
     ("R13", "Customers", "Inform key customers about reduced dock capacity", "Ops lead", (4, 20), "Open", "Amber", ""),
     ("R14", "Go-live", "Go/no-go decision", "Ops lead", (6, 15), "Open", "Green", "After evacuation drill"),
 ]
@@ -237,7 +237,7 @@ def build_weekly():
     st.font.size = Pt(11)
     h = doc.add_heading("Construction weekly – week 16 – Fargo expansion", level=1)
     h.runs[0].font.color.rgb = RGBColor.from_string(NAVY)
-    doc.add_paragraph("Attending: Sonia (Safety), Kai (Construction), Lisa (Logistics), operations lead")
+    doc.add_paragraph("Attending: Sonia (Safety), Vance (Construction), Teresa (Logistics), operations lead")
     doc.add_heading("Decisions", level=2)
     for t in [
         "Dock 3 closes as planned on April 27. Inbound moves to Dock 2 and Gate 4.",
@@ -247,7 +247,7 @@ def build_weekly():
         doc.add_paragraph(t, style="List Bullet")
     doc.add_heading("Open points", level=2)
     for t in [
-        "Electrical is one week late (May 22 instead of May 15). Kai sends a revised plan.",
+        "Electrical is one week late (May 22 instead of May 15). Vance sends a revised plan.",
         "Sprinkler test moved to April 20. Approval from Facility and insurance still missing. Owner unclear.",
         "Northwind Freight arrives at 5:30 am, before the vendor window. Safety exception needed (Sonia).",
         "Shift lead training: 12 people, dates in the week of June 7 still to be set.",

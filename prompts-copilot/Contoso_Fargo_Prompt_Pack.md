@@ -22,15 +22,15 @@ _Coach note / Hinweis:_ Goal + context + source + expectations; good weekly sche
 
 ## 2. Carrier impact check / Auswirkung auf Speditionen prüfen
 
-**Where / Wo:** Copilot Chat after selecting the Lisa Taylor email or adding it as context | Copilot Chat nach Auswahl der Lisa-Taylor-Mail oder mit der Mail als Kontext
+**Where / Wo:** Copilot Chat after selecting the Teresa Sac email or adding it as context | Copilot Chat nach Auswahl der Teresa-Sac-Mail oder mit der Mail als Kontext
 
 **EN**
 
-I’m about to call Lisa about the carrier plan. Based on her latest email and the readiness tracker, what are the two decisions we need before Dock 3 closes on Apr 27? Please separate what we know from what still needs confirmation.
+I’m about to call Teresa about the carrier plan. Based on her latest email and the readiness tracker, what are the two decisions we need before Dock 3 closes on Apr 27? Please separate what we know from what still needs confirmation.
 
 **DE**
 
-Ich telefoniere gleich mit Lisa zum Speditionsplan. Was sind auf Basis ihrer letzten Mail und des Readiness-Trackers die zwei Entscheidungen, die wir vor der Schließung von Dock 3 am 27. April brauchen? Bitte trenne, was sicher ist, von dem, was noch bestätigt werden muss.
+Ich telefoniere gleich mit Teresa zum Speditionsplan. Was sind auf Basis ihrer letzten Mail und des Readiness-Trackers die zwei Entscheidungen, die wir vor der Schließung von Dock 3 am 27. April brauchen? Bitte trenne, was sicher ist, von dem, was noch bestätigt werden muss.
 
 _Coach note / Hinweis:_ Narrow source and practical output for a real conversation. | Klare Quelle und praktisches Ergebnis für ein echtes Gespräch.
 
@@ -48,17 +48,17 @@ Ich habe morgen einen 20-Minuten-Termin mit Sonia zur Sicherheit in Fargo. Kanns
 
 _Coach note / Hinweis:_ Adds tone and why the answer is needed. | Gibt Ton und Anlass mit.
 
-## 4. Kai construction risk summary / Baurisiko von Kai zusammenfassen
+## 4. Vance construction risk summary / Baurisiko von Vance zusammenfassen
 
-**Where / Wo:** Copilot Chat with Kai’s weekly construction document attached | Copilot Chat mit Kais wöchentlichem Bau-Dokument als Anhang
+**Where / Wo:** Copilot Chat with Vance’s weekly construction document attached | Copilot Chat mit Vances wöchentlichem Bau-Dokument als Anhang
 
 **EN**
 
-I’m updating the go/no-go pack and need the construction risks in normal business language. From Kai’s latest construction weekly, which items could realistically threaten June 22, what is the current owner, and what would I ask for in the Thursday leadership sync?
+I’m updating the go/no-go pack and need the construction risks in normal business language. From Vance’s latest construction weekly, which items could realistically threaten June 22, what is the current owner, and what would I ask for in the Thursday leadership sync?
 
 **DE**
 
-Ich aktualisiere gerade das Go/No-go-Paket und brauche die Baurisiken in normaler Business-Sprache. Welche Punkte aus Kais letztem Bau-Weekly können den 22. Juni realistisch gefährden, wer ist aktuell Owner, und welche Entscheidung würde ich im Leadership-Sync am Donnerstag anfordern?
+Ich aktualisiere gerade das Go/No-go-Paket und brauche die Baurisiken in normaler Business-Sprache. Welche Punkte aus Vances letztem Bau-Weekly können den 22. Juni realistisch gefährden, wer ist aktuell Owner, und welche Entscheidung würde ich im Leadership-Sync am Donnerstag anfordern?
 
 _Coach note / Hinweis:_ Turns source material into a decision conversation. | Macht aus Quellenmaterial eine Entscheidungsunterlage.
 
@@ -82,11 +82,11 @@ _Coach note / Hinweis:_ Good prompt for Outlook: audience, facts, boundary. | Gu
 
 **EN**
 
-I need a quick Fargo update for Lisa, Sonia, Kai, and Alex. Use my usual style: short lead sentence, then three sections — what changed, what needs a decision, and what I’ll do next. Pull only from the last week’s work data and keep it under 180 words.
+I need a quick Fargo update for Teresa, Sonia, Vance, and Billie. Use my usual style: short lead sentence, then three sections — what changed, what needs a decision, and what I’ll do next. Pull only from the last week’s work data and keep it under 180 words.
 
 **DE**
 
-Ich brauche ein kurzes Fargo-Update für Lisa, Sonia, Kai und Alex. Nutze meinen üblichen Stil: ein kurzer Einstiegssatz, dann drei Abschnitte – was hat sich geändert, welche Entscheidung brauchen wir, was mache ich als Nächstes. Bitte nur aus Arbeitsdaten der letzten Woche und unter 180 Wörtern.
+Ich brauche ein kurzes Fargo-Update für Teresa, Sonia, Vance und Billie. Nutze meinen üblichen Stil: ein kurzer Einstiegssatz, dann drei Abschnitte – was hat sich geändert, welche Entscheidung brauchen wir, was mache ich als Nächstes. Bitte nur aus Arbeitsdaten der letzten Woche und unter 180 Wörtern.
 
 _Coach note / Hinweis:_ Shows custom instructions + grounded source + length limit. | Zeigt benutzerdefinierte Anweisungen + Quelle + Längenlimit.
 
@@ -124,11 +124,11 @@ _Coach note / Hinweis:_ Great for Work IQ: person/time context plus explicit sou
 
 **EN**
 
-Turn this into a working page for the Fargo team. Keep the decision log at the top, then risks, open questions, and next actions. Make it easy for Lisa, Sonia, Kai, and Alex to add comments without rewriting the whole thing.
+Turn this into a working page for the Fargo team. Keep the decision log at the top, then risks, open questions, and next actions. Make it easy for Teresa, Sonia, Vance, and Billie to add comments without rewriting the whole thing.
 
 **DE**
 
-Mach daraus bitte eine Arbeitsseite für das Fargo-Team. Oben soll das Entscheidungslog stehen, danach Risiken, offene Fragen und nächste Aktionen. Lisa, Sonia, Kai und Alex sollen leicht Kommentare ergänzen können, ohne alles umzuschreiben.
+Mach daraus bitte eine Arbeitsseite für das Fargo-Team. Oben soll das Entscheidungslog stehen, danach Risiken, offene Fragen und nächste Aktionen. Teresa, Sonia, Vance und Billie sollen leicht Kommentare ergänzen können, ohne alles umzuschreiben.
 
 _Coach note / Hinweis:_ Use when moving from private chat to a shared artifact. | Nützlich, wenn aus privatem Chat ein gemeinsames Arbeitsartefakt wird.
 

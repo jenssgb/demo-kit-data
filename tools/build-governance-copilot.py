@@ -87,11 +87,11 @@ def build_labor_costs():
     ws["A2"].fill = PatternFill("solid", fgColor=AMBER)
     rows = [
         ["Workstream", "Owner", "Apr", "May", "Jun", "Risk", "Note"],
-        ["Dock 2 weekend receiving", "Lisa Taylor", 18400, 27500, 12600, "Medium", "Temporary inbound move while Dock 3 closes"],
-        ["Forklift driver backfill", "Lisa Taylor", 7200, 19800, 6400, "High", "Four drivers missing for May 9 wave 1"],
+        ["Dock 2 weekend receiving", "Teresa Sac", 18400, 27500, 12600, "Medium", "Temporary inbound move while Dock 3 closes"],
+        ["Forklift driver backfill", "Teresa Sac", 7200, 19800, 6400, "High", "Four drivers missing for May 9 wave 1"],
         ["Safety shift-lead training", "Sonia Rees", 0, 4800, 9600, "Medium", "12 shift leads before June 15 drill"],
-        ["Construction escort overtime", "Kai Carter", 11200, 15400, 6400, "Medium", "Electrical slips to May 22"],
-        ["IT floor support", "Alex Weyer", 0, 6200, 13400, "Low", "Scanners and Wi-Fi commissioning"],
+        ["Construction escort overtime", "Vance DeLeon", 11200, 15400, 6400, "Medium", "Electrical slips to May 22"],
+        ["IT floor support", "Billie Vester", 0, 6200, 13400, "Low", "Scanners and Wi-Fi commissioning"],
     ]
     start = 4
     for r_idx, row in enumerate(rows, start):

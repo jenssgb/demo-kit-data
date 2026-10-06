@@ -249,7 +249,7 @@ function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ ne
 $senders = @{}
 $others = @($people | Where-Object { $_ -ne $me.displayName })
 # Senders already set up on this machine are cached, so Exchange Online (a second sign-in) is only needed once per tenant
-$cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-{0}.json" -f $domain.ToLowerInvariant())
+$cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-v2-{0}.json" -f $domain.ToLowerInvariant())
 $cache = @{}
 if (-not $RefreshSenders -and (Test-Path $cacheFile)) {
     try { (Get-Content $cacheFile -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $cache[$_.Name] = $_.Value } } catch { $cache = @{} }
@@ -291,6 +291,9 @@ foreach ($n in $cfg.names) {
     try {
         $r = Get-Recipient -Filter "DisplayName -eq '$($n -replace "'", "''")'" -RecipientTypeDetails UserMailbox, SharedMailbox -ResultSize 1 -ErrorAction SilentlyContinue | Select-Object -First 1
         if (-not $r) {
+            # A real tenant user without a mailbox (e.g. only a Teams license): never create a look-alike shared mailbox
+            $u = Get-User -Filter "DisplayName -eq '$($n -replace "'", "''")'" -ResultSize 1 -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($u) { throw "user $($u.UserPrincipalName) has no mailbox (needs a license with Exchange Online) - pick a demo person with a mailbox" }
             $alias = ($n.ToLowerInvariant() -replace '[^a-z0-9]+', '.').Trim('.')
             if ($cfg.whatIf) { $o.address = "$alias@$($cfg.domain)"; $o.created = $true; $res += $o; continue }
             $r = New-Mailbox -Shared -Name $n -DisplayName $n -Alias $alias -PrimarySmtpAddress "$alias@$($cfg.domain)"

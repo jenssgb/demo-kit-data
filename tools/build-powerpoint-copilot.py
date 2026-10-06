@@ -241,9 +241,9 @@ def build_deck():
     s = content_slide("Dock 3 closes on Apr 27 – inbound moves to Dock 2")
     text(s, PI(0.7), PI(1.8), PI(11.5), PI(4), [
         "All inbound trucks use Gate 4 and Dock 2 from Apr 27.",
-        "Carriers are informed; two still need confirmation (Lisa).",
+        "Carriers are informed; two still need confirmation (Teresa).",
         "Extra Saturday shifts at Dock 2 for wave 1 (A items).",
-        "Yellow forklift floor markings in Hall 2 ordered (Kai).",
+        "Yellow forklift floor markings in Hall 2 ordered (Vance).",
     ], 22)
 
     # 4 safety
@@ -264,10 +264,10 @@ def build_deck():
     # 5 next steps
     s = content_slide("Next steps")
     rows = [("What", "Who", "By"),
-            ("Confirm remaining carriers for Dock 2", "Lisa", "Apr 20"),
+            ("Confirm remaining carriers for Dock 2", "Teresa", "Apr 20"),
             ("Approve sprinkler test", "Facility + insurer", "Apr 10"),
             ("Train shift leads on new safety rules", "Sonia", "Apr 24"),
-            ("Floor markings Hall 2", "Kai", "Apr 17")]
+            ("Floor markings Hall 2", "Vance", "Apr 17")]
     tbl = s.shapes.add_table(len(rows), 3, PI(0.7), PI(1.8), PI(11.5), PI(3.2)).table
     for r, row in enumerate(rows):
         for c, val in enumerate(row):

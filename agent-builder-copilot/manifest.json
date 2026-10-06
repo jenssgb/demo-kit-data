@@ -20,19 +20,19 @@
   "files": [
     {
       "path": "Contoso_Fargo_Safety_Handbook.docx",
-      "sha256": "43c099e7bedd12c2a709bfcc51799fbce2763cab42f189f14a9ad70576b3f16d"
+      "sha256": "d0f7fc51f99698070f60ad4a0170bd6a3de968d4d75a910afcf6ac528bf01cc1"
     },
     {
       "path": "Fargo_Dock_Schedule.csv",
-      "sha256": "6dc0860c5745f9fa71ea9583f0f2dd79f9d29195f0b0b0330f19701eaa9b4db1"
+      "sha256": "871a81ef0947cd6c26159baa894740294ba75c5681cbce7d628fee3935b3a24e"
     },
     {
       "path": "Fargo_Dock_Schedule.xlsx",
-      "sha256": "3c0056fc6d7512c1460746bb53ac3f81025b3b630bb3d254e1e2457222994e08"
+      "sha256": "2b55d66b24426739b6116b1f510d38f1302adbe16422d875ec65dd4cc89602af"
     },
     {
       "path": "Fargo_Site_Assistant_Instructions.txt",
-      "sha256": "2b3f13298de7f156b1482e55be0d5d2ab6a513301d4dac4aff697dd61c77b43e"
+      "sha256": "9b86f85ccba822cc30e2a0b921bb6ee4d52dc5eb257fe204a467e8aab0b82fd6"
     }
   ]
 }

@@ -18,15 +18,15 @@
   "files": [
     {
       "path": "Contoso_Fargo_Highly_Confidential_MA_Note.docx",
-      "sha256": "0de8561132b76b210639868810ab9c68e95b3a78e811acf084ccccb76f28aff0"
+      "sha256": "4b50d285af3ecff89c89bf1e359429e458a6cdf3d562c3facaece430b32e5195"
     },
     {
       "path": "Contoso_Fargo_Public_Site_Fact_Sheet.docx",
-      "sha256": "3eb6ff0b7da88d63b14e9f530680ed99989190c26cd9eed2cda0b4b137345ae5"
+      "sha256": "6ec816fe83165ba0f98750bc1c8f562ff7ccc1c4b8780fee9a6fc8df4bd59307"
     },
     {
       "path": "Fargo_Labor_Costs_Confidential.xlsx",
-      "sha256": "e33214400363cffeb65f8619ee8166e12a118104b5933064d4da1041311bb988"
+      "sha256": "6d60bd3f399d7be4d2aaaeefba025926f61c7455ea149787fb786898b7ebe724"
     },
     {
       "path": "README_setup.md",

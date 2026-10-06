@@ -37,13 +37,13 @@ RULES = [
 ]
 
 SCHEDULE = [
-    ["2027-04-27", "06:30", "08:30", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Pallet racks", "Transition slot while Dock 3 closes", "Lisa Taylor", "Confirmed"],
-    ["2027-04-28", "07:00", "09:00", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Packaging supplies", "Use Gate 4 detour signage", "Lisa Taylor", "Confirmed"],
+    ["2027-04-27", "06:30", "08:30", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Pallet racks", "Transition slot while Dock 3 closes", "Teresa Sac", "Confirmed"],
+    ["2027-04-28", "07:00", "09:00", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Packaging supplies", "Use Gate 4 detour signage", "Teresa Sac", "Confirmed"],
     ["2027-04-29", "05:30", "06:15", "Dock 2", "Gate 4", "Northwind", "Inbound", "Line-side totes", "Safety exception requested; early arrival before vendor window", "Sonia Rees", "Exception pending"],
-    ["2027-04-29", "07:15", "08:30", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Conveyor spares", "Northwind must clear Gate 4 first", "Lisa Taylor", "Confirmed"],
-    ["2027-04-30", "08:00", "10:00", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "A-item cartons", "Gate 4 standard route starts", "Lisa Taylor", "Confirmed"],
-    ["2027-05-02", "09:00", "12:00", "Dock 2", "Gate 4", "Northwind", "Outbound", "Tailspin Toys partial shipment", "Hold until sprinkler sign-off is recorded", "Lisa Taylor", "Tentative"],
-    ["2027-05-09", "07:00", "13:00", "Dock 2", "Gate 4", "Internal move", "Inventory", "Wave 1 A-items", "Needs four more forklift drivers", "Lisa Taylor", "At risk"],
+    ["2027-04-29", "07:15", "08:30", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "Conveyor spares", "Northwind must clear Gate 4 first", "Teresa Sac", "Confirmed"],
+    ["2027-04-30", "08:00", "10:00", "Dock 2", "Gate 4", "Fabrikam Logistics", "Inbound", "A-item cartons", "Gate 4 standard route starts", "Teresa Sac", "Confirmed"],
+    ["2027-05-02", "09:00", "12:00", "Dock 2", "Gate 4", "Northwind", "Outbound", "Tailspin Toys partial shipment", "Hold until sprinkler sign-off is recorded", "Teresa Sac", "Tentative"],
+    ["2027-05-09", "07:00", "13:00", "Dock 2", "Gate 4", "Internal move", "Inventory", "Wave 1 A-items", "Needs four more forklift drivers", "Teresa Sac", "At risk"],
     ["2027-06-15", "10:00", "11:30", "New wing", "East Corridor B", "Contoso", "Safety", "Evacuation drill", "Must complete before go/no-go", "Sonia Rees", "Planned"],
     ["2027-06-22", "06:00", "14:00", "Dock 2", "Gate 4", "All carriers", "Go-live", "New wing cutover", "Use new safety routes", "Ops lead", "Planned"],
 ]
@@ -55,7 +55,7 @@ Short description: Answers shift lead questions for the Fargo new-wing go-live.
 
 Use a calm, practical, human style. Answer like an experienced Contoso operations lead who is helping shift leads during a busy site transition.
 
-Stay grounded in the Fargo safety handbook, the readiness tracker, and the Fargo dock schedule. If the answer is not in those sources, say that you cannot find it in the Fargo material and suggest who to ask: Lisa Taylor for logistics and dock slots, Sonia Rees for safety, Kai Carter for construction, Alex Weyer for IT.
+Stay grounded in the Fargo safety handbook, the readiness tracker, and the Fargo dock schedule. If the answer is not in those sources, say that you cannot find it in the Fargo material and suggest who to ask: Teresa Sac for logistics and dock slots, Sonia Rees for safety, Vance DeLeon for construction, Billie Vester for IT.
 
 When a question is about a carrier, dock, gate, alarm, evacuation route, training, or go/no-go readiness, give the direct answer first, then the reason and the source you used.
 
@@ -135,12 +135,12 @@ def build_docx():
     doc.add_heading("3. Dock and carrier rules", level=1)
     for topic, title, text in RULES[2:4]:
         doc.add_paragraph(f"{title}: {text}", style=None)
-    doc.add_paragraph("Northwind's April 29 slot is the only early-arrival exception in the demo schedule. If Safety does not approve it, ask Lisa Taylor to move the arrival to the regular carrier window.")
+    doc.add_paragraph("Northwind's April 29 slot is the only early-arrival exception in the demo schedule. If Safety does not approve it, ask Teresa Sac to move the arrival to the regular carrier window.")
 
     doc.add_heading("4. PPE, forklift routes, and training", level=1)
     for topic, title, text in RULES[4:]:
         doc.add_paragraph(f"{title}: {text}")
-    doc.add_paragraph("All 12 shift leads must complete training before June 12. Sonia Rees owns safety content; Lisa Taylor owns carrier and dock slot questions.")
+    doc.add_paragraph("All 12 shift leads must complete training before June 12. Sonia Rees owns safety content; Teresa Sac owns carrier and dock slot questions.")
 
     doc.add_page_break()
     doc.add_heading("Deutsche Kurzfassung", level=1)
@@ -150,9 +150,9 @@ def build_docx():
     doc.add_paragraph("Feuer oder Rauch: nächsten Handmelder auslösen, 555-0100 anrufen, Docktore schließen, wenn es sicher ist, und Besucher sowie Speditionen mitzählen.")
     doc.add_heading("Dock- und Gate-Regeln", level=2)
     doc.add_paragraph("Dock 3 ist ab dem 27. April geschlossen. Eingehende Lieferungen laufen über Dock 2 / Gate 4. Das Standardfenster für Speditionen ist 6:00 bis 20:00 Uhr.")
-    doc.add_paragraph("Northwind darf am 29. April nur mit Safety-Ausnahme um 5:30 Uhr kommen. Ohne Ausnahme muss Lisa Taylor den Slot verlegen.")
+    doc.add_paragraph("Northwind darf am 29. April nur mit Safety-Ausnahme um 5:30 Uhr kommen. Ohne Ausnahme muss Teresa Sac den Slot verlegen.")
     doc.add_heading("Kontakte", level=2)
-    doc.add_paragraph("Lisa Taylor: Logistik, Dock-Slots und Speditionen. Sonia Rees: Sicherheit, Training, Evakuierung. Kai Carter: Bau und Sperrungen. Alex Weyer: IT, Scanner und WLAN.")
+    doc.add_paragraph("Teresa Sac: Logistik, Dock-Slots und Speditionen. Sonia Rees: Sicherheit, Training, Evakuierung. Vance DeLeon: Bau und Sperrungen. Billie Vester: IT, Scanner und WLAN.")
 
     path = OUT / "Contoso_Fargo_Safety_Handbook.docx"
     doc.save(path)

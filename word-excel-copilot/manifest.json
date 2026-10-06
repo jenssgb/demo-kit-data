@@ -22,19 +22,19 @@
   "files": [
     {
       "path": "Contoso_Fargo_Inbound_Shipments_Mar_Jun.xlsx",
-      "sha256": "8fc189231c51ca747b82daf63ae3dc075fef3e684b30a0dc92fa221d7c1c885e"
+      "sha256": "963e54d620c555df81c0c4bdb9a8e6adfaa8d080a3def93126893aab2964b08b"
     },
     {
       "path": "Contoso_Fargo_Runbook_Source_Pack.docx",
-      "sha256": "0dd46cc021a34efef305c0cadb8960fc6abf1effeb28d1a42a9a24f48e482866"
+      "sha256": "b569e9717f532f5e612347a41b9cd6fbd1c97ef2d62daa7f6a22399e0bc3de0a"
     },
     {
       "path": "mails-en/1_Dock_3_cutover_carrier_plan_for_Apr_27.eml",
-      "sha256": "1454e171fce7ccf114cdf6660f156e8b672243fcd0560309ab808d2da903e7c6"
+      "sha256": "0d02d6d0b248ea971305b918d0e90b6ad8ceb0f59a78624538d3af2faa299047"
     },
     {
       "path": "mails-en/2_New_wing_construction_update.eml",
-      "sha256": "0ef2c922bf42cc650e3300a3d8c0cbc1e4b60e03bf79c65c12da7aad536669db"
+      "sha256": "b445d216849cc16b859da4a1b752c8b0a2c961b727a8bddf1f2d3e1c79c94fc9"
     },
     {
       "path": "mails-en/3_Safety_prep_before_go-live.eml",
@@ -42,7 +42,7 @@
     },
     {
       "path": "mails-en/4_Scanner_and_Wi-Fi_readiness.eml",
-      "sha256": "e98a1577d4cb45384ce658b539dc75e1d797b458ad8aad2596c90958d41d1b94"
+      "sha256": "d2d66c0fc00f3a145d76aea50df07049b6bf8b5d60c19ec65ebdd10d64f8d3b8"
     }
   ]
 }
