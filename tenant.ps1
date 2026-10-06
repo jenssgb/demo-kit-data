@@ -26,6 +26,7 @@ param(
     [ValidateSet('en', 'de')] [string]$Language = 'en',
     [switch]$WhatIf,
     [int]$SendAsWaitMinutes = 20,
+    [switch]$RefreshSenders,
     [switch]$SelfTest
 )
 
@@ -247,6 +248,18 @@ function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ ne
 # ---------- 1) senders (Exchange Online, separate process: Graph and EXO modules clash in one session) ----------
 $senders = @{}
 $others = @($people | Where-Object { $_ -ne $me.displayName })
+# Senders already set up on this machine are cached, so Exchange Online (a second sign-in) is only needed once per tenant
+$cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-{0}.json" -f $domain.ToLowerInvariant())
+$cache = @{}
+if (-not $RefreshSenders -and (Test-Path $cacheFile)) {
+    try { (Get-Content $cacheFile -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $cache[$_.Name] = $_.Value } } catch { $cache = @{} }
+}
+if ($others.Count -and -not @($others | Where-Object { -not $cache[$_] }).Count) {
+    Write-Host ""
+    Say (T 'Senders and attendees (already set up on this PC - no Exchange sign-in needed)' 'Absender und Teilnehmende (auf diesem PC schon eingerichtet - keine Exchange-Anmeldung noetig)') Cyan
+    foreach ($n in $others) { $senders[$n] = $cache[$n]; Row (T 'unchanged' 'unveraendert') ("{0} <{1}>" -f $n, $cache[$n].address) DarkGray; Count 'Senders' same }
+    $others = @()
+}
 if ($others.Count) {
     Write-Host ""
     Say (T 'Senders and attendees (Exchange Online) ...' 'Absender und Teilnehmende (Exchange Online) ...') Cyan
@@ -312,6 +325,10 @@ Disconnect-ExchangeOnline -Confirm:$false | Out-Null
         if ($r.granted) { $note += (T '"Send As" granted' '"Senden als" erteilt') }
         if ($note.Count) { Row (T 'new' 'neu') ("{0} <{1}> ({2})" -f $r.name, $r.address, ($note -join ', ')) Green; Count 'Senders' new }
         else { Row (T 'unchanged' 'unveraendert') ("{0} <{1}>" -f $r.name, $r.address) DarkGray; Count 'Senders' same }
+        if (-not $WhatIf) { $cache[$r.name] = [ordered]@{ name = $r.name; address = $r.address } }
+    }
+    if (-not $WhatIf -and $cache.Count) {
+        try { New-Item -ItemType Directory -Force (Split-Path $cacheFile) | Out-Null; [IO.File]::WriteAllText($cacheFile, (ConvertTo-Json $cache -Depth 3)) } catch { }
     }
 }
 
