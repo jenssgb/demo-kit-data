@@ -17,6 +17,9 @@
     events   [{ subject{de,en}, weekday, start "HH:mm", minutes, attendees["Display Name"], body{de,en} }]
     onenote  { notebook, section, pages[{ title{de,en}, file "tenant/pages/x-{lang}.html" }] }
     manual   { de[], en[] }   steps that can't be scripted, printed as a checklist at the end
+    links    [{ name{de,en}, url }]  extra links for the Desktop link page and Edge favorites (e.g. a mock web app)
+  Senders set up once are cached locally and in the admin's OneDrive (DemoKit/senders.json): Exchange Online
+  (second sign-in) is needed only once per tenant; it then prepares every person of every demo (people.json).
   Running it again creates nothing twice.
   Keep this file ASCII-only (it is loaded with Invoke-RestMethod on Windows PowerShell 5.1).
 #>
@@ -27,7 +30,8 @@ param(
     [switch]$WhatIf,
     [int]$SendAsWaitMinutes = 20,
     [switch]$RefreshSenders,
-    [switch]$SelfTest
+    [switch]$SelfTest,
+    [hashtable]$Links   # filled for install.ps1 (Desktop link page, Edge favorites): demos.<id>.{web,files,extra}, manual
 )
 
 $ErrorActionPreference = 'Stop'
@@ -236,6 +240,15 @@ function G($method, $uri, $body, $contentType = 'application/json') {
     if ($null -ne $body) { $p.Body = $body; $p.ContentType = $contentType }
     Invoke-MgGraphRequest @p
 }
+# GET that returns $null for 4xx/5xx without a terminating error (keeps the log free of 404 noise)
+function GOpt($uri) {
+    $r = Invoke-MgGraphRequest -Method GET -Uri "https://graph.microsoft.com/v1.0$uri" -SkipHttpErrorCheck -StatusCodeVariable sc
+    if ($sc -ge 400) { return $null }
+    $r
+}
+if ($null -eq $Links) { $Links = @{} }
+if (-not $Links.demos) { $Links.demos = [ordered]@{} }
+foreach ($it in $Items) { if (-not $Links.demos[$it.id]) { $Links.demos[$it.id] = @{} } }
 $me = G GET '/me?$select=displayName,userPrincipalName,mail'
 $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
@@ -248,21 +261,48 @@ function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ ne
 # ---------- 1) senders (Exchange Online, separate process: Graph and EXO modules clash in one session) ----------
 $senders = @{}
 $others = @($people | Where-Object { $_ -ne $me.displayName })
-# Senders already set up on this machine are cached, so Exchange Online (a second sign-in) is only needed once per tenant
+# Senders already set up are cached locally and in the admin's OneDrive (DemoKit/senders.json), so Exchange Online
+# (a second sign-in with password + MFA) is needed only once per tenant - on any PC, for any bundle.
 $cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-v2-{0}.json" -f $domain.ToLowerInvariant())
+$odCache = '/me/drive/root:/DemoKit/senders.json'
 $cache = @{}
-if (-not $RefreshSenders -and (Test-Path $cacheFile)) {
-    try { (Get-Content $cacheFile -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $cache[$_.Name] = $_.Value } } catch { $cache = @{} }
+$odKeys = @{}
+if (-not $RefreshSenders) {
+    if (Test-Path $cacheFile) {
+        try { (Get-Content $cacheFile -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $cache[$_.Name] = $_.Value } } catch { }
+    }
+    try {
+        $item = GOpt $odCache
+        if ($item -and $item.'@microsoft.graph.downloadUrl') {
+            $od = Invoke-RestMethod -Uri $item.'@microsoft.graph.downloadUrl' -UseBasicParsing
+            if ($od -is [string]) { $od = $od.TrimStart([char]0xFEFF) | ConvertFrom-Json }
+            foreach ($p in $od.PSObject.Properties) { $odKeys[$p.Name] = $true; if (-not $cache[$p.Name]) { $cache[$p.Name] = $p.Value } }
+        }
+    } catch { }
+}
+function Save-SenderCache {
+    if ($WhatIf -or -not $cache.Count) { return }
+    $json = ConvertTo-Json $cache -Depth 3
+    try { New-Item -ItemType Directory -Force (Split-Path $cacheFile) | Out-Null; [IO.File]::WriteAllText($cacheFile, $json) } catch { }
+    if (@($cache.Keys | Where-Object { -not $odKeys[$_] }).Count) {
+        try { G PUT "$($odCache):/content" (To-AsciiJson $cache) 'application/json' | Out-Null; foreach ($k in @($cache.Keys)) { $odKeys[$k] = $true } } catch { }
+    }
 }
 if ($others.Count -and -not @($others | Where-Object { -not $cache[$_] }).Count) {
     Write-Host ""
-    Say (T 'Senders and attendees (already set up on this PC - no Exchange sign-in needed)' 'Absender und Teilnehmende (auf diesem PC schon eingerichtet - keine Exchange-Anmeldung noetig)') Cyan
+    Say (T 'Senders and attendees (already set up in this tenant - no Exchange sign-in needed)' 'Absender und Teilnehmende (in diesem Tenant schon eingerichtet - keine Exchange-Anmeldung noetig)') Cyan
     foreach ($n in $others) { $senders[$n] = $cache[$n]; Row (T 'unchanged' 'unveraendert') ("{0} <{1}>" -f $n, $cache[$n].address) DarkGray; Count 'Senders' same }
     $others = @()
+    Save-SenderCache
 }
 if ($others.Count) {
+    # Exchange sign-in is needed anyway: set up every person of every demo (people.json), so it doesn't come back for the next bundle
+    $bundlePeople = $others
+    $all = @()
+    try { $all = @(Invoke-RestMethod -Uri (Url 'people.json') -UseBasicParsing) } catch { }
+    $others = @(@($others) + @($all | Where-Object { $_ -and $_ -ne $me.displayName -and -not $cache[$_] }) | Sort-Object -Unique)
     Write-Host ""
-    Say (T 'Senders and attendees (Exchange Online) ...' 'Absender und Teilnehmende (Exchange Online) ...') Cyan
+    Say (T 'Senders and attendees (Exchange Online, one-time per tenant) ...' 'Absender und Teilnehmende (Exchange Online, einmalig pro Tenant) ...') Cyan
     $tmpIn = [IO.Path]::GetTempFileName(); $tmpOut = [IO.Path]::GetTempFileName(); $tmpPs = [IO.Path]::GetTempFileName() + '.ps1'
     [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; domain = $domain; names = $others; whatIf = [bool]$WhatIf }))
     [IO.File]::WriteAllText($tmpPs, @'
@@ -321,18 +361,22 @@ Disconnect-ExchangeOnline -Confirm:$false | Out-Null
     Remove-Item $tmpIn, $tmpOut, $tmpPs -ErrorAction SilentlyContinue
     if (-not $result.Count) { Say (T 'Exchange Online step failed - mails are skipped, invitations go without these attendees.' 'Exchange-Online-Schritt fehlgeschlagen - Mails werden uebersprungen, Termine ohne diese Teilnehmenden.') Red }
     foreach ($r in $result) {
-        if ($r.error) { Row (T 'error' 'Fehler') "$($r.name): $($r.error)" Red; Count 'Senders' failed; continue }
+        $mine = $bundlePeople -contains $r.name
+        if ($r.error) {
+            if ($mine) { Row (T 'error' 'Fehler') "$($r.name): $($r.error)" Red; Count 'Senders' failed }
+            else { Write-Host ("    {0,-13} {1}: {2}" -f (T 'skipped' 'uebersprungen'), $r.name, $r.error) -ForegroundColor DarkGray }
+            continue
+        }
         $senders[$r.name] = $r
+        if (-not $WhatIf) { $cache[$r.name] = [ordered]@{ name = $r.name; address = $r.address } }
         $note = @()
         if ($r.created) { $note += (T 'shared mailbox created' 'freigegebenes Postfach angelegt') }
         if ($r.granted) { $note += (T '"Send As" granted' '"Senden als" erteilt') }
+        if (-not $mine) { if ($note.Count) { Write-Host ("    {0,-13} {1} <{2}> ({3})" -f (T 'prepared' 'vorbereitet'), $r.name, $r.address, ($note -join ', ')) -ForegroundColor DarkGray }; continue }
         if ($note.Count) { Row (T 'new' 'neu') ("{0} <{1}> ({2})" -f $r.name, $r.address, ($note -join ', ')) Green; Count 'Senders' new }
         else { Row (T 'unchanged' 'unveraendert') ("{0} <{1}>" -f $r.name, $r.address) DarkGray; Count 'Senders' same }
-        if (-not $WhatIf) { $cache[$r.name] = [ordered]@{ name = $r.name; address = $r.address } }
     }
-    if (-not $WhatIf -and $cache.Count) {
-        try { New-Item -ItemType Directory -Force (Split-Path $cacheFile) | Out-Null; [IO.File]::WriteAllText($cacheFile, (ConvertTo-Json $cache -Depth 3)) } catch { }
-    }
+    Save-SenderCache
 }
 
 # ---------- 2) files -> OneDrive ----------
@@ -342,24 +386,30 @@ function Seg($p) { (($p -split '/') | ForEach-Object { [uri]::EscapeDataString($
 $firstFolder = $null
 foreach ($it in $Items) {
     if (-not (Test-Path $it.dir)) { continue }
-    $files = Get-ChildItem $it.dir -Recurse -File | Where-Object {
-        $_.Name -notin 'manifest.json', 'shared.json', 'tenant.json' -and $_.FullName.Substring($it.dir.Length + 1) -notmatch '^tenant\\' }
+    $lk = $Links.demos[$it.id]
+    $lk.files = New-Object Collections.ArrayList
+    # Only files listed in the manifest (stale local files from older versions are never uploaded)
+    $files = if ($it.files) { @($it.files | ForEach-Object { Get-Item -LiteralPath (Join-Path $it.dir ($_ -replace '/', '\')) -ErrorAction SilentlyContinue } | Where-Object { $_ }) }
+             else { Get-ChildItem $it.dir -Recurse -File | Where-Object { $_.Name -notin 'manifest.json', 'shared.json', 'tenant.json' -and $_.FullName.Substring($it.dir.Length + 1) -notmatch '^tenant\\' } }
     foreach ($f in $files) {
         $rel = $f.FullName.Substring($it.dir.Length).TrimStart('\') -replace '\\', '/'
         $path = Seg "$($it.drivePath)/$rel"
-        $remote = $null
-        try { $remote = G GET "/me/drive/root:/$($path)?`$select=size,file" } catch { $remote = $null }
+        $remote = GOpt "/me/drive/root:/$($path)?`$select=size,file,webUrl"
         $local = Get-QuickXor $f.FullName
-        if ($remote -and $remote.file -and $remote.file.hashes -and $remote.file.hashes.quickXorHash -eq $local) { Count 'OneDrive' same; continue }
+        if ($remote -and $remote.file -and $remote.file.hashes -and $remote.file.hashes.quickXorHash -eq $local) {
+            Count 'OneDrive' same; [void]$lk.files.Add(@{ name = $rel; url = $remote.webUrl }); continue
+        }
         $tag = if ($remote) { 'updated' } else { 'new' }
         if (-not $WhatIf) {
-            try { Invoke-MgGraphRequest -Method PUT -Uri "https://graph.microsoft.com/v1.0/me/drive/root:/$($path):/content" -InputFilePath $f.FullName -ContentType 'application/octet-stream' | Out-Null }
+            try { $up = Invoke-MgGraphRequest -Method PUT -Uri "https://graph.microsoft.com/v1.0/me/drive/root:/$($path):/content" -InputFilePath $f.FullName -ContentType 'application/octet-stream'; [void]$lk.files.Add(@{ name = $rel; url = $up.webUrl }) }
             catch { Row (T 'error' 'Fehler') "$($it.drivePath)/$rel : $_" Red; Count 'OneDrive' failed; continue }
         }
         Count 'OneDrive' $tag
         $label = if ($tag -eq 'new') { T 'new' 'neu' } else { T 'updated' 'aktualisiert' }
         Row $label "$($it.drivePath)/$rel" $(if ($tag -eq 'new') { 'Green' } else { 'Yellow' })
     }
+    $folder = GOpt "/me/drive/root:/$(Seg $it.drivePath)?`$select=webUrl"
+    if ($folder) { $lk.web = $folder.webUrl }
     if (-not $firstFolder) { $firstFolder = ($it.drivePath -split '/')[0] }
 }
 if ($report['OneDrive'] -and $report['OneDrive'].new -eq 0 -and $report['OneDrive'].updated -eq 0) { Say (T 'all files up to date' 'alle Dateien aktuell') DarkGray }
@@ -370,8 +420,9 @@ foreach ($c in $configs | Where-Object { $_.Config.onenote }) {
     Write-Host ""
     Say ("OneNote: {0} > {1}" -f $on.notebook, $on.section) Cyan
     try {
-        $nb = @((G GET '/me/onenote/notebooks?$select=id,displayName').value) | Where-Object { $_.displayName -eq $on.notebook } | Select-Object -First 1
+        $nb = @((G GET '/me/onenote/notebooks?$select=id,displayName,links').value) | Where-Object { $_.displayName -eq $on.notebook } | Select-Object -First 1
         if (-not $nb -and -not $WhatIf) { $nb = G POST '/me/onenote/notebooks' (To-AsciiJson @{ displayName = $on.notebook }); Row (T 'new' 'neu') (T "notebook $($on.notebook)" "Notizbuch $($on.notebook)") Green }
+        if ($nb -and $nb.links -and $nb.links.oneNoteWebUrl) { $Links.demos[$c.Item.id].onenote = @{ name = "OneNote: $($on.notebook)"; url = $nb.links.oneNoteWebUrl.href } }
         $sec = $null
         if ($nb) {
             $sec = @((G GET "/me/onenote/notebooks/$($nb.id)/sections?`$select=id,displayName").value) | Where-Object { $_.displayName -eq $on.section } | Select-Object -First 1
@@ -459,6 +510,10 @@ $report.GetEnumerator() | ForEach-Object {
 } | Format-Table -AutoSize | Out-String | Write-Host
 
 $manual = @(foreach ($c in $configs) { foreach ($m in @(L $c.Config.manual)) { if ($m) { [pscustomobject]@{ Demo = $c.Item.id; Text = ($m -replace '\*\*', '') } } } })
+foreach ($c in $configs) {
+    $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } })
+}
+$Links.manual = @($manual | ForEach-Object { "[{0}] {1}" -f $_.Demo, $_.Text })
 if ($manual.Count) {
     Say (T 'Still to do by hand (no API for this):' 'Noch von Hand (dafuer gibt es keine API):') Cyan
     $n = 0
@@ -466,6 +521,6 @@ if ($manual.Count) {
     Write-Host ""
 }
 if ($firstFolder -and -not $WhatIf) {
-    try { $web = (G GET "/me/drive/root:/$(Seg $firstFolder)?`$select=webUrl").webUrl; Say ("OneDrive: $web") Green } catch { }
+    try { $web = (G GET "/me/drive/root:/$(Seg $firstFolder)?`$select=webUrl").webUrl; $Links.root = $web; Say ("OneDrive: $web") Green } catch { }
 }
 Disconnect-MgGraph | Out-Null

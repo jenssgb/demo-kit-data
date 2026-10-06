@@ -44,7 +44,8 @@ also creates what the demos need **in the tenant** – no manual mailing, no .on
 - Modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if missing.
 - "Send As" on new shared mailboxes can take a while; the script waits up to 20 minutes, otherwise it says "run again later".
 - Run it again any time: nothing is created twice. Every run (with or without `-Tenant`) writes a log to `Desktop\DemoKit-Logs\<bundle>-<time>.log` (last 20 kept) – send that file when something goes wrong.
-- Set-up senders are cached in `%LOCALAPPDATA%\DemoKit\senders-v2-<domain>.json`, so reruns skip the Exchange sign-in.
+- Set-up senders are cached locally and in the admin's OneDrive (`DemoKit/senders.json`): the Exchange sign-in (second login) is needed only once per tenant, and then prepares every person of every demo (`people.json`).
+- After each run: `Desktop\Demo-<Customer> - Links.html` with the OneDrive links of all files, OneNote, extra links (e.g. Contoso Atlas) and the manual checklist. In a terminal started **as administrator**, the same links also appear as Edge favorites (folder **Demo Kit**, locked; the next run updates it).
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
   Neither is part of the file download.
 
@@ -113,6 +114,9 @@ von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff
 **Demo-Personen = echte Benutzer des CDX-Tenants** (Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney Mattos) – direkt
 in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan Mitchell, Tailspin Toys) wird ein freigegebenes Postfach. Nur Benutzer **mit Postfach** nehmen
 (Lizenz mit Exchange Online, z. B. E5). Jeder Lauf schreibt ein Log nach `Desktop\DemoKit-Logs` – bei Fehlern diese Datei schicken.
+Die Exchange-Anmeldung (zweites Login) ist nur einmal pro Tenant nötig (Absender-Cache auch im Admin-OneDrive, `DemoKit/senders.json`).
+Nach jedem Lauf liegt `Desktop\Demo-<Kunde> - Links.html` mit allen OneDrive-Links, OneNote, Zusatzlinks (z. B. Contoso Atlas) und der
+Checkliste bereit. Im Terminal **als Administrator** kommen dieselben Links als Edge-Favoriten (Ordner **Demo Kit**, gesperrt; nächster Lauf aktualisiert).
 
 **Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
 `.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,

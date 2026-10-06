@@ -5,6 +5,10 @@
     "mails-{lang}/3_Sonia_Safety_Training.eml",
     "mails-{lang}/4_TailspinToys_Quote_Request.eml"
   ],
+  "links": [
+    { "name": { "en": "Contoso Atlas (browser demo)", "de": "Contoso Atlas (Browser-Demo)" }, "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/" },
+    { "name": { "en": "Microsoft 365 admin center (Copilot settings)", "de": "Microsoft 365 Admin Center (Copilot-Einstellungen)" }, "url": "https://admin.microsoft.com/" }
+  ],
   "manual": {
     "de": [
       "**Admin**: Spending Policy mit **Cowork** aktivieren (**Microsoft 365 Admin Center › Copilot › Cost Management**).",

@@ -56,3 +56,23 @@ if ($All) {
         ForEach-Object { Update-One $_.Name }
 } elseif ($Demo) { Update-One $Demo }
 else { throw 'Use -Demo <id> or -All.' }
+
+# people.json: every sender and attendee of every demo's tenant.json. tenant.ps1 prepares all of them on the one
+# Exchange Online sign-in per tenant, so later bundles need no second sign-in.
+$people = foreach ($tj in Get-ChildItem $root -Directory | ForEach-Object { Join-Path $_.FullName 'tenant.json' } | Where-Object { Test-Path $_ }) {
+    $cfg = [IO.File]::ReadAllText($tj, $utf8) | ConvertFrom-Json
+    $dir = Split-Path $tj -Parent
+    foreach ($m in @($cfg.mails)) {
+        if (-not $m) { continue }
+        foreach ($lang in 'en', 'de') {
+            $p = Join-Path $dir (($m.Replace('{lang}', $lang)) -replace '/', '\')
+            if (-not (Test-Path $p)) { continue }
+            $from = (Get-Content -LiteralPath $p -TotalCount 40 | Where-Object { $_ -match '^From:' } | Select-Object -First 1)
+            if ($from -match '^From:\s*"?([^"<]+?)"?\s*<') { $Matches[1].Trim() }
+        }
+    }
+    foreach ($e in @($cfg.events)) { if ($e) { @($e.attendees) } }
+}
+$people = @($people | Where-Object { $_ -and $_ -notmatch '=\?' } | Sort-Object -Unique)
+[IO.File]::WriteAllText((Join-Path $root 'people.json'), (ConvertTo-Json @($people)) + "`n", $utf8)
+Write-Host ("people.json              {0} people" -f $people.Count)
