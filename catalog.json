@@ -1,0 +1,88 @@
+{
+  "folder": "Demo-Kit",
+  "title": {
+    "en": "Demo Kit",
+    "de": "Demo Kit"
+  },
+  "legacy": [
+    "Demo-BPW",
+    "Demo-DHL"
+  ],
+  "apps": [
+    {
+      "id": "powerpoint",
+      "folder": "PowerPoint",
+      "title": {
+        "en": "PowerPoint end to end",
+        "de": "PowerPoint Ende zu Ende"
+      },
+      "demos": [
+        "powerpoint-copilot"
+      ]
+    },
+    {
+      "id": "word-excel",
+      "folder": "Word-Excel",
+      "title": {
+        "en": "Word & Excel end to end",
+        "de": "Word & Excel Ende zu Ende"
+      },
+      "demos": [
+        "word-excel-copilot"
+      ]
+    },
+    {
+      "id": "onenote",
+      "folder": "OneNote",
+      "title": {
+        "en": "OneNote end to end",
+        "de": "OneNote Ende zu Ende"
+      },
+      "demos": [
+        "onenote-copilot"
+      ]
+    },
+    {
+      "id": "cowork",
+      "folder": "Cowork",
+      "title": {
+        "en": "Cowork end to end",
+        "de": "Cowork Ende zu Ende"
+      },
+      "demos": [
+        "cowork-copilot",
+        "cowork-freight-invoice-check",
+        "cowork-carrier-contracts",
+        "cowork-lane-margin",
+        "cowork-customer-qbr",
+        "cowork-disruption-response",
+        "cowork-steering-to-board"
+      ]
+    },
+    {
+      "id": "copilot-chat",
+      "folder": "Copilot-Chat",
+      "title": {
+        "en": "Copilot Chat: Researcher, Notebooks, Prompts",
+        "de": "Copilot Chat: Researcher, Notebooks, Prompts"
+      },
+      "demos": [
+        "researcher-copilot",
+        "notebooks-copilot",
+        "prompts-copilot"
+      ]
+    },
+    {
+      "id": "agents",
+      "folder": "Agents",
+      "title": {
+        "en": "Agents & governance",
+        "de": "Agents & Governance"
+      },
+      "demos": [
+        "agent-builder-copilot",
+        "governance-copilot"
+      ]
+    }
+  ]
+}

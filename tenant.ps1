@@ -31,6 +31,8 @@ param(
     [int]$SendAsWaitMinutes = 20,
     [switch]$RefreshSenders,
     [switch]$SelfTest,
+    [string[]]$Legacy,   # OneDrive folders of older kit versions (catalog.json "legacy")
+    [switch]$RemoveLegacy,
     [hashtable]$Links   # filled for install.ps1 (Desktop link page, Edge favorites): demos.<id>.{web,files,extra}, manual
 )
 
@@ -262,7 +264,7 @@ function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ ne
 $senders = @{}
 $others = @($people | Where-Object { $_ -ne $me.displayName })
 # Senders already set up are cached locally and in the admin's OneDrive (DemoKit/senders.json), so Exchange Online
-# (a second sign-in with password + MFA) is needed only once per tenant - on any PC, for any bundle.
+# (a second sign-in with password + MFA) is needed only once per tenant - on any PC.
 $cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-v2-{0}.json" -f $domain.ToLowerInvariant())
 $odCache = '/me/drive/root:/DemoKit/senders.json'
 $cache = @{}
@@ -296,8 +298,8 @@ if ($others.Count -and -not @($others | Where-Object { -not $cache[$_] }).Count)
     Save-SenderCache
 }
 if ($others.Count) {
-    # Exchange sign-in is needed anyway: set up every person of every demo (people.json), so it doesn't come back for the next bundle
-    $bundlePeople = $others
+    # Exchange sign-in is needed anyway: set up every person of every demo (people.json), so it doesn't come back when demos are added
+    $runPeople = $others
     $all = @()
     try { $all = @(Invoke-RestMethod -Uri (Url 'people.json') -UseBasicParsing) } catch { }
     $others = @(@($others) + @($all | Where-Object { $_ -and $_ -ne $me.displayName -and -not $cache[$_] }) | Sort-Object -Unique)
@@ -361,7 +363,7 @@ Disconnect-ExchangeOnline -Confirm:$false | Out-Null
     Remove-Item $tmpIn, $tmpOut, $tmpPs -ErrorAction SilentlyContinue
     if (-not $result.Count) { Say (T 'Exchange Online step failed - mails are skipped, invitations go without these attendees.' 'Exchange-Online-Schritt fehlgeschlagen - Mails werden uebersprungen, Termine ohne diese Teilnehmenden.') Red }
     foreach ($r in $result) {
-        $mine = $bundlePeople -contains $r.name
+        $mine = $runPeople -contains $r.name
         if ($r.error) {
             if ($mine) { Row (T 'error' 'Fehler') "$($r.name): $($r.error)" Red; Count 'Senders' failed }
             else { Write-Host ("    {0,-13} {1}: {2}" -f (T 'skipped' 'uebersprungen'), $r.name, $r.error) -ForegroundColor DarkGray }
@@ -413,6 +415,16 @@ foreach ($it in $Items) {
     if (-not $firstFolder) { $firstFolder = ($it.drivePath -split '/')[0] }
 }
 if ($report['OneDrive'] -and $report['OneDrive'].new -eq 0 -and $report['OneDrive'].updated -eq 0) { Say (T 'all files up to date' 'alle Dateien aktuell') DarkGray }
+# Folders of older kit versions (Demo-<customer>) hold the same files - Copilot would find duplicates
+foreach ($l in @($Legacy)) {
+    if (-not $l) { continue }
+    $old = GOpt "/me/drive/root:/$(Seg $l)?`$select=id,webUrl"
+    if (-not $old) { continue }
+    if (-not $RemoveLegacy) { Say ((T 'Old kit folder in OneDrive: {0} - run again with -RemoveLegacy to delete it.' 'Alter Kit-Ordner in OneDrive: {0} - mit -RemoveLegacy erneut ausfuehren, um ihn zu loeschen.') -f $l) Yellow; continue }
+    if ($WhatIf) { Row (T 'would delete' 'wuerde loeschen') "OneDrive/$l" Yellow; continue }
+    try { G DELETE "/me/drive/root:/$(Seg $l)" | Out-Null; Row (T 'deleted' 'geloescht') "OneDrive/$l" DarkGray }
+    catch { Row (T 'error' 'Fehler') "OneDrive/$l : $_" Red }
+}
 
 # ---------- 3) OneNote ----------
 foreach ($c in $configs | Where-Object { $_.Config.onenote }) {

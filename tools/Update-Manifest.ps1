@@ -58,7 +58,7 @@ if ($All) {
 else { throw 'Use -Demo <id> or -All.' }
 
 # people.json: every sender and attendee of every demo's tenant.json. tenant.ps1 prepares all of them on the one
-# Exchange Online sign-in per tenant, so later bundles need no second sign-in.
+# Exchange Online sign-in per tenant, so new demos need no second sign-in.
 $people = foreach ($tj in Get-ChildItem $root -Directory | ForEach-Object { Join-Path $_.FullName 'tenant.json' } | Where-Object { Test-Path $_ }) {
     $cfg = [IO.File]::ReadAllText($tj, $utf8) | ConvertFrom-Json
     $dir = Split-Path $tj -Parent
@@ -76,3 +76,6 @@ $people = foreach ($tj in Get-ChildItem $root -Directory | ForEach-Object { Join
 $people = @($people | Where-Object { $_ -and $_ -notmatch '=\?' } | Sort-Object -Unique)
 [IO.File]::WriteAllText((Join-Path $root 'people.json'), (ConvertTo-Json @($people)) + "`n", $utf8)
 Write-Host ("people.json              {0} people" -f $people.Count)
+
+# catalog.json (app > demos for install.ps1) from the kit decks, when the kit repo sits next to this one
+if ($All -and (Test-Path (Join-Path (Split-Path $root -Parent) 'demo-kit-new2026\decks'))) { & (Join-Path $PSScriptRoot 'Update-Catalog.ps1') }

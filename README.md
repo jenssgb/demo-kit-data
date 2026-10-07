@@ -1,100 +1,115 @@
 # Demo Kit – Demo data
 
-Public sample files for the demos in the [Demo Kit](https://github.com/jenssgb) – one folder per demo.
-All content is fictional (**Contoso**). No customer data, no credentials.
+Public sample files for the demos in the [Demo Kit](https://github.com/jenssgb). There is one folder per demo.
+All content is fictional (**Contoso**). The repo holds no customer data and no credentials.
 
-## Get the files onto a demo machine
+## One command for everything
 
-Open **PowerShell** on the demo VM and run **one command for the whole customer deck** (bundle):
-
-```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Bundle bpw
-```
-
-All demos of the deck land in `OneDrive\Demo-BPW\<demo-id>` (work/school OneDrive first, then personal OneDrive,
-otherwise the Desktop). Each demo folder is self-contained: files that several demos use are copied into each of them.
-**Run it again any time** – new demos and changed files are downloaded, unchanged files are skipped (SHA-256).
-The command never changes; new demos are added to the bundle.
-
-One demo only, into the same bundle folder: `... -Demo cowork-copilot -Bundle bpw`.
-One demo on its own (folder `Demo-<id>`): `... -Demo onenote-copilot`.
-Works with Windows PowerShell 5.1 and PowerShell 7, no admin rights, no modules.
-Optional: `-Target <folder>`, `-Branch <branch>`, `-NoExplorer`.
-
-## Straight into the tenant (`-Tenant`)
-
-On a demo VM signed in as the demo admin (e.g. **MOD Administrator** in a CDX tenant) the same command with `-Tenant`
-also creates what the demos need **in the tenant** – no manual mailing, no .onepkg import:
+Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Administrator** in a CDX tenant), and run:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Bundle bpw -Tenant
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Tenant
 ```
 
-| What | How (official APIs) |
+- It installs **all** demos of the kit. `catalog.json` lists every app and its demos. Each demo lands in
+  `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`.
+- New demos in the catalog are picked up automatically. **Run it once per tenant** (ideally the day before a session,
+  because Copilot only finds files once they are indexed) and run it again after kit updates. A rerun adds new and
+  changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Nothing is created twice.
+- The command never changes. There are no customer bundles.
+- Options:
+  - `-WhatIf` shows everything without changing the tenant. Try this first.
+  - `-Language de` sends the German mails, meetings and OneNote pages (default `en`).
+  - `-RemoveLegacy` deletes the folders of older kit versions (`Demo-BPW`, `Demo-DHL`, listed under `legacy` in
+    `catalog.json`). It removes them from OneDrive, the local cache and the old Desktop link pages, so Copilot doesn't
+    find duplicate files. It works together with `-WhatIf`.
+- Without `-Tenant`, the files are only copied to `OneDrive\Demo-Kit` on this PC (fallback: Desktop).
+- Works with Windows PowerShell 5.1 and PowerShell 7.
+- Troubleshooting options: `-Demo <id>[,<id>]` installs only these demos. Also available: `-Target <folder>`,
+  `-Repo`, `-Branch`, `-NoExplorer`.
+
+### What `-Tenant` creates (official APIs)
+
+| What | How |
 | --- | --- |
-| Files | uploaded to the signed-in user's OneDrive (`Demo-BPW\<demo-id>`) with Microsoft Graph; unchanged files are skipped by `quickXorHash` |
-| Mails | real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**) |
-| Senders | existing mailboxes by display name (Teresa Sac, Billie Vester); people not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox |
-| Meetings | Graph `POST /me/events` with attendees (next matching weekday) |
-| OneNote | notebook, section and pages via Graph (delegated) |
-| Not possible by API | sensitivity labels and DLP, .onepkg import, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript – printed as a checklist at the end |
+| Files | Uploaded with Microsoft Graph to the signed-in user's OneDrive (`Demo-Kit/<App>/<demo-id>`). Unchanged files are skipped by `quickXorHash`. |
+| Mails | Real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**). |
+| Senders | Existing mailboxes are found by display name (Teresa Sac, Billie Vester). People not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox. |
+| Meetings | Graph `POST /me/events` with attendees, on the next matching weekday. |
+| OneNote | Notebook, section and pages via Graph (delegated). |
+| Not possible by API | Sensitivity labels and DLP, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript. These are printed as a checklist at the end. |
 
-- Two sign-ins: Microsoft Graph (consent to the listed permissions) and Exchange Online. Needs Exchange admin rights (Global Admin is fine).
-- `-Language de` sends the German mails (default `en`). `-WhatIf` shows everything without changing the tenant.
-- Modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if missing.
-- "Send As" on new shared mailboxes can take a while; the script waits up to 20 minutes, otherwise it says "run again later".
-- Run it again any time: nothing is created twice. Every run (with or without `-Tenant`) writes a log to `Desktop\DemoKit-Logs\<bundle>-<time>.log` (last 20 kept) – send that file when something goes wrong.
-- Set-up senders are cached locally and in the admin's OneDrive (`DemoKit/senders.json`): the Exchange sign-in (second login) is needed only once per tenant, and then prepares every person of every demo (`people.json`).
-- After each run: `Desktop\Demo-<Customer> - Links.html` with the OneDrive links of all files, OneNote, extra links (e.g. Contoso Atlas) and the manual checklist. In a terminal started **as administrator**, the same links also appear as Edge favorites (folder **Demo Kit**, locked; the next run updates it).
-- Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual); extra files live in `<demo-id>/tenant/`.
-  Neither is part of the file download.
+- **Sign-ins:**
+  - One Microsoft Graph sign-in in a browser window, consenting to all listed permissions.
+  - Exchange Online, once per tenant. Set-up senders are cached locally and in the admin's OneDrive
+    (`DemoKit/senders.json`), and that one sign-in prepares every person of every demo (`people.json`).
+  - Needs Exchange admin rights (Global Admin is fine).
+- The modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if
+  missing.
+- "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
+  later".
+- **After each run:**
+  - `Desktop\Demo-Kit - Links.html` holds, grouped by app: the OneDrive links of all files, OneNote, extra links
+    (e.g. Contoso Atlas) and the manual checklist.
+  - In a terminal started **as administrator**, the same links also appear as Edge favorites: folder **Demo Kit**,
+    with one subfolder per app. The folder is locked; the next run updates it.
+- **Log:** every run writes a log to `Desktop\DemoKit-Logs\demo-kit-<time>.log` (last 20 kept). Send that file when
+  something goes wrong.
+- Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual, links). Extra files
+  live in `<demo-id>/tenant/`. Neither is part of the file download.
 
 ## Demo people = real users of the CDX demo tenant
 
-All mails, prompts, files and meetings use the **real users of the CDX demo tenant M365CPI98544940** directly
-(Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney Mattos – addresses `<alias>@M365CPI98544940.OnMicrosoft.com`).
-Only use users **with an Exchange mailbox** (license with Exchange Online, e.g. Microsoft 365 E5) – Teams-only users can't send mails.
-There is no mapping layer: what you see in the files is what's in the tenant. `-Tenant` finds them by display name and
-grants "Send As"; only the external Tailspin Toys customer (Jordan Mitchell) becomes a shared mailbox.
-New demo tenant? Rewrite the names once in the files and `tools/build-*.py`, then `Update-Manifest.ps1 -All`.
+All mails, prompts, files and meetings use the **real users of the CDX demo tenant M365CPI98544940** directly: Teresa
+Sac, Vance DeLeon, Sonia Rees, Billie Vester and Sydney Mattos, with addresses
+`<alias>@M365CPI98544940.OnMicrosoft.com`.
 
-## Bundles
+- Only use users **with an Exchange mailbox**, i.e. a license with Exchange Online such as Microsoft 365 E5.
+  Teams-only users can't send mails.
+- There is no mapping layer: what you see in the files is what's in the tenant. `-Tenant` finds the people by display
+  name and grants "Send As".
+- Only the external Tailspin Toys customer (Jordan Mitchell) becomes a shared mailbox.
+- New demo tenant? Rewrite the names once in the files and in `tools/build-*.py`, then run `Update-Manifest.ps1 -All`.
 
-| Bundle id | Deck | Folder |
-| --- | --- | --- |
-| `bpw` | `bpw-ai-multiplikatoren` (BPW – AI Champions) | `Demo-BPW` |
-| `dhl` | `dhl-innovation-briefing` (DHL Innovation Briefing – Copilot Cowork live) | `Demo-DHL` |
+## Apps and demos (`catalog.json`)
 
-## Demos
+`catalog.json` is generated from the app decks of the kit (`decks/*.json` with `files.demoData.app`, pages with
+`data`) by `tools\Update-Catalog.ps1`. `Update-Manifest.ps1 -All` runs it automatically when the kit repo sits next to
+this one.
 
-| Demo id | Content | Source / license |
-| --- | --- | --- |
-| `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
-| `powerpoint-copilot` | Fictional Contoso brand guidelines (.docx + .pdf for brand kits), logos, brand background, a branded deck, an off-brand draft deck (Fargo scenario) and a sample PowerPoint skill (`skills/contoso-site-update/SKILL.md`) | Created for the Demo Kit, rebuild with `python tools/build-powerpoint-copilot.py` |
-| `cowork-copilot` | Fargo go-live for Copilot Cowork: four emails as .eml (EN + DE, incl. a Tailspin Toys quote request for the SAP/arnold part), readiness tracker (.xlsx), construction weekly week 16 (.docx), Cowork skill (`skills/contoso-golive-readiness/SKILL.md`), SAP placeholder list | Created for the Demo Kit, rebuild with `python tools/build-cowork-copilot.py` |
-| `word-excel-copilot` | Edit with Copilot in Word and Excel (Fargo): runbook source pack (.docx), inbound shipment workbook (~400 rows) for the Dock 2 capacity analysis, four Fargo emails (.eml) | Created for the Demo Kit, rebuild with `python tools/build-word-excel-copilot.py` |
-| `researcher-copilot` | Researcher + Vision: Contoso Fargo floor plan (Dock 2/3, Gate 4, new wing) as PNG; the cowork-copilot tracker, weekly notes and emails are copied in via `shared.json` | Created for the Demo Kit, rebuild with `python tools/build-researcher-copilot.py` |
-| `notebooks-copilot` | Copilot Notebooks: Dock 3 go-live sync transcript (.docx/.vtt) and a night-shift handover template; cowork-copilot and brand-guideline files copied in via `shared.json` | Created for the Demo Kit, rebuild with `python tools/build-notebooks-copilot.py` |
-| `prompts-copilot` | Contoso Fargo prompt pack (.docx + .md) for Prompt Gallery, scheduled prompts, memory and Pages | Created for the Demo Kit, rebuild with `python tools/build-prompts-copilot.py` |
-| `agent-builder-copilot` | Agent Builder "Fargo Site Assistant": safety handbook (.docx), dock schedule (.csv/.xlsx for a SharePoint list), paste-ready agent instructions | Created for the Demo Kit, rebuild with `python tools/build-agent-builder-copilot.py` |
-| `governance-copilot` | Governance & trust: Confidential labor cost workbook, public site fact sheet, Highly Confidential M&A note, label/DLP setup notes (`README_setup.md`) | Created for the Demo Kit, rebuild with `python tools/build-governance-copilot.py` |
+| App folder | Demo id | Content | Source / license |
+| --- | --- | --- | --- |
+| PowerPoint | `powerpoint-copilot` | Fictional Contoso brand guidelines (.docx + .pdf for brand kits), logos, brand background, a branded deck, an off-brand draft deck (Fargo scenario) and a sample PowerPoint skill (`skills/contoso-site-update/SKILL.md`) | Created for the Demo Kit, rebuild with `python tools/build-powerpoint-copilot.py` |
+| Word-Excel | `word-excel-copilot` | Edit with Copilot in Word and Excel (Fargo): runbook source pack (.docx), inbound shipment workbook (~400 rows) for the Dock 2 capacity analysis, four Fargo emails (.eml) | Created for the Demo Kit, `python tools/build-word-excel-copilot.py` |
+| OneNote | `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
+| Cowork | `cowork-copilot` | Fargo go-live: four emails as .eml (EN + DE, incl. a Tailspin Toys quote request), readiness tracker (.xlsx), construction weekly week 16 (.docx), Cowork skill (`skills/contoso-golive-readiness/SKILL.md`), SAP placeholder list | Created for the Demo Kit, `python tools/build-cowork-copilot.py` |
+| Cowork | `cowork-freight-invoice-check` | Freight invoice check: carrier invoices (.pdf), transport orders, carrier master, POD receipts, audit policy | Created for the Demo Kit, `python tools/build-cowork-usecases.py` |
+| Cowork | `cowork-carrier-contracts` | Carrier contract comparison: three carrier contracts (.pdf) | `python tools/build-cowork-usecases.py` |
+| Cowork | `cowork-lane-margin` | Lane and service margin: raw margin workbook (.xlsx) | `python tools/build-cowork-usecases.py` |
+| Cowork | `cowork-customer-qbr` | Customer business review: QBR prep workbook (.xlsx) | `python tools/build-cowork-usecases.py` |
+| Cowork | `cowork-disruption-response` | Disruption response: affected shipments (.xlsx), outbound disruption playbook (.docx), trigger message | `python tools/build-cowork-usecases.py` |
+| Cowork | `cowork-steering-to-board` | Steering workshop to board pack: workshop transcript (.docx) | `python tools/build-cowork-usecases.py` |
+| Copilot-Chat | `researcher-copilot` | Researcher + Vision: Contoso Fargo floor plan (PNG). The cowork-copilot tracker, weekly notes and emails are copied in via `shared.json`. | Created for the Demo Kit, `python tools/build-researcher-copilot.py` |
+| Copilot-Chat | `notebooks-copilot` | Copilot Notebooks: Dock 3 go-live sync transcript (.docx/.vtt) and a night-shift handover template. cowork-copilot and brand-guideline files are copied in via `shared.json`. | Created for the Demo Kit, `python tools/build-notebooks-copilot.py` |
+| Copilot-Chat | `prompts-copilot` | Contoso Fargo prompt pack (.docx + .md) for Prompt Gallery, scheduled prompts, memory and Pages | Created for the Demo Kit, `python tools/build-prompts-copilot.py` |
+| Agents | `agent-builder-copilot` | Agent Builder "Fargo Site Assistant": safety handbook (.docx), dock schedule (.csv/.xlsx for a SharePoint list), paste-ready agent instructions | Created for the Demo Kit, `python tools/build-agent-builder-copilot.py` |
+| Agents | `governance-copilot` | Governance & trust: Confidential labor cost workbook, public site fact sheet, Highly Confidential M&A note, label/DLP setup notes (`README_setup.md`) | Created for the Demo Kit, `python tools/build-governance-copilot.py` |
 
 ## Add a demo
 
-1. New folder `<demo-id>/` with the files.
-2. Create `manifest.json` with `title` (en/de) and `next` (en/de) – copy one from an existing demo.
-3. Optional: `shared.json` – list of `"<other-demo>/<path>"` files this demo also needs (copied into its folder).
-4. Run `.\tools\Update-Manifest.ps1 -Demo <demo-id>` (or `-All`) – fills the file list with SHA-256 hashes.
-   Run it again after every `tools/build-*.py` run.
-5. Add the demo to the deck (`"demoData": { "demo": "<demo-id>" }`) and update the bundle:
-   `.\tools\Update-Bundle.ps1 -Bundle bpw -Deck <path>\decks\bpw-ai-multiplikatoren.json`
-6. Needs data in the tenant (mails, meetings, OneNote, manual steps)? Add `<demo-id>/tenant.json` – copy `onenote-copilot/tenant.json`.
-7. Commit and push. The bundle one-liner stays the same.
+1. Create a new folder `<demo-id>/` with the files.
+2. Create `manifest.json` with `title` (en/de) and `next` (en/de). Copy one from an existing demo.
+3. Optional: add `shared.json`, a list of `"<other-demo>/<path>"` files this demo also needs. They are copied into
+   its folder.
+4. Optional: if the demo needs data in the tenant (mails, meetings, OneNote, links, manual steps), add
+   `<demo-id>/tenant.json`. Copy `onenote-copilot/tenant.json`.
+5. In the kit, add a page to the matching app deck with `"data": "<demo-id>"`. A new app is a new deck with
+   `files.demoData.app`.
+6. Run `.\tools\Update-Manifest.ps1 -All`. It fills the file lists with SHA-256 hashes and regenerates `people.json`
+   and `catalog.json`. Run it again after every `tools/build-*.py` run.
+7. Commit and push. The presenter reruns the same `-Tenant` command.
 
-New customer deck: `Update-Bundle.ps1 -Bundle <id> -Deck <deck.json> -Folder Demo-<Customer>`, then set
-`"files": { "demoData": { "demo": "<first-demo>", "bundle": "<id>" } }` in the deck.
-
-The repo uses `.gitattributes` `* -text` so files are stored byte for byte and the hashes match the raw downloads.
+The repo uses `.gitattributes` `* -text`, so files are stored byte for byte and the hashes match the raw downloads.
 
 ---
 
@@ -102,22 +117,32 @@ The repo uses `.gitattributes` `* -text` so files are stored byte for byte and t
 
 Öffentliche Beispieldateien für die Demos im Demo Kit, ein Ordner pro Demo. Alle Inhalte sind fiktiv (**Contoso**).
 
-**Dateien auf die Demo-VM holen:** PowerShell öffnen, den Bundle-Befehl oben einfügen (z. B. `-Bundle bpw`), **Enter**.
-Alle Demos des Kundendecks landen in `OneDrive\Demo-BPW\<demo-id>` (ohne OneDrive auf dem Desktop), danach öffnet sich der Ordner.
-Jederzeit erneut ausführen: neue Demos und geänderte Dateien kommen dazu, unveränderte werden übersprungen. Der Befehl bleibt immer gleich.
+**Ein Befehl für alles:** Auf der Demo-VM als Admin anmelden (z. B. MOD Administrator im CDX-Tenant), PowerShell
+öffnen, den Befehl oben einfügen und **Enter** drücken.
 
-**Direkt in den Tenant:** Auf der Demo-VM als Admin (z. B. MOD Administrator im CDX-Tenant) denselben Befehl mit `-Tenant` ausführen.
-Das Skript lädt die Dateien per Graph in den OneDrive des angemeldeten Benutzers. Es legt die Mails mit den echten Absendern an
-(fehlende Personen als freigegebene Postfächer mit „Senden als“), dazu den Termin und das OneNote-Notizbuch. Am Ende listet es, was noch
-von Hand zu tun ist (Bezeichnungen/DLP, Brand Kit, Skills, Cowork-Browserzugriff). `-Language de` für deutsche Mails, `-WhatIf` zum Ausprobieren.
+- Das Skript installiert **alle** Demos nach `OneDrive\Demo-Kit\<App>\<Demo-ID>`. Es lädt die Dateien per Graph in den
+  OneDrive und legt die Mails mit den echten Absendern an (fehlende Personen als freigegebene Postfächer mit „Senden
+  als“), dazu Termine und OneNote-Notizbücher.
+- Am Ende listet es, was noch von Hand zu tun ist (Vertraulichkeitsbezeichnungen/DLP, Brand Kit, Skills,
+  Cowork-Browserzugriff).
+- Neue Demos kommen automatisch dazu (`catalog.json`). Einmal pro Tenant ausführen, am besten am Vortag (Indexierung),
+  und nach Updates erneut ausführen. Unveränderte Dateien werden übersprungen.
+- `-WhatIf` zum Ausprobieren, `-Language de` für deutsche Mails.
+- `-RemoveLegacy` löscht einmalig die alten Ordner `Demo-BPW` / `Demo-DHL`, damit Copilot keine doppelten Dateien
+  findet.
 
-**Demo-Personen = echte Benutzer des CDX-Tenants** (Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney Mattos) – direkt
-in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan Mitchell, Tailspin Toys) wird ein freigegebenes Postfach. Nur Benutzer **mit Postfach** nehmen
-(Lizenz mit Exchange Online, z. B. E5). Jeder Lauf schreibt ein Log nach `Desktop\DemoKit-Logs` – bei Fehlern diese Datei schicken.
-Die Exchange-Anmeldung (zweites Login) ist nur einmal pro Tenant nötig (Absender-Cache auch im Admin-OneDrive, `DemoKit/senders.json`).
-Nach jedem Lauf liegt `Desktop\Demo-<Kunde> - Links.html` mit allen OneDrive-Links, OneNote, Zusatzlinks (z. B. Contoso Atlas) und der
-Checkliste bereit. Im Terminal **als Administrator** kommen dieselben Links als Edge-Favoriten (Ordner **Demo Kit**, gesperrt; nächster Lauf aktualisiert).
+**Demo-Personen = echte Benutzer des CDX-Tenants** (Teresa Sac, Vance DeLeon, Sonia Rees, Billie Vester, Sydney
+Mattos). Sie stehen direkt in allen Mails, Prompts und Dateien, ohne Zuordnung. Nur der externe Kunde (Jordan
+Mitchell, Tailspin Toys) wird ein freigegebenes Postfach.
 
-**Neue Demo:** Ordner anlegen, `manifest.json` (Titel und nächste Schritte auf en/de) anlegen, optional `shared.json`,
-`.\tools\Update-Manifest.ps1 -Demo <id>` ausführen, im Deck `demoData.demo` setzen,
-`.\tools\Update-Bundle.ps1 -Bundle <bundle> -Deck <deck.json>` ausführen, bei Tenant-Daten `tenant.json` pflegen und pushen.
+**Nach jedem Lauf:**
+- `Desktop\Demo-Kit - Links.html` (nach App gruppiert).
+- Im Terminal **als Administrator** zusätzlich Edge-Favoriten: Ordner **Demo Kit** mit einem Unterordner pro App.
+- Log unter `Desktop\DemoKit-Logs`. Bei Fehlern diese Datei schicken.
+- Die Exchange-Anmeldung (zweites Login) ist nur einmal pro Tenant nötig.
+
+**Neue Demo:**
+1. Ordner und `manifest.json` anlegen, optional `shared.json` / `tenant.json`.
+2. Im Kit eine Seite mit `"data": "<Demo-ID>"` im passenden App-Deck anlegen.
+3. `.\tools\Update-Manifest.ps1 -All` ausführen und pushen.
+4. Auf der VM denselben Befehl erneut ausführen.
