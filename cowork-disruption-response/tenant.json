@@ -1,0 +1,18 @@
+{
+  "links": [
+    { "name": { "en": "Microsoft Copilot (Cowork)", "de": "Microsoft Copilot (Cowork)" }, "url": "https://copilot.cloud.microsoft/" },
+    { "name": { "en": "Microsoft Teams", "de": "Microsoft Teams" }, "url": "https://teams.cloud.microsoft/" }
+  ],
+  "manual": {
+    "de": [
+      "Standardweg der Demo: Der Meldungstext steht im Prompt (Datei **trigger-message-de.txt** enthält ihn zum Kopieren). Es ist kein Teams-Setup nötig.",
+      "Optional (Auslöser-Variante): Im Teams-Team einen Kanal **Fargo Gate Alerts** anlegen und in **Cowork** den Auslöser **Wenn eine Teams-Kanalnachricht eintrifft** einrichten (nur bei @Erwähnung). Die @Erwähnung lässt sich nicht per Skript anlegen.",
+      "**Cowork**: Vorab einmal komplett durchlaufen lassen und das fertige Ergebnis als Rückfallebene offen halten. Nichts senden."
+    ],
+    "en": [
+      "Standard path of the demo: the message text is part of the prompt (the file **trigger-message-en.txt** has it for copying). No Teams setup is needed.",
+      "Optional (trigger variant): create a channel **Fargo Gate Alerts** in a Teams team and set up the trigger **When a Teams channel message arrives** in **Cowork** (only for @mentions). The @mention cannot be created by script.",
+      "**Cowork**: run it through once beforehand and keep the finished result open as a fallback. Send nothing."
+    ]
+  }
+}

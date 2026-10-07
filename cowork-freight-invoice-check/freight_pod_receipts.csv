@@ -1,0 +1,9 @@
+TO Number,Line,Delivered Weight (kg),Delivery Date,POD Status
+TO-27-0101,1,12400,2027-04-02,Confirmed
+TO-27-0101,2,6000,2027-04-03,Confirmed
+TO-27-0102,1,15000,2027-04-02,Confirmed
+TO-27-0103,1,9000,2027-04-04,Confirmed
+TO-27-0103,2,7960,2027-04-04,Confirmed
+TO-27-0104,1,7200,2027-04-03,Confirmed
+TO-27-0105,1,0,,Pending
+TO-27-0106,1,10000,2027-04-05,Confirmed

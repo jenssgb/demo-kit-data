@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Steering workshop to board pack",
+    "de": "Copilot Cowork – Steering-Workshop zum Board-Paket"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen."
+    ]
+  },
+  "files": [
+    {
+      "path": "fargo_steering_workshop_transcript.docx",
+      "sha256": "eaf6c966f7e96bf6ec805f9fe1cf56d88d68f5ed38ce1cedaf3c19346efc7d18"
+    }
+  ]
+}

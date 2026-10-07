@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Customer business review",
+    "de": "Copilot Cowork – Kundenreview vorbereiten"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen."
+    ]
+  },
+  "files": [
+    {
+      "path": "customer_qbr_prep.xlsx",
+      "sha256": "7246d908da52d3c71164d43de863a58a9902d564167fbf85725c73a89e261dfa"
+    }
+  ]
+}

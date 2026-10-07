@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Disruption response",
+    "de": "Copilot Cowork – Störungsmanagement"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen."
+    ]
+  },
+  "files": [
+    {
+      "path": "affected_shipments.xlsx",
+      "sha256": "0f4893320dc362f73fbc56280468d9854445cb5057f147801fda9adfc3bdca53"
+    },
+    {
+      "path": "fargo_outbound_disruption_playbook.docx",
+      "sha256": "ebd0fdca8c588782972593be9e28fae8300822f24cce0a5a69bfd52d07b4dca6"
+    },
+    {
+      "path": "trigger-message-de.txt",
+      "sha256": "f1dc0de5732a04d47e531445677f7e0ba593003b805082fb8471bebc3aaa38c6"
+    },
+    {
+      "path": "trigger-message-en.txt",
+      "sha256": "0b749440ece949432f0f24b0254af3043603d5d86fc6b732951cfcbc45132d51"
+    }
+  ]
+}

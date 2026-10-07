@@ -6,6 +6,12 @@
   "folder": "Demo-DHL",
   "deck": "dhl-innovation-briefing",
   "demos": [
-    "cowork-copilot"
+    "cowork-copilot",
+    "cowork-freight-invoice-check",
+    "cowork-carrier-contracts",
+    "cowork-lane-margin",
+    "cowork-customer-qbr",
+    "cowork-disruption-response",
+    "cowork-steering-to-board"
   ]
 }

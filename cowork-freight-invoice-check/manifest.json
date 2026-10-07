@@ -1,0 +1,68 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Freight invoice check",
+    "de": "Copilot Cowork – Frachtrechnungen prüfen"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there. The expected result is only in the Demo Kit."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen. Das erwartete Ergebnis steht nur im Demo Kit."
+    ]
+  },
+  "files": [
+    {
+      "path": "freight_audit_policy.docx",
+      "sha256": "0cf5e012c288df0b320d89c30f686a88a59ea537f0d585fa6a504a4923847e0e"
+    },
+    {
+      "path": "freight_carrier_master.xlsx",
+      "sha256": "5c912b42166c54ded1f325dc2be171ee12778d28bf05debc7595cdc15b7f4a1f"
+    },
+    {
+      "path": "freight_invoice_AC-8821.pdf",
+      "sha256": "8dc5ad2863bd5f237d47ae1b3a88687fcc0be50ef4a09336024c5732222b47db"
+    },
+    {
+      "path": "freight_invoice_AC-8822.pdf",
+      "sha256": "52bec648826f8b4247047a750c0597f20dbc29854fe63661920a5864a930b4d3"
+    },
+    {
+      "path": "freight_invoice_FL-7710.pdf",
+      "sha256": "ec098a9c2833fb431c3955b5fded79fb952ee1626f3d4229246ec935cb3d559f"
+    },
+    {
+      "path": "freight_invoice_FL-7711.pdf",
+      "sha256": "fd5202da001261230b25735bfe9f633d959ac8e19f5228d2d3ec0871c8211076"
+    },
+    {
+      "path": "freight_invoice_LW-3901.pdf",
+      "sha256": "8008790a01ca42d5de9238131cf1892abba42a40a0fb3c66e93fa76b9a52a733"
+    },
+    {
+      "path": "freight_invoice_NW-1042.pdf",
+      "sha256": "4e953e150e4addbd03c5e41a1bcc8a074aaae4b30de8140e646b341807a8196a"
+    },
+    {
+      "path": "freight_invoice_NW-1043.pdf",
+      "sha256": "846281e39e668c6c0a6bec09c48074a72d51e4decf29cf6df94046ea518a3633"
+    },
+    {
+      "path": "freight_invoice_PC-5520-A.pdf",
+      "sha256": "1fa185e350f3bc5e78bba20713d509821875f87faf83e4a189dd017847fe092a"
+    },
+    {
+      "path": "freight_invoice_PC-5520-B.pdf",
+      "sha256": "faab5496b71b4a517933c249e428078e24b66abb8cefa0764079919637f0a22a"
+    },
+    {
+      "path": "freight_pod_receipts.csv",
+      "sha256": "85ce20b1cef0381f44aef651bfbfed0407881d5e14fe766755083fdbc0792a46"
+    },
+    {
+      "path": "freight_transport_orders.xlsx",
+      "sha256": "f291ba7ff0f72ced2db1f2612d44cdfb1956799794834bea7482ff1d88eb847c"
+    }
+  ]
+}

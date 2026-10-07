@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Lane and service margin",
+    "de": "Copilot Cowork – Marge je Lane und Service"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen."
+    ]
+  },
+  "files": [
+    {
+      "path": "lane_margin_raw.xlsx",
+      "sha256": "fe97511c435a99cffb24373f2b777b7a52809a357469935ad18158381871f88b"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Copilot Cowork – Carrier contract comparison",
+    "de": "Copilot Cowork – Frachtverträge vergleichen"
+  },
+  "next": {
+    "en": [
+      "Open the Demo Kit page and follow the prompt there."
+    ],
+    "de": [
+      "Seite im Demo Kit öffnen und dem Prompt dort folgen."
+    ]
+  },
+  "files": [
+    {
+      "path": "contract_adatum_cargo.pdf",
+      "sha256": "07b99f7147bef8694e3cc68195bdca69ac8b436ae0716242de104671f5ac6845"
+    },
+    {
+      "path": "contract_fabrikam_logistics.pdf",
+      "sha256": "98f79af9d0c3cb8bc6e17afaa3d49df12d1ca192dbffedbadd435ce9656bc536"
+    },
+    {
+      "path": "contract_northwind_freight.pdf",
+      "sha256": "93778520aa289be3148c99e2bccd73a5c97e6750d20500221ac341b5b47cfb83"
+    }
+  ]
+}
