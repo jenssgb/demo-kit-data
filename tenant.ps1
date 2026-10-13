@@ -346,7 +346,7 @@ if ($others.Count) {
     Write-Host ""
     Say (T 'Senders and attendees (Exchange Online, one-time per tenant) ...' 'Absender und Teilnehmende (Exchange Online, einmalig pro Tenant) ...') Cyan
     $tmpIn = [IO.Path]::GetTempFileName(); $tmpOut = [IO.Path]::GetTempFileName(); $tmpPs = [IO.Path]::GetTempFileName() + '.ps1'
-    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; domain = $domain; names = $others; whatIf = [bool]$WhatIf }))
+    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; domain = $domain; names = $others; verifiedSenders = $verifiedSenders; whatIf = [bool]$WhatIf }))
     [IO.File]::WriteAllText($tmpPs, @'
 param($In, $Out, [switch]$NoWam)
 $ErrorActionPreference = 'Stop'
@@ -371,7 +371,15 @@ $res = @()
 foreach ($n in $cfg.names) {
     $o = [ordered]@{ name = $n; address = $null; created = $false; granted = $false; error = $null }
     try {
-        $r = Get-Recipient -Filter "DisplayName -eq '$($n -replace "'", "''")'" -RecipientTypeDetails UserMailbox, SharedMailbox -ResultSize 1 -ErrorAction SilentlyContinue | Select-Object -First 1
+        $expected = if ($cfg.verifiedSenders) { $cfg.verifiedSenders.PSObject.Properties[$n].Value } else { $null }
+        if ($expected) {
+            $r = Get-Recipient -Identity $expected -ErrorAction Stop
+            if ($r.RecipientTypeDetails -ne 'UserMailbox' -or "$($r.PrimarySmtpAddress)" -ne $expected -or "$($r.DisplayName)" -ne $n) {
+                throw "demo sender $n does not match the existing user mailbox $expected; no Send As permission was granted"
+            }
+        } else {
+            $r = Get-Recipient -Filter "DisplayName -eq '$($n -replace "'", "''")'" -RecipientTypeDetails UserMailbox, SharedMailbox -ResultSize 1 -ErrorAction SilentlyContinue | Select-Object -First 1
+        }
         if (-not $r) {
             # A real tenant user without a mailbox (e.g. only a Teams license): never create a look-alike shared mailbox
             $u = Get-User -Filter "DisplayName -eq '$($n -replace "'", "''")'" -ResultSize 1 -ErrorAction SilentlyContinue | Select-Object -First 1
