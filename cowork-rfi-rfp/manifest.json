@@ -1,0 +1,412 @@
+{
+  "title": {
+    "en": "Complex Contoso RFI",
+    "de": "Komplexe Contoso-RFI"
+  },
+  "next": {
+    "en": [
+      "Read Preparation-en.md"
+    ],
+    "de": [
+      "Read Preparation-de.md"
+    ]
+  },
+  "files": [
+    {
+      "path": "knowledge/de/KB_ARCH_v2.pdf",
+      "sha256": "b90889539b16957959dfbf00e28039bb2cf1d29d8b81138ae6e81f07e1984057"
+    },
+    {
+      "path": "knowledge/de/KB_COMM_v2.pdf",
+      "sha256": "1a1a1292c0428b9f8facf1fda1c68bf0b34a933b3558ae3b1a192ae0d3a07918"
+    },
+    {
+      "path": "knowledge/de/KB_DATA_v2.pdf",
+      "sha256": "a837c089db4413182704ad741f75083d727010eabe9423aa8e75c4cfc970920d"
+    },
+    {
+      "path": "knowledge/de/KB_EVID_v2.pdf",
+      "sha256": "bff383116846b0ab0705c66dc84d7bfc83873ec7368f8184cd05d7653b00911a"
+    },
+    {
+      "path": "knowledge/de/KB_IMPL_v2.pdf",
+      "sha256": "105338c2c59e5b9d39f0b347ebabe1e1d8fc2bd75b09612c0e6d95f5adb9b268"
+    },
+    {
+      "path": "knowledge/de/KB_LEGAL_v2.pdf",
+      "sha256": "7456a1f76c2b2a25d698889e570ec0d79ced13dd73d808a06be911f726d37b62"
+    },
+    {
+      "path": "knowledge/de/KB_NET_v2.pdf",
+      "sha256": "7dd19651f8956efa50c519fa34bf345510873c5a37de2f6b1835c5845b82cec1"
+    },
+    {
+      "path": "knowledge/de/KB_OPS_v1_RETIRED.pdf",
+      "sha256": "0b2f4de57dabe164f2c165a9ce1df8d584d072c700068a7b6e6d044e0677b4c2"
+    },
+    {
+      "path": "knowledge/de/KB_OPS_v2.pdf",
+      "sha256": "58c5e61f4aaaddb49ad41a2933790ea3564f4be5d80ccb70e0dadaf72055060b"
+    },
+    {
+      "path": "knowledge/de/KB_QUAL_v2.pdf",
+      "sha256": "ce7abd2798b7ca4d6723d526bc40b22df929a757d8350ee0c2c4d8f7369f78fc"
+    },
+    {
+      "path": "knowledge/de/KB_SEC_v2.pdf",
+      "sha256": "0c8b2dc1b1db8432f5a1304fae2f3e42775aff0bb7be856f5b6c9f4a057dd63b"
+    },
+    {
+      "path": "knowledge/de/KB_SUPPLY_v2.pdf",
+      "sha256": "becfd58e2eba0f286c6ade5867a4cec3f1800c48f6756ba983d3580756e7dbe2"
+    },
+    {
+      "path": "knowledge/de/KB_SUPPORT_v2.pdf",
+      "sha256": "debd3ac7c6997f9552ca872553d1087bb921c9f4a403b61f2ade237e3d72302d"
+    },
+    {
+      "path": "knowledge/de/Source_Index.md",
+      "sha256": "e8ce99965f1ebf9cef44a3e3855af465ab7f9f271fbaf50aaf102eeee824fa7d"
+    },
+    {
+      "path": "knowledge/en/KB_ARCH_v2.pdf",
+      "sha256": "1c1c98f8b47bbaee909642ac26c7a6490ef038bfe8537781ba11857a53b72ac7"
+    },
+    {
+      "path": "knowledge/en/KB_COMM_v2.pdf",
+      "sha256": "2113e2aedef35e6ceb6cdfd90684eaf6f4b3489e8970f1ee3c473e4c99cc9902"
+    },
+    {
+      "path": "knowledge/en/KB_DATA_v2.pdf",
+      "sha256": "ced968d0e1d8b61f90bd1179cbb96fbf900e64f616ab1ded1499a763326d92bf"
+    },
+    {
+      "path": "knowledge/en/KB_EVID_v2.pdf",
+      "sha256": "fc9ae07022b0f818091ac2a82080dff2f112109f1cad21b280080769d17c5511"
+    },
+    {
+      "path": "knowledge/en/KB_IMPL_v2.pdf",
+      "sha256": "5f5bd63cbe295ae5ae30898bac5394db6f2d34b00257d7751a5020e56ef84ad3"
+    },
+    {
+      "path": "knowledge/en/KB_LEGAL_v2.pdf",
+      "sha256": "536fda6423b8bb4039bf74eabbb9adf8e5f8669e6336ac22bcf1d53596a6f9ad"
+    },
+    {
+      "path": "knowledge/en/KB_NET_v2.pdf",
+      "sha256": "bb271f8c7d8086344f5f688bfa2f88533c850568f94b18cd72f049b21b579aeb"
+    },
+    {
+      "path": "knowledge/en/KB_OPS_v1_RETIRED.pdf",
+      "sha256": "4339110e541b72f43e7b3f616ae02e09558b10dfea41ba9e181c9be87b965643"
+    },
+    {
+      "path": "knowledge/en/KB_OPS_v2.pdf",
+      "sha256": "e1315a80e58f05d01d69d33b3d5a8f696152128db7c9584f1eac1c948da861f8"
+    },
+    {
+      "path": "knowledge/en/KB_QUAL_v2.pdf",
+      "sha256": "418cf721634ce0e6246ae981821f1ff3a367809ee705c7929f3f748f63716e2a"
+    },
+    {
+      "path": "knowledge/en/KB_SEC_v2.pdf",
+      "sha256": "f223dc51e4fd4b34e61dcaef0c68f5514bd86aa54d2f10cdde7e80e70d80f54c"
+    },
+    {
+      "path": "knowledge/en/KB_SUPPLY_v2.pdf",
+      "sha256": "288efd3e56447678b0a266ec684c5e8d4bd0a248887b15e69ff98801c8c1e767"
+    },
+    {
+      "path": "knowledge/en/KB_SUPPORT_v2.pdf",
+      "sha256": "176d1be0534dcb452385e7dbc437e9fa1675f46a0782aa4d7129743c597a67cb"
+    },
+    {
+      "path": "knowledge/en/Source_Index.md",
+      "sha256": "b031717b8477b9fba876737de4e4a3b6c9940eac9d9edacd9a90e2fe650732b2"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "53e204c9703f4a8d8158e77a790fbeaa58fd8cd080ad14c7bc47cf540100135c"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "c880b47e283719983f06ffb8a87500b4f6cde7708ac8c2bf542ea15f47f53dc0"
+    },
+    {
+      "path": "runs/de/compact/01/results/README.md",
+      "sha256": "99f2f0ed35f6d5c738662ef65d327fc67fddc4a3b509baa0bf488821a18de1a6"
+    },
+    {
+      "path": "runs/de/compact/01/RFI_Compact_Run_01.xlsx",
+      "sha256": "78757d94e1c47eba34836f102380d338327e3e01ea5d0d24b691e8391b145cd3"
+    },
+    {
+      "path": "runs/de/compact/02/results/README.md",
+      "sha256": "97f7404619a20bde85ec69ff75fe094421ef41d08b8663af5f97a0f00beb9189"
+    },
+    {
+      "path": "runs/de/compact/02/RFI_Compact_Run_02.xlsx",
+      "sha256": "10c44cec6507518c91f4edb254479e69f0235e40753de042d0ccac5f440f6ff2"
+    },
+    {
+      "path": "runs/de/compact/03/results/README.md",
+      "sha256": "aa4613202a35e028463d9bf7c7a7b4ce11b1b7d52a247679047cd93b0720a720"
+    },
+    {
+      "path": "runs/de/compact/03/RFI_Compact_Run_03.xlsx",
+      "sha256": "f96ed02b87d00379664e1b3392d96aa4e0f0096c9c5c45dfde33155ebe3ce61e"
+    },
+    {
+      "path": "runs/de/compact/04/results/README.md",
+      "sha256": "1ff3a8a1192e914d7f99199ad92019ed868198438194916558687aa8a6d3d579"
+    },
+    {
+      "path": "runs/de/compact/04/RFI_Compact_Run_04.xlsx",
+      "sha256": "90a002fc31f9db9edb1c24acf17ae018530363671a1210c366a9360a85d18dd1"
+    },
+    {
+      "path": "runs/de/compact/05/results/README.md",
+      "sha256": "bd1215c918f00fa59b60d3c23e92d6b9d512491a73f66873c0a605cbf036cb22"
+    },
+    {
+      "path": "runs/de/compact/05/RFI_Compact_Run_05.xlsx",
+      "sha256": "f90dd6932233533b922d921fa21d88799b45122760a5105f8fdf73d197213c28"
+    },
+    {
+      "path": "runs/de/compact/06/results/README.md",
+      "sha256": "de57b3e1de4855f80ff491391aafbd6c16b291835b70c43674786d7e8af64dba"
+    },
+    {
+      "path": "runs/de/compact/06/RFI_Compact_Run_06.xlsx",
+      "sha256": "e181887c8eaf1712305353cf6622c08f809ceb2b71728515a4616d0c43efaa25"
+    },
+    {
+      "path": "runs/de/compact/07/results/README.md",
+      "sha256": "ed5b5df54b5e663fb1f25dc5a0500f2995416e396cacade80460d769f54f6000"
+    },
+    {
+      "path": "runs/de/compact/07/RFI_Compact_Run_07.xlsx",
+      "sha256": "6511069ff083e63d71af0ea6fc3a2db7ddcef51b81f074a54465a151c24722af"
+    },
+    {
+      "path": "runs/de/compact/08/results/README.md",
+      "sha256": "07a4ce8eb363dfdf74dbd1d47b0a120cfe71a294a51add87239d8826269dacee"
+    },
+    {
+      "path": "runs/de/compact/08/RFI_Compact_Run_08.xlsx",
+      "sha256": "27defc1511c91e7e49db3a83e79ab5c504b608d8dc659f73c186b14ea11dd49f"
+    },
+    {
+      "path": "runs/de/full/01/results/README.md",
+      "sha256": "23ec22f2b8e72bb0f03a6d4182b3f97df0b3aad88274991899afec74f0f4988a"
+    },
+    {
+      "path": "runs/de/full/01/RFI_Full_Run_01.xlsx",
+      "sha256": "6e47c8b6200f1a3550f4ba2d8a980df52576e387ed5ffb935b6e43d8c05f52ab"
+    },
+    {
+      "path": "runs/de/full/02/results/README.md",
+      "sha256": "80c684c168c19d45440c120af6098a2df9d8cac29a9d3dcb803b00cff69bee77"
+    },
+    {
+      "path": "runs/de/full/02/RFI_Full_Run_02.xlsx",
+      "sha256": "fd4991020f90c74f1bd98ff053e01d2031fc9f973195ad3a5c77639e82a013d0"
+    },
+    {
+      "path": "runs/de/full/03/results/README.md",
+      "sha256": "9d8269a5d2445ed7844b45d615089180040d8fd180bb0a5c6fec21715d2ec82e"
+    },
+    {
+      "path": "runs/de/full/03/RFI_Full_Run_03.xlsx",
+      "sha256": "30b95b0c4e4bcfa7b410fe8308b5ee85a871fd1b37f826e3d190ec8f8faa1a6e"
+    },
+    {
+      "path": "runs/de/full/04/results/README.md",
+      "sha256": "72674105e1b8bb8e7351d971917726a0ab88bf7c1bd15d1038405b57c37bdb05"
+    },
+    {
+      "path": "runs/de/full/04/RFI_Full_Run_04.xlsx",
+      "sha256": "eb765d07fa31a030d9c7a56ff1545f0a29486e604e0355f1ebdfc2f9dabbd438"
+    },
+    {
+      "path": "runs/de/full/05/results/README.md",
+      "sha256": "253b4313c846b42058707aeef3161d872ee50c542be4ef21419e989e3eeedd7c"
+    },
+    {
+      "path": "runs/de/full/05/RFI_Full_Run_05.xlsx",
+      "sha256": "7c89df46da3e10377c630f61a8ebc523800cb7c705c18ee327cbe7dbfdbe536e"
+    },
+    {
+      "path": "runs/de/full/06/results/README.md",
+      "sha256": "ef021a8c24cab2acb4ff55ec76f305a4524388806f25f3c8d1cc4c9ea731196e"
+    },
+    {
+      "path": "runs/de/full/06/RFI_Full_Run_06.xlsx",
+      "sha256": "4b2378a9d1e3854dc2797eee45d001ae85495ee68e844c87a85c77106ec90e1e"
+    },
+    {
+      "path": "runs/de/full/07/results/README.md",
+      "sha256": "16d360ecf3fd68bdb4fc6988218b9ae0ff77914e7a13048fe4c0a719d52bdf62"
+    },
+    {
+      "path": "runs/de/full/07/RFI_Full_Run_07.xlsx",
+      "sha256": "d9f232ed8aadf0fd1b63b39e465e239781d290f6eaf548f5a7165e657e9acfa6"
+    },
+    {
+      "path": "runs/de/full/08/results/README.md",
+      "sha256": "f7de8252ca76d66987f5cb9acc24571e5be240a02fb2a5a3e87d9bfa27236180"
+    },
+    {
+      "path": "runs/de/full/08/RFI_Full_Run_08.xlsx",
+      "sha256": "cf1311b16f7642775ce4b271d994d64142f04bb52b5e52befdc929d538794a7f"
+    },
+    {
+      "path": "runs/en/compact/01/results/README.md",
+      "sha256": "f2dc6b0060ffc6414d2f408f8c482566d9aa39eb0cf844d2ec95dec97bef8d7c"
+    },
+    {
+      "path": "runs/en/compact/01/RFI_Compact_Run_01.xlsx",
+      "sha256": "380602c29bb52ad3c57a8516e2834e274cd3fcb64e3436e2b6c58fa7be3c7cd4"
+    },
+    {
+      "path": "runs/en/compact/02/results/README.md",
+      "sha256": "208629bcad7b6bb0b8f6069a01711dec71eca0639cbe8548da57dffca7151985"
+    },
+    {
+      "path": "runs/en/compact/02/RFI_Compact_Run_02.xlsx",
+      "sha256": "51f28942062ba96b69123bb65087140f1f22286b8b54fc4672b81e244f9fd43d"
+    },
+    {
+      "path": "runs/en/compact/03/results/README.md",
+      "sha256": "b1bd8f246a33aaa716318f520f5d0986795f476b2bb676f04d27ac8691fba8d5"
+    },
+    {
+      "path": "runs/en/compact/03/RFI_Compact_Run_03.xlsx",
+      "sha256": "5171e3158831c9f625b749c440642e1e663e413050f42f7175803e8aa06fee4b"
+    },
+    {
+      "path": "runs/en/compact/04/results/README.md",
+      "sha256": "5b96e72bc76ee78cce9cf549a1fe474d961a4991d12082efb95363c5f502abf5"
+    },
+    {
+      "path": "runs/en/compact/04/RFI_Compact_Run_04.xlsx",
+      "sha256": "c2f0596779f077598cb5f3b75c2dbc37876f00836e2b01d7d18dc66e6bfb8c6d"
+    },
+    {
+      "path": "runs/en/compact/05/results/README.md",
+      "sha256": "e25fd09a2bf52ec3393e02ef2377ec6d52e7f2add99fe378898a6697415f8ec9"
+    },
+    {
+      "path": "runs/en/compact/05/RFI_Compact_Run_05.xlsx",
+      "sha256": "16ec2248e56e8d2d52ffb4dfb18cd33f106682b945deb53f88dd88ce87bf76ad"
+    },
+    {
+      "path": "runs/en/compact/06/results/README.md",
+      "sha256": "65686b7b06734d86bba3ee7c65ffec5fdd4487bbfe623b5dc4c3e01a36f78e89"
+    },
+    {
+      "path": "runs/en/compact/06/RFI_Compact_Run_06.xlsx",
+      "sha256": "04c2f7767464cf5db7d119f280a91bde2b5a395eba8b3478d9abd0f348f281a2"
+    },
+    {
+      "path": "runs/en/compact/07/results/README.md",
+      "sha256": "a58c61e5fbe487c70d7605b3890c2cebbfe6aa37ed12547bf26413eb7db75d92"
+    },
+    {
+      "path": "runs/en/compact/07/RFI_Compact_Run_07.xlsx",
+      "sha256": "cc4ba3e6441275fde298848f9099820896cbbb95718f6ee195ff607883b82f6f"
+    },
+    {
+      "path": "runs/en/compact/08/results/README.md",
+      "sha256": "5d456fb1ca7c7792e7ca869fb9dce502ddadd586eaff54c274cb01fe2d4e08fc"
+    },
+    {
+      "path": "runs/en/compact/08/RFI_Compact_Run_08.xlsx",
+      "sha256": "3a6d20a30fd19dd29ebc970566679766f2d26e8938796008d715ee2f4bd2c88d"
+    },
+    {
+      "path": "runs/en/full/01/results/README.md",
+      "sha256": "63722bbeaba01d45a18fc346216c9834415d57d235cba0fbeed5f0f948598b7a"
+    },
+    {
+      "path": "runs/en/full/01/RFI_Full_Run_01.xlsx",
+      "sha256": "51a5cd06f2c40f1d1ad443f9fea2f87be74ada56a3c815cb03ce05cc2fb61ad2"
+    },
+    {
+      "path": "runs/en/full/02/results/README.md",
+      "sha256": "01f2880d54d0a81868163f9090f50972846b732f08001a7ca38ec4eee2a3c55a"
+    },
+    {
+      "path": "runs/en/full/02/RFI_Full_Run_02.xlsx",
+      "sha256": "683e39e052e916a284d0e7e78938967ab401b82bc384aca439bd271c6d671b69"
+    },
+    {
+      "path": "runs/en/full/03/results/README.md",
+      "sha256": "ce7ddf29cf3e03a4e7f1a1c174ad25663bb6a73b72d033fb06fc8b1c8061da09"
+    },
+    {
+      "path": "runs/en/full/03/RFI_Full_Run_03.xlsx",
+      "sha256": "db3a9363aca87428b979e3847f1d5ee483a057a03484c4a698eb0c43ae17dec2"
+    },
+    {
+      "path": "runs/en/full/04/results/README.md",
+      "sha256": "3a4e4619eef5ad689fa9a5e1e84a7dc7bbea625d5f5b3e320c0b2c4ea1a7cd91"
+    },
+    {
+      "path": "runs/en/full/04/RFI_Full_Run_04.xlsx",
+      "sha256": "227a6aceaa9929cce6b1d75f1507b6e1d29ce8157de3fc670b1621b224e6d6be"
+    },
+    {
+      "path": "runs/en/full/05/results/README.md",
+      "sha256": "057e8fe17cf3f841c777d05bd27c0389e3510de3e191af480468a5e3c7585480"
+    },
+    {
+      "path": "runs/en/full/05/RFI_Full_Run_05.xlsx",
+      "sha256": "3950358c2f60272476d5c804751b24af2f71d6cb218f1c9f1daba05fbffdb550"
+    },
+    {
+      "path": "runs/en/full/06/results/README.md",
+      "sha256": "e0384a310bf61a5cecf7b56cd65b5a6167c60b080340dc65ff92599cbbbb435b"
+    },
+    {
+      "path": "runs/en/full/06/RFI_Full_Run_06.xlsx",
+      "sha256": "a134a50930fe82971f1ecbd602fa3e9fec77f0d3ee026ec62f6306c8598deed9"
+    },
+    {
+      "path": "runs/en/full/07/results/README.md",
+      "sha256": "993a00883422f522537898b2c539ab22e8c8695e4491fb2f93d075f3c7b61bed"
+    },
+    {
+      "path": "runs/en/full/07/RFI_Full_Run_07.xlsx",
+      "sha256": "5cf334205e7f59d212fbcd181618689010b6ab3b7634404cac4d6106abf7667e"
+    },
+    {
+      "path": "runs/en/full/08/results/README.md",
+      "sha256": "ec4083a1c564df907f96a9fe04d51bc55704ce9b15c3d3cc385f17eb26e2bf49"
+    },
+    {
+      "path": "runs/en/full/08/RFI_Full_Run_08.xlsx",
+      "sha256": "e0aaa0e1511340f3250e2fafff91046f1493fd3ba72043abfdec730dc80c95bc"
+    },
+    {
+      "path": "skills/contoso-rfi-rfp-response/SKILL.md",
+      "sha256": "aa8c715208fb81e5d026ca67d0077ccea993c9b55150a9c4e866d70dd4a2ec63"
+    },
+    {
+      "path": "templates/de/RFI_Compact_Master.xlsx",
+      "sha256": "536b729b6956c976e750dbe2054fd0f3c03521e0d68e76a898985fcb3184e727"
+    },
+    {
+      "path": "templates/de/RFI_Full_Master.xlsx",
+      "sha256": "f544b58ae09e1eed63713af7f11d05f0b8849166bd6d59df2bf4449b17de9891"
+    },
+    {
+      "path": "templates/en/RFI_Compact_Master.xlsx",
+      "sha256": "d429c47b69ded19d32dc2ec40a518f28acda68831a429de2ef922a02cbb711e8"
+    },
+    {
+      "path": "templates/en/RFI_Full_Master.xlsx",
+      "sha256": "9bfc507e1f86e627cf75bf11a3274353d6963857c302a2b434a9683087dace5c"
+    }
+  ]
+}

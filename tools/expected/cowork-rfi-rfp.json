@@ -1,0 +1,3346 @@
+{
+  "version": "2026.10.13-v1",
+  "full_count": 132,
+  "compact_ids": [
+    "ARCH-01",
+    "ARCH-02",
+    "COMM-01",
+    "COMM-02",
+    "COMM-03",
+    "COMM-04",
+    "DATA-01",
+    "DATA-02",
+    "DATA-04",
+    "EVID-01",
+    "EVID-02",
+    "EVID-08",
+    "IMPL-01",
+    "IMPL-02",
+    "LEGAL-01",
+    "LEGAL-02",
+    "NET-01",
+    "NET-02",
+    "OPS-01",
+    "OPS-02",
+    "QUAL-01",
+    "QUAL-02",
+    "SEC-01",
+    "SEC-02",
+    "SUPPLY-01",
+    "SUPPLY-02",
+    "SUPPORT-01",
+    "SUPPORT-02"
+  ],
+  "questions": [
+    {
+      "id": "QUAL-01",
+      "topic": "QUAL",
+      "text": {
+        "en": "Identify the bidding legal entity, delivery scope and countries covered; distinguish subcontractors from Contoso.",
+        "de": "Benenne die anbietende Rechtseinheit, den Leistungsumfang und die abgedeckten Länder; trenne Unterauftragnehmer von Contoso."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-02",
+      "topic": "QUAL",
+      "text": {
+        "en": "Provide audited financial statements for the last three years and explain any missing year.",
+        "de": "Lege geprüfte Abschlüsse der letzten drei Jahre vor und erkläre fehlende Jahre."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-03",
+      "topic": "QUAL",
+      "text": {
+        "en": "Name two reference projects with at least twelve banking sites; provide permission to contact each reference.",
+        "de": "Benenne zwei Referenzprojekte mit mindestens zwölf Bankstandorten und die Erlaubnis zur Kontaktaufnahme."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-04",
+      "topic": "QUAL",
+      "text": {
+        "en": "Describe the engineering team and evidence of current network qualifications; do not list unverified individuals.",
+        "de": "Beschreibe das Engineering-Team und belege aktuelle Netzwerkqualifikationen; führe keine ungeprüften Personen auf."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-05",
+      "topic": "QUAL",
+      "text": {
+        "en": "Disclose sanctions-screening and anti-bribery controls, owners and the frequency of review.",
+        "de": "Beschreibe Sanktionsprüfung und Antikorruptionskontrollen mit Zuständigkeit und Prüfintervall."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-06",
+      "topic": "QUAL",
+      "text": {
+        "en": "State which subcontractors can access bank systems and how changes require bank approval.",
+        "de": "Benenne Unterauftragnehmer mit Zugriff auf Banksysteme und den Freigabeprozess für Änderungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-07",
+      "topic": "QUAL",
+      "text": {
+        "en": "Provide professional indemnity and cyber-insurance limits, expiry dates and actual policy evidence.",
+        "de": "Lege Deckung, Ablaufdaten und Policennachweise für Berufshaftpflicht und Cyberversicherung vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-08",
+      "topic": "QUAL",
+      "text": {
+        "en": "Explain how conflicts of interest are checked before assigning staff to this bank.",
+        "de": "Erkläre die Prüfung von Interessenkonflikten vor dem Einsatz bei dieser Bank."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-09",
+      "topic": "QUAL",
+      "text": {
+        "en": "Provide an accessibility policy and evidence that operational documentation meets WCAG 2.2 AA.",
+        "de": "Lege Barrierefreiheitsrichtlinie und Nachweise für Betriebsdokumentation nach WCAG 2.2 AA vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-10",
+      "topic": "QUAL",
+      "text": {
+        "en": "Describe environmental and disposal controls with evidence, without claiming an unheld certification.",
+        "de": "Beschreibe Umwelt- und Entsorgungsmaßnahmen mit Belegen, ohne nicht vorhandene Zertifizierungen zu behaupten."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "QUAL-11",
+      "topic": "QUAL",
+      "text": {
+        "en": "Identify the authority needed to sign a binding response and confirm whether this draft has it.",
+        "de": "Benenne die nötige Zeichnungsberechtigung für eine bindende Antwort und ob dieser Entwurf sie besitzt."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-QUAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-QUAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-01",
+      "topic": "ARCH",
+      "text": {
+        "en": "Propose a segmented network for twelve sites with separate staff, guest, payment and management zones; show trust boundaries.",
+        "de": "Entwirf für zwölf Standorte ein segmentiertes Netz mit Mitarbeiter-, Gast-, Zahlungs- und Managementzonen und Vertrauensgrenzen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-02",
+      "topic": "ARCH",
+      "text": {
+        "en": "Explain how the design integrates with existing identity, DNS, monitoring and incident tools without assuming connectors.",
+        "de": "Erkläre die Einbindung bestehender Identitäts-, DNS-, Monitoring- und Incident-Systeme ohne unbelegte Connectoren."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-03",
+      "topic": "ARCH",
+      "text": {
+        "en": "Provide a topology showing redundant uplinks, failure domains and the points that remain single points of failure.",
+        "de": "Lege eine Topologie mit redundanten Uplinks, Ausfalldomänen und verbleibenden Single Points of Failure vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-04",
+      "topic": "ARCH",
+      "text": {
+        "en": "Describe the migration path from the bank's current VLANs and the information needed before final design.",
+        "de": "Beschreibe den Weg von den bestehenden VLANs der Bank zum Zielbild und fehlende Planungsangaben."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-05",
+      "topic": "ARCH",
+      "text": {
+        "en": "Explain IP address management and overlapping ranges during coexistence; identify required bank approvals.",
+        "de": "Erkläre IP-Adressverwaltung und überlappende Netze im Parallelbetrieb sowie nötige Bankfreigaben."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-06",
+      "topic": "ARCH",
+      "text": {
+        "en": "State the boundary between hardware supply, managed operations and the bank's own responsibilities.",
+        "de": "Trenne Hardwarelieferung, Managed Operations und Eigenverantwortung der Bank."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-07",
+      "topic": "ARCH",
+      "text": {
+        "en": "Describe integration authentication, secret storage and rotation; provide evidence for any claimed automation.",
+        "de": "Beschreibe Integrationsauthentifizierung, Geheimnisspeicherung und Rotation; belege behauptete Automatisierung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-08",
+      "topic": "ARCH",
+      "text": {
+        "en": "Explain how configuration export avoids vendor lock-in and what cannot be exported.",
+        "de": "Erkläre, wie Konfigurationsexport Herstellerbindung verringert und was nicht exportierbar ist."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-09",
+      "topic": "ARCH",
+      "text": {
+        "en": "Provide capacity assumptions for 400 endpoints per site and identify the measurements required to validate them.",
+        "de": "Lege Kapazitätsannahmen für 400 Endgeräte je Standort und die nötigen Validierungsmessungen dar."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-10",
+      "topic": "ARCH",
+      "text": {
+        "en": "Describe a lab validation plan including identity outage and upstream network failure.",
+        "de": "Beschreibe eine Laborprüfung mit Identitätsausfall und Ausfall des vorgelagerten Netzes."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "ARCH-11",
+      "topic": "ARCH",
+      "text": {
+        "en": "Identify architecture decisions still requiring the bank's security and network teams.",
+        "de": "Benenne Architekturentscheidungen, die noch die Sicherheits- und Netzwerkteams der Bank benötigen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-ARCH section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-ARCH-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-01",
+      "topic": "NET",
+      "text": {
+        "en": "Confirm 10G uplinks on every offered access switch; reconcile the requested CMS-48P-POE with documented uplink capability.",
+        "de": "Bestätige 10G-Uplinks an jedem angebotenen Access-Switch; gleiche CMS-48P-POE mit der belegten Uplink-Fähigkeit ab."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "alternative",
+      "expectation": "GAP"
+    },
+    {
+      "id": "NET-02",
+      "topic": "NET",
+      "text": {
+        "en": "Demonstrate the PoE power budget for 32 access points per site at 30 W each and explain any required extra switches.",
+        "de": "Belege das PoE-Budget für 32 Access Points je Standort mit je 30 W und erkläre nötige zusätzliche Switches."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Watts, headroom and design exception",
+        "de": "Watt, Reserve und Planungsabweichung"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "capacity",
+      "expectation": "REVIEW"
+    },
+    {
+      "id": "NET-03",
+      "topic": "NET",
+      "text": {
+        "en": "Specify optical modules, cable types, distances and compatibility evidence for each uplink.",
+        "de": "Benenne Optikmodule, Kabeltypen, Entfernungen und Kompatibilitätsnachweise je Uplink."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-04",
+      "topic": "NET",
+      "text": {
+        "en": "Explain 802.1X and fallback behavior for devices without supplicants, including payment-terminal risk.",
+        "de": "Erkläre 802.1X und das Verhalten bei Geräten ohne Supplicant samt Risiko für Zahlungsterminals."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-05",
+      "topic": "NET",
+      "text": {
+        "en": "Confirm whether Wi-Fi 7 and legacy clients can coexist; identify survey and regulatory prerequisites.",
+        "de": "Bestätige das Zusammenspiel von Wi-Fi 7 und Altgeräten sowie Funkmessungs- und regulatorische Voraussetzungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-06",
+      "topic": "NET",
+      "text": {
+        "en": "Provide roaming latency evidence for voice clients, not just a marketing capability statement.",
+        "de": "Lege Roaming-Latenznachweise für Sprachclients statt einer Marketingaussage vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-07",
+      "topic": "NET",
+      "text": {
+        "en": "Explain guest isolation and how guest traffic is prevented from reaching payment systems.",
+        "de": "Erkläre Gastisolation und die Sperre von Gastverkehr zu Zahlungssystemen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-08",
+      "topic": "NET",
+      "text": {
+        "en": "State throughput with security inspection enabled and supply independently measured results.",
+        "de": "Benenne den Durchsatz mit Sicherheitsprüfung und liefere unabhängig gemessene Ergebnisse."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-09",
+      "topic": "NET",
+      "text": {
+        "en": "Describe multicast and QoS configuration for voice/video, including validation under congestion.",
+        "de": "Beschreibe Multicast und QoS für Sprache/Video samt Prüfung bei Überlastung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-10",
+      "topic": "NET",
+      "text": {
+        "en": "Confirm rack, power and cooling requirements and list site-survey gaps.",
+        "de": "Bestätige Rack-, Strom- und Kühlungsanforderungen und offene Standortmessungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "NET-11",
+      "topic": "NET",
+      "text": {
+        "en": "Describe tested configuration backup and restore including firmware-version compatibility.",
+        "de": "Beschreibe getestete Konfigurationssicherung und Wiederherstellung samt Firmware-Kompatibilität."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-NET section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-NET-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-01",
+      "topic": "SEC",
+      "text": {
+        "en": "Does the management console support SAML 2.0 SSO and bank-controlled MFA? State the supported boundary.",
+        "de": "Unterstützt die Managementkonsole SAML-2.0-SSO und bankgesteuerte MFA? Benenne die unterstützte Grenze."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Yes/No/Partial + scope",
+        "de": "Ja/Nein/Teilweise + Umfang"
+      },
+      "max_chars": 160,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-02",
+      "topic": "SEC",
+      "text": {
+        "en": "If SSO is supported, prove SCIM deprovisioning within five minutes, including a measured test.",
+        "de": "Falls SSO unterstützt wird, belege SCIM-Deprovisionierung binnen fünf Minuten einschließlich Messung."
+      },
+      "parent": "SEC-01",
+      "condition": {
+        "en": "If SSO is supported",
+        "de": "Wenn SSO unterstützt wird"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Yes/No/Partial + measured minutes",
+        "de": "Ja/Nein/Teilweise + gemessene Minuten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "conditional",
+      "expectation": "GAP"
+    },
+    {
+      "id": "SEC-03",
+      "topic": "SEC",
+      "text": {
+        "en": "Describe least-privilege roles and segregation between bank operators and supplier administrators.",
+        "de": "Beschreibe Minimalrechte und die Trennung von Bankbetrieb und Lieferantenadministration."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-04",
+      "topic": "SEC",
+      "text": {
+        "en": "State encryption protocols and key ownership for management traffic and stored configuration.",
+        "de": "Benenne Verschlüsselungsprotokolle und Schlüsselverantwortung für Managementverkehr und gespeicherte Konfiguration."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-05",
+      "topic": "SEC",
+      "text": {
+        "en": "Provide independent penetration-test evidence no older than twelve months and remediation status.",
+        "de": "Lege einen unabhängigen Penetrationstest unter zwölf Monaten und den Behebungsstand vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-06",
+      "topic": "SEC",
+      "text": {
+        "en": "Explain critical vulnerability handling with a 48-hour mitigation requirement and escalation.",
+        "de": "Erkläre kritische Schwachstellen mit einer Minderungsanforderung binnen 48 Stunden und Eskalation."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-07",
+      "topic": "SEC",
+      "text": {
+        "en": "Show immutable audit retention for 365 days, export options and evidence of tamper resistance.",
+        "de": "Belege unveränderliche Auditaufbewahrung über 365 Tage, Export und Manipulationsschutz."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-08",
+      "topic": "SEC",
+      "text": {
+        "en": "Describe emergency administrator access, dual control and the audit trail.",
+        "de": "Beschreibe administrativen Notzugang, Vieraugenkontrolle und Prüfspur."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-09",
+      "topic": "SEC",
+      "text": {
+        "en": "Explain secure firmware provenance, update verification and rollback constraints.",
+        "de": "Erkläre sichere Firmwareherkunft, Updateprüfung und Rollback-Grenzen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-10",
+      "topic": "SEC",
+      "text": {
+        "en": "State whether a software bill of materials is supplied for each firmware release and provide one.",
+        "de": "Benenne, ob je Firmwareversion eine Software Bill of Materials vorliegt, und lege eine vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SEC-11",
+      "topic": "SEC",
+      "text": {
+        "en": "Identify residual security risks that require bank acceptance before production.",
+        "de": "Benenne verbleibende Sicherheitsrisiken, die vor Produktion Bankakzeptanz benötigen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SEC section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SEC-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-01",
+      "topic": "DATA",
+      "text": {
+        "en": "Can all management telemetry and backups remain exclusively in the EU with no non-EU administrator access?",
+        "de": "Können Managementtelemetrie und Sicherungen ausschließlich in der EU bleiben, ohne administrativen Zugriff außerhalb der EU?"
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Yes/No/Partial + locations",
+        "de": "Ja/Nein/Teilweise + Orte"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "privacy",
+      "expectation": "GAP"
+    },
+    {
+      "id": "DATA-02",
+      "topic": "DATA",
+      "text": {
+        "en": "If any non-EU processing is required, identify countries, subprocessors, transfer safeguards and missing approvals.",
+        "de": "Falls Verarbeitung außerhalb der EU nötig ist, benenne Länder, Unterauftragnehmer, Transfermaßnahmen und fehlende Freigaben."
+      },
+      "parent": "DATA-01",
+      "condition": {
+        "en": "If processing is not exclusively EU",
+        "de": "Wenn Verarbeitung nicht ausschließlich in der EU erfolgt"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "conditional",
+      "expectation": "REVIEW"
+    },
+    {
+      "id": "DATA-03",
+      "topic": "DATA",
+      "text": {
+        "en": "List personal data categories, purposes and legal roles separately for telemetry and support.",
+        "de": "Trenne personenbezogene Datenkategorien, Zwecke und rechtliche Rollen für Telemetrie und Support."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-04",
+      "topic": "DATA",
+      "text": {
+        "en": "Provide the signed data processing agreement for this bank, not an unsigned template.",
+        "de": "Lege die unterzeichnete Auftragsverarbeitungsvereinbarung dieser Bank statt einer unsignierten Vorlage vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "missing-evidence",
+      "expectation": "OPEN"
+    },
+    {
+      "id": "DATA-05",
+      "topic": "DATA",
+      "text": {
+        "en": "State retention periods by data type and explain how deletion is evidenced.",
+        "de": "Benenne Aufbewahrungsfristen je Datentyp und den Nachweis der Löschung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-06",
+      "topic": "DATA",
+      "text": {
+        "en": "Describe subject-access and deletion support, response times and bank responsibilities.",
+        "de": "Beschreibe Auskunfts- und Löschunterstützung, Fristen und Bankverantwortung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-07",
+      "topic": "DATA",
+      "text": {
+        "en": "Confirm whether production data is used for analytics or AI training and cite an approved policy.",
+        "de": "Bestätige die Nutzung produktiver Daten für Analytik oder KI-Training mit freigegebener Richtlinie."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-08",
+      "topic": "DATA",
+      "text": {
+        "en": "Explain minimization and masking in support bundles before external access.",
+        "de": "Erkläre Datenminimierung und Maskierung in Supportpaketen vor externem Zugriff."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-09",
+      "topic": "DATA",
+      "text": {
+        "en": "Describe how privacy incidents are reported within the bank's required twelve-hour window.",
+        "de": "Beschreibe Meldungen von Datenschutzvorfällen innerhalb des verlangten Zwölfstundenfensters."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-10",
+      "topic": "DATA",
+      "text": {
+        "en": "Provide a data flow diagram with processing locations and a current subprocessor register.",
+        "de": "Lege ein Datenflussdiagramm mit Verarbeitungsorten und ein aktuelles Unterauftragnehmerregister vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "DATA-11",
+      "topic": "DATA",
+      "text": {
+        "en": "Describe exit deletion including replicas, backups and the certification of completion.",
+        "de": "Beschreibe Löschung beim Exit einschließlich Replikaten, Backups und Abschlussbescheinigung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-DATA section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-DATA-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-01",
+      "topic": "EVID",
+      "text": {
+        "en": "Is the complete proposed service currently ISO 27001 certified? Provide evidence, not self-assessment.",
+        "de": "Ist der gesamte vorgeschlagene Service aktuell ISO-27001-zertifiziert? Liefere Nachweise statt Selbsteinschätzung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Yes/No/Unverified + evidence",
+        "de": "Ja/Nein/Ungeprüft + Nachweis"
+      },
+      "max_chars": 160,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "missing-evidence",
+      "expectation": "OPEN"
+    },
+    {
+      "id": "EVID-02",
+      "topic": "EVID",
+      "text": {
+        "en": "If certified, supply certificate issuer, scope, number and expiry and map all exclusions to this service.",
+        "de": "Falls zertifiziert, benenne Aussteller, Geltungsbereich, Nummer und Ablauf und ordne alle Ausnahmen diesem Service zu."
+      },
+      "parent": "EVID-01",
+      "condition": {
+        "en": "If certification is confirmed; unknown parent remains unresolved",
+        "de": "Wenn Zertifizierung bestätigt; unbekannte Hauptfrage bleibt offen"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Issuer, scope, number, expiry or unresolved dependency",
+        "de": "Aussteller, Umfang, Nummer, Ablauf oder offene Abhängigkeit"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "conditional",
+      "expectation": "BLOCKED"
+    },
+    {
+      "id": "EVID-03",
+      "topic": "EVID",
+      "text": {
+        "en": "Provide a current SOC 2 Type II report and identify its observation period and service coverage.",
+        "de": "Lege einen aktuellen SOC-2-Type-II-Bericht samt Prüfzeitraum und Leistungsabdeckung vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-04",
+      "topic": "EVID",
+      "text": {
+        "en": "Map proposed payment-network controls to the bank's PCI requirements without claiming certification.",
+        "de": "Ordne Zahlungsnetzmaßnahmen den PCI-Anforderungen der Bank zu, ohne Zertifizierung zu behaupten."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-05",
+      "topic": "EVID",
+      "text": {
+        "en": "Provide independent evidence for claimed redundancy and failover times.",
+        "de": "Lege unabhängige Belege für behauptete Redundanz und Failover-Zeiten vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-06",
+      "topic": "EVID",
+      "text": {
+        "en": "Supply the most recent disaster-recovery test record and list unresolved findings.",
+        "de": "Liefere das jüngste Wiederanlauf-Testprotokoll und offene Feststellungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-07",
+      "topic": "EVID",
+      "text": {
+        "en": "Show document ownership, approval date and version for every response-library source.",
+        "de": "Benenne Zuständigkeit, Freigabedatum und Version jeder Antwortbibliotheksquelle."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-08",
+      "topic": "EVID",
+      "text": {
+        "en": "Explain how superseded documents are detected and excluded from current commitments.",
+        "de": "Erkläre das Erkennen und Ausschließen überholter Dokumente aus aktuellen Zusagen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-09",
+      "topic": "EVID",
+      "text": {
+        "en": "List missing mandatory evidence and the accountable review function, without fabricated attachments.",
+        "de": "Liste fehlende Pflichtnachweise und zuständige Prüffunktionen ohne erfundene Anlagen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-10",
+      "topic": "EVID",
+      "text": {
+        "en": "Confirm the bank's right to inspect evidence under NDA and identify redacted items.",
+        "de": "Bestätige Einsicht unter NDA und benenne geschwärzte Unterlagen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "EVID-11",
+      "topic": "EVID",
+      "text": {
+        "en": "Provide a traceability register linking each requirement to an actual section and cloud file.",
+        "de": "Liefere ein Nachweisregister von jeder Anforderung zu einem tatsächlichen Abschnitt und einer Cloud-Datei."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-EVID section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-EVID-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-01",
+      "topic": "OPS",
+      "text": {
+        "en": "Commit to 99.95% 24/7 availability; reconcile any different SLA versions in the knowledge base.",
+        "de": "Sage 99,95 % Verfügbarkeit rund um die Uhr zu; gleiche abweichende SLA-Versionen der Wissensbasis ab."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "conflict",
+      "expectation": "GAP"
+    },
+    {
+      "id": "OPS-02",
+      "topic": "OPS",
+      "text": {
+        "en": "Explain the availability denominator, maintenance exclusions and maximum service credits under the current SLA.",
+        "de": "Erkläre Bezugszeitraum, Wartungsausnahmen und maximale Servicegutschriften des aktuellen SLA."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-03",
+      "topic": "OPS",
+      "text": {
+        "en": "Describe monitoring coverage, alert ownership and the limits of the proposed managed service.",
+        "de": "Beschreibe Monitoringabdeckung, Alarmzuständigkeit und Grenzen des Managed Service."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-04",
+      "topic": "OPS",
+      "text": {
+        "en": "Define severity levels and response versus resolution targets; do not conflate the two.",
+        "de": "Definiere Schweregrade und Reaktions- gegenüber Lösungszielen; setze sie nicht gleich."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-05",
+      "topic": "OPS",
+      "text": {
+        "en": "Provide an escalation matrix for out-of-hours outages and state uncovered periods.",
+        "de": "Lege Eskalation für Störungen außerhalb der Betriebszeit und ungedeckte Zeiträume dar."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-06",
+      "topic": "OPS",
+      "text": {
+        "en": "Describe change windows, bank sign-off and rollback ownership.",
+        "de": "Beschreibe Änderungsfenster, Bankfreigabe und Rollback-Verantwortung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-07",
+      "topic": "OPS",
+      "text": {
+        "en": "State patch cadence and emergency-change handling with evidence.",
+        "de": "Benenne Patchintervalle und belegten Umgang mit Notfalländerungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-08",
+      "topic": "OPS",
+      "text": {
+        "en": "Specify operational dashboards, report frequency and which inputs the bank must provide.",
+        "de": "Benenne Betriebsübersichten, Berichtstakt und nötige Bankeingaben."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-09",
+      "topic": "OPS",
+      "text": {
+        "en": "Describe configuration drift detection and the approval needed to remediate it.",
+        "de": "Beschreibe Konfigurationsabweichungen und die nötige Freigabe zur Korrektur."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-10",
+      "topic": "OPS",
+      "text": {
+        "en": "Explain how major incidents produce root-cause reports and corrective actions.",
+        "de": "Erkläre Ursachenberichte und Korrekturmaßnahmen nach Großstörungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "OPS-11",
+      "topic": "OPS",
+      "text": {
+        "en": "State service transition criteria before the supplier takes operational responsibility.",
+        "de": "Benenne Übergabekriterien vor Übernahme der Betriebsverantwortung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-OPS section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-OPS-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-01",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Can three-year next-business-day hardware care support the entire five-year term? Identify the renewal evidence gap.",
+        "de": "Deckt dreijährige Next-Business-Day-Hardwarebetreuung die gesamten fünf Jahre? Benenne die Nachweislücke für Verlängerungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "renewal",
+      "expectation": "OPEN"
+    },
+    {
+      "id": "SUPPORT-02",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Define business-day cutoffs, replacement logistics and geographic exclusions without promising four-hour replacement.",
+        "de": "Definiere Geschäftstagsfristen, Ersatzlogistik und Gebietsausnahmen ohne Vierstundenersatz zu versprechen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-03",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "State support channels, languages and covered hours.",
+        "de": "Benenne Supportkanäle, Sprachen und abgedeckte Zeiten."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-04",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Describe responsibility for diagnosis versus hardware replacement.",
+        "de": "Trenne Verantwortung für Diagnose und Hardwareersatz."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-05",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Provide recovery-time and recovery-point objectives with supporting test evidence.",
+        "de": "Benenne Wiederanlauf- und Datenverlustziele mit Testbelegen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-06",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Explain resilience when the supplier's own service desk is unavailable.",
+        "de": "Erkläre Resilienz beim Ausfall des eigenen Service Desks."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-07",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Specify on-site spare holdings and who pays for unused or obsolete stock.",
+        "de": "Benenne Vor-Ort-Ersatzbestände und die Kosten ungenutzter oder veralteter Ware."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-08",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Describe end-user communications during an incident without assuming external-send permission.",
+        "de": "Beschreibe Nutzerkommunikation im Störfall ohne Versandfreigabe vorauszusetzen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-09",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Explain defect triage across hardware, firmware, identity and upstream networks.",
+        "de": "Erkläre Fehlerabgrenzung zwischen Hardware, Firmware, Identität und vorgelagertem Netz."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-10",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Provide a verified continuity-test schedule and identify missing records.",
+        "de": "Lege belegte Kontinuitätsprüftermine vor und benenne fehlende Protokolle."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPORT-11",
+      "topic": "SUPPORT",
+      "text": {
+        "en": "Describe handover to a replacement supplier at contract end.",
+        "de": "Beschreibe Übergabe an einen Nachfolgelieferanten am Vertragsende."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPORT section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPORT-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-01",
+      "topic": "IMPL",
+      "text": {
+        "en": "Deliver twelve sites within six weeks; provide a gated plan and conditions rather than an unsupported date promise.",
+        "de": "Liefere zwölf Standorte in sechs Wochen; gib einen gestuften Plan und Bedingungen statt einer unbelegten Terminzusage."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-02",
+      "topic": "IMPL",
+      "text": {
+        "en": "Define objective acceptance tests for segmentation, failover and throughput and who signs the results.",
+        "de": "Definiere objektive Abnahmetests für Segmentierung, Failover und Durchsatz samt Unterschrift."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-03",
+      "topic": "IMPL",
+      "text": {
+        "en": "Specify the pilot site, go/no-go criteria and what happens after pilot failure.",
+        "de": "Benenne Pilotstandort, Go/No-Go-Kriterien und das Vorgehen bei Pilotfehlern."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-04",
+      "topic": "IMPL",
+      "text": {
+        "en": "List bank dependencies including access, cabling, power and identity configuration.",
+        "de": "Liste Bankabhängigkeiten wie Zugang, Verkabelung, Strom und Identitätskonfiguration."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-05",
+      "topic": "IMPL",
+      "text": {
+        "en": "Provide training scope and evidence of operator readiness.",
+        "de": "Benenne Schulungsumfang und Nachweise der Betriebsbereitschaft."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-06",
+      "topic": "IMPL",
+      "text": {
+        "en": "Describe the cutover window, outage notice and tested rollback plan.",
+        "de": "Beschreibe Umschaltfenster, Störungsankündigung und getesteten Rollback."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-07",
+      "topic": "IMPL",
+      "text": {
+        "en": "Show project governance, decision rights and change control.",
+        "de": "Benenne Projektsteuerung, Entscheidungsrechte und Änderungskontrolle."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-08",
+      "topic": "IMPL",
+      "text": {
+        "en": "Define configuration documentation and asset-register handover deliverables.",
+        "de": "Definiere Konfigurationsdokumentation und Übergabe des Anlagenregisters."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-09",
+      "topic": "IMPL",
+      "text": {
+        "en": "Describe the method for validating RF coverage before and after installation.",
+        "de": "Beschreibe die Prüfung der Funkabdeckung vor und nach Installation."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-10",
+      "topic": "IMPL",
+      "text": {
+        "en": "Estimate on-site effort and separate included work from additional day rates.",
+        "de": "Schätze Vor-Ort-Aufwand und trenne enthaltene Arbeit von zusätzlichen Tagessätzen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "IMPL-11",
+      "topic": "IMPL",
+      "text": {
+        "en": "State commercial consequences of bank-caused delays without automatically accepting penalties.",
+        "de": "Benenne Folgen bankverursachter Verzögerungen ohne automatische Vertragsstrafenakzeptanz."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-IMPL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-IMPL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-01",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "The bill of materials requests 48 CAP-6E devices; verify lifecycle and propose CAP-7 only as a disclosed alternative.",
+        "de": "Die Stückliste fordert 48 CAP-6E; prüfe den Lebenszyklus und schlage CAP-7 nur als offengelegte Alternative vor."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "alternative",
+      "expectation": "REVIEW"
+    },
+    {
+      "id": "SUPPLY-02",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "If available stock is insufficient, show dated allocation and delivery options without reserving or guaranteeing them.",
+        "de": "Bei unzureichendem Bestand zeige datierte Zuteilungs- und Lieferoptionen ohne Reservierung oder Garantie."
+      },
+      "parent": "SUPPLY-01",
+      "condition": {
+        "en": "If the requested or proposed line has insufficient stock",
+        "de": "Wenn angeforderte oder vorgeschlagene Position zu wenig Bestand hat"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "availability",
+      "expectation": "LIVE"
+    },
+    {
+      "id": "SUPPLY-03",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "For each line show on-hand, reserved and available quantities and distinguish a plan from a commitment.",
+        "de": "Zeige je Position vorhandene, reservierte und verfügbare Mengen; trenne Plan und Zusage."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-04",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Identify which alternatives need technical or bank approval and quantify price differences from live previews.",
+        "de": "Benenne technisch oder von der Bank freizugebende Alternativen und Preisdifferenzen aus Live-Vorschauen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-05",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Explain split shipments and their impact on site sequencing and costs.",
+        "de": "Erkläre Teillieferungen und Auswirkungen auf Standortreihenfolge und Kosten."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-06",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Provide lifecycle dates only where currently evidenced; do not turn an unknown date into a five-year warranty.",
+        "de": "Nenne nur aktuell belegte Lebenszyklusdaten; mache aus einem unbekannten Datum keine Fünfjahresgarantie."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-07",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "State incoterms, delivery locations and who bears transit risk.",
+        "de": "Benenne Incoterms, Lieferorte und Trägerschaft des Transportrisikos."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-08",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Describe counterfeit prevention and serial-number traceability with actual evidence.",
+        "de": "Beschreibe Fälschungsprävention und Seriennummern-Nachverfolgung mit Belegen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-09",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Show dependencies between optics, switches, gateways and care subscriptions before promising completeness.",
+        "de": "Zeige Abhängigkeiten zwischen Optiken, Switches, Gateways und Betreuung vor einer Vollständigkeitszusage."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-10",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Describe cancellation and substitution rules for delayed items.",
+        "de": "Beschreibe Stornierungs- und Austauschregeln für verspätete Artikel."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "SUPPLY-11",
+      "topic": "SUPPLY",
+      "text": {
+        "en": "Explain replenishment and replacement sourcing after product end of life.",
+        "de": "Erkläre Nachbeschaffung und Ersatzbeschaffung nach Produktabkündigung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-SUPPLY section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-SUPPLY-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-01",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Accept unlimited liability, including indirect loss, or explicitly record a contractual exception.",
+        "de": "Akzeptiere unbegrenzte Haftung einschließlich Folgeschäden oder erfasse ausdrücklich eine Vertragsausnahme."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Accept/Exception + reason",
+        "de": "Akzeptiert/Ausnahme + Begründung"
+      },
+      "max_chars": 160,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "contract",
+      "expectation": "GAP"
+    },
+    {
+      "id": "LEGAL-02",
+      "topic": "LEGAL",
+      "text": {
+        "en": "If unlimited liability is not accepted, propose the approved counterposition and identify legal review requirements.",
+        "de": "Falls unbegrenzte Haftung nicht akzeptiert wird, nenne die freigegebene Gegenposition und nötige Rechtsprüfung."
+      },
+      "parent": "LEGAL-01",
+      "condition": {
+        "en": "If unlimited liability is not accepted",
+        "de": "Wenn unbegrenzte Haftung nicht akzeptiert wird"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "conditional",
+      "expectation": "REVIEW"
+    },
+    {
+      "id": "LEGAL-03",
+      "topic": "LEGAL",
+      "text": {
+        "en": "State the governing law, jurisdiction and which differences from bank terms remain unresolved.",
+        "de": "Benenne Recht, Gerichtsstand und offene Abweichungen von Bankbedingungen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-04",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Explain ownership of configurations, documentation and pre-existing intellectual property.",
+        "de": "Erkläre Eigentum an Konfiguration, Dokumentation und bestehendem geistigem Eigentum."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-05",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Describe termination assistance, duration and charges without assuming free unlimited transition.",
+        "de": "Beschreibe Exit-Unterstützung, Dauer und Kosten ohne unbegrenzten kostenfreien Übergang anzunehmen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-06",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Specify price-adjustment rights and whether any annual indexation has been agreed.",
+        "de": "Benenne Preisanpassungsrechte und ob jährliche Indexierung vereinbart wurde."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-07",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Provide audit rights and restrictions for third-party supplier facilities.",
+        "de": "Benenne Prüfrechte und Grenzen für Einrichtungen Dritter."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-08",
+      "topic": "LEGAL",
+      "text": {
+        "en": "State warranty scope, remedies and exclusions using approved evidence rather than hidden API fields.",
+        "de": "Benenne Garantieumfang, Abhilfe und Ausnahmen aus freigegebenen Belegen statt verborgener API-Felder."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-09",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Describe delay penalties and limits that require commercial review.",
+        "de": "Beschreibe Verzögerungsstrafen und kaufmännisch zu prüfende Grenzen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-10",
+      "topic": "LEGAL",
+      "text": {
+        "en": "Explain confidentiality and permitted use of bank information during bidding.",
+        "de": "Erkläre Vertraulichkeit und zulässige Bankdatennutzung während des Verfahrens."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "LEGAL-11",
+      "topic": "LEGAL",
+      "text": {
+        "en": "State explicitly that this draft does not constitute signature, contract acceptance or order creation.",
+        "de": "Stelle klar, dass dieser Entwurf keine Unterschrift, Vertragsannahme oder Auftragserstellung ist."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-LEGAL section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-LEGAL-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-01",
+      "topic": "COMM",
+      "text": {
+        "en": "Provide a five-year TCO in the customer's verified currency, separating hardware, implementation, operations and care renewals.",
+        "de": "Lege Fünfjahres-TCO in geprüfter Kundenwährung vor; trenne Hardware, Einführung, Betrieb und Betreuungsverlängerung."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Amount/currency or INCOMPLETE; pricing-sheet references",
+        "de": "Betrag/Währung oder INCOMPLETE; Kalkulationsverweise"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "tco",
+      "expectation": "LIVE"
+    },
+    {
+      "id": "COMM-02",
+      "topic": "COMM",
+      "text": {
+        "en": "State years four and five renewal assumptions and mark TCO incomplete where no approved renewal price exists.",
+        "de": "Benenne Verlängerungsannahmen für Jahre vier und fünf und markiere TCO ohne freigegebenen Preis als unvollständig."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "tco",
+      "expectation": "OPEN"
+    },
+    {
+      "id": "COMM-03",
+      "topic": "COMM",
+      "text": {
+        "en": "Show customer-specific unit net prices, quantities, discounts and source timestamps from the unsaved Atlas preview.",
+        "de": "Zeige kundenspezifische Nettopreise, Mengen, Rabatte und Quellenzeitpunkte aus der ungespeicherten Atlas-Vorschau."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "live-price",
+      "expectation": "LIVE"
+    },
+    {
+      "id": "COMM-04",
+      "topic": "COMM",
+      "text": {
+        "en": "Reconcile line rounding, subtotal, tax and total against the preview, not an EUR list-price conversion.",
+        "de": "Gleiche Positionsrundung, Zwischensumme, Steuer und Gesamtbetrag mit der Vorschau statt EUR-Listenpreisumrechnung ab."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Reconciliation by line; amount/currency",
+        "de": "Abgleich je Position; Betrag/Währung"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "rounding",
+      "expectation": "LIVE"
+    },
+    {
+      "id": "COMM-05",
+      "topic": "COMM",
+      "text": {
+        "en": "Separate one-time, monthly and annual costs and state the unit and period of each rate.",
+        "de": "Trenne einmalige, monatliche und jährliche Kosten mit Einheit und Zeitraum jeder Rate."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-06",
+      "topic": "COMM",
+      "text": {
+        "en": "Provide optional and mandatory costs separately without silently removing mandatory items from the total.",
+        "de": "Trenne optionale und verpflichtende Kosten ohne Pflichtpositionen still aus der Summe zu entfernen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-07",
+      "topic": "COMM",
+      "text": {
+        "en": "Explain payment terms, credit warnings and financing dependencies observed on the actual account.",
+        "de": "Erkläre beobachtete Zahlungskonditionen, Kreditwarnungen und Finanzierungsabhängigkeiten des tatsächlichen Kontos."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-08",
+      "topic": "COMM",
+      "text": {
+        "en": "State any price validity period as a draft assumption unless explicitly supported by current evidence.",
+        "de": "Benenne Preisgültigkeit nur als Entwurfsannahme, sofern kein aktueller Beleg vorliegt."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "MUST",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-09",
+      "topic": "COMM",
+      "text": {
+        "en": "Show how a switch or access-point substitution changes TCO without inventing a price.",
+        "de": "Zeige TCO-Auswirkungen eines Switch- oder Access-Point-Austauschs ohne erfundene Preise."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-10",
+      "topic": "COMM",
+      "text": {
+        "en": "Identify internal approval needs separately; do not expose supplier costs, margin or approval mechanics to the customer.",
+        "de": "Erfasse interne Freigaben getrennt; zeige dem Kunden keine Lieferantenkosten, Marge oder Freigabelogik."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    },
+    {
+      "id": "COMM-11",
+      "topic": "COMM",
+      "text": {
+        "en": "Provide an open-cost register so missing shipping, tax or renewal values cannot appear as confirmed zero.",
+        "de": "Erstelle ein Register offener Kosten, damit fehlende Versand-, Steuer- oder Verlängerungswerte nicht als bestätigte Null erscheinen."
+      },
+      "parent": "",
+      "condition": {
+        "en": "Always",
+        "de": "Immer"
+      },
+      "priority": "SHOULD",
+      "format": {
+        "en": "Concise text; evidence in source columns",
+        "de": "Kurzer Text; Nachweis in Quellenspalten"
+      },
+      "max_chars": 450,
+      "evidence": {
+        "en": "Approved KB-COMM section and actual link; external test/certificate when requested",
+        "de": "Freigegebener KB-COMM-Abschnitt und tatsächlicher Link; geforderter externer Test/Zertifikat"
+      },
+      "tag": "standard",
+      "expectation": "EVIDENCE_OR_OPEN"
+    }
+  ],
+  "live_values": "Never freeze Atlas stock, account terms, approval policy or prices.",
+  "critical_checks": {
+    "OPS-01": "Use approved v2 (99.5% covered hours); v1 (99.99% 24/7) cannot support a commitment.",
+    "EVID-02": "Parent unverified -> BLOCKED/open dependency, not N/A; never fabricate a certificate.",
+    "SEC-02": "SSO supported but SCIM unsupported -> GAP, not irrelevant.",
+    "DATA-01": "US/UK processing cannot satisfy EU-only; privacy/legal review.",
+    "LEGAL-01": "Unlimited liability conflicts with caps; counterposition is not customer acceptance.",
+    "COMM-02": "Missing required renewals, freight/tax -> incomplete TCO, not confirmed zero.",
+    "SUPPLY-01": "Verify actual lifecycle, disclose CAP-7 and switch alternatives; do not save/reserve."
+  }
+}

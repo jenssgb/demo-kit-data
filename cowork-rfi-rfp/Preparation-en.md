@@ -1,0 +1,11 @@
+# Contoso RFI preparation
+Files are in OneDrive > Demo-Kit > Cowork > cowork-rfi-rfp.
+1. Use the fixed global install.ps1 -Tenant command once, ideally the day before. Do not rerun it as a rehearsal reset: changed cloud workbooks can be overwritten.
+2. In Edge with the demo account, enable Cowork browser access and sign in to Contoso Atlas before presenting. Verify the actual Woodgrove account/currency, visible product records and unsaved New quote > Live preview > Check availability. Never Save quote.
+3. Upload skills/contoso-rfi-rfp-response/SKILL.md through Customize > Skills > arrow next to Add > Upload skill. Update an existing skill rather than creating a duplicate. Select it in Sources in the new conversation.
+4. Choose runs/en/compact/01/RFI_Compact_Run_01.xlsx for the compact case or runs/en/full/01/RFI_Full_Run_01.xlsx for the large case. Read Run: NEW; all answer cells must be empty. Use 02-08 on subsequent runs. Never edit templates or reuse an answered run.
+5. Add attachments > Attach cloud files and folders: reference just the chosen existing cloud workbook, not a local upload. The prompt names knowledge/en; Cowork should resolve permitted cloud PDFs there. If search is missing/ambiguous, select only that specific existing cloud source. Other runs, masters, results and skills are not answer evidence.
+6. Rehearse actual same-file edits and both Word files in the Run B6 results folder. If Cowork cannot put them there, explicitly report placement incomplete; do not claim success from filenames. Prices/stock are live, so the expected reference contains no fixed commercial totals.
+7. After eight runs, copy the unchanged matching master into a new run folder, set unique Run B2/B6 and prepare a results folder. No deletion/reset or global installer rerun.
+The RFI is fictional and non-binding. The six difficult cases are retired SLA v1 vs v2, missing ISO/SOC2/signed DPA, 10G and CAP-6E alternatives with live supply checks, missing year-4/5 care rates, EU-only/unlimited-liability exceptions, and conditional/limited fields.
+The live VM preflight must prove account access, browser controls, source indexing, file permissions, all rows, output location and two isolated runs. Package validation is not a live Cowork guarantee.

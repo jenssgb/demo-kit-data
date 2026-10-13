@@ -1,0 +1,11 @@
+# Vorbereitung Contoso-RFI
+Dateien liegen in OneDrive > Demo-Kit > Cowork > cowork-rfi-rfp.
+1. Den festen globalen install.ps1-Befehl mit -Tenant einmal ausführen, möglichst am Vortag. Nicht als Proben-Reset wiederholen: Bearbeitete Cloud-Dateien können überschrieben werden.
+2. Edge mit Demo-Konto nutzen, Cowork-Browserzugriff erlauben und Contoso Atlas vorher anmelden. Tatsächliches Woodgrove-Konto/Währung, Produkte und ungespeichertes New quote > Live preview > Check availability prüfen. Niemals Save quote.
+3. skills/contoso-rfi-rfp-response/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen. Bestehenden Skill aktualisieren statt duplizieren. Im neuen Verlauf unter Sources auswählen.
+4. Für kompakt runs/de/compact/01/RFI_Compact_Run_01.xlsx, für groß runs/de/full/01/RFI_Full_Run_01.xlsx wählen. Run muss NEW zeigen; Antwortzellen müssen leer sein. Danach 02-08 nutzen. Nie templates bearbeiten oder beantworteten Lauf wiederverwenden.
+5. Add attachments > Attach cloud files and folders: Nur die gewählte bestehende Cloud-Excel referenzieren, nicht lokal hochladen. Der Prompt nennt knowledge/de; Cowork soll die berechtigten Cloud-PDFs dort finden. Bei fehlender/mehrdeutiger Suche nur die konkret fehlende bestehende Cloud-Quelle auswählen. Andere Läufe, Master, Ergebnisse und Skills sind keine Antwortbelege.
+6. Echte Änderung derselben Datei und beide Word-Dateien im Ergebnisordner aus Run B6 proben. Kann Cowork sie dort nicht ablegen, Ablage ausdrücklich als unvollständig melden; Dateinamen sind kein Erfolgsnachweis. Preise/Bestände sind live; erwartete Ergebnisse enthalten keine fixen kaufmännischen Summen.
+7. Nach acht Läufen passenden unveränderten Master in neuen Laufordner kopieren, eindeutige Run B2/B6 setzen und Ergebnisordner vorbereiten. Kein Löschen/Reset und kein globaler Installer-Rerun.
+Die RFI ist fiktiv und unverbindlich. Sechs schwierige Fälle: Zurückgezogenes SLA v1 gegen v2, fehlendes ISO/SOC2/unterzeichnete AVV, 10G-/CAP-6E-Alternativen mit Live-Lieferprüfung, fehlende Betreuungspreise Jahre 4/5, EU-only/unbegrenzte Haftung sowie bedingte/zeichenbegrenzte Felder.
+VM-Vorprüfung muss Kontozugriff, Browser-Schaltflächen, Indexierung, Dateirechte, alle Fragen, Ablage und zwei getrennte Läufe belegen. Paketprüfung garantiert keinen erfolgreichen Cowork-Lauf.

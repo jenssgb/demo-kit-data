@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Contoso Atlas - RFI read-only preview",
+        "de": "Contoso Atlas - RFI nur Vorschau"
+      },
+      "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/quotes"
+    }
+  ],
+  "manual": {
+    "en": [
+      "RFI: read Preparation-en.md, activate contoso-rfi-rfp-response, select a fresh compact/full cloud workbook and verify live Atlas, KB search and result-folder placement. Never Save quote. Do not rerun installer as a reset."
+    ],
+    "de": [
+      "RFI: Preparation-de.md lesen, contoso-rfi-rfp-response aktivieren, frische kompakte/große Cloud-Excel wählen und Atlas, KB-Suche sowie Ergebnisablage live prüfen. Nie Save quote. Installer nicht als Reset wiederholen."
+    ]
+  }
+}

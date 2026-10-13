@@ -62,7 +62,8 @@
         "cowork-lane-margin",
         "cowork-customer-qbr",
         "cowork-disruption-response",
-        "cowork-steering-to-board"
+        "cowork-steering-to-board",
+        "cowork-rfi-rfp"
       ]
     },
     {
