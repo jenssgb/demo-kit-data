@@ -51,6 +51,12 @@
       },
       "demos": [
         "cowork-copilot",
+        "cowork-sap",
+        "cowork-servicecenter-cases",
+        "cowork-customs-readiness",
+        "cowork-sme-freight-quote",
+        "cowork-atlas-browser-quote",
+        "cowork-atlas-browser-supply",
         "cowork-freight-invoice-check",
         "cowork-carrier-contracts",
         "cowork-lane-margin",

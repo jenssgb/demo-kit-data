@@ -1,0 +1,35 @@
+{
+  "mails": [
+    "mails-{lang}/1_Teresa_FQ301.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "SydneyM@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Files: OneDrive > Demo-Kit > Cowork > cowork-sme-freight-quote. Use inputs/en first; work/en contains the shared register.",
+      "Before presenting: Customize > Skills > arrow next to Add > Upload skill; select skills/contoso-sme-freight-quote/SKILL.md. If already installed, edit/replace it; do not upload a duplicate. Start a new conversation.",
+      "In the conversation Sources picker, select this workflow skill; attach the initial cloud files and the relevant mail references. Do not select replay evidence until the follow-up.",
+      "Review any real email before approving Send. Allowed recipients are the internal CDX users in the skill, never a fictional customer's external address.",
+      "To repeat: close the old session and restore only this scenario's named work file to its initial version using OneDrive version history after review. An installer rerun is not a guaranteed reset."
+    ],
+    "de": [
+      "Dateien: OneDrive > Demo-Kit > Cowork > cowork-sme-freight-quote. Zuerst inputs/de verwenden; work/de enthält das gemeinsame Register.",
+      "Vor der Vorführung: Customize > Skills > Pfeil neben Add > Upload skill; skills/contoso-sme-freight-quote/SKILL.md auswählen. Falls vorhanden, bearbeiten/ersetzen, keine zweite Kopie hochladen. Neuen Verlauf starten.",
+      "Im Sources-Auswahlfeld des Verlaufs diesen Workflow-Skill aktivieren; Anfangsdateien aus der Cloud und die passenden Mailreferenzen auswählen. Replay-Belege erst beim Folgeauftrag auswählen.",
+      "Jede echte Mail vor Send prüfen und bewusst freigeben. Nur die internen CDX-Adressen aus dem Skill verwenden, niemals eine externe Adresse des fiktiven Kunden.",
+      "Für eine Wiederholung den alten Verlauf schließen und nach Prüfung nur die Arbeitsdatei dieses Szenarios über den OneDrive-Versionsverlauf auf den Ausgangsstand zurücksetzen. Ein Installer-Rerun ist kein garantierter Reset."
+    ]
+  }
+}

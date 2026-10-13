@@ -6,20 +6,32 @@
     "mails-{lang}/4_TailspinToys_Quote_Request.eml"
   ],
   "links": [
-    { "name": { "en": "Contoso Atlas (browser demo)", "de": "Contoso Atlas (Browser-Demo)" }, "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/" },
-    { "name": { "en": "Microsoft 365 admin center (Copilot settings)", "de": "Microsoft 365 Admin Center (Copilot-Einstellungen)" }, "url": "https://admin.microsoft.com/" }
+    {
+      "name": {
+        "en": "Contoso Atlas (browser demo)",
+        "de": "Contoso Atlas (Browser-Demo)"
+      },
+      "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/"
+    },
+    {
+      "name": {
+        "en": "Microsoft 365 admin center (Copilot settings)",
+        "de": "Microsoft 365 Admin Center (Copilot-Einstellungen)"
+      },
+      "url": "https://admin.microsoft.com/"
+    }
   ],
   "manual": {
     "de": [
       "**Admin**: Spending Policy mit **Cowork** aktivieren (**Microsoft 365 Admin Center › Copilot › Cost Management**).",
       "**Admin**: **Cowork Browsing** einschalten (**Copilot › Settings › View All › Cowork settings › Allow browser access**) und am Vortag in Edge bei **Contoso Atlas** anmelden.",
-      "SAP-Abschnitt: Plugin **arnold** (enosix) hinzufügen und einmal anmelden.",
+      "SAP-Abläufe: Auf **SAP mit arnold** wechseln. Plugin **enosix arnold™ for Copilot Cowork** aktivieren und einmal anmelden. Vorbereitung unter **Demo-Kit › Cowork › cowork-sap**; der vorhandene Skill **customer-email-html** wird nicht vom Installer mitgeliefert.",
       "Skill **skills\\contoso-golive-readiness\\SKILL.md** in der Demo hochladen (**Customize › Skills › Upload skill**)."
     ],
     "en": [
       "**Admin**: turn on a spending policy that includes **Cowork** (**Microsoft 365 admin center › Copilot › Cost Management**).",
       "**Admin**: turn on **Cowork Browsing** (**Copilot › Settings › View All › Cowork settings › Allow browser access**) and sign in to **Contoso Atlas** in Edge the day before.",
-      "SAP section: add the **arnold** plugin (enosix) and sign in once.",
+      "SAP workflows: open **SAP with arnold**. Enable **enosix arnold™ for Copilot Cowork** and sign in once. Preparation is in **Demo-Kit › Cowork › cowork-sap**; the existing **customer-email-html** skill is not included by the installer.",
       "Upload the skill **skills\\contoso-golive-readiness\\SKILL.md** during the demo (**Customize › Skills › Upload skill**)."
     ]
   }

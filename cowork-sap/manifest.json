@@ -1,0 +1,64 @@
+{
+  "title": {
+    "en": "SAP with arnold",
+    "de": "SAP mit arnold"
+  },
+  "next": {
+    "en": [
+      "Open SAP_Demo_Readiness.md and verify your existing SAP demo connection.",
+      "Teresa's quote request is in the inbox after the global -Tenant setup.",
+      "The existing customer-email-html skill is referenced, not included."
+    ],
+    "de": [
+      "SAP_Demo_Readiness.md öffnen und die vorhandene SAP-Demoverbindung prüfen.",
+      "Teresas Angebotsanfrage liegt nach dem globalen -Tenant-Setup im Posteingang.",
+      "Der vorhandene Skill customer-email-html wird referenziert, nicht mitgeliefert."
+    ]
+  },
+  "files": [
+    {
+      "path": "mails-de/1_Teresa_SAP_Quote_Request.eml",
+      "sha256": "97706732a339836a1ba8f798c7f3f9afd0fec0356158b66637fe77cad9e381fe"
+    },
+    {
+      "path": "mails-de/2_Teresa_BLAZE_Order_Request.eml",
+      "sha256": "320fc9e76fe021f465b85dbf87d669da63cf666918c682e1f2ab60255cab1aa1"
+    },
+    {
+      "path": "mails-de/3_Teresa_BLAZE_Quantity_Change.eml",
+      "sha256": "e8ba6c29071bf7d24d3447f13d211c26b9fcbbee0a71d19314207f8cf2bb6972"
+    },
+    {
+      "path": "mails-de/4_Teresa_ARIA_Order_Review.eml",
+      "sha256": "ea3a733d608a84f659557f820df07306a1a19ba644a05f5cb3131bf454b94b90"
+    },
+    {
+      "path": "mails-de/5_Teresa_ARIA_Stock_Request.eml",
+      "sha256": "708cf1c2589610e6b87cdf6f48792d69d5ad0d8541d32a9c696a9c655556bdeb"
+    },
+    {
+      "path": "mails-en/1_Teresa_SAP_Quote_Request.eml",
+      "sha256": "48ea4acfbd633c387c232ccea199984afbbae1113c991d326392acd027d4657d"
+    },
+    {
+      "path": "mails-en/2_Teresa_BLAZE_Order_Request.eml",
+      "sha256": "479e21762af633e93b36b42f2a9c52e86d4c5e6a557e199f640d0d38d8a4e60a"
+    },
+    {
+      "path": "mails-en/3_Teresa_BLAZE_Quantity_Change.eml",
+      "sha256": "13df60db2d1deb46c6dfb05abc4207c185e61027e6e9df145ed845de1ac635ec"
+    },
+    {
+      "path": "mails-en/4_Teresa_ARIA_Order_Review.eml",
+      "sha256": "786246e540c9910c4a8827f0e2a8808cbf771247478193ddf956f822d51397ad"
+    },
+    {
+      "path": "mails-en/5_Teresa_ARIA_Stock_Request.eml",
+      "sha256": "2ec4b3e1cc33d9380a7e45d7ae28daaa47d718bde5f3b9e1bdc63186d8800bdc"
+    },
+    {
+      "path": "SAP_Demo_Readiness.md",
+      "sha256": "57df58acf94d57d41b88a91dc1947a1e4c860b9a7d22ed72e116ddbf6cc6d6ef"
+    }
+  ]
+}

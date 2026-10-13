@@ -19,6 +19,7 @@
   Without -Tenant the files are copied to OneDrive\Demo-Kit on this PC (fallback: Desktop).
   -Language de|en   mail/meeting/OneNote language (default en)
   -WhatIf           shows what would happen without changing the tenant
+  -RefreshSenders   rechecks the Exchange Send As setup instead of reusing the sender cache
   -RemoveLegacy     deletes the folders of older kit versions (catalog.json "legacy", e.g. Demo-BPW) from OneDrive,
                     the local cache and the old Desktop link pages, so Copilot doesn't find duplicate files
   -Demo <id>[,<id>] troubleshooting only: just these demos (no link page)
@@ -35,7 +36,8 @@ param(
     [switch]$Tenant,
     [ValidateSet('en', 'de')] [string]$Language = 'en',
     [switch]$WhatIf,
-    [switch]$RemoveLegacy
+    [switch]$RemoveLegacy,
+    [switch]$RefreshSenders
 )
 
 $ErrorActionPreference = 'Stop'
@@ -288,7 +290,7 @@ if ($Tenant) {
     try {
         $code = (Invoke-WebRequest -Uri (Url 'tenant.ps1') -UseBasicParsing).Content
         if ($code -is [byte[]]) { $code = [Text.Encoding]::UTF8.GetString($code) }
-        & ([scriptblock]::Create($code)) -Items $items -Raw $raw -Language $Language -WhatIf:$WhatIf -Links $links -Legacy @($catalog.legacy) -RemoveLegacy:$RemoveLegacy
+        & ([scriptblock]::Create($code)) -Items $items -Raw $raw -Language $Language -WhatIf:$WhatIf -Links $links -Legacy @($catalog.legacy) -RemoveLegacy:$RemoveLegacy -RefreshSenders:$RefreshSenders
     } catch {
         Write-Host ("  " + (T 'Tenant step failed: ' 'Tenant-Schritt fehlgeschlagen: ') + $_) -ForegroundColor Red
         Write-Host ($_.ScriptStackTrace) -ForegroundColor DarkGray

@@ -1,0 +1,17 @@
+{
+  "manual": {
+    "en": [
+      "Before presenting: upload skills/contoso-freight-audit/SKILL.md through Customize > Skills > arrow next to Add > Upload skill, select it in Sources, and start a new conversation. Edit an existing same-name skill instead of adding duplicates. Select this workflow's cloud input files."
+    ],
+    "de": [
+      "Vor der Vorführung: skills/contoso-freight-audit/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen, in Sources auswählen und einen neuen Verlauf starten. Vorhandenen gleichnamigen Skill bearbeiten statt Duplikate anzulegen. Cloud-Eingaben dieses Ablaufs auswählen."
+    ]
+  },
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "VanceD@M365CPI98544940.OnMicrosoft.com",
+    "SydneyM@M365CPI98544940.OnMicrosoft.com"
+  ]
+}

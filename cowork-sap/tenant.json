@@ -1,0 +1,41 @@
+{
+  "mails": [
+    "mails-{lang}/1_Teresa_SAP_Quote_Request.eml",
+    "mails-{lang}/2_Teresa_BLAZE_Order_Request.eml",
+    "mails-{lang}/3_Teresa_BLAZE_Quantity_Change.eml",
+    "mails-{lang}/4_Teresa_ARIA_Order_Review.eml",
+    "mails-{lang}/5_Teresa_ARIA_Stock_Request.eml"
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot (Cowork)",
+        "de": "Microsoft Copilot (Cowork)"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "de": [
+      "In Cowork über **+ › Customize** das Plugin **enosix arnold™ for Copilot Cowork** hinzufügen und in **Sources & Skills** aktivieren. Die einmalige SAP-Verbindungsanmeldung vor der Demo abschließen.",
+      "Im vorhandenen SAP-Demosystem BLAZE, ARIA 2 und Werk WSLL prüfen. Der Installer erstellt keine SAP-Stammdaten oder SAP-Belege.",
+      "Für Mail-to-Quote den vorhandenen Skill **customer-email-html** verwenden. Er wird hier nur erwähnt, nicht installiert oder neu erstellt.",
+      "Für Recherche und Bestand den beabsichtigten Kunden im Cowork-Verlauf festhalten; nicht automatisch Kunde 100231 verwenden. „Nächsten Monat“ in einen konkreten Zeitraum auflösen.",
+      "Die Mail von Teresa mit Betreff **[COWORK-SAP] Angebotsanfrage ARIA 2** ist im Posteingang. Der generische Datensatz ist zusätzlich zum vorhandenen getesteten Mail-to-Quote-Ablauf separat zu prüfen.",
+      "SAP-Schreibvorgänge nur im Demosystem ausführen. Auftragsnummer und Position vor der Mengenänderung festhalten; vorhandene Freigaben beachten.",
+      "Fünf Geschäftsmails von Teresa liegen im Posteingang: ARIA-2-Angebot, BLAZE-Auftrag, BLAZE-Nachtrag, September-Review und WSLL-Bestandsprüfung. Die passende Mail als Kontext auswählen. Den Nachtrag erst nach Auftragsanlage anwenden; alle SAP-Nummern/Ergebnisse kommen aus deiner vorbereiteten SAP-Umgebung."
+    ],
+    "en": [
+      "In Cowork, add **enosix arnold™ for Copilot Cowork** through **+ › Customize** and enable it in **Sources & Skills**. Complete the one-time SAP connection sign-in before the demo.",
+      "Check BLAZE, ARIA 2 and plant WSLL in the existing SAP demo system. The installer does not create SAP master data or documents.",
+      "For email to quote, use the existing **customer-email-html** skill. It is mentioned here, not installed or recreated.",
+      "For order search and stock, keep the intended customer explicit in the Cowork conversation; do not automatically use customer 100231. Resolve \"next month\" to a specific period.",
+      "Teresa's email, subject **[COWORK-SAP] Quote request ARIA 2**, is in the inbox. Test this generic data set separately from the existing tested email-to-quote workflow.",
+      "Execute SAP writes only in the demo system. Keep the order number and line item before changing the quantity; follow the applicable approvals.",
+      "Five business mails from Teresa are in the inbox: ARIA 2 quote, BLAZE order, BLAZE amendment, September review and WSLL supply check. Select the right message as context. The amendment is applied only after the order exists; all SAP numbers/results come from your prepared SAP environment."
+    ]
+  },
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com"
+  ]
+}

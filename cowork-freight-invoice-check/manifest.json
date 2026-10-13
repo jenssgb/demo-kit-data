@@ -63,6 +63,10 @@
     {
       "path": "freight_transport_orders.xlsx",
       "sha256": "f291ba7ff0f72ced2db1f2612d44cdfb1956799794834bea7482ff1d88eb847c"
+    },
+    {
+      "path": "skills/contoso-freight-audit/SKILL.md",
+      "sha256": "4139adc63bfff767b4cc230555b019e054739e22a2154fc9ff18fb3090cb7b3a"
     }
   ]
 }

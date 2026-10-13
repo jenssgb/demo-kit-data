@@ -1,0 +1,5 @@
+# Quote rules
+
+Fictional Contoso rates and planning times; not live availability. Scenario clock: 2026-10-14 09:00 Europe/Berlin.
+
+All rates cover Hamburg > Chicago door-to-door, pickup/delivery/document charges are per shipment. No insurance or duty included. Lead times are calendar days from cargo-ready date; capacity and customs transit require confirmation. Volume = pallets*L*W*H/1,000,000 (cm to CBM). Air dimensional kg = pallets*L*W*H/divisor; bill the greater of actual and dimensional kg. Base=max(rate*units,minimum). Fuel=base*fuel fraction rounded to cents. Cost=base+fuel+pickup+delivery+documents. Sell=cost*1.20 rounded to cents; margin=(sell-cost)/sell. Round money to cents, half up. Select the cheapest valid option that meets the requested planning deadline. Do not use expired rates. Gross margin below 15% or sell above EUR 5000 requires Sydney Mattos's commercial approval. Customer acceptance and booking are separate. Quote ID FQ-301 remains stable, increase version on material changes; old versions become superseded. Initial deadline 2026-11-04. Later changes come from the user, never inferred. Reply via Teresa Sac; no external customer address.

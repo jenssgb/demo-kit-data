@@ -18,6 +18,7 @@
     onenote  { notebook, section, pages[{ title{de,en}, file "tenant/pages/x-{lang}.html" }] }
     manual   { de[], en[] }   steps that can't be scripted, printed as a checklist at the end
     links    [{ name{de,en}, url }]  extra links for the Desktop link page and Edge favorites (e.g. a mock web app)
+    requiredUsers ["real.upn@tenant"]  verify current enabled Exchange plans before tenant writes
   Senders set up once are cached locally and in the admin's OneDrive (DemoKit/senders.json): Exchange Online
   (second sign-in) is needed only once per tenant; it then prepares every person of every demo (people.json).
   Running it again creates nothing twice.
@@ -154,7 +155,23 @@ function Read-Eml([byte[]]$bytes) {
     else { $bodyText = $enc.GetString([Text.Encoding]::GetEncoding(28591).GetBytes($body)) }
     $from = Decode-Words "$($h['from'])"
     $name = if ($from -match '^\s*"?([^"<]+?)"?\s*<') { $Matches[1].Trim() } else { $from.Trim() }
-    [pscustomobject]@{ Subject = (Decode-Words "$($h['subject'])").Trim(); FromName = $name; Body = ($bodyText -replace '\r?\n', "`r`n").TrimEnd() }
+    $address = if ($from -match '<([^<>]+)>') { $Matches[1].Trim() } else { $null }
+    [pscustomobject]@{ Subject = (Decode-Words "$($h['subject'])").Trim(); FromName = $name; FromAddress = $address; Body = ($bodyText -replace '\r?\n', "`r`n").TrimEnd() }
+}
+
+function Assert-DemoMailbox($User, [string]$Upn, [string]$ExpectedName) {
+    if (-not $User -or $User.userPrincipalName -ne $Upn) { throw "Demo user $Upn was not resolved exactly; update the real CDX users in the data first." }
+    if ($ExpectedName -and $User.displayName -ne $ExpectedName) { throw "Demo sender $Upn is $($User.displayName), not $ExpectedName; update the data instead of creating a substitute." }
+    if (-not @($User.assignedPlans | Where-Object { $_.service -eq 'exchange' -and $_.capabilityStatus -eq 'Enabled' }).Count) {
+        throw "Demo user $Upn has no enabled Exchange Online plan. Teams-only or unlicensed users cannot be used."
+    }
+    if (-not $User.mail -or $User.mail -ne $Upn) { throw "Demo user $Upn has mailbox address '$($User.mail)'; verify and update the direct address in the data." }
+}
+
+function Assert-DemoSender($Sender, [string]$Name, [string]$ExpectedAddress) {
+    if (-not $Sender -or $Sender.address -ne $ExpectedAddress -or $Sender.created) {
+        throw "Demo sender $Name must use the existing mailbox $ExpectedAddress. Review the sender setup; for an outdated cache use -RefreshSenders. No demo mail was sent."
+    }
 }
 
 function Get-Resource($item, [string]$rel) {
@@ -235,8 +252,10 @@ if (-not (Get-Module -ListAvailable Microsoft.Graph.Authentication)) {
     Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -Force -AllowClobber
 }
 Import-Module Microsoft.Graph.Authentication
+$requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
-Connect-MgGraph -Scopes $scopes -NoWelcome
+if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
+Connect-MgGraph -Scopes $scopes -ContextScope CurrentUser -NoWelcome
 function G($method, $uri, $body, $contentType = 'application/json') {
     $p = @{ Method = $method; Uri = "https://graph.microsoft.com/v1.0$uri" }
     if ($null -ne $body) { $p.Body = $body; $p.ContentType = $contentType }
@@ -256,6 +275,24 @@ $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
 Say ("{0} <{1}>" -f $me.displayName, $myMail) Green
 if ($WhatIf) { Say (T 'WhatIf: nothing is changed, only shown.' 'WhatIf: Es wird nichts geaendert, nur angezeigt.') Yellow }
+
+$verifiedSenders = @{}
+foreach ($upn in $requiredUsers) {
+    if (($upn -split '@')[-1] -ne $domain) { throw "Demo user $upn belongs to another tenant domain; sign in to the prepared CDX tenant." }
+    $u = G GET "/users/$([uri]::EscapeDataString($upn))?`$select=displayName,userPrincipalName,mail,assignedPlans"
+    $messages = @($mails | Where-Object { $_.FromAddress -eq $upn })
+    foreach ($m in $messages) { Assert-DemoMailbox $u $upn $m.FromName }
+    if (-not $messages.Count) { Assert-DemoMailbox $u $upn '' }
+    $verifiedSenders[$u.displayName] = $upn
+    Row (T 'verified' 'geprueft') ("{0} <{1}>: Exchange Online enabled" -f $u.displayName, $upn) Green
+}
+foreach ($m in $mails) {
+    $config = $configs | Where-Object { $_.Item.id -eq $m.Demo } | Select-Object -First 1
+    if (@($config.Config.requiredUsers | Where-Object { $_ }).Count -and
+        (-not $verifiedSenders.ContainsKey($m.FromName) -or $verifiedSenders[$m.FromName] -ne $m.FromAddress)) {
+        throw "Mail '$($m.Subject)' does not match a verified demo sender; correct its From name/address before installing."
+    }
+}
 
 $report = [ordered]@{}
 function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ new = 0; updated = 0; same = 0; failed = 0; pending = 0 } }; $report[$area][$what]++ }
@@ -289,6 +326,9 @@ function Save-SenderCache {
     if (@($cache.Keys | Where-Object { -not $odKeys[$_] }).Count) {
         try { G PUT "$($odCache):/content" (To-AsciiJson $cache) 'application/json' | Out-Null; foreach ($k in @($cache.Keys)) { $odKeys[$k] = $true } } catch { }
     }
+}
+foreach ($n in $verifiedSenders.Keys) {
+    if ($cache[$n]) { Assert-DemoSender $cache[$n] $n $verifiedSenders[$n] }
 }
 if ($others.Count -and -not @($others | Where-Object { -not $cache[$_] }).Count) {
     Write-Host ""
@@ -369,6 +409,7 @@ Disconnect-ExchangeOnline -Confirm:$false | Out-Null
             else { Write-Host ("    {0,-13} {1}: {2}" -f (T 'skipped' 'uebersprungen'), $r.name, $r.error) -ForegroundColor DarkGray }
             continue
         }
+        if ($verifiedSenders.ContainsKey($r.name)) { Assert-DemoSender $r $r.name $verifiedSenders[$r.name] }
         $senders[$r.name] = $r
         if (-not $WhatIf) { $cache[$r.name] = [ordered]@{ name = $r.name; address = $r.address } }
         $note = @()

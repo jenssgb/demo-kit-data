@@ -15,6 +15,10 @@
     {
       "path": "fargo_steering_workshop_transcript.docx",
       "sha256": "eaf6c966f7e96bf6ec805f9fe1cf56d88d68f5ed38ce1cedaf3c19346efc7d18"
+    },
+    {
+      "path": "skills/contoso-steering-to-board/SKILL.md",
+      "sha256": "e13607d17dc56083a610095b2ecf79fc968368478eb5061384eedea34af48e5c"
     }
   ]
 }

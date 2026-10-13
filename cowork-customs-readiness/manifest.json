@@ -1,0 +1,100 @@
+{
+  "title": {
+    "en": "Customs documents: unblock the review",
+    "de": "Zollunterlagen: Blockaden für die Prüfung auflösen"
+  },
+  "next": {
+    "en": [
+      "Files: OneDrive > Demo-Kit > Cowork > cowork-customs-readiness. Use inputs/en first; work/en contains the shared register.",
+      "Before presenting: Customize > Skills > arrow next to Add > Upload skill; select skills/contoso-customs-readiness/SKILL.md. If already installed, edit/replace it; do not upload a duplicate. Start a new conversation.",
+      "In the conversation Sources picker, select this workflow skill; attach the initial cloud files and the relevant mail references. Do not select replay evidence until the follow-up.",
+      "Review any real email before approving Send. Allowed recipients are the internal CDX users in the skill, never a fictional customer's external address.",
+      "To repeat: close the old session and restore only this scenario's named work file to its initial version using OneDrive version history after review. An installer rerun is not a guaranteed reset."
+    ],
+    "de": [
+      "Dateien: OneDrive > Demo-Kit > Cowork > cowork-customs-readiness. Zuerst inputs/de verwenden; work/de enthält das gemeinsame Register.",
+      "Vor der Vorführung: Customize > Skills > Pfeil neben Add > Upload skill; skills/contoso-customs-readiness/SKILL.md auswählen. Falls vorhanden, bearbeiten/ersetzen, keine zweite Kopie hochladen. Neuen Verlauf starten.",
+      "Im Sources-Auswahlfeld des Verlaufs diesen Workflow-Skill aktivieren; Anfangsdateien aus der Cloud und die passenden Mailreferenzen auswählen. Replay-Belege erst beim Folgeauftrag auswählen.",
+      "Jede echte Mail vor Send prüfen und bewusst freigeben. Nur die internen CDX-Adressen aus dem Skill verwenden, niemals eine externe Adresse des fiktiven Kunden.",
+      "Für eine Wiederholung den alten Verlauf schließen und nach Prüfung nur die Arbeitsdatei dieses Szenarios über den OneDrive-Versionsverlauf auf den Ausgangsstand zurücksetzen. Ein Installer-Rerun ist kein garantierter Reset."
+    ]
+  },
+  "files": [
+    {
+      "path": "inputs/de/CD-201_Booking.pdf",
+      "sha256": "4b8192c8e9d68037a740bb4681b0d972912c469a1edb7a59cbaabfaecbd47a5c"
+    },
+    {
+      "path": "inputs/de/CD-201_Invoice.pdf",
+      "sha256": "1d6d92e08adf55ff2fdc24f5bcdbc1d6a4c44cac8968a4fb00885b95e3e0a1c6"
+    },
+    {
+      "path": "inputs/de/CD-201_Packing_v1.pdf",
+      "sha256": "e2bb0af342580a991d98bd6f0d5a92cc6bc21a61faa7488f3415a091fe11ed40"
+    },
+    {
+      "path": "inputs/de/readiness_rules.md",
+      "sha256": "255e560b6d174f230ac0593b214675659f9d6a1f8a27d381d80ab9daa3a601b2"
+    },
+    {
+      "path": "inputs/en/CD-201_Booking.pdf",
+      "sha256": "c6378f483036596ab206f0d65dd5c8a035aa66bd18c252f17e42c15ab030cf67"
+    },
+    {
+      "path": "inputs/en/CD-201_Invoice.pdf",
+      "sha256": "d3395dd49de5402ac384d1eef24944e87a6786c62bd729f1f3cbae6ba1a221ac"
+    },
+    {
+      "path": "inputs/en/CD-201_Packing_v1.pdf",
+      "sha256": "ff5ae9ff25f56b14888fd3cea19ba6c7958d0f77578359e78a8b31b4cd7fc350"
+    },
+    {
+      "path": "inputs/en/readiness_rules.md",
+      "sha256": "34bd7b59f2f5baa848be340fe77bd279bdcd08b41ca9e81ff0a86a9fe7c84d2b"
+    },
+    {
+      "path": "mails-de/1_Teresa_CD201.eml",
+      "sha256": "81f1949b63cbca74387eff04c50ad82e1ccbdb1f5239c9456e15d3d18a0680ff"
+    },
+    {
+      "path": "mails-en/1_Teresa_CD201.eml",
+      "sha256": "8a8471c71b8955c6bf73d32a1af42a85e6df9312567be2dad230a310dea9bd79"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "3a0d267d8c11ce75f54ab002f46e830de841bff7d3eb88d4176e2a8d6f95dc56"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "5dbc791d356c8ea34f4576059737c7dc48d505562835c14a3eae65bee252d4f4"
+    },
+    {
+      "path": "replay/de/CD-201_Packing_v2.pdf",
+      "sha256": "6c9a85595c6432f8bc6103f6b381d78cb28f26ef528dc388ae68e8bebe80de4a"
+    },
+    {
+      "path": "replay/de/CD-201_Supplier_Statement.pdf",
+      "sha256": "2779a30d3cc532d88831b00b0e1dc2eb675732ac377b110ac5abacba78276615"
+    },
+    {
+      "path": "replay/en/CD-201_Packing_v2.pdf",
+      "sha256": "20498228f52cd0c4559cea87d3dfb0fdda01c421d5e54c8a0768d5600d6a5e6b"
+    },
+    {
+      "path": "replay/en/CD-201_Supplier_Statement.pdf",
+      "sha256": "388112c4ec89bde763f6e51175d29b5d265eb932d1a419379670e242a7f54a87"
+    },
+    {
+      "path": "skills/contoso-customs-readiness/SKILL.md",
+      "sha256": "6da61a4b4fce930aee2a9b19d4771ba52a6779447f5fa0667a62a8e87a4688a9"
+    },
+    {
+      "path": "work/de/Document_Register.xlsx",
+      "sha256": "b00f4a53830c9b448d71dd818f2721229c4f54d320582bb2eb004eb945649247"
+    },
+    {
+      "path": "work/en/Document_Register.xlsx",
+      "sha256": "1b3f554ecc65c869dc04058a818ba8e1bcff24412f1969bdb5ae7690db36a96d"
+    }
+  ]
+}

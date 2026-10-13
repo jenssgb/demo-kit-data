@@ -1,0 +1,108 @@
+{
+  "title": {
+    "en": "Servicecenter: own the case to handover",
+    "de": "Servicecenter: Fälle bis zur Übergabe übernehmen"
+  },
+  "next": {
+    "en": [
+      "Files: OneDrive > Demo-Kit > Cowork > cowork-servicecenter-cases. Use inputs/en first; work/en contains the shared register.",
+      "Before presenting: Customize > Skills > arrow next to Add > Upload skill; select skills/contoso-servicecenter-cases/SKILL.md. If already installed, edit/replace it; do not upload a duplicate. Start a new conversation.",
+      "In the conversation Sources picker, select this workflow skill; attach the initial cloud files and the relevant mail references. Do not select replay evidence until the follow-up.",
+      "Review any real email before approving Send. Allowed recipients are the internal CDX users in the skill, never a fictional customer's external address.",
+      "To repeat: close the old session and restore only this scenario's named work file to its initial version using OneDrive version history after review. An installer rerun is not a guaranteed reset."
+    ],
+    "de": [
+      "Dateien: OneDrive > Demo-Kit > Cowork > cowork-servicecenter-cases. Zuerst inputs/de verwenden; work/de enthält das gemeinsame Register.",
+      "Vor der Vorführung: Customize > Skills > Pfeil neben Add > Upload skill; skills/contoso-servicecenter-cases/SKILL.md auswählen. Falls vorhanden, bearbeiten/ersetzen, keine zweite Kopie hochladen. Neuen Verlauf starten.",
+      "Im Sources-Auswahlfeld des Verlaufs diesen Workflow-Skill aktivieren; Anfangsdateien aus der Cloud und die passenden Mailreferenzen auswählen. Replay-Belege erst beim Folgeauftrag auswählen.",
+      "Jede echte Mail vor Send prüfen und bewusst freigeben. Nur die internen CDX-Adressen aus dem Skill verwenden, niemals eine externe Adresse des fiktiven Kunden.",
+      "Für eine Wiederholung den alten Verlauf schließen und nach Prüfung nur die Arbeitsdatei dieses Szenarios über den OneDrive-Versionsverlauf auf den Ausgangsstand zurücksetzen. Ein Installer-Rerun ist kein garantierter Reset."
+    ]
+  },
+  "files": [
+    {
+      "path": "inputs/de/SC-103_POD.pdf",
+      "sha256": "e697c0ded22ce1ed93efef2de28529c48295aefcbdb5ae9ba3f3337a598c8515"
+    },
+    {
+      "path": "inputs/de/service_rules.md",
+      "sha256": "ea4ea97be672a0024a770e44539384425c0d3ae9791b25d6712e2f0d33c68bf2"
+    },
+    {
+      "path": "inputs/de/shipment_snapshot.xlsx",
+      "sha256": "345c52ff619a65bf887dd6f77d2f9d48304594020ee748e360877392067166a6"
+    },
+    {
+      "path": "inputs/en/SC-103_POD.pdf",
+      "sha256": "5ce2896c95395654e17d5bfb99aa7ed77db65c5a2f6f2e43e0d8e612aa22083b"
+    },
+    {
+      "path": "inputs/en/service_rules.md",
+      "sha256": "1b80c1d8a6e5584ee5a8a52e5a259fade9e8daf7ab5de4014c4ce73bdc3a6b22"
+    },
+    {
+      "path": "inputs/en/shipment_snapshot.xlsx",
+      "sha256": "904e18634526ddd4a488583bd3fd6e6d9b3d8b4b31bebe91ebfb041e7b956295"
+    },
+    {
+      "path": "mails-de/1_Teresa_SC101.eml",
+      "sha256": "b79ae1cc07f0f04fdfe6c927db92dacc544be61b598a11044262cb5416ac3b03"
+    },
+    {
+      "path": "mails-de/2_Teresa_SC102.eml",
+      "sha256": "1603a2d2a5c73479e279924c1f16b151ad2d96ad43b984763c2de8f395d9ec8f"
+    },
+    {
+      "path": "mails-de/3_Teresa_SC103.eml",
+      "sha256": "1eca867550ae7bcce708bbd82b292d41c7d9e49b785022769fdecb81da7b33ac"
+    },
+    {
+      "path": "mails-de/4_Teresa_SC104.eml",
+      "sha256": "38bbebabf766049af5100fc7b8ea5b79a42809d40fa8413a50f0e7a66015ae27"
+    },
+    {
+      "path": "mails-en/1_Teresa_SC101.eml",
+      "sha256": "820df2b2983e43f0fd57098f72f213861d71800696be02143a0f398b529fdc20"
+    },
+    {
+      "path": "mails-en/2_Teresa_SC102.eml",
+      "sha256": "e8c24d21a91fc9059389620c0314f794705d8692eef804bab537b0d36aab6146"
+    },
+    {
+      "path": "mails-en/3_Teresa_SC103.eml",
+      "sha256": "8ce9bc856e21dd2a376a5a21b38527e5da0b745a611cb9ec16820822112e77c1"
+    },
+    {
+      "path": "mails-en/4_Teresa_SC104.eml",
+      "sha256": "20b51d3cdf34dd31037f6cef35732cc1830eb8cec90240acf24cae8595d0ccec"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "fe97668be78362f17df1f997bbf57ac3a4642fec09b9a84a6a4546ff37dde809"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "dcd174fb3ffb1302c5120e6ef7da456024f602b48d574824816b678baa485a07"
+    },
+    {
+      "path": "replay/de/SC-101_POD.pdf",
+      "sha256": "e855b9144ead209997d75284a3cb99b1d81eb6d5af553462e2b2a45de73be1e6"
+    },
+    {
+      "path": "replay/en/SC-101_POD.pdf",
+      "sha256": "2f1a47c0e5380051bf8ac162d581a78559ec780dbf121f0d846aaac44806263a"
+    },
+    {
+      "path": "skills/contoso-servicecenter-cases/SKILL.md",
+      "sha256": "682adc8fa9bc010664245bdd2e2a7e837512589c64a0f9b76986d1768bca6cfc"
+    },
+    {
+      "path": "work/de/Case_Register.xlsx",
+      "sha256": "84155c92876eb69c7d36d652ee0e889f6beaed552541da7e9457f0520be624bf"
+    },
+    {
+      "path": "work/en/Case_Register.xlsx",
+      "sha256": "220b465b1755f91ae779fa74aba0e74953c40fb0c6e6eb6a68e852da6faf81bd"
+    }
+  ]
+}

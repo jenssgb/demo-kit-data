@@ -295,22 +295,31 @@ Then offer to draft a short email to the stakeholders with the verdict and the d
 - Write in the language of the request.
 """
 
-PLACEHOLDERS = """# SAP demo data for arnold (enosix) – what to swap
+PLACEHOLDERS = """# SAP demo preparation / SAP-Demovorbereitung
 
-The Cowork page uses these fictional values. Replace them with real master data from your SAP demo system
-(and edit the Tailspin Toys email accordingly) so arnold finds them.
+## English
 
-| In the demo                         | Replace with (your SAP system)          |
-|-------------------------------------|-----------------------------------------|
-| Customer: Tailspin Toys             | [SAP customer number / sold-to party]   |
-| Material: Contoso Smart Thermostat T300 | [SAP material number]               |
-| Quantity: 1,200 units (or 600 + 600) | keep or adapt                           |
-| Plant / shipping point: Fargo       | [SAP plant / shipping point]            |
-| Ship-to: Minneapolis warehouse      | [SAP ship-to party]                     |
-| Requested delivery: May 8 / May 22  | keep or adapt                           |
+The four SAP workflows now have their own page: **Cowork > SAP with arnold**.
+Preparation is in **Demo-Kit > Cowork > cowork-sap > SAP_Demo_Readiness.md**.
+The existing Fargo/T300 email remains part of the generic go-live sample material;
+it is not the new SAP email-to-quote request.
 
-Tip: run the prompt "Show me the open sales orders and quotes for Tailspin Toys" in Cowork once before the demo,
-so the arnold sign-in is done and you can see which numbers come back.
+Use BLAZE for the order quantity change and ARIA 2 / WSLL for the stock check.
+The new quote request is Teresa's **[COWORK-SAP] Quote request ARIA 2** email.
+The existing `customer-email-html` skill is referenced, not installed by the setup command.
+The installer does not create SAP master data or SAP documents.
+
+## Deutsch
+
+Die vier SAP-Abläufe haben jetzt eine eigene Seite: **Cowork > SAP mit arnold**.
+Die Vorbereitung liegt in **Demo-Kit > Cowork > cowork-sap > SAP_Demo_Readiness.md**.
+Die bestehende Fargo-/T300-Mail bleibt generisches Go-live-Beispielmaterial;
+sie ist nicht die neue SAP-Angebotsanfrage.
+
+BLAZE für die Auftragsmengenänderung und ARIA 2 / WSLL für den Bestandscheck verwenden.
+Die neue Angebotsanfrage ist Teresas Mail **[COWORK-SAP] Angebotsanfrage ARIA 2**.
+Der vorhandene Skill `customer-email-html` wird referenziert, nicht vom Setup installiert.
+Der Installer erstellt keine SAP-Stammdaten oder SAP-Belege.
 """
 
 

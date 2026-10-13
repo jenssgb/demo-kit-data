@@ -15,6 +15,10 @@
     {
       "path": "lane_margin_raw.xlsx",
       "sha256": "fe97511c435a99cffb24373f2b777b7a52809a357469935ad18158381871f88b"
+    },
+    {
+      "path": "skills/contoso-lane-margin/SKILL.md",
+      "sha256": "17d441d92fd3a06cb9fc03ea4cc6505f6e98c78de396358ad5af33f9d3163d12"
     }
   ]
 }

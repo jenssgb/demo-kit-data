@@ -1,0 +1,76 @@
+{
+  "title": {
+    "en": "SME: shipping request to operational handover",
+    "de": "KMU: Transportanfrage bis zur operativen Übergabe"
+  },
+  "next": {
+    "en": [
+      "Files: OneDrive > Demo-Kit > Cowork > cowork-sme-freight-quote. Use inputs/en first; work/en contains the shared register.",
+      "Before presenting: Customize > Skills > arrow next to Add > Upload skill; select skills/contoso-sme-freight-quote/SKILL.md. If already installed, edit/replace it; do not upload a duplicate. Start a new conversation.",
+      "In the conversation Sources picker, select this workflow skill; attach the initial cloud files and the relevant mail references. Do not select replay evidence until the follow-up.",
+      "Review any real email before approving Send. Allowed recipients are the internal CDX users in the skill, never a fictional customer's external address.",
+      "To repeat: close the old session and restore only this scenario's named work file to its initial version using OneDrive version history after review. An installer rerun is not a guaranteed reset."
+    ],
+    "de": [
+      "Dateien: OneDrive > Demo-Kit > Cowork > cowork-sme-freight-quote. Zuerst inputs/de verwenden; work/de enthält das gemeinsame Register.",
+      "Vor der Vorführung: Customize > Skills > Pfeil neben Add > Upload skill; skills/contoso-sme-freight-quote/SKILL.md auswählen. Falls vorhanden, bearbeiten/ersetzen, keine zweite Kopie hochladen. Neuen Verlauf starten.",
+      "Im Sources-Auswahlfeld des Verlaufs diesen Workflow-Skill aktivieren; Anfangsdateien aus der Cloud und die passenden Mailreferenzen auswählen. Replay-Belege erst beim Folgeauftrag auswählen.",
+      "Jede echte Mail vor Send prüfen und bewusst freigeben. Nur die internen CDX-Adressen aus dem Skill verwenden, niemals eine externe Adresse des fiktiven Kunden.",
+      "Für eine Wiederholung den alten Verlauf schließen und nach Prüfung nur die Arbeitsdatei dieses Szenarios über den OneDrive-Versionsverlauf auf den Ausgangsstand zurücksetzen. Ein Installer-Rerun ist kein garantierter Reset."
+    ]
+  },
+  "files": [
+    {
+      "path": "inputs/de/FQ-301_Request.pdf",
+      "sha256": "fddfabc132f6d333d0554b35560b7c38937f5c9beb27fb772046027f004bfd28"
+    },
+    {
+      "path": "inputs/de/quote_rules.md",
+      "sha256": "0c3205c7f2c92a377d23472e0c47b0b19983e489fb24af72dd2241e2a5574ea2"
+    },
+    {
+      "path": "inputs/de/rate_snapshot.xlsx",
+      "sha256": "a86d4417a8ad32feeb7973915929fbe8a8273b718fc2edff0f2f90885110bcfc"
+    },
+    {
+      "path": "inputs/en/FQ-301_Request.pdf",
+      "sha256": "fddfabc132f6d333d0554b35560b7c38937f5c9beb27fb772046027f004bfd28"
+    },
+    {
+      "path": "inputs/en/quote_rules.md",
+      "sha256": "094e312c5285272f1aebfc8f6e0e88428bd41f60ffc9ce59afe3af3b300926f3"
+    },
+    {
+      "path": "inputs/en/rate_snapshot.xlsx",
+      "sha256": "9a1e0c392353180d4cbe36646fb584598950248b0be816c0439ad23cc3eaec26"
+    },
+    {
+      "path": "mails-de/1_Teresa_FQ301.eml",
+      "sha256": "a28beb6c50df8182b470ebe21fa2ca5024346fdc27057023d92559e80d223276"
+    },
+    {
+      "path": "mails-en/1_Teresa_FQ301.eml",
+      "sha256": "b9d852ff42a102bff74a12768213114decbff5315aa9296c5800b553ce854ca1"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "403b4c5421264391ff5c6b39c70cacc40efd86ba2f73fca7dab2991c44760453"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "a54ecee82048eb620f092d40942ff19bd6b089b043c6f8f32ed5b6773314c0b4"
+    },
+    {
+      "path": "skills/contoso-sme-freight-quote/SKILL.md",
+      "sha256": "b5f40b44f12636843d61da925348ae0930c8ed071779e795946328c3386ed8b5"
+    },
+    {
+      "path": "work/de/Quote_Register.xlsx",
+      "sha256": "f0b96bcc942581e8f868dbf49ac3ac67e993e1d2b731fb71702b9327ca5ef2a6"
+    },
+    {
+      "path": "work/en/Quote_Register.xlsx",
+      "sha256": "a0071db1bd346e1bac709a2002d78121e91c0e56143eb531f596d19c606983d6"
+    }
+  ]
+}

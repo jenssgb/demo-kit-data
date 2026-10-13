@@ -1,0 +1,51 @@
+{
+  "mails": [
+    "mails-{lang}/1_Teresa_Atlas_Request.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "Contoso Atlas",
+        "de": "Contoso Atlas"
+      },
+      "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com"
+    },
+    {
+      "name": {
+        "en": "Atlas demo guide",
+        "de": "Atlas Demo-Guide"
+      },
+      "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/guide"
+    },
+    {
+      "name": {
+        "en": "Browser: supply delay to recovery",
+        "de": "Browser: Lieferverzug bis Rettungsmaßnahme"
+      },
+      "url": "https://contoso-atlas.swedencentral.cloudapp.azure.com/purchase-orders"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Files: OneDrive > Demo-Kit > Cowork > cowork-atlas-browser-supply. The inbox message is **Proseware | Rotterdam switches 25 days late** from Teresa.",
+      "Admin, once in the Microsoft 365 admin center: **Copilot > Settings > View All > Cowork settings > Allow browser access**. Select **Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users**; check site and Edge policies. Do not change these by script.",
+      "Use **Cowork** on the web in **Microsoft Edge** with the same work account; Microsoft recommends Edge 152.0.4191.53 or later. Open https://contoso-atlas.swedencentral.cloudapp.azure.com in that profile and complete **Sign in with Microsoft** before presenting.",
+      "Before presenting, open https://contoso-atlas.swedencentral.cloudapp.azure.com/guide on the VM and verify website availability, your account's permissions, current button labels and this workflow's records. Atlas is a separate demo app, not a Microsoft product capability. Do not use the guide's MCP setup, acting-user switch or API instructions.",
+      "Upload **skills/contoso-atlas-browser-supply/SKILL.md** via **Customize > Skills > arrow next to Add > Upload skill**. If it already exists, open that skill and edit its instructions instead of uploading another copy. Select it in **Sources** with the mail and **inputs/en/request.md**. Do not select an Atlas CRM connector.",
+      "On first browser use, review **I understand**. Use **Switch to tab** to show the work; approve consequential actions when requested.",
+      "Rehearse in the signed-in VM. These package files do not seed/reset Atlas. Do not reset the entire shared database; record current IDs/dates and reuse verified target states on repeats."
+    ],
+    "de": [
+      "Dateien: OneDrive > Demo-Kit > Cowork > cowork-atlas-browser-supply. Teresa hat die Mail **Proseware | Rotterdam-Switches 25 Tage verspätet** im Posteingang.",
+      "Admin, einmalig im Microsoft 365 Admin Center: **Copilot > Settings > View All > Cowork settings > Allow browser access**. **Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users** wählen; Website- und Edge-Richtlinien prüfen. Nicht per Skript ändern.",
+      "**Cowork** im Web in **Microsoft Edge** mit demselben Arbeitskonto nutzen; Microsoft empfiehlt Edge 152.0.4191.53 oder neuer. https://contoso-atlas.swedencentral.cloudapp.azure.com in diesem Profil öffnen und **Sign in with Microsoft** vor der Vorführung abschließen.",
+      "Vor der Vorführung https://contoso-atlas.swedencentral.cloudapp.azure.com/guide auf der VM öffnen und Erreichbarkeit, Rechte deines Kontos, aktuelle Schaltflächennamen und benötigte Datensätze prüfen. Atlas ist eine separate Demo-App, keine Microsoft-Produktfunktion. MCP-Setup, Acting-User-Schalter und API-Anweisungen des Guides nicht verwenden.",
+      "**skills/contoso-atlas-browser-supply/SKILL.md** über **Customize > Skills > Pfeil neben Add > Upload skill** hochladen. Falls bereits vorhanden, den Skill öffnen und seine Anweisungen bearbeiten, keine weitere Kopie hochladen. In **Sources** mit Mail und **inputs/de/request.md** auswählen. Keinen Atlas-CRM-Connector auswählen.",
+      "Beim ersten Browserlauf **I understand** prüfen. Mit **Switch to tab** die Arbeit zeigen; folgenreiche Aktionen auf Nachfrage freigeben.",
+      "In der angemeldeten VM proben. Diese Paketdateien befüllen Atlas nicht und setzen es nicht zurück. Kein Reset der gesamten gemeinsamen Datenbank; aktuelle IDs/Termine festhalten und geprüfte Zielzustände bei Wiederholungen wiederverwenden."
+    ]
+  }
+}
