@@ -4,7 +4,7 @@ A saved PO delay, a verified Blue Yonder recovery, reopened delivery dates and u
 
 Rehearsal required: record actual IDs, dates, prices, quantities and status from the signed-in UI. No invented fixed IDs or totals.
 
-Read the selected Teresa message: Proseware, Rotterdam, 600 CMS-48P-POE, 25 calendar days later than the ORIGINAL confirmed date.
+Use the user's complete request or the named Teresa inbox message: Proseware, Rotterdam, 600 CMS-48P-POE, 25 calendar days later than the ORIGINAL confirmed date. Locate and verify the message if needed; no request.md attachment is required.
 Use Purchase Orders to locate the exact PO. Confirm supplier, warehouse, SKU and quantity in the live UI. Do not guess a PO ID.
 Record PO ID, status and original/current expected dates before making changes. Use Original expected if the PO was already delayed; never add 25 days again to a revised date.
 Set Expected to original date +25 calendar days to inspect Impact analysis; do not persist anything during the initial analysis.

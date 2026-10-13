@@ -17,16 +17,16 @@
   ],
   "manual": {
     "de": [
-      "Billies Mail **Gate 4 | Scanner-Ausfall** liegt im Posteingang. Zusammen mit Playbook und betroffenen Sendungen als Referenz auswählen. Der kurze Prompt enthält nicht mehr den Meldungstext; kein Teams-Setup nötig.",
+      "Billies Mail **Gate 4 | Scanner-Ausfall** liegt im Posteingang. Cowork nutzt diese Meldung mit benanntem Playbook und Sendungsliste; nur bei nicht eindeutigem Treffer die vorhandene Mail referenzieren. Kein Teams-Setup nötig.",
       "Optional (Auslöser-Variante): Im Teams-Team einen Kanal **Fargo Gate Alerts** anlegen und in **Cowork** den Auslöser **Wenn eine Teams-Kanalnachricht eintrifft** einrichten (nur bei @Erwähnung). Die @Erwähnung lässt sich nicht per Skript anlegen.",
       "**Cowork**: Vorab einmal komplett durchlaufen lassen und das fertige Ergebnis als Rückfallebene offen halten. Nichts senden.",
-      "Vor der Vorführung: skills/contoso-disruption-response/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen, in Sources auswählen und einen neuen Verlauf starten. Vorhandenen gleichnamigen Skill bearbeiten statt Duplikate anzulegen. Cloud-Eingaben dieses Ablaufs auswählen."
+      "Vor der Vorführung: skills/contoso-disruption-response/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen, in Sources auswählen und einen neuen Verlauf starten. Vorhandenen gleichnamigen Skill bearbeiten statt Duplikate anzulegen. Der Prompt nennt die Cloud-Eingaben; nur bei fehlendem oder mehrdeutigem Treffer gezielt die vorhandene Referenz auswählen."
     ],
     "en": [
-      "Billie's message **Gate 4 | Scanner outage** is in the inbox. Select it as context with the playbook and affected shipments. The short prompt no longer contains the incident text; no Teams setup is needed.",
+      "Billie's message **Gate 4 | Scanner outage** is in the inbox. Cowork uses that incident message with the named playbook and shipment list; select the existing message reference only if it cannot be found uniquely. No Teams setup is needed.",
       "Optional (trigger variant): create a channel **Fargo Gate Alerts** in a Teams team and set up the trigger **When a Teams channel message arrives** in **Cowork** (only for @mentions). The @mention cannot be created by script.",
       "**Cowork**: run it through once beforehand and keep the finished result open as a fallback. Send nothing.",
-      "Before presenting: upload skills/contoso-disruption-response/SKILL.md through Customize > Skills > arrow next to Add > Upload skill, select it in Sources, and start a new conversation. Edit an existing same-name skill instead of adding duplicates. Select this workflow's cloud input files."
+      "Before presenting: upload skills/contoso-disruption-response/SKILL.md through Customize > Skills > arrow next to Add > Upload skill, select it in Sources, and start a new conversation. Edit an existing same-name skill instead of adding duplicates. The prompt names this workflow's cloud inputs; select a specific existing reference only if discovery is missing or ambiguous."
     ]
   },
   "requiredUsers": [

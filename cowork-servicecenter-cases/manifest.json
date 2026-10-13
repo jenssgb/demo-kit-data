@@ -7,14 +7,14 @@
     "en": [
       "Files: OneDrive > Demo-Kit > Cowork > cowork-servicecenter-cases. Use inputs/en first; work/en contains the shared register.",
       "Before presenting: Customize > Skills > arrow next to Add > Upload skill; select skills/contoso-servicecenter-cases/SKILL.md. If already installed, edit/replace it; do not upload a duplicate. Start a new conversation.",
-      "In the conversation Sources picker, select this workflow skill; attach the initial cloud files and the relevant mail references. Do not select replay evidence until the follow-up.",
+      "In Sources, select this workflow skill. The prompt names the initial cloud sources; let Cowork locate and verify them. Select a specific existing cloud file or mail only if a source is missing or ambiguous. Do not use replay evidence until the follow-up.",
       "Review any real email before approving Send. Allowed recipients are the internal CDX users in the skill, never a fictional customer's external address.",
       "To repeat: close the old session and restore only this scenario's named work file to its initial version using OneDrive version history after review. An installer rerun is not a guaranteed reset."
     ],
     "de": [
       "Dateien: OneDrive > Demo-Kit > Cowork > cowork-servicecenter-cases. Zuerst inputs/de verwenden; work/de enthält das gemeinsame Register.",
       "Vor der Vorführung: Customize > Skills > Pfeil neben Add > Upload skill; skills/contoso-servicecenter-cases/SKILL.md auswählen. Falls vorhanden, bearbeiten/ersetzen, keine zweite Kopie hochladen. Neuen Verlauf starten.",
-      "Im Sources-Auswahlfeld des Verlaufs diesen Workflow-Skill aktivieren; Anfangsdateien aus der Cloud und die passenden Mailreferenzen auswählen. Replay-Belege erst beim Folgeauftrag auswählen.",
+      "In Sources diesen Workflow-Skill auswählen. Der Prompt nennt die Cloud-Anfangsquellen; Cowork soll sie finden und prüfen. Nur bei fehlender oder mehrdeutiger Quelle gezielt die vorhandene Cloud-Datei oder Mail referenzieren. Replay-Belege erst im Folgeauftrag verwenden.",
       "Jede echte Mail vor Send prüfen und bewusst freigeben. Nur die internen CDX-Adressen aus dem Skill verwenden, niemals eine externe Adresse des fiktiven Kunden.",
       "Für eine Wiederholung den alten Verlauf schließen und nach Prüfung nur die Arbeitsdatei dieses Szenarios über den OneDrive-Versionsverlauf auf den Ausgangsstand zurücksetzen. Ein Installer-Rerun ist kein garantierter Reset."
     ]
@@ -78,11 +78,11 @@
     },
     {
       "path": "Preparation-de.md",
-      "sha256": "fe97668be78362f17df1f997bbf57ac3a4642fec09b9a84a6a4546ff37dde809"
+      "sha256": "ef036ee3ba36c78ddca90bab814893601347d2aa547db0d96426a08731303b2d"
     },
     {
       "path": "Preparation-en.md",
-      "sha256": "dcd174fb3ffb1302c5120e6ef7da456024f602b48d574824816b678baa485a07"
+      "sha256": "a472ef75386aae010efe9235aef9ecf97cd1c3eb317272b9aa3bd8ce1af2e034"
     },
     {
       "path": "replay/de/SC-101_POD.pdf",
@@ -94,7 +94,7 @@
     },
     {
       "path": "skills/contoso-servicecenter-cases/SKILL.md",
-      "sha256": "682adc8fa9bc010664245bdd2e2a7e837512589c64a0f9b76986d1768bca6cfc"
+      "sha256": "6f511b53fe71348ac435c41cdfa6e9b77c1ad985b0413bc103a3a3593115a8f5"
     },
     {
       "path": "work/de/Case_Register.xlsx",

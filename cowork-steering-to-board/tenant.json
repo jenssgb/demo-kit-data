@@ -1,10 +1,10 @@
 {
   "manual": {
     "en": [
-      "Before presenting: upload skills/contoso-steering-to-board/SKILL.md through Customize > Skills > arrow next to Add > Upload skill, select it in Sources, and start a new conversation. Edit an existing same-name skill instead of adding duplicates. Select this workflow's cloud input files."
+      "Before presenting: upload skills/contoso-steering-to-board/SKILL.md through Customize > Skills > arrow next to Add > Upload skill, select it in Sources, and start a new conversation. Edit an existing same-name skill instead of adding duplicates. The prompt names this workflow's cloud inputs; select a specific existing reference only if discovery is missing or ambiguous."
     ],
     "de": [
-      "Vor der Vorführung: skills/contoso-steering-to-board/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen, in Sources auswählen und einen neuen Verlauf starten. Vorhandenen gleichnamigen Skill bearbeiten statt Duplikate anzulegen. Cloud-Eingaben dieses Ablaufs auswählen."
+      "Vor der Vorführung: skills/contoso-steering-to-board/SKILL.md über Customize > Skills > Pfeil neben Add > Upload skill hochladen, in Sources auswählen und einen neuen Verlauf starten. Vorhandenen gleichnamigen Skill bearbeiten statt Duplikate anzulegen. Der Prompt nennt die Cloud-Eingaben; nur bei fehlendem oder mehrdeutigem Treffer gezielt die vorhandene Referenz auswählen."
     ]
   },
   "requiredUsers": [

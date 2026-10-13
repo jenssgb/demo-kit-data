@@ -18,7 +18,7 @@ No automatic full-database reset, deletion, external sends or claims of a live S
 Write in the user's language; preserve record IDs and actual UI status labels.
 
 ## Workflow
-Read the selected Teresa message: Proseware, Rotterdam, 600 CMS-48P-POE, 25 calendar days later than the ORIGINAL confirmed date.
+Use the user's complete request or the named Teresa inbox message: Proseware, Rotterdam, 600 CMS-48P-POE, 25 calendar days later than the ORIGINAL confirmed date. Locate and verify the message if needed; no request.md attachment is required.
 Use Purchase Orders to locate the exact PO. Confirm supplier, warehouse, SKU and quantity in the live UI. Do not guess a PO ID.
 Record PO ID, status and original/current expected dates before making changes. Use Original expected if the PO was already delayed; never add 25 days again to a revised date.
 Set Expected to original date +25 calendar days to inspect Impact analysis; do not persist anything during the initial analysis.
