@@ -50,6 +50,7 @@
         "de": "Cowork Ende zu Ende"
       },
       "demos": [
+        "cowork-starters",
         "cowork-copilot",
         "cowork-sap",
         "cowork-servicecenter-cases",

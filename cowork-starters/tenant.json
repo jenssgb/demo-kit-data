@@ -1,0 +1,50 @@
+{
+  "mails": [
+    "mails-{lang}/1_Teresa_Carrier_Confirmation.eml",
+    "mails-{lang}/2_Vance_Workshop_Room.eml",
+    "mails-{lang}/3_Sonia_Training_Update.eml"
+  ],
+  "events": [
+    {
+      "subject": {
+        "en": "[CO-21] Contoso operations review",
+        "de": "[CO-21] Contoso-Operations-Review"
+      },
+      "weekday": 4,
+      "start": "10:00",
+      "minutes": 30,
+      "attendees": [
+        "Teresa Sac",
+        "Vance DeLeon",
+        "Sonia Rees"
+      ],
+      "body": {
+        "en": "Planning review for Contoso's Fargo wing. Sources are in OneDrive > Demo-Kit > Cowork > cowork-starters: inputs/en/Meeting_Brief.md and Contoso_Fargo_GoLive_Readiness_Tracker.xlsx. Discuss R02 carrier confirmation, R04 electrical work and R08 shift-lead training. The source tracker is a fictional April-June 2027 planning snapshot, not today's operational status. No transcript is provided.",
+        "de": "Planungsreview für Contosos Fargo-Flügel. Quellen liegen in OneDrive > Demo-Kit > Cowork > cowork-starters: inputs/de/Meeting_Brief.md und Contoso_Fargo_GoLive_Readiness_Tracker.xlsx. R02 Carrier-Bestätigung, R04 Elektroarbeiten und R08 Schichtleitertraining besprechen. Der Quelltracker ist ein fiktiver Planungsstand für April bis Juni 2027, kein aktueller Betriebsstatus. Es gibt kein Transkript."
+      }
+    }
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot Cowork",
+        "de": "Microsoft Copilot Cowork"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Verify the three [CO-19] inbox mails and the [CO-21] calendar event; check the event's actual date and VM time zone.",
+      "Open Cowork with the licensed demo account; verify availability, usage billing and cloud-source access. No custom skills required.",
+      "The [CO-20] workshop is created only in the approved follow-up. Keep sends/creates individually approved.",
+      "Select a fresh CO-22 run (01-04); preserve edited files before any installer update. Do not use installer reruns as a reset."
+    ],
+    "de": [
+      "Drei [CO-19]-Posteingangsmails und den [CO-21]-Kalendertermin prüfen; tatsächliches Datum und VM-Zeitzone beachten.",
+      "Cowork mit dem lizenzierten Demokonto öffnen; Verfügbarkeit, Nutzungsabrechnung und Cloud-Zugriff prüfen. Keine eigenen Skills nötig.",
+      "Der [CO-20]-Workshop entsteht erst im freigegebenen Folgeauftrag. Versand/Anlage jeweils einzeln freigeben.",
+      "Frischen CO-22-Lauf (01-04) wählen; bearbeitete Dateien vor Installer-Updates sichern. Installer-Reruns sind kein Reset."
+    ]
+  }
+}

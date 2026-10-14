@@ -1,0 +1,68 @@
+{
+  "revenue": {
+    "period": "Q3 2026",
+    "currency": "EUR",
+    "records": 6,
+    "total": 630000,
+    "budget": 625000,
+    "variance": 5000,
+    "variance_percent": 0.8,
+    "monthly": {
+      "2026-07": 180000,
+      "2026-08": 210000,
+      "2026-09": 240000
+    },
+    "regions": {
+      "North": {
+        "revenue": 360000,
+        "budget": 355000,
+        "variance": 5000
+      },
+      "South": {
+        "revenue": 270000,
+        "budget": 270000,
+        "variance": 0
+      }
+    },
+    "initial_slides": 3,
+    "followup_slides": 4,
+    "explanations": "Hypotheses only; no driver evidence provided."
+  },
+  "triage": {
+    "messages": 3,
+    "drafts": 2,
+    "first": "Teresa Sac",
+    "no_action": "Sonia Rees",
+    "followup_send": "Teresa Sac only after approval; no approved 05:30 slot is evidenced."
+  },
+  "event": {
+    "subject": "[CO-20] Contoso operations workshop",
+    "budget_eur": 500,
+    "start": "14:00",
+    "end": "15:30",
+    "timezone": "Europe/Berlin",
+    "date": "Next Friday after current conversation; review actual date before creating.",
+    "organizer": "MOD Administrator",
+    "attendees": [
+      "Teresa Sac",
+      "Vance DeLeon",
+      "Sonia Rees"
+    ],
+    "initial": "Preview only",
+    "followup": "One approved event with Teams link"
+  },
+  "meeting": {
+    "subject": {
+      "en": "[CO-21] Contoso operations review",
+      "de": "[CO-21] Contoso-Operations-Review"
+    },
+    "sources": [
+      "R02",
+      "R04",
+      "R08"
+    ],
+    "planning_horizon": "April-June 2027",
+    "transcript": false,
+    "followup": "Unsent draft to Teresa"
+  }
+}

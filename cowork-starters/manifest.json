@@ -1,0 +1,141 @@
+{
+  "title": {
+    "en": "Simple Cowork starters",
+    "de": "Einfache Cowork-Einstiege"
+  },
+  "next": {
+    "en": [
+      "Verify the three [CO-19] inbox mails and the [CO-21] calendar event; check the event's actual date and VM time zone.",
+      "Open Cowork with the licensed demo account; verify availability, usage billing and cloud-source access. No custom skills required.",
+      "The [CO-20] workshop is created only in the approved follow-up. Keep sends/creates individually approved.",
+      "Select a fresh CO-22 run (01-04); preserve edited files before any installer update. Do not use installer reruns as a reset."
+    ],
+    "de": [
+      "Drei [CO-19]-Posteingangsmails und den [CO-21]-Kalendertermin prüfen; tatsächliches Datum und VM-Zeitzone beachten.",
+      "Cowork mit dem lizenzierten Demokonto öffnen; Verfügbarkeit, Nutzungsabrechnung und Cloud-Zugriff prüfen. Keine eigenen Skills nötig.",
+      "Der [CO-20]-Workshop entsteht erst im freigegebenen Folgeauftrag. Versand/Anlage jeweils einzeln freigeben.",
+      "Frischen CO-22-Lauf (01-04) wählen; bearbeitete Dateien vor Installer-Updates sichern. Installer-Reruns sind kein Reset."
+    ]
+  },
+  "files": [
+    {
+      "path": "inputs/de/Event_Brief.md",
+      "sha256": "03c9bf315e431ef8223594270bf0ebdbaa7b71ba07c94e7cd3aa2bff5b875525"
+    },
+    {
+      "path": "inputs/de/Meeting_Brief.md",
+      "sha256": "c93f4b7213eff37e1cf863d9bbcc9b6a60d3683d1a425ac55ea2d14cae1fb238"
+    },
+    {
+      "path": "inputs/en/Event_Brief.md",
+      "sha256": "124798f0414670c3a818b951523d12ecf886fc08898243e600c830c5fa53e98b"
+    },
+    {
+      "path": "inputs/en/Meeting_Brief.md",
+      "sha256": "65cdda9fefd2b3c21df0b7a262819c288ca8b302946b9311330fc3bf8ca67c06"
+    },
+    {
+      "path": "mails-de/1_Teresa_Carrier_Confirmation.eml",
+      "sha256": "c1c13a2903b428e53db3d93c3b88f1b82882b2d952f06c6affa2d672b12d1685"
+    },
+    {
+      "path": "mails-de/2_Vance_Workshop_Room.eml",
+      "sha256": "b0386750d0317025a4e4f476de3f9ebba4980876596330b69e9938233a65786b"
+    },
+    {
+      "path": "mails-de/3_Sonia_Training_Update.eml",
+      "sha256": "b56c4f489dc9dc89ce3c5b2ae3acaf96e373d80ad4bc7f96bc42d6884c5ef242"
+    },
+    {
+      "path": "mails-en/1_Teresa_Carrier_Confirmation.eml",
+      "sha256": "53bc7dc9f8ca0e0d0778433ee1e08686e3e8a71570c14aca2ecf5165846dd5b7"
+    },
+    {
+      "path": "mails-en/2_Vance_Workshop_Room.eml",
+      "sha256": "cefac31b09f7b95eacec4b07e643e0fefb5ac7a5692d05dadd0447665725e2a5"
+    },
+    {
+      "path": "mails-en/3_Sonia_Training_Update.eml",
+      "sha256": "602951366e711fbbbeaa20f59ee73d6e6af3bfb73b45bf1a8a9b6ece0276610c"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "a5ac95027f15a033d27611214cae31c76fb1b89ecb4fbacb577bb40d5e7219f4"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "efbfd1cae41fa43e8dc42534e51d24a7c1d72cb0fa1c55236c2fb6d18be0b0e0"
+    },
+    {
+      "path": "runs/de/01/results/README.md",
+      "sha256": "8442950537182e9d69ca0ea5ce98a6ab863b66d310569bfb856631a0fe262248"
+    },
+    {
+      "path": "runs/de/01/Revenue_Q3.xlsx",
+      "sha256": "25760c1d73fdc0e30c494e9b3d56314f5b7f3bc85982cc087b2ac00e008196da"
+    },
+    {
+      "path": "runs/de/02/results/README.md",
+      "sha256": "8442950537182e9d69ca0ea5ce98a6ab863b66d310569bfb856631a0fe262248"
+    },
+    {
+      "path": "runs/de/02/Revenue_Q3.xlsx",
+      "sha256": "054b0033c3c87e279b2f33eea783efa7f63c993443a2a297468599cd6ecfa4c6"
+    },
+    {
+      "path": "runs/de/03/results/README.md",
+      "sha256": "8442950537182e9d69ca0ea5ce98a6ab863b66d310569bfb856631a0fe262248"
+    },
+    {
+      "path": "runs/de/03/Revenue_Q3.xlsx",
+      "sha256": "b0268efe78b8907223fde1b95761b3e805a6b7886c6ed3ffb3aed95fcd7178c9"
+    },
+    {
+      "path": "runs/de/04/results/README.md",
+      "sha256": "8442950537182e9d69ca0ea5ce98a6ab863b66d310569bfb856631a0fe262248"
+    },
+    {
+      "path": "runs/de/04/Revenue_Q3.xlsx",
+      "sha256": "08833a9cbb3dcb5bb48d9a77f1271966fc2e543465195d6d672d439ed667a699"
+    },
+    {
+      "path": "runs/en/01/results/README.md",
+      "sha256": "421bfb35ab4026f37ab83249ec884734e87a747f61f4814729dd605300bd57c5"
+    },
+    {
+      "path": "runs/en/01/Revenue_Q3.xlsx",
+      "sha256": "b71d405020cc72e714752934d434631496472379fd90e9e12a3b40e314c61066"
+    },
+    {
+      "path": "runs/en/02/results/README.md",
+      "sha256": "421bfb35ab4026f37ab83249ec884734e87a747f61f4814729dd605300bd57c5"
+    },
+    {
+      "path": "runs/en/02/Revenue_Q3.xlsx",
+      "sha256": "846dfbce1bc6208be0886b35418d62d14ca307bddfb9c74f1a1b1a72b1b69878"
+    },
+    {
+      "path": "runs/en/03/results/README.md",
+      "sha256": "421bfb35ab4026f37ab83249ec884734e87a747f61f4814729dd605300bd57c5"
+    },
+    {
+      "path": "runs/en/03/Revenue_Q3.xlsx",
+      "sha256": "b491a3a42f7048fb0612b157dc988ace7996b9e3183dc21136bfa3dee0b286b0"
+    },
+    {
+      "path": "runs/en/04/results/README.md",
+      "sha256": "421bfb35ab4026f37ab83249ec884734e87a747f61f4814729dd605300bd57c5"
+    },
+    {
+      "path": "runs/en/04/Revenue_Q3.xlsx",
+      "sha256": "d6e513b2a275d448d283013cae8953ab84272f41ec606d45f97bd3c8d92636ae"
+    }
+  ],
+  "shared": [
+    {
+      "from": "cowork-copilot",
+      "path": "Contoso_Fargo_GoLive_Readiness_Tracker.xlsx",
+      "sha256": "b0b47a62e129b4c3cc0811a7d3bf536c875f3069b1e91648709b4095c736c35f"
+    }
+  ]
+}
