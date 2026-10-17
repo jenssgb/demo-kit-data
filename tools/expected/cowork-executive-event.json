@@ -1,0 +1,101 @@
+{
+  "facts": {
+    "id": "cowork-executive-event",
+    "event": "Contoso Leadership Forum Frankfurt",
+    "date": "2026-10-22",
+    "timeZone": "W. Europe Standard Time",
+    "start": "09:30",
+    "end": "14:00",
+    "headcount": 42,
+    "budgetEUR": 9000,
+    "preEventAsOf": "2026-10-19T16:00:00+02:00",
+    "postEventAsOf": "2026-10-22T14:30:00+02:00",
+    "change": {
+      "speaker": "Teresa Sac",
+      "availableFrom": "11:30",
+      "availableUntil": "12:15",
+      "mode": "remote"
+    },
+    "travel": {
+      "person": "Billie Vester",
+      "origin": "Berlin Hbf",
+      "arrivalDate": "2026-10-21",
+      "arrivalBy": "18:00",
+      "returnDate": "2026-10-22",
+      "returnNotBefore": "15:00",
+      "planningCeilingEUR": 650,
+      "insideEventBudget": true
+    }
+  },
+  "codes": [
+    "CO-26",
+    "CO-27",
+    "CO-28",
+    "CO-29",
+    "CO-23",
+    "CO-24",
+    "CO-25"
+  ],
+  "stageDemonstrations": 8,
+  "actions": [
+    [
+      "A01",
+      "Vance DeLeon",
+      "2026-10-26"
+    ],
+    [
+      "A02",
+      "Sonia Rees",
+      "2026-10-27"
+    ],
+    [
+      "A03",
+      "Billie Vester",
+      "2026-10-23"
+    ],
+    [
+      "A04",
+      "Sydney Mattos",
+      "2026-10-28"
+    ],
+    [
+      "A05",
+      "MOD Administrator",
+      "2026-10-23"
+    ]
+  ],
+  "requiredOutputs": [
+    "Conversation_Brief.docx",
+    "Travel_Plan.docx",
+    "Briefing.docx",
+    "Venue_Comparison.docx",
+    "Leadership_Forum.pptx",
+    "Agenda.docx",
+    "Decisions.docx"
+  ],
+  "skills": {
+    "contoso-executive-briefing": {
+      "name": "contoso-executive-briefing",
+      "codes": [
+        "CO-26",
+        "CO-27",
+        "CO-28",
+        "CO-29",
+        "CO-23"
+      ]
+    },
+    "contoso-event-pack": {
+      "name": "contoso-event-pack",
+      "codes": [
+        "CO-24"
+      ]
+    },
+    "contoso-event-follow-up": {
+      "name": "contoso-event-follow-up",
+      "codes": [
+        "CO-25"
+      ]
+    }
+  },
+  "readiness": "Preparation package, not live acceptance. Short requests require the installed matching skills. The presenter owns the live rehearsal and presentation-device acceptance; local checks do not prove Cowork execution. Actual results and rehearsal evidence remain private."
+}

@@ -1,0 +1,228 @@
+{
+  "title": {
+    "en": "Executive office: Frankfurt leadership event",
+    "de": "Executive Office: Leadership-Event Frankfurt"
+  },
+  "next": {
+    "en": [
+      "Read Preparation-en.md and complete the tenant preflight."
+    ],
+    "de": [
+      "Preparation-de.md lesen und Tenant-Preflight abschließen."
+    ]
+  },
+  "files": [
+    {
+      "path": "baseline/de/Action_Register.xlsx",
+      "sha256": "7ab09f3c2c0d4956fb0ae3d68e15f202508142fbaf543bc4716ff99b2f505f1d"
+    },
+    {
+      "path": "baseline/en/Action_Register.xlsx",
+      "sha256": "483e2099818b4232267a1f61a1371dfcd69af76d81d9f5e83ce92194981603f8"
+    },
+    {
+      "path": "baseline/hashes.json",
+      "sha256": "8549a89be23fd4ae81b91685d531dbc1e30865b6a051e1e91a376d25e37c333a"
+    },
+    {
+      "path": "ExecutiveEvent.ps1",
+      "sha256": "baabd8a705b4a3f72d4016db60f3aeb7d68e7772910455c0b4a71851bde82804"
+    },
+    {
+      "path": "inputs/de/after/Post_Event_Notes.docx",
+      "sha256": "96caf6f73b5707334ee7615eeb9a040d9f48fed5963e4278908ef296a032b068"
+    },
+    {
+      "path": "inputs/de/before/Agenda_Baseline.docx",
+      "sha256": "323441081fd274cb429ecdb18389e4dfb0e568a453e926181aa761bf2a7171b2"
+    },
+    {
+      "path": "inputs/de/before/Event_Brief.docx",
+      "sha256": "4400d3703ebf27e8385ea1ee4adac4632d82248111f4ac8622d76d09a5230265"
+    },
+    {
+      "path": "inputs/de/before/Participants.docx",
+      "sha256": "a505bb0e1ae9a0eaa43ffe6354af807457e06a0d8e735883d325888b3a44132b"
+    },
+    {
+      "path": "inputs/de/before/Travel_Request.md",
+      "sha256": "41c44dbaab86796c0c67f558e63c95781d8e71285a901afa7def23f3e6a92634"
+    },
+    {
+      "path": "inputs/de/change/Speaker_Change.md",
+      "sha256": "c4e3b6503275019f973a5d05ff7a82c3522c76ee4ef1b7670a7a774e014e73a4"
+    },
+    {
+      "path": "inputs/en/after/Post_Event_Notes.docx",
+      "sha256": "45417affde3cd1279e855ee4aaa43a0042b2d6db13cc9a9cb66f2074c67b7a73"
+    },
+    {
+      "path": "inputs/en/before/Agenda_Baseline.docx",
+      "sha256": "8bd8d4ac6f14dec4b43f5e6e838beb6ab81feadd52c04845205d7131b004b5da"
+    },
+    {
+      "path": "inputs/en/before/Event_Brief.docx",
+      "sha256": "3be5ac4620bb0dbdbe86f18aa64741ea42e7e6b56ea119e506226b815bc9f165"
+    },
+    {
+      "path": "inputs/en/before/Participants.docx",
+      "sha256": "37faa5a7ee73d3122c5c8a98fb5121768d900c892495ec379bab5addc8f44c26"
+    },
+    {
+      "path": "inputs/en/before/Travel_Request.md",
+      "sha256": "40b9cbfb51e4d75a0fae5462285fa1ad981cd0221629808cb2722aa05bc383cc"
+    },
+    {
+      "path": "inputs/en/change/Speaker_Change.md",
+      "sha256": "2f79d64f869d99aabc550e04d3abe30803485f42ac6959513328a27fbcd97ffc"
+    },
+    {
+      "path": "mails-de/01_Teresa_Objectives.eml",
+      "sha256": "b07d0335ec557e64e188b759bf3a712256171bc47c406f9d055e05b72877604d"
+    },
+    {
+      "path": "mails-de/02_Teresa_Confirmed_Scope.eml",
+      "sha256": "0c8fb941dc7e59ec078111093d12461810d0cb3cc7ec7e37775d6b674d8c5dfa"
+    },
+    {
+      "path": "mails-de/03_Vance_Venue.eml",
+      "sha256": "56ebf3b45132aa6c34fe5f27af18a7e34d960e764ae3bf9cc2c7416516abaf17"
+    },
+    {
+      "path": "mails-de/04_Sonia_Conversation.eml",
+      "sha256": "48cb69de5e87ef4568028b2efcf90c318f7176c2bd8f6303a23900bcc72e638b"
+    },
+    {
+      "path": "mails-de/05_Billie_Technology.eml",
+      "sha256": "885da511fe0e3d948394c90a60ca88e19c86a3d93576ea9e641d404698416f3e"
+    },
+    {
+      "path": "mails-de/06_Sydney_Budget.eml",
+      "sha256": "a012459d5b78b66ea98603ccd4c65037704acc7b01dfb790be9e36a2239bcbbd"
+    },
+    {
+      "path": "mails-en/01_Teresa_Objectives.eml",
+      "sha256": "ae12c8f612b7772670ac7213edae61ab639fe1d8eec4d336927ed64230a4a512"
+    },
+    {
+      "path": "mails-en/02_Teresa_Confirmed_Scope.eml",
+      "sha256": "d1edcecef8551c12dea0ea6c5376b9b1fabe70e7e0f4f5127e3ac116bab6d588"
+    },
+    {
+      "path": "mails-en/03_Vance_Venue.eml",
+      "sha256": "3a9d1145d2a22299f0f87ccf5ff4e37930d826c2d657d476b19c7ce8cb2f87fc"
+    },
+    {
+      "path": "mails-en/04_Sonia_Conversation.eml",
+      "sha256": "00f230717a00af5217e60b3bad25dd70a243b9cb45af76f6638966e04a531f00"
+    },
+    {
+      "path": "mails-en/05_Billie_Technology.eml",
+      "sha256": "f4b21836bc1af7af0161f0967c0f6a7b1cea198ed45e44a99bd350445959738d"
+    },
+    {
+      "path": "mails-en/06_Sydney_Budget.eml",
+      "sha256": "81a108ba2e3b64ad47a2db53819bd4857ab0628e45fd406c7fad1979bce3311c"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "efd4e78095df32f92d732f3e40456490f96357544e7406f1f5f978b64d4d932e"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "e86264798b6d4cdcb7a02a1149189032938474e496b737c9ffa8b5269c2bf736"
+    },
+    {
+      "path": "Reset-CoworkExecutiveEvent.ps1",
+      "sha256": "30a4936cd9306bc41ef643e163be229af79cd9eaa530a74a08d667e9b634d103"
+    },
+    {
+      "path": "runs/de/01/Action_Register.xlsx",
+      "sha256": "405c89ab0c0cd6c3059ddf5fa2ac31f2e4dfb9f4068281382965c59951618678"
+    },
+    {
+      "path": "runs/de/01/outputs/README.md",
+      "sha256": "2a1f940eb2f601074a53ba97cfe478f67de091ff6bd327b8feea56147ba79ac4"
+    },
+    {
+      "path": "runs/de/02/Action_Register.xlsx",
+      "sha256": "c12c24959bfde9ac345c8626b8cdd2d7657b1b3f57c6a2cad5640852068df9c5"
+    },
+    {
+      "path": "runs/de/02/outputs/README.md",
+      "sha256": "2a1f940eb2f601074a53ba97cfe478f67de091ff6bd327b8feea56147ba79ac4"
+    },
+    {
+      "path": "runs/de/03/Action_Register.xlsx",
+      "sha256": "aaa862eba547eabfce8d77a58aacf7bcd7241f41cb691c0df5d62c00b10f6e5d"
+    },
+    {
+      "path": "runs/de/03/outputs/README.md",
+      "sha256": "2a1f940eb2f601074a53ba97cfe478f67de091ff6bd327b8feea56147ba79ac4"
+    },
+    {
+      "path": "runs/de/04/Action_Register.xlsx",
+      "sha256": "147ad77f0be0bf299754f68c973f4321f8cfd4a53209915e5bf3c2159114ae95"
+    },
+    {
+      "path": "runs/de/04/outputs/README.md",
+      "sha256": "2a1f940eb2f601074a53ba97cfe478f67de091ff6bd327b8feea56147ba79ac4"
+    },
+    {
+      "path": "runs/en/01/Action_Register.xlsx",
+      "sha256": "80e0511b6df8afbb8d042cd24ec686ba10f19bbee62a79c41981d75c72b2f136"
+    },
+    {
+      "path": "runs/en/01/outputs/README.md",
+      "sha256": "b83e0aacc4e2213510513f6ad2c91ec53b69f79617619d7aed2c538f2c50acf0"
+    },
+    {
+      "path": "runs/en/02/Action_Register.xlsx",
+      "sha256": "a70ec7e29eab0cf94daa942bd300279006564cd995cd43875799770e9f0fe897"
+    },
+    {
+      "path": "runs/en/02/outputs/README.md",
+      "sha256": "b83e0aacc4e2213510513f6ad2c91ec53b69f79617619d7aed2c538f2c50acf0"
+    },
+    {
+      "path": "runs/en/03/Action_Register.xlsx",
+      "sha256": "c208f207b542080f06035decaef8d84092049f446464a54f27f51b0d66b4b984"
+    },
+    {
+      "path": "runs/en/03/outputs/README.md",
+      "sha256": "b83e0aacc4e2213510513f6ad2c91ec53b69f79617619d7aed2c538f2c50acf0"
+    },
+    {
+      "path": "runs/en/04/Action_Register.xlsx",
+      "sha256": "390fc9f74494809fbc181e4df76822945822bc7a410d302fc30e4d023d676bd7"
+    },
+    {
+      "path": "runs/en/04/outputs/README.md",
+      "sha256": "b83e0aacc4e2213510513f6ad2c91ec53b69f79617619d7aed2c538f2c50acf0"
+    },
+    {
+      "path": "skills/contoso-event-follow-up.zip",
+      "sha256": "13fb8447e16ff461ed533aea0c367100b3cb8b13a99a1fc98b9708d12ad55f66"
+    },
+    {
+      "path": "skills/contoso-event-follow-up/SKILL.md",
+      "sha256": "df0512d7bdcccacc8275cd9885eb396c53c62e9d11cb857ccb9fb391002dc131"
+    },
+    {
+      "path": "skills/contoso-event-pack.zip",
+      "sha256": "f663a6fe4aa2f0ae63f30be7f6b8b4635d234ea61d18a64463a31c2c7479c43d"
+    },
+    {
+      "path": "skills/contoso-event-pack/SKILL.md",
+      "sha256": "b00624e9eb0acc70f92ba2516f148f52cdd78440c8974119703b853e76c0b4c2"
+    },
+    {
+      "path": "skills/contoso-executive-briefing.zip",
+      "sha256": "d4dc6d7017d94e015ec252f067bd05c1d7b443b660827923a32424ea70cd670d"
+    },
+    {
+      "path": "skills/contoso-executive-briefing/SKILL.md",
+      "sha256": "4b72f8c3ceb823499c77ad4253c2afd768879ed46a30efd070d87eb85840ddb1"
+    }
+  ]
+}

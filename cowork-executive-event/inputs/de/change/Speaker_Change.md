@@ -1,0 +1,3 @@
+PHASE CHANGE. Erst zeigen, wenn das erste Vorbereitungspaket gespeichert ist. Synthetische Änderung für dieselbe Veranstaltung am 22. Oktober 2026.
+
+Teresa kann jetzt nur remote von 11:30 bis 12:15 Europe/Berlin teilnehmen. Ihre 45-minütige Prioritätensession muss in dieses Zeitfenster verschoben werden. Beginn 09:30, Ende 14:00, 42 Personen, die Obergrenze von 9.000 EUR und mindestens 60 Minuten informelle Gespräche bleiben bestehen. Billie muss die Zuschaltung testen. Keinen Teams-Link erfinden und keinen Veranstaltungsort als gebucht darstellen. Nur Agenda, Präsentation und gespeicherte Entwürfe des aktuellen Laufs aktualisieren; Änderungen und noch notwendige menschliche Entscheidungen benennen.

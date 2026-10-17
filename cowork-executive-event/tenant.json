@@ -1,0 +1,201 @@
+{
+  "mails": [
+    "mails-{lang}/01_Teresa_Objectives.eml",
+    "mails-{lang}/02_Teresa_Confirmed_Scope.eml",
+    "mails-{lang}/03_Vance_Venue.eml",
+    "mails-{lang}/04_Sonia_Conversation.eml",
+    "mails-{lang}/05_Billie_Technology.eml",
+    "mails-{lang}/06_Sydney_Budget.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "VanceD@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com",
+    "SydneyM@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "executiveEvent": {
+    "id": "LEF26",
+    "account": "admin@M365CPI98544940.OnMicrosoft.com",
+    "domain": "M365CPI98544940.OnMicrosoft.com",
+    "people": {
+      "Teresa Sac": "TeresaS@M365CPI98544940.OnMicrosoft.com",
+      "Vance DeLeon": "VanceD@M365CPI98544940.OnMicrosoft.com",
+      "Sonia Rees": "SoniaR@M365CPI98544940.OnMicrosoft.com",
+      "Billie Vester": "BillieV@M365CPI98544940.OnMicrosoft.com",
+      "Sydney Mattos": "SydneyM@M365CPI98544940.OnMicrosoft.com"
+    },
+    "mailReplies": [
+      {
+        "key": "scope-ack",
+        "parentSender": "Teresa Sac",
+        "parentSubject": {
+          "en": "[LEF26-BEFORE-02] Confirmed planning scope",
+          "de": "[LEF26-BEFORE-02] Bestätigter Planungsrahmen"
+        },
+        "text": {
+          "en": "Thanks Teresa. The executive office will use 42 people and EUR 9,000 including travel. The earlier figures are superseded. We will prepare an agenda decision; no venue or spend is approved.",
+          "de": "Danke Teresa. Das Executive Office arbeitet mit 42 Personen und 9.000 EUR einschließlich Anreise. Die früheren Zahlen sind ersetzt. Wir bereiten die Agendaentscheidung vor; Ort und Ausgaben sind nicht freigegeben."
+        }
+      },
+      {
+        "key": "venue-ack",
+        "parentSender": "Vance DeLeon",
+        "parentSubject": {
+          "en": "[LEF26-BEFORE-03] Venue decision still open",
+          "de": "[LEF26-BEFORE-03] Veranstaltungsort noch offen"
+        },
+        "text": {
+          "en": "Thanks Vance. We will compare operator information and record open questions. No enquiry, reservation or booking is authorized. We need your judgment on practical feasibility after reviewing the options.",
+          "de": "Danke Vance. Wir vergleichen Betreiberinformationen und halten offene Fragen fest. Keine Anfrage, Reservierung oder Buchung ist freigegeben. Nach Prüfung der Optionen brauchen wir dein Urteil zur praktischen Machbarkeit."
+        }
+      }
+    ],
+    "sharedFiles": [
+      "inputs/{lang}/before/Event_Brief.docx",
+      "inputs/{lang}/before/Participants.docx",
+      "inputs/{lang}/before/Agenda_Baseline.docx"
+    ],
+    "events": [
+      {
+        "key": "forum",
+        "date": "2026-10-22",
+        "start": "09:30",
+        "minutes": 270,
+        "timeZone": "W. Europe Standard Time",
+        "attendees": [
+          "Teresa Sac",
+          "Vance DeLeon",
+          "Sonia Rees",
+          "Billie Vester",
+          "Sydney Mattos"
+        ],
+        "subject": {
+          "en": "[LEF26] Leadership Forum Frankfurt - venue open",
+          "de": "[LEF26] Leadership Forum Frankfurt - Ort offen"
+        },
+        "body": {
+          "en": "Synthetic rehearsal. BEFORE phase. No venue booked. LEF26",
+          "de": "Synthetische Probe. Phase BEFORE. Kein Ort gebucht. LEF26"
+        }
+      },
+      {
+        "key": "prep",
+        "date": "2026-10-20",
+        "start": "10:00",
+        "minutes": 45,
+        "timeZone": "W. Europe Standard Time",
+        "attendees": [
+          "Vance DeLeon",
+          "Sonia Rees"
+        ],
+        "subject": {
+          "en": "[LEF26] Forum preparation",
+          "de": "[LEF26] Forum-Vorbereitung"
+        },
+        "body": {
+          "en": "Synthetic rehearsal. BEFORE phase. No venue booked. LEF26",
+          "de": "Synthetische Probe. Phase BEFORE. Kein Ort gebucht. LEF26"
+        }
+      },
+      {
+        "key": "prep-clash",
+        "date": "2026-10-20",
+        "start": "10:15",
+        "minutes": 30,
+        "timeZone": "W. Europe Standard Time",
+        "attendees": [],
+        "subject": {
+          "en": "[LEF26] Site review - preparation conflict",
+          "de": "[LEF26] Standortreview - Vorbereitungskonflikt"
+        },
+        "body": {
+          "en": "Synthetic rehearsal. BEFORE phase. No venue booked. LEF26",
+          "de": "Synthetische Probe. Phase BEFORE. Kein Ort gebucht. LEF26"
+        }
+      },
+      {
+        "key": "forum-clash",
+        "date": "2026-10-22",
+        "start": "10:00",
+        "minutes": 30,
+        "timeZone": "W. Europe Standard Time",
+        "attendees": [],
+        "subject": {
+          "en": "[LEF26] Investment call - forum conflict",
+          "de": "[LEF26] Investment-Call - Forum-Konflikt"
+        },
+        "body": {
+          "en": "Synthetic rehearsal. BEFORE phase. No venue booked. LEF26",
+          "de": "Synthetische Probe. Phase BEFORE. Kein Ort gebucht. LEF26"
+        }
+      }
+    ],
+    "threads": [
+      {
+        "key": "before",
+        "phase": "BEFORE",
+        "text": {
+          "en": "Planning discussion: use 42 people and EUR 9,000 including travel. Venue not booked. Review the linked shared event brief. LEF26-BEFORE",
+          "de": "Planungsdiskussion: 42 Personen und 9.000 EUR einschließlich Anreise. Ort nicht gebucht. Verlinkten gemeinsamen Veranstaltungsbrief prüfen. LEF26-BEFORE"
+        },
+        "replies": [
+          {
+            "en": "Executive office quotes Sonia's synthetic update: protect at least 60 minutes of informal conversation. No final agenda approval.",
+            "de": "Executive Office zitiert Sonias synthetisches Update: mindestens 60 Minuten informelle Gespräche schützen. Keine endgültige Agendafreigabe."
+          },
+          {
+            "en": "Executive office quotes Billie's synthetic update: remote-speaker technology still needs a test. Do not promise it works.",
+            "de": "Executive Office zitiert Billies synthetisches Update: Zuschaltung muss noch getestet werden. Keine Funktionszusage."
+          }
+        ]
+      },
+      {
+        "key": "after",
+        "phase": "AFTER",
+        "text": {
+          "en": "STAGED POST-EVENT SNAPSHOT, 22 October 2026 14:30. D01 three priorities agreed; D02 handover pilot, no software purchase. Use only in CO-25. LEF26-AFTER",
+          "de": "VORBEREITETER STAND NACH DEM EVENT, 22. Oktober 2026 14:30. D01 drei Prioritäten beschlossen; D02 Übergabe-Pilot, kein Softwarekauf. Nur in CO-25 nutzen. LEF26-AFTER"
+        },
+        "replies": [
+          {
+            "en": "Executive office quotes Sonia's synthetic reflection: lunch conversations surfaced issues; speak to Vance personally. Actual costs and the pilot success measure remain open.",
+            "de": "Executive Office zitiert Sonias synthetische Reflexion: Mittagsgespräche machten Themen sichtbar; persönlich mit Vance sprechen. Ist-Kosten und Erfolgskriterium des Piloten bleiben offen."
+          }
+        ]
+      }
+    ]
+  },
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot Cowork",
+        "de": "Microsoft Copilot Cowork"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    },
+    {
+      "name": {
+        "en": "DB Frankfurt Hauptbahnhof",
+        "de": "DB Frankfurt Hauptbahnhof"
+      },
+      "url": "https://www.bahnhof.de/frankfurt-main-hbf"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Verify Cowork access, usage billing, cloud discovery and built-in web research on the presentation device. Local browser control is not required for this scenario.",
+      "Install the three trusted skills from this scenario's skills folder through Cowork Customize and Upload skill: contoso-executive-briefing, contoso-event-pack and contoso-event-follow-up. Keep them private. Start new tasks and verify the matching skill under Workspace > Plugins after execution starts; short live requests depend on these instructions. Do not upload duplicates.",
+      "Before using this scenario, an authorized operator records the approved existing demo team/channel and tenant ID in the private executive-event settings file. No sites or teams are created.",
+      "Open Preparation-en.md. Inspect actual setup links, calendar conflicts and saved drafts; rehearse all eight demonstrations. Actual mail threads, indexing, UI labels and output folders need tenant verification.",
+      "Use a fresh run and conversation. The installer is not a reset. The presenter-only runbook stays in tools/expected, outside indexed inputs."
+    ],
+    "de": [
+      "Cowork-Zugriff, Nutzungsabrechnung, Quellenfindung und integrierte Webrecherche auf dem Präsentationsgerät prüfen. Dieses Szenario benötigt keine lokale Browsersteuerung.",
+      "Die drei vertrauenswürdigen Skills aus dem Ordner skills dieses Szenarios über Cowork Anpassen und Skill-Upload installieren: contoso-executive-briefing, contoso-event-pack und contoso-event-follow-up. Privat lassen. Neue Aufgaben starten und nach dem Start den passenden Skill unter Arbeitsbereich > Plug-Ins prüfen; die kurzen Live-Aufträge setzen seine Anweisungen voraus. Keine Duplikate hochladen.",
+      "Vor Verwendung trägt ein berechtigter Operator das freigegebene vorhandene Demo-Team, den Kanal und die Tenant-ID in die private Executive-Event-Konfiguration ein. Keine Sites oder Teams werden angelegt.",
+      "Preparation-de.md öffnen. Tatsächliche Setup-Links, Kalenderkonflikte und gespeicherte Entwürfe prüfen; alle acht Demos proben. Mail-Threads, Indexierung, UI-Bezeichnungen und Ergebnisordner im Tenant prüfen.",
+      "Frischen Lauf und Verlauf nutzen. Der Installer ist kein Reset. Der Presenter-Leitfaden bleibt unter tools/expected außerhalb indexierter Eingaben."
+    ]
+  }
+}

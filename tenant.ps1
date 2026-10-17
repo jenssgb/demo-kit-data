@@ -19,6 +19,7 @@
     manual   { de[], en[] }   steps that can't be scripted, printed as a checklist at the end
     links    [{ name{de,en}, url }]  extra links for the Desktop link page and Edge favorites (e.g. a mock web app)
     requiredUsers ["real.upn@tenant"]  verify current enabled Exchange plans before tenant writes
+    executiveEvent  opt-in LEF26 shared sources, fixed events and Teams discussion; private approved destination required
   Senders set up once are cached locally and in the admin's OneDrive (DemoKit/senders.json): Exchange Online
   (second sign-in) is needed only once per tenant; it then prepares every person of every demo (people.json).
   Running it again creates nothing twice.
@@ -244,6 +245,31 @@ if ($SelfTest) {
 }
 
 # ---------- sign in ----------
+$executiveBlocked = @()
+$executiveDestinations = @{}
+$executiveSettings = @{}
+if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
+    $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\ExecutiveEvent.ps1' } else { $null }
+    if ($helper -and (Test-Path -LiteralPath $helper)) {
+        . $helper
+    } else {
+        $helperCode = (Invoke-WebRequest -Uri (Url 'tools/ExecutiveEvent.ps1') -UseBasicParsing).Content
+        if ($helperCode -is [byte[]]) { $helperCode = [Text.Encoding]::UTF8.GetString($helperCode) }
+        . ([scriptblock]::Create($helperCode))
+    }
+    foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
+        try { $executiveSettings[$c.Item.id] = Get-ExecutiveEventSettings $c.Config.executiveEvent }
+        catch {
+            Say ("BLOCKED {0}: {1} No data for this scenario will be written; other demos can continue." -f $c.Item.id, $_) Red
+            $executiveBlocked += $c.Item.id
+        }
+    }
+    $configs = @($configs | Where-Object { $_.Item.id -notin $executiveBlocked })
+    $Items = @($Items | Where-Object { $_.id -notin $executiveBlocked })
+    $mails = @($mails | Where-Object { $_.Demo -notin $executiveBlocked })
+    $people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
+        Where-Object { $_ } | Sort-Object -Unique
+}
 Write-Host ""
 Say (T 'Tenant: signing in (Microsoft Graph) ...' 'Tenant: Anmeldung (Microsoft Graph) ...') Cyan
 if (-not (Get-Module -ListAvailable Microsoft.Graph.Authentication)) {
@@ -255,6 +281,9 @@ Import-Module Microsoft.Graph.Authentication
 $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
 if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
+if ($executiveSettings.Count) {
+    $scopes += @('Files.ReadWrite.All', 'Team.ReadBasic.All', 'Channel.ReadBasic.All', 'ChannelMessage.Read.All', 'ChannelMessage.Send', 'Mail.ReadWrite')
+}
 Connect-MgGraph -Scopes $scopes -ContextScope CurrentUser -NoWelcome
 function G($method, $uri, $body, $contentType = 'application/json') {
     $p = @{ Method = $method; Uri = "https://graph.microsoft.com/v1.0$uri" }
@@ -293,9 +322,16 @@ foreach ($m in $mails) {
         throw "Mail '$($m.Subject)' does not match a verified demo sender; correct its From name/address before installing."
     }
 }
+foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
+    $executiveDestinations[$c.Item.id] = Test-ExecutiveEventDestination $c.Config.executiveEvent $executiveSettings[$c.Item.id] $me $Language
+}
 
 $report = [ordered]@{}
 function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ new = 0; updated = 0; same = 0; failed = 0; pending = 0 } }; $report[$area][$what]++ }
+foreach ($blocked in $executiveBlocked) {
+    Count 'ExecutiveEvent' failed
+    $Links.manual += "[$blocked] BLOCKED: approved private LEF26 destination settings required. Scenario was not installed."
+}
 
 # ---------- 1) senders (Exchange Online, separate process: Graph and EXO modules clash in one session) ----------
 $senders = @{}
@@ -444,6 +480,10 @@ foreach ($it in $Items) {
              else { Get-ChildItem $it.dir -Recurse -File | Where-Object { $_.Name -notin 'manifest.json', 'shared.json', 'tenant.json' -and $_.FullName.Substring($it.dir.Length + 1) -notmatch '^tenant\\' } }
     foreach ($f in $files) {
         $rel = $f.FullName.Substring($it.dir.Length).TrimStart('\') -replace '\\', '/'
+        $eventConfig = @($configs | Where-Object { $_.Item.id -eq $it.id -and $_.Config.executiveEvent } | Select-Object -First 1)
+        if ($eventConfig.Count -and $rel -in @($eventConfig[0].Config.executiveEvent.sharedFiles | ForEach-Object { $_.Replace('{lang}', 'de'); $_.Replace('{lang}', 'en') })) {
+            continue
+        }
         $path = Seg "$($it.drivePath)/$rel"
         $remote = GOpt "/me/drive/root:/$($path)?`$select=size,file,webUrl"
         $local = Get-QuickXor $f.FullName
@@ -505,6 +545,10 @@ foreach ($c in $configs | Where-Object { $_.Config.onenote }) {
 }
 
 # ---------- 4) meetings ----------
+foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
+    $resultLinks = @(Invoke-ExecutiveEventSetup -Config $c.Config.executiveEvent -Item $c.Item -Destination $executiveDestinations[$c.Item.id] -Senders $senders -Language $Language -WhatIf:$WhatIf)
+    $Links.demos[$c.Item.id].executiveLinks = $resultLinks
+}
 $tz = [TimeZoneInfo]::Local.Id
 foreach ($c in $configs | Where-Object { $_.Config.events }) {
     Write-Host ""
@@ -565,6 +609,9 @@ if ($mails.Count) {
 }
 
 # ---------- summary + manual checklist ----------
+foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
+    Invoke-ExecutiveEventMailReplies -Config $c.Config.executiveEvent -Settings $executiveSettings[$c.Item.id] -Language $Language -WhatIf:$WhatIf
+}
 Write-Host ""
 $report.GetEnumerator() | ForEach-Object {
     [pscustomobject]@{ Area = $_.Key; New = $_.Value.new; Updated = $_.Value.updated; Unchanged = $_.Value.same; Later = $_.Value.pending; Failed = $_.Value.failed }
@@ -572,9 +619,9 @@ $report.GetEnumerator() | ForEach-Object {
 
 $manual = @(foreach ($c in $configs) { foreach ($m in @(L $c.Config.manual)) { if ($m) { [pscustomobject]@{ Demo = $c.Item.id; Text = ($m -replace '\*\*', '') } } } })
 foreach ($c in $configs) {
-    $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } })
+    $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } }) + @($Links.demos[$c.Item.id].executiveLinks | Where-Object { $_ })
 }
-$Links.manual = @($manual | ForEach-Object { "[{0}] {1}" -f $_.Demo, $_.Text })
+$Links.manual = @($Links.manual | Where-Object { $_ }) + @($manual | ForEach-Object { "[{0}] {1}" -f $_.Demo, $_.Text })
 if ($manual.Count) {
     Say (T 'Still to do by hand (no API for this):' 'Noch von Hand (dafuer gibt es keine API):') Cyan
     $n = 0
@@ -584,4 +631,4 @@ if ($manual.Count) {
 if ($firstFolder -and -not $WhatIf) {
     try { $web = (G GET "/me/drive/root:/$(Seg $firstFolder)?`$select=webUrl").webUrl; $Links.root = $web; Say ("OneDrive: $web") Green } catch { }
 }
-Disconnect-MgGraph | Out-Null
+if (-not $executiveSettings.Count) { Disconnect-MgGraph | Out-Null }

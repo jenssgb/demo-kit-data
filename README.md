@@ -83,6 +83,7 @@ this one.
 | Word-Excel | `word-excel-copilot` | Edit with Copilot in Word and Excel (Fargo): runbook source pack (.docx), inbound shipment workbook (~400 rows) for the Dock 2 capacity analysis, four Fargo emails (.eml) | Created for the Demo Kit, `python tools/build-word-excel-copilot.py` |
 | OneNote | `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
 | Cowork | `cowork-copilot` | Fargo go-live: four emails as .eml (EN + DE, incl. a Tailspin Toys quote request), readiness tracker (.xlsx), construction weekly week 16 (.docx), Cowork skill (`skills/contoso-golive-readiness/SKILL.md`), SAP placeholder list | Created for the Demo Kit, `python tools/build-cowork-copilot.py` |
+| Cowork | `cowork-executive-event` | Eight connected assistant jobs: planning reply, calendar conflicts, conversation preparation, business travel, venue/briefing, event pack, controlled change and follow-up; shared Word inputs, synthetic travel requirements, threaded inbox evidence, fixed-date calendar conflicts, truthful Teams discussions and isolated action workbooks | Created for the Demo Kit, `python tools/build-cowork-executive-event.py`; no Cowork results or recordings supplied |
 | Cowork | `cowork-freight-invoice-check` | Freight invoice check: carrier invoices (.pdf), transport orders, carrier master, POD receipts, audit policy | Created for the Demo Kit, `python tools/build-cowork-usecases.py` |
 | Cowork | `cowork-carrier-contracts` | Carrier contract comparison: three carrier contracts (.pdf) | `python tools/build-cowork-usecases.py` |
 | Cowork | `cowork-lane-margin` | Lane and service margin: raw margin workbook (.xlsx) | `python tools/build-cowork-usecases.py` |
@@ -96,6 +97,109 @@ this one.
 | Agents | `governance-copilot` | Governance & trust: Confidential labor cost workbook, public site fact sheet, Highly Confidential M&A note, label/DLP setup notes (`README_setup.md`) | Created for the Demo Kit, `python tools/build-governance-copilot.py` |
 
 ## Add a demo
+
+### Executive-event scenario (LEF26)
+
+Use the same global setup command, with `-Tenant -Language de` for the German presentation.
+This scenario additionally needs a deliberately approved **existing demo-only Teams channel**.
+It never creates a team, site, public host or external booking.
+
+An authorized operator first identifies the correct demo tenant and channel, then records the actual IDs in
+`%LOCALAPPDATA%\DemoKit\executive-event-settings.json`:
+
+```json
+{
+  "tenantId": "<actual authorized demo tenant GUID>",
+  "account": "admin@M365CPI98544940.OnMicrosoft.com",
+  "teamId": "<approved existing demo team GUID>",
+  "channelId": "<actual 19:...@thread.tacv2 channel ID>"
+}
+```
+
+These are placeholders describing the **private** file format, not deployable fixture values. Do not commit the
+filled file. Missing/invalid settings block only this scenario, visibly; its tenant files/mails/events are not
+written. Other demos continue. A valid configuration still requires matching Graph tenant/account, actual channel
+and SharePoint access, and approved additional delegated scopes (`Files.ReadWrite.All`, `Team.ReadBasic.All`,
+`Channel.ReadBasic.All`, `ChannelMessage.Read.All`, `ChannelMessage.Send`, `Mail.ReadWrite`) in the one normal
+browser/window sign-in. No device-code login. Do not grant policies, billing or permissions merely to pass a test.
+
+The three BEFORE Word documents are uploaded only to the selected channel's SharePoint files folder.
+Other inputs/workbooks live in the presenter's OneDrive. Setup creates four fixed-date Frankfurt calendar entries
+and actual Teams threads/replies **as the presenter**; quoted workstream updates are explicitly synthetic.
+Two internal setup replies use Graph `createReply` followed by `send`, not forged message headers. They are
+sent only to the approved existing demo users. **All live workflow prompts are draft-only.**
+Inspect actual conversation membership and mailbox delivery in the tenant before presenting.
+
+The private ownership ledger and exact links live under
+`%LOCALAPPDATA%\DemoKit\executive-event\<tenant-id>\`; actual links also reach the global Desktop link page.
+An untracked existing shared folder or a changed tracked baseline blocks setup rather than overwriting unknown data.
+Keep the ledger when changing PCs; do not delete it to force a rerun.
+The ledger's SHA-256 identifies the local upload source; its cTag protects the tracked server version.
+SharePoint enriches these Word packages with document metadata, so downloaded ZIP bytes can differ from the
+original upload. The live fixture audit verified unchanged Word business parts and non-metadata relationships,
+as well as unchanged tracked cTags. Do not treat an enriched package's whole-file hash alone as evidence of a
+business-content change, or discard the ownership guard to force an overwrite.
+
+The eight demonstrations retain seven stable exercise codes: CO-26 through CO-29 introduce the smaller jobs,
+then CO-23, CO-24 (initial pack and a separate controlled-change stage) and CO-25 form the event chain.
+Travel research is a proposal, never an actual booking; EUR 650 for Billie's synthetic trip is inside, not
+in addition to, the EUR 9,000 event ceiling. No fare, hotel availability or travel-policy approval is supplied.
+Networking preparation uses fictional scenario responsibilities, not scraped biographies or LinkedIn actions.
+
+**Live requests stay short.** Three reusable Cowork skills contain the source boundaries, safety rules,
+output contracts and formatting: **contoso-executive-briefing** (the four introductory jobs and CO-23),
+**contoso-event-pack** (CO-24 and its change), and **contoso-event-follow-up** (CO-25).
+The generator writes bilingual procedures to `cowork-executive-event\skills\<skill>\SKILL.md` and a ZIP
+with `SKILL.md` at its root. Import the three trusted ZIPs through **Customize › Add › Upload**
+(the verified German interface is **Anpassen › Hinzufügen › Hochladen**), keeping them private.
+Start new conversations with the appropriate skill selected. Do not duplicate existing uploads or assume
+that a short request works without its skill. The skill derives the run identifier from the selected
+original workbook; technical run identifiers are not part of the copy-ready business request.
+Skill registration is an explicit one-time manual checklist item, not an undocumented installer API.
+Skill names use at most 64 letters, digits, dots, hyphens or underscores, as required by the verified tenant upload dialog.
+Earlier long-prompt results do not establish acceptance of this revised skill-based workflow.
+
+Presenter runbooks are `tools\expected\cowork-executive-event-runbook-de.md` and `-en.md`, intentionally outside
+the installed/indexed package. `Preparation-de.md`/`-en.md` explain source selection. Start each act from its correct
+BEFORE/CHANGE/AFTER evidence. This is a preparation package, not acceptance of the live chain. The presenter
+owns the live rehearsal, actual tenant/device checks and stage decision. Use the eight-row checklist in the
+runbook to record PASS / FIX / BACKUP ONLY and actual results privately. Local checks do not prove Cowork
+execution; delivery does not require further autonomous UI tests or two consecutive complete rehearsals.
+Existing genuine outputs, screenshots and native Office renders can be disclosed backups, but repaired files
+or files from different runs must not be presented as one successful chain. Missing evidence stays open.
+Keep all tenant-bearing results and captures outside both public repositories.
+
+`Reset-CoworkExecutiveEvent.ps1` is installed beside `ExecutiveEvent.ps1`. Run it from the installed package folder
+(including `baseline\hashes.json`) or from this repository's `tools` folder, with `-WhatIf` first.
+The scenario setup retains the authorized Graph context for reset in the **same PowerShell window**; other
+demo setup behavior is unchanged. A newly launched PowerShell process must initialize its Graph context from
+the existing token cache first; do not rerun the installer just to reconnect, because it can overwrite numbered
+working copies. In a fresh shell, load the private settings and reconnect normally with only reset's scopes:
+
+```powershell
+$settings = Get-Content "$env:LOCALAPPDATA\DemoKit\executive-event-settings.json" -Raw | ConvertFrom-Json
+Connect-MgGraph -TenantId $settings.tenantId -ContextScope CurrentUser -Scopes 'User.Read','Files.ReadWrite' -NoWelcome
+```
+
+This uses the existing browser-authenticated cache when valid. If a new consent or MFA step is requested,
+complete the approved normal browser/window sign-in before rehearsal; never use device code.
+It hash-checks the untouched `baseline/<language>/Action_Register.xlsx`
+and creates a new isolated run and output folder, preserving all earlier results, mails, calendar and Teams posts.
+The private `active-<language>.json` report gives the exact new links. Use a new Cowork conversation and the new
+run name in draft subjects. Installer reruns are not resets and can overwrite the numbered working copies.
+If an original source was changed, stop and review the exact object before restoring; this reset deliberately
+does not delete or silently repair objects.
+
+Rebuild and check locally:
+
+```powershell
+python tools\build-cowork-executive-event.py
+.\tools\Update-Manifest.ps1 -All
+python tools\check-cowork-executive-event.py
+.\tools\Test-CoworkExecutiveEvent.ps1
+```
+
+### Adding another demo
 
 1. Create a new folder `<demo-id>/` with the files.
 2. Create `manifest.json` with `title` (en/de) and `next` (en/de). Copy one from an existing demo.

@@ -1,0 +1,3 @@
+PHASE CHANGE. Reveal only after the first preparation pack has been saved. Synthetic update for the same event on 22 October 2026.
+
+Teresa can now join only remotely, 11:30-12:15 Europe/Berlin. Her 45-minute priorities session must move into that slot. Keep the 09:30 start, 14:00 finish, 42 participants, EUR 9,000 ceiling and at least 60 minutes of informal conversation. Billie must test the remote connection. Do not invent a Teams meeting URL or imply that a venue has been booked. Update only the current run's agenda, presentation and saved drafts; explain what changed and what still needs a human decision.
