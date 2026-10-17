@@ -1,0 +1,3 @@
+# EAD26 aktiver Lauf 02
+
+Szenario: Contoso Executive Office. Sprache: de. Tatsächliche Cloud-Ablage dieses ausgewählten Originals lesen: sein Elternordner ist runs/de/02. Neue Dateien unter outputs/<Übungscode>/ dieses Laufs speichern. Fall-Unterordner bei Bedarf anlegen; vorhandene Ergebnisse niemals ersetzen. Laufname und Übungscode in Betreffzeilen ungesendeter Entwürfe aufnehmen. Einzige bearbeitbare Geschäftseingabe: Action_Register.xlsx dieses Laufs für CO-35. Stand und exakte Quellenliste stehen in der ausgewählten Case.md. Jeder Fall startet im neuen Verlauf; frühere Ergebnisse sind keine Voraussetzung. Keine Nachbarfälle oder älteren Läufe lesen. Baseline unveränderlich. Nicht senden/posten/einladen/buchen/bezahlen/automatisieren.

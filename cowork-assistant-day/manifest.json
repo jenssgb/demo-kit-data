@@ -1,0 +1,436 @@
+{
+  "title": {
+    "en": "Executive assistant: A day with Cowork",
+    "de": "Assistenzalltag: Ein Tag mit Cowork"
+  },
+  "next": {
+    "en": [
+      "Read Preparation-en.md."
+    ],
+    "de": [
+      "Preparation-de.md lesen."
+    ]
+  },
+  "files": [
+    {
+      "path": "baseline/de/Action_Register.xlsx",
+      "sha256": "85b78affd9a7cf04c4a6dade420e84aa2e9c3a7686794f86fba60184877d664d"
+    },
+    {
+      "path": "baseline/de/Run_Context.md",
+      "sha256": "b2b59d55dc12f9cc55d2e9df3d0e78af70807f90928de8391ff7b81a78681a73"
+    },
+    {
+      "path": "baseline/en/Action_Register.xlsx",
+      "sha256": "4f3081521e06d0e7c98c4b6143cca23f3fdb318ecdc48665cefaad47fadb1b02"
+    },
+    {
+      "path": "baseline/en/Run_Context.md",
+      "sha256": "06047f2ca6383264bf3bb125cd58735da9d60cfeb5c098808f10ba467fc712b7"
+    },
+    {
+      "path": "baseline/hashes.json",
+      "sha256": "0362e3273201eb56499673820cc10d2984f75e722a9303265d127963437aecd8"
+    },
+    {
+      "path": "DemoCalendar.ps1",
+      "sha256": "84cd658f50dd8da4216527d21c94af06df4f69ee14832a92843ba81114d7d96f"
+    },
+    {
+      "path": "inputs/de/CO-30/Case.md",
+      "sha256": "7549047f56fbea7a0ab5904591e5d680974d2b3531b279e4dba1f6555b1fd585"
+    },
+    {
+      "path": "inputs/de/CO-30/Inbox_Rules.docx",
+      "sha256": "1a6a0da63dbcf80d9ada10bf1f30392e9d018031284b5e41385de11d175f9d67"
+    },
+    {
+      "path": "inputs/de/CO-31/Calendar_Snapshot.docx",
+      "sha256": "77afa72f39c88b3882cd336e38dedbf2bcde1e741169df7175b8acacb0f4a1fd"
+    },
+    {
+      "path": "inputs/de/CO-31/Case.md",
+      "sha256": "371d7c21094f5c70b5ed71501edadb25750a8f171cd7e244ed32394a0d3a4960"
+    },
+    {
+      "path": "inputs/de/CO-31/Morning_Papers.docx",
+      "sha256": "61fb02eef6a37dd289a0435138f1233d686431fa7f7746da135974bdaff13019"
+    },
+    {
+      "path": "inputs/de/CO-32/Case.md",
+      "sha256": "cfcf549a6bb44e64f7bcad6e3cd86c7feae22b000e73c85915ce9dc2d5065f8b"
+    },
+    {
+      "path": "inputs/de/CO-32/Review_Current.docx",
+      "sha256": "533411ce738364428543c969d85434e979e31737572018dd8e4cdfdea8101352"
+    },
+    {
+      "path": "inputs/de/CO-32/Review_Previous.docx",
+      "sha256": "0904830582287e1ba0bc7d8f5b873e0ebeb6cff846efc846066ed8e6d60b2090"
+    },
+    {
+      "path": "inputs/de/CO-33/Case.md",
+      "sha256": "8bb1c5e24018f81bef28082837897fc01bf15ef24484cd6f455861ff45aa352d"
+    },
+    {
+      "path": "inputs/de/CO-33/Handover_List.docx",
+      "sha256": "23891db466fe439062b2b21a4dc5a981a7fa568a8649ef6fa354d47d27c56b62"
+    },
+    {
+      "path": "inputs/de/CO-34/Calendar_Rules.docx",
+      "sha256": "0d4c7be21d738c256a00b0d31b98346b37907aeacf923d99742a447767a5747c"
+    },
+    {
+      "path": "inputs/de/CO-34/Calendar_Snapshot.docx",
+      "sha256": "77afa72f39c88b3882cd336e38dedbf2bcde1e741169df7175b8acacb0f4a1fd"
+    },
+    {
+      "path": "inputs/de/CO-34/Case.md",
+      "sha256": "432fcab8266a6e4931d9d09a16738023aca274a5c271f6dd965e3c9bbddf6224"
+    },
+    {
+      "path": "inputs/de/CO-35/Case.md",
+      "sha256": "074548e9f8d5490357bfaf3e94fd546580f8ae2a8fae5d5d9886a29e4a9885db"
+    },
+    {
+      "path": "inputs/de/CO-35/Released_Notes.docx",
+      "sha256": "7ab53e3e412f8bf8a91e7ef5e5c788292d82bad31321ec7e75e9c648113888cb"
+    },
+    {
+      "path": "inputs/de/CO-36/Case.md",
+      "sha256": "3d830068618b6d23182227b90f3b18823bbd7e0afb2864692323f2c7ce104b82"
+    },
+    {
+      "path": "inputs/de/CO-36/Visit_Brief.docx",
+      "sha256": "cf2f198fa35080c398c245bb06b53c0bd7e6b970d305111e83d8a95ca89057f4"
+    },
+    {
+      "path": "inputs/de/CO-37/Case.md",
+      "sha256": "0520e49774f3bdd33e87a9dcacf49f9b9164af9f6e5874aa65ff9a98d68964bf"
+    },
+    {
+      "path": "inputs/de/CO-37/Day_Checkpoint.docx",
+      "sha256": "db2677d35662236552ac02b7b6aeafded85ae50c3f8fa78359d6ec7105ba6e85"
+    },
+    {
+      "path": "inputs/de/CO-37/Tomorrow_Calendar.docx",
+      "sha256": "56a1c458903ecaa62d398231c51b42a1e3d782a3c5676d22452dbf688de5c8bb"
+    },
+    {
+      "path": "inputs/en/CO-30/Case.md",
+      "sha256": "e0aa4e45767500748b2e5ae62177b37c71c3035d6c1fb8b6a60422d4cc5c7f8c"
+    },
+    {
+      "path": "inputs/en/CO-30/Inbox_Rules.docx",
+      "sha256": "f4425e29950793098e96cd51b59ded30cf0b173716d15e84252060c87a30d8a7"
+    },
+    {
+      "path": "inputs/en/CO-31/Calendar_Snapshot.docx",
+      "sha256": "38e4f050d51c787b6115456a4df044c098b7021ca5c497694c740e075054b52e"
+    },
+    {
+      "path": "inputs/en/CO-31/Case.md",
+      "sha256": "46af2a1923a343f526ac770e4fe9ddbbe6c27b4863784a7bbedb248330b3bc6f"
+    },
+    {
+      "path": "inputs/en/CO-31/Morning_Papers.docx",
+      "sha256": "975f3b924d2becfb7430e77f4a25feadf28800a13905b1d1b1705b005f4472c8"
+    },
+    {
+      "path": "inputs/en/CO-32/Case.md",
+      "sha256": "1461a614a65c816b466ce2fa5ac956baec5eaa0df401199c49c46565170919ea"
+    },
+    {
+      "path": "inputs/en/CO-32/Review_Current.docx",
+      "sha256": "2a922bf7d070ea8007fe1a74442498e7f3a080f920a3c32d58547f8166f7160d"
+    },
+    {
+      "path": "inputs/en/CO-32/Review_Previous.docx",
+      "sha256": "860e196c58fb97aeb23dbf44586d09cdcee441850250f0ffde07fb67244154b1"
+    },
+    {
+      "path": "inputs/en/CO-33/Case.md",
+      "sha256": "8e47ed7a0c87fcc6acfcd9e51e6318b2814c4e15c47193feedc902790962d5a0"
+    },
+    {
+      "path": "inputs/en/CO-33/Handover_List.docx",
+      "sha256": "4e992e5693b570e8360f62f7ba2ab0f511714d3d7b390504308d3d91f48966b8"
+    },
+    {
+      "path": "inputs/en/CO-34/Calendar_Rules.docx",
+      "sha256": "5962b2b245279d9e09c2e820f09960e205215d39d44ab868d42c7843a9805d17"
+    },
+    {
+      "path": "inputs/en/CO-34/Calendar_Snapshot.docx",
+      "sha256": "38e4f050d51c787b6115456a4df044c098b7021ca5c497694c740e075054b52e"
+    },
+    {
+      "path": "inputs/en/CO-34/Case.md",
+      "sha256": "f306db6a63915a83abc7a1f489d0cc29078a51d363994b6ad648decbd0422e05"
+    },
+    {
+      "path": "inputs/en/CO-35/Case.md",
+      "sha256": "8e6f5fb2bad98cb11595a2161bc6ea82d4c1aea743f84017f6bc19abef15f608"
+    },
+    {
+      "path": "inputs/en/CO-35/Released_Notes.docx",
+      "sha256": "ee478622857918b6a141dbcf609155a238554c8ea241ab3bb3c01948fd053dcd"
+    },
+    {
+      "path": "inputs/en/CO-36/Case.md",
+      "sha256": "4a903043a73bd297581aa57cd29c03ee0754943c424f10fbc0fffcca23ce70fe"
+    },
+    {
+      "path": "inputs/en/CO-36/Visit_Brief.docx",
+      "sha256": "cecaa688561f2574a2c6101700c472c8e084a91d79d8984a9ca53aa9c457ceb9"
+    },
+    {
+      "path": "inputs/en/CO-37/Case.md",
+      "sha256": "c0ff0e7e446d637c405f5cee36a1414faf8a4c0b421d646d576498fc9b7a7f1f"
+    },
+    {
+      "path": "inputs/en/CO-37/Day_Checkpoint.docx",
+      "sha256": "f23c9b0d227b8e77495cb6e86d2da4454f7a3e6fad41ae97025202fc69e59f04"
+    },
+    {
+      "path": "inputs/en/CO-37/Tomorrow_Calendar.docx",
+      "sha256": "12ba8e76773da9dbf8452b9208ab60a8490ff2e37f6a56ee3561243a6cf588ae"
+    },
+    {
+      "path": "mails-de/30-01_Sydney.eml",
+      "sha256": "5519d05543d1c3e8032a93855bdc5765afc4d1bab9c1934411010596fb03cac4"
+    },
+    {
+      "path": "mails-de/30-02_Teresa.eml",
+      "sha256": "78c0a00ea37b260976c88b055ea073d9d4acc8322902dba7c84834865d3ea45c"
+    },
+    {
+      "path": "mails-de/30-03_Billie.eml",
+      "sha256": "534852f2d97db9bc2cf74be977bf739e7fbab643f1a641e3d2e215368bbe31cd"
+    },
+    {
+      "path": "mails-de/30-04_Sonia.eml",
+      "sha256": "5ceee46c6c7f1c53a7cc59b16b9b49db46cc6666e2ba533512fe7640e63c5de7"
+    },
+    {
+      "path": "mails-de/30-05_Vance.eml",
+      "sha256": "3a2626bde980b1edeeac6a41094b84632d035395a516e5946b47d9a0405239c3"
+    },
+    {
+      "path": "mails-de/30-06_Sonia.eml",
+      "sha256": "2d3f4e829cbd6a7af28c28b11e7f8bed7a3fc7957a34be46a7d9049d02c86cd0"
+    },
+    {
+      "path": "mails-de/31-01_Teresa.eml",
+      "sha256": "bfcbeccae30a486ef133ddd116827c593b02b654b1c063e2f480aea9ffd4fa23"
+    },
+    {
+      "path": "mails-de/31-02_Billie.eml",
+      "sha256": "364b955e036928733648bb3fb518f19814abf49a8d00e3a920c779b7136f2bee"
+    },
+    {
+      "path": "mails-de/32-01_Teresa.eml",
+      "sha256": "20959412789ca984e66be84febd549b9462192d90a9a00ebd3ec50b1428d49b8"
+    },
+    {
+      "path": "mails-de/32-02_Sonia.eml",
+      "sha256": "300ac1dff55f75d0c73e18cc5e31243c9770b00d004badaa94fc618ad761be8c"
+    },
+    {
+      "path": "mails-de/33-01_Vance.eml",
+      "sha256": "6ad62d9d7001433a26e86fe803be54f7657a850b2f4c7de55c5968f09c78b46a"
+    },
+    {
+      "path": "mails-de/33-02_Vance.eml",
+      "sha256": "72570521622a8859012768aedf0e38fe1b0fa06256dab3443c408c1f47c73f96"
+    },
+    {
+      "path": "mails-de/33-03_Sonia.eml",
+      "sha256": "ada3ea8889d41d37bd58d3b836d6a019f819cdcc473e76fa2b082ec36e8f5c6a"
+    },
+    {
+      "path": "mails-de/33-04_Billie.eml",
+      "sha256": "77b0d5e9ddd3e0b4e77f5db5343cb93319b0bfce6cd6126ce3f297ed33abdbf2"
+    },
+    {
+      "path": "mails-de/33-05_Billie.eml",
+      "sha256": "02a991c453a073b57b9bdd1a421f949e479bdaec90a477191a63b3e15523f22d"
+    },
+    {
+      "path": "mails-de/36-01_Teresa.eml",
+      "sha256": "58408027f77174441921e03cbd6ad6a35b3a3353504c3d9948478974bdc0c5e4"
+    },
+    {
+      "path": "mails-de/36-02_Sonia.eml",
+      "sha256": "bf455d11f577265921801972fdaf9e82a0f50292e3694286d13f1887dd38422b"
+    },
+    {
+      "path": "mails-de/36-03_Billie.eml",
+      "sha256": "d4bdf57f68a6ab52f6ca06741f86c946644da4a400f0977a3bcc74e35929e92b"
+    },
+    {
+      "path": "mails-en/30-01_Sydney.eml",
+      "sha256": "c9d16627cca128df680f090863484ad8c6b69cf76c9795c4b675e7f1b268d96b"
+    },
+    {
+      "path": "mails-en/30-02_Teresa.eml",
+      "sha256": "58439aa24502f3fe453354ba9a33d771206b7406f3e438df2ffb505df03a0368"
+    },
+    {
+      "path": "mails-en/30-03_Billie.eml",
+      "sha256": "8958a38fbe2ebcaf72ebfcc9664fbd6a49d99962e03032e81d4952cefa84ad7c"
+    },
+    {
+      "path": "mails-en/30-04_Sonia.eml",
+      "sha256": "8922e1ed6256d3a9b4e6837b7f21b00879812d9a07fdf3cfa9386b28db884f62"
+    },
+    {
+      "path": "mails-en/30-05_Vance.eml",
+      "sha256": "995bea1db65cebd28daa18fa277e09e71a4fd4b4154b18d071703884305de11d"
+    },
+    {
+      "path": "mails-en/30-06_Sonia.eml",
+      "sha256": "06824d7fa680f61a921ed7a35821688f1c6cef0cd6f51b7c2602ee2fad63e6ac"
+    },
+    {
+      "path": "mails-en/31-01_Teresa.eml",
+      "sha256": "9bbf012a7b069ef639298add91c2c23c0be928cae011255cf498cb311da59c28"
+    },
+    {
+      "path": "mails-en/31-02_Billie.eml",
+      "sha256": "cb049dd534f3c7b0bcf7641bffa3739bd8ba5cd5cdcb2b1e9d25a723f9de6891"
+    },
+    {
+      "path": "mails-en/32-01_Teresa.eml",
+      "sha256": "69693e900f003c6a4a898337fe565b51dabc2803ee0cc6a5f1c482646849f5d0"
+    },
+    {
+      "path": "mails-en/32-02_Sonia.eml",
+      "sha256": "048a516f5e3efdd0bb6b9f588126637c98e92907943df678a1c9a4b2abcbbf75"
+    },
+    {
+      "path": "mails-en/33-01_Vance.eml",
+      "sha256": "10ce95db95bb80e884dfc489eef7a72b77f67f7aab93f12ff80ab9204ea721f2"
+    },
+    {
+      "path": "mails-en/33-02_Vance.eml",
+      "sha256": "d50795ae90a95ff31cd7bcff0a35acb2afaf2fb6968131d80d1ff30374c5b6c8"
+    },
+    {
+      "path": "mails-en/33-03_Sonia.eml",
+      "sha256": "1a6365af8c14c0cefeda22c25dfb328c5644d084e9a7bb8c81dac893bd43835d"
+    },
+    {
+      "path": "mails-en/33-04_Billie.eml",
+      "sha256": "32bd9ded65816103c7498d951747c9870726edf1b99a83e2f9379d49e32cafef"
+    },
+    {
+      "path": "mails-en/33-05_Billie.eml",
+      "sha256": "95857bd0e0abebb6a2b1d19703dd065a6f6b820fce6190d573aa314988a02f1b"
+    },
+    {
+      "path": "mails-en/36-01_Teresa.eml",
+      "sha256": "8e33a5d86e2d26578bc77195b9582c070615a78d7737b8e748263bdd11ae8bc5"
+    },
+    {
+      "path": "mails-en/36-02_Sonia.eml",
+      "sha256": "2da19a7f88523a600e614e7e61b9362f15205eea5bb7bfa1251d7645d11cd670"
+    },
+    {
+      "path": "mails-en/36-03_Billie.eml",
+      "sha256": "716120c2e215661e981fbb232d4396944be32349ef3df4fe3a0a37fdddbd9b6f"
+    },
+    {
+      "path": "Preparation-de.md",
+      "sha256": "ddb499cdb947d578de04e6c64b808ef0a22c4366a978fc3d9934ede14478333b"
+    },
+    {
+      "path": "Preparation-en.md",
+      "sha256": "b1334093bdf170d818eeb597062a0eb4f47e63f8f7270cbce846145fe5628bfc"
+    },
+    {
+      "path": "Reset-CoworkAssistantDay.ps1",
+      "sha256": "0e521729d721d7bfdad979ceeaf3ee5a3b3a7eaa125cd5d30fd2bd7c4a697206"
+    },
+    {
+      "path": "runs/de/01/Action_Register.xlsx",
+      "sha256": "85b78affd9a7cf04c4a6dade420e84aa2e9c3a7686794f86fba60184877d664d"
+    },
+    {
+      "path": "runs/de/01/outputs/README.md",
+      "sha256": "a99e34ba9848d4cad8ff42a8d737567fa1294f05d5b92f3ffddf604389e0fab9"
+    },
+    {
+      "path": "runs/de/01/Run_Context.md",
+      "sha256": "b2b59d55dc12f9cc55d2e9df3d0e78af70807f90928de8391ff7b81a78681a73"
+    },
+    {
+      "path": "runs/de/02/Action_Register.xlsx",
+      "sha256": "85b78affd9a7cf04c4a6dade420e84aa2e9c3a7686794f86fba60184877d664d"
+    },
+    {
+      "path": "runs/de/02/outputs/README.md",
+      "sha256": "a99e34ba9848d4cad8ff42a8d737567fa1294f05d5b92f3ffddf604389e0fab9"
+    },
+    {
+      "path": "runs/de/02/Run_Context.md",
+      "sha256": "9d9e3259b69b52b2d98f8f6918734f822d7512ec67259ea12daeafbcd6dfb648"
+    },
+    {
+      "path": "runs/de/03/Action_Register.xlsx",
+      "sha256": "85b78affd9a7cf04c4a6dade420e84aa2e9c3a7686794f86fba60184877d664d"
+    },
+    {
+      "path": "runs/de/03/outputs/README.md",
+      "sha256": "a99e34ba9848d4cad8ff42a8d737567fa1294f05d5b92f3ffddf604389e0fab9"
+    },
+    {
+      "path": "runs/de/03/Run_Context.md",
+      "sha256": "7bfc0676e49ef978dfffff84d765a34d3f3d1ddf11902d8d0069a20584b611be"
+    },
+    {
+      "path": "runs/en/01/Action_Register.xlsx",
+      "sha256": "4f3081521e06d0e7c98c4b6143cca23f3fdb318ecdc48665cefaad47fadb1b02"
+    },
+    {
+      "path": "runs/en/01/outputs/README.md",
+      "sha256": "a7e40e3a6998bc2394dd59d54b190d8faa11edfdd468e49835bd18c11d030116"
+    },
+    {
+      "path": "runs/en/01/Run_Context.md",
+      "sha256": "06047f2ca6383264bf3bb125cd58735da9d60cfeb5c098808f10ba467fc712b7"
+    },
+    {
+      "path": "runs/en/02/Action_Register.xlsx",
+      "sha256": "4f3081521e06d0e7c98c4b6143cca23f3fdb318ecdc48665cefaad47fadb1b02"
+    },
+    {
+      "path": "runs/en/02/outputs/README.md",
+      "sha256": "a7e40e3a6998bc2394dd59d54b190d8faa11edfdd468e49835bd18c11d030116"
+    },
+    {
+      "path": "runs/en/02/Run_Context.md",
+      "sha256": "062913d0512fddc2e2bac4e07d15b2fdaa095dab652a03541591b86ff38948f3"
+    },
+    {
+      "path": "runs/en/03/Action_Register.xlsx",
+      "sha256": "4f3081521e06d0e7c98c4b6143cca23f3fdb318ecdc48665cefaad47fadb1b02"
+    },
+    {
+      "path": "runs/en/03/outputs/README.md",
+      "sha256": "a7e40e3a6998bc2394dd59d54b190d8faa11edfdd468e49835bd18c11d030116"
+    },
+    {
+      "path": "runs/en/03/Run_Context.md",
+      "sha256": "2330a77116556cba50c8a0882d962e7dc7185df8f3b770f049d78215c06d8b3e"
+    },
+    {
+      "path": "skills/contoso-assistant-day.zip",
+      "sha256": "152d59352a6275d43645164804073cee2624161d479ce5f57b62c7f7ff68ce0a"
+    },
+    {
+      "path": "skills/contoso-assistant-day/SKILL.md",
+      "sha256": "4d809116e9440bfda8cedde66499f70563951cab06ecb9168ad398c814fb4653"
+    }
+  ]
+}

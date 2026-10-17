@@ -35,7 +35,7 @@ Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Admi
 | Files | Uploaded with Microsoft Graph to the signed-in user's OneDrive (`Demo-Kit/<App>/<demo-id>`). Unchanged files are skipped by `quickXorHash`. |
 | Mails | Real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**). |
 | Senders | Existing mailboxes are found by display name (Teresa Sac, Billie Vester). People not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox. |
-| Meetings | Graph `POST /me/events` with attendees, on the next matching weekday. |
+| Meetings | Graph `POST /me/events` with attendees on the next matching weekday; optional guarded fixed-date scenarios create own appointments without attendees. |
 | OneNote | Notebook, section and pages via Graph (delegated). |
 | Not possible by API | Sensitivity labels and DLP, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript. These are printed as a checklist at the end. |
 
@@ -84,6 +84,7 @@ this one.
 | OneNote | `onenote-copilot` | Contoso Fargo distribution center expansion: OneNote notebook (.onepkg), Word and Excel files | Microsoft Learn course MS-4004, MIT (see `onenote-copilot/LICENSE-MS-4004.txt`) |
 | Cowork | `cowork-copilot` | Fargo go-live: four emails as .eml (EN + DE, incl. a Tailspin Toys quote request), readiness tracker (.xlsx), construction weekly week 16 (.docx), Cowork skill (`skills/contoso-golive-readiness/SKILL.md`), SAP placeholder list | Created for the Demo Kit, `python tools/build-cowork-copilot.py` |
 | Cowork | `cowork-executive-event` | Eight connected assistant jobs: planning reply, calendar conflicts, conversation preparation, business travel, venue/briefing, event pack, controlled change and follow-up; shared Word inputs, synthetic travel requirements, threaded inbox evidence, fixed-date calendar conflicts, truthful Teams discussions and isolated action workbooks | Created for the Demo Kit, `python tools/build-cowork-executive-event.py`; no Cowork results or recordings supplied |
+| Cowork | `cowork-assistant-day` | Eight independent everyday cases CO-30–CO-37: inbox, morning/meeting briefs, commitments, calendar, meeting-to-action, internal visit and day closure; 18 separate emails, nine own-calendar appointments, bilingual source documents, preserved run workbooks and one reusable skill | Original synthetic Contoso inputs, `python tools/build-cowork-assistant-day.py`; live acceptance remains with the presenter |
 | Cowork | `cowork-freight-invoice-check` | Freight invoice check: carrier invoices (.pdf), transport orders, carrier master, POD receipts, audit policy | Created for the Demo Kit, `python tools/build-cowork-usecases.py` |
 | Cowork | `cowork-carrier-contracts` | Carrier contract comparison: three carrier contracts (.pdf) | `python tools/build-cowork-usecases.py` |
 | Cowork | `cowork-lane-margin` | Lane and service margin: raw margin workbook (.xlsx) | `python tools/build-cowork-usecases.py` |
@@ -97,6 +98,53 @@ this one.
 | Agents | `governance-copilot` | Governance & trust: Confidential labor cost workbook, public site fact sheet, Highly Confidential M&A note, label/DLP setup notes (`README_setup.md`) | Created for the Demo Kit, `python tools/build-governance-copilot.py` |
 
 ## Add a demo
+
+### Assistant-day scenarios (EAD26)
+
+In Demo Kit, open **Cowork end to end › Executive assistant: A day with Cowork**
+(DE: **Cowork Ende zu Ende › Assistenzalltag: Ein Tag mit Cowork**).
+This adds eight independent cases alongside the existing eight leadership-event moments; it does not replace that story.
+Use the same global `-Tenant` command above, with `-Language de` for German, and preview with `-WhatIf`.
+The agent prepares and validates this package locally; the presenter installs and performs all live tests.
+
+Files land in `Demo-Kit\Cowork\cowork-assistant-day`. Mails appear in the approved admin's Inbox
+under `[EAD26 nn-nn]`; these are separate emails, not claimed conversation threads.
+Nine `[EAD26 key]` appointments appear in the same admin's **own** calendar on **19–23 October 2026**.
+There is no delegated executive mailbox, private-chat dependency or invitation. Scenario timestamps in sources,
+not actual delivery time or the current clock, determine the business chronology.
+`presenterAccount` checks cached Graph identity and mailbox before writes; `requiredUsers` verifies real Exchange mailboxes.
+Ordinary `weekday` configurations keep their rolling behavior.
+
+Fixed-date entries use an owned Graph single-value extended property and deterministic transaction ID.
+Repeat setup finds that identity even if an appointment was moved or renamed. Multiple or changed matches are
+reported, never overwritten. The fixed-date path rejects attendees and ambiguous daylight-saving times.
+There are no new scopes beyond the ordinary installer requirements.
+
+Read `Preparation-en.md` or `Preparation-de.md`. Register **contoso-assistant-day.zip** once through
+**Customize › Skills › arrow next to Add › Upload skill** and keep it private. A duplicate name gets numbered,
+not replaced; inspect an existing skill first. For each new conversation select that skill, the active run's
+`Run_Context.md`, the case's `Case.md` and its exact listed cloud originals. CO-35 edits the same active-run
+`Action_Register.xlsx`, not a baseline or replacement copy. Do not send/post/invite/move/book/pay or activate automation.
+
+Three initial runs per language are supplied. Installer reruns preserve their existing workbooks and contexts
+(`preserveExistingFiles`), rather than resetting edited originals. A fresh run is created with
+`Reset-CoworkAssistantDay.ps1 -Language en -WhatIf` (or `de`), then without `-WhatIf` after review.
+The script reuses the authorized cached Graph session, checks baseline workbook **and context** SHA-256,
+and creates a unique run/output folder without deleting or editing older results. It does not alter mails or calendars.
+The new cases do not require the event story's private Teams settings.
+
+Presenter-only selection, output contracts and eight **OPEN** live checks:
+`tools\expected\cowork-assistant-day-runbook-en.md` and `-de.md`. CO-37 includes a clearly labeled synthetic
+checkpoint for independent starts, not evidence that earlier Cowork tasks succeeded.
+No new Cowork outputs, screenshots or fabricated backups are included. Save genuine accepted results privately
+after your rehearsal. Local regression commands:
+
+```powershell
+python tools\check-cowork-assistant-day.py
+.\tools\Test-CoworkAssistantDay.ps1
+python tools\check-cowork-executive-event.py
+.\tools\Test-CoworkExecutiveEvent.ps1
+```
 
 ### Executive-event scenario (LEF26)
 

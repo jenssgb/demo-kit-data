@@ -1,0 +1,404 @@
+{
+  "id": "cowork-assistant-day",
+  "marker": "EAD26",
+  "readiness": "Locally prepared inputs; all eight live acceptance checks OPEN",
+  "researchDate": "2026-10-17",
+  "caseContracts": [
+    {
+      "code": "CO-30",
+      "title": {
+        "en": "Inbox triage",
+        "de": "Posteingang sortieren"
+      },
+      "story": {
+        "en": "The executive office has six unrelated messages. Two concern the same request; one needs no response. Prepare decisions without making them.",
+        "de": "Im Executive Office liegen sechs unterschiedliche Nachrichten. Zwei betreffen dieselbe Anfrage; eine braucht keine Antwort. Entscheidungen vorbereiten, nicht treffen."
+      },
+      "prompt": {
+        "en": "Please sort these inbox requests for me and prepare the two replies that need my attention. Save the overview so I can review it with Teresa.",
+        "de": "Sortiere bitte diese Anfragen im Posteingang und bereite die zwei Antworten vor, um die ich mich kümmern muss. Speichere die Übersicht für meine Abstimmung mit Teresa."
+      },
+      "files": [
+        "Inbox_Rules.docx"
+      ],
+      "outputs": [
+        "Inbox_Review.docx"
+      ],
+      "procedure": {
+        "en": "Read only the six CO-30 inbox messages listed in Case.md. Save a compact table with all six IDs, five categories (decision required, meeting request, information, delegable, no action), reason, proposed next step and source. Flag 30-05 as the duplicate of 30-01, not a second approval. Save exactly two actual unsent Outlook drafts: Sydney (30-01) asking for the missing purchase justification without approving EUR 2,200; Teresa (30-02) asking which existing commitment takes priority, without promising a slot. Do not file, flag, delete or move mail.",
+        "de": "Nur die sechs in Case.md genannten CO-30-Mails lesen. Kompakte Tabelle mit allen sechs IDs, fünf Kategorien (Entscheidung nötig, Terminwunsch, Information, delegierbar, keine Aktion), Begründung, nächstem Schritt und Quelle speichern. 30-05 als Duplikat von 30-01 markieren, nicht als zweite Freigabe. Genau zwei echte ungesendete Outlook-Entwürfe speichern: an Sydney (30-01), fehlende Begründung erfragen ohne 2.200 EUR freizugeben; an Teresa (30-02), Priorität bestehender Verpflichtungen erfragen ohne einen Termin zuzusagen. Keine Mail verschieben, markieren oder löschen."
+      },
+      "human": {
+        "en": "Choose the escalation and tone personally.",
+        "de": "Eskalation und Ton persönlich entscheiden."
+      },
+      "check": {
+        "en": "Six rows; five categories; duplicate linked; two saved unsent drafts; no approval of EUR 2,200.",
+        "de": "Sechs Zeilen; fünf Kategorien; Duplikat zugeordnet; zwei gespeicherte ungesendete Entwürfe; keine Freigabe von 2.200 EUR."
+      },
+      "asOf": "2026-10-19T08:30:00+02:00"
+    },
+    {
+      "code": "CO-31",
+      "title": {
+        "en": "Morning brief",
+        "de": "Morning Brief"
+      },
+      "story": {
+        "en": "Before the day starts, a supplier decision has moved forward, IT has an update and the office calendar contains a clash.",
+        "de": "Vor Tagesbeginn wurde eine Lieferantenentscheidung vorgezogen, IT meldet einen neuen Stand und im eigenen Kalender kollidieren Termine."
+      },
+      "prompt": {
+        "en": "Please prepare my morning brief for the scenario day. Bring together the calendar, Teresa's update and the current papers, with the decisions I should tackle first.",
+        "de": "Bereite bitte meinen Morning Brief für unseren Szenariotag vor. Bring Kalender, Teresas Update und die aktuellen Unterlagen zusammen und zeig mir, welche Entscheidungen zuerst anstehen."
+      },
+      "files": [
+        "Morning_Papers.docx",
+        "Calendar_Snapshot.docx"
+      ],
+      "outputs": [
+        "Morning_Brief.docx"
+      ],
+      "procedure": {
+        "en": "Use only CO-31 mail, Morning_Papers and the listed EAD26 own-calendar entries. Treat the supplied snapshot as 19 October 2026 08:30 Europe/Berlin, irrespective of the actual clock. Verify the actual calendar against the selected snapshot; disclose discrepancies. Save a readable one-page Word briefing with top three priorities, changed facts, decision deadlines, source links, missing evidence and proposed work order. Replace EUR 72,000 / five days with EUR 88,000 / eight days from the dated current paper. Teresa's decision deadline is 09:30 today, not tomorrow. Billie's test is reported complete in synthetic evidence, not verified by you. Exclude CO-35 afternoon notes and CO-37 day-close sources.",
+        "de": "Nur CO-31-Mails, Morning_Papers und die genannten eigenen EAD26-Kalendereinträge nutzen. Stand ist 19. Oktober 2026, 08:30 Europe/Berlin, unabhängig von der echten Uhrzeit. Tatsächlichen Kalender mit der ausgewählten Momentaufnahme abgleichen; Abweichungen benennen. Lesbaren einseitigen Word-Brief mit Top 3, Änderungen, Entscheidungsfristen, Quellenlinks, Lücken und Arbeitsreihenfolge speichern. 72.000 EUR / fünf Tage durch 88.000 EUR / acht Tage aus dem aktuellen Papier ersetzen. Teresas Entscheidungsfrist ist heute 09:30, nicht morgen. Billies Test ist laut synthetischem Beleg erledigt, nicht von dir geprüft. CO-35-Nachmittagsnotizen und CO-37-Abschlussbelege ausschließen."
+      },
+      "human": {
+        "en": "Decide what to raise with Teresa first.",
+        "de": "Entscheiden, was zuerst persönlich zu Teresa gehört."
+      },
+      "check": {
+        "en": "One page; 09:30 deadline; EUR 88,000/eight days; calendar overlap; no afternoon information.",
+        "de": "Eine Seite; Frist 09:30; 88.000 EUR/acht Tage; Kalenderkollision; keine Nachmittagsinformationen."
+      },
+      "asOf": "2026-10-19T08:30:00+02:00"
+    },
+    {
+      "code": "CO-32",
+      "title": {
+        "en": "Executive meeting brief",
+        "de": "Meeting Brief"
+      },
+      "story": {
+        "en": "A supplier service review needs a decision. The old dashboard looks positive; a newer quality note changes the picture.",
+        "de": "Ein Lieferantenreview braucht eine Entscheidung. Das alte Dashboard sieht positiv aus; eine neuere Qualitätsnotiz verändert das Bild."
+      },
+      "prompt": {
+        "en": "Please get my supplier review briefing ready. Compare the old dashboard with the latest quality update and give me the questions Teresa needs to decide.",
+        "de": "Bereite bitte mein Briefing fürs Lieferantenreview vor. Vergleiche das alte Dashboard mit dem aktuellen Qualitätsstand und zeig mir die Fragen, die Teresa entscheiden muss."
+      },
+      "files": [
+        "Review_Previous.docx",
+        "Review_Current.docx"
+      ],
+      "outputs": [
+        "Meeting_Brief.docx"
+      ],
+      "procedure": {
+        "en": "Use the two CO-32 messages and the two selected review papers. Save a one-page Word briefing with meeting goal, earlier/current comparison, decisions, three talking points, unknowns and real source links. Keep the periods separate: September 96% on-time and six issues; October-to-date 88% and fourteen issues. Sonia's training capacity remains unconfirmed; do not designate her as approved owner. The supplier review is 20 October at 11:00, not the CO-35 internal process review. No access to anyone else's Teams chats is assumed.",
+        "de": "Die zwei CO-32-Mails und beide ausgewählten Review-Papiere nutzen. Einseitigen Word-Brief mit Terminziel, Alt-/Neu-Vergleich, Entscheidungen, drei Talking Points, offenen Fragen und echten Quellenlinks speichern. Zeiträume trennen: September 96 Prozent pünktlich/sechs Fälle; Oktober bisher 88 Prozent/vierzehn Fälle. Sonias Trainingskapazität ist unbestätigt, sie ist keine freigegebene Verantwortliche. Lieferantenreview am 20. Oktober um 11:00, nicht das interne CO-35-Prozessreview. Kein Zugriff auf fremde persönliche Teams-Chats unterstellen."
+      },
+      "human": {
+        "en": "Choose the negotiating position, not just the numbers.",
+        "de": "Die Gesprächsposition bestimmen, nicht nur Zahlen übernehmen."
+      },
+      "check": {
+        "en": "One page; distinct periods; 96 to 88%, six to fourteen; training decision open.",
+        "de": "Eine Seite; getrennte Zeiträume; 96 auf 88 Prozent, sechs auf vierzehn; Trainingsentscheidung offen."
+      },
+      "asOf": "2026-10-19T08:30:00+02:00"
+    },
+    {
+      "code": "CO-33",
+      "title": {
+        "en": "Commitments radar",
+        "de": "Wiedervorlage"
+      },
+      "story": {
+        "en": "Three promises have different evidence: one is closed, one has no completion evidence, and one response is ambiguous.",
+        "de": "Drei Zusagen mit unterschiedlicher Beleglage: eine abgeschlossen, eine ohne Abschlussbeleg und eine mehrdeutige Rückmeldung."
+      },
+      "prompt": {
+        "en": "Please check what became of these three commitments and prepare the follow-ups. Keep uncertain cases separate so I don't chase someone who has already delivered.",
+        "de": "Schau bitte nach, was aus diesen drei Zusagen geworden ist, und bereite das Nachfassen vor. Trenne unklare Fälle, damit ich niemanden unnötig erinnere."
+      },
+      "files": [
+        "Handover_List.docx"
+      ],
+      "outputs": [
+        "Commitments.docx"
+      ],
+      "procedure": {
+        "en": "Read the five CO-33 messages chronologically using their explicit synthetic timestamps, not delivery time. Save a three-row evidence register: Vance's handover list confirmed delivered by 33-02 and selected Handover_List; Sonia's listening summary has no completion evidence; Billie's 'looks fine' is not explicit accessibility-test completion. Missing evidence is not proof of failure. Save two unsent drafts: a gentle request to Sonia for the summary/status and a clarification to Billie about the test evidence. Do not remind Vance, mark promises complete or invent deadlines.",
+        "de": "Die fünf CO-33-Mails anhand ihrer ausdrücklichen synthetischen Zeitstempel lesen, nicht nach Zustellzeit. Drei Zeilen mit Belegen speichern: Vances Übergabeliste durch 33-02 und Handover_List als geliefert bestätigt; für Sonias Gesprächsauswertung fehlt ein Abschlussbeleg; Billies 'sieht gut aus' bestätigt keinen abgeschlossenen Barrierefreiheitstest. Fehlende Belege sind kein Beweis für Versäumnis. Zwei ungesendete Entwürfe: Sonia freundlich nach Auswertung/Stand fragen, Billie um Testbeleg bitten. Vance nicht erinnern, keine Zusage als erledigt markieren und keine Frist erfinden."
+      },
+      "human": {
+        "en": "Choose whom to call rather than send a reminder.",
+        "de": "Entscheiden, wen man lieber persönlich anspricht."
+      },
+      "check": {
+        "en": "Closed / no completion evidence / uncertain separated; no Vance reminder; two unsent drafts.",
+        "de": "Abgeschlossen / kein Abschlussbeleg / unklar getrennt; keine Erinnerung an Vance; zwei ungesendete Entwürfe."
+      },
+      "asOf": "2026-10-19T08:30:00+02:00"
+    },
+    {
+      "code": "CO-34",
+      "title": {
+        "en": "Calendar week",
+        "de": "Kalenderwoche"
+      },
+      "story": {
+        "en": "The office week has an overlap, a building change without travel time and a workshop without an agenda. Other people's availability is unknown.",
+        "de": "Die eigene Woche enthält eine Kollision, einen Ortswechsel ohne Wegezeit und einen Workshop ohne Agenda. Fremde Verfügbarkeit ist unbekannt."
+      },
+      "prompt": {
+        "en": "Please review my scenario week and prepare sensible options for the calendar problems. Draft the coordination, but don't change any appointments.",
+        "de": "Prüfe bitte meine Szenariowoche und bereite sinnvolle Optionen für die Kalenderprobleme vor. Entwirf die Abstimmung, ändere aber noch keine Termine."
+      },
+      "files": [
+        "Calendar_Snapshot.docx",
+        "Calendar_Rules.docx"
+      ],
+      "outputs": [
+        "Calendar_Options.docx"
+      ],
+      "procedure": {
+        "en": "Inspect only the EAD26 events for 19-23 October in the presenter's own calendar; compare with the selected snapshot. Save a decision paper separating hard overlap, missing travel/preparation buffer and missing agenda. Monday site review 10:00-10:45 overlaps budget 10:30-11:00. Building B visit at 11:00 follows Building A budget without the required 30-minute journey. Monday workshop 13:00 has no agenda. Tuesday supplier review 11:00 follows a protected focus block ending 11:00 with no 15-minute preparation. Offer alternatives as proposals only; do not assert other attendees are available. Save two unsent drafts: Sydney about the budget conflict and Sonia requesting the workshop agenda. Keep calendar IDs, times and attendees unchanged.",
+        "de": "Nur EAD26-Termine vom 19. bis 23. Oktober im eigenen Presenter-Kalender prüfen und mit der ausgewählten Momentaufnahme vergleichen. Entscheidungsvorlage mit echter Überschneidung, fehlender Wege-/Vorbereitungszeit und fehlender Agenda speichern. Montag Standortreview 10:00-10:45 kollidiert mit Budget 10:30-11:00. Besuch in Gebäude B um 11:00 folgt auf Budget in Gebäude A ohne nötige 30 Minuten Weg. Montagsworkshop um 13:00 ohne Agenda. Lieferantenreview Dienstag 11:00 folgt auf geschützten Fokusblock bis 11:00 ohne 15 Minuten Vorbereitung. Alternativen nur vorschlagen, keine fremde Verfügbarkeit behaupten. Zwei ungesendete Entwürfe: Sydney zur Budgetkollision, Sonia zur Workshopagenda. Kalender-IDs, Zeiten und Teilnehmende unverändert lassen."
+      },
+      "human": {
+        "en": "Protect the commitments that matter politically.",
+        "de": "Politisch und persönlich wichtige Termine schützen."
+      },
+      "check": {
+        "en": "Four problem types; two actual drafts; all original calendar entries unchanged.",
+        "de": "Vier Problemarten; zwei echte Entwürfe; alle Originaltermine unverändert."
+      },
+      "asOf": "2026-10-19T08:30:00+02:00"
+    },
+    {
+      "code": "CO-35",
+      "title": {
+        "en": "Meeting to action",
+        "de": "Vom Meeting zur Umsetzung"
+      },
+      "story": {
+        "en": "A separate internal process review has released notes, one existing workbook row, and new actions with one missing deadline.",
+        "de": "Ein unabhängiges internes Prozessreview hat freigegebene Notizen, eine vorhandene Aufgabenzeile und neue Aufgaben mit einer fehlenden Frist."
+      },
+      "prompt": {
+        "en": "Please turn these released review notes into decisions and next steps. Update our action register and prepare the individual follow-ups.",
+        "de": "Mach bitte aus diesen freigegebenen Review-Notizen die Beschlüsse und nächsten Schritte. Aktualisiere unser Aufgabenregister und bereite das individuelle Nachfassen vor."
+      },
+      "files": [
+        "Released_Notes.docx",
+        "@Action_Register.xlsx"
+      ],
+      "outputs": [
+        "Decisions.docx",
+        "@Action_Register.xlsx"
+      ],
+      "procedure": {
+        "en": "Use only the selected released CO-35 notes and active-run original workbook. Save Decisions.docx and edit that exact cloud workbook in place. Preserve sheets, column order, original P01 cell values/types/formats, Readme and table name. Append A01 Sydney Mattos, reconcile handover exceptions, 2026-10-22; A02 Billie Vester, accessibility test evidence, deadline not decided (blank); A03 Sonia Rees, onboarding checklist draft, 2026-10-23. Expand Actions table to A1:F5. D01 is a two-week pilot, D02 no software purchase; neither is approval to send. Save three individualized unsent drafts to the named owners. Billie's draft asks for a due date, not an invented commitment. Do not overwrite the baseline or make a replacement workbook.",
+        "de": "Nur ausgewählte freigegebene CO-35-Notizen und Originalmappe des aktiven Laufs nutzen. Decisions.docx speichern und genau diese Cloud-Mappe am bestehenden Ort bearbeiten. Blätter, Spaltenreihenfolge, Werte/Typen/Formate von P01, Readme und Tabellennamen erhalten. Ergänzen: A01 Sydney Mattos, Übergabeausnahmen abgleichen, 2026-10-22; A02 Billie Vester, Barrierefreiheitstest belegen, Frist nicht beschlossen (leer); A03 Sonia Rees, Einarbeitungscheckliste entwerfen, 2026-10-23. Actions-Tabelle auf A1:F5 erweitern. D01 zweiwöchiger Pilot, D02 kein Softwarekauf; keine Sendefreigabe. Drei individuelle ungesendete Entwürfe an die Verantwortlichen speichern. Billie nach Frist fragen statt Zusage zu erfinden. Keine Baseline überschreiben oder Ersatzmappe anlegen."
+      },
+      "human": {
+        "en": "Confirm the missing due date and have the difficult conversation.",
+        "de": "Fehlende Frist klären und das schwierige Gespräch führen."
+      },
+      "check": {
+        "en": "Original workbook identity; exact P01/Readme preservation; A01-A03 and blank A02 date; three drafts.",
+        "de": "Identität der Originalmappe; P01/Readme exakt erhalten; A01-A03, A02 ohne Datum; drei Entwürfe."
+      },
+      "asOf": "2026-10-19T14:00:00+02:00"
+    },
+    {
+      "code": "CO-36",
+      "title": {
+        "en": "Short-notice executive visit",
+        "de": "Kurzfristiger Executive-Besuch"
+      },
+      "story": {
+        "en": "Teresa plans an internal site visit on Thursday, with a tight arrival/departure window, a safety constraint and uncertain technical availability.",
+        "de": "Teresa plant kurzfristig einen internen Standortbesuch am Donnerstag: enges Zeitfenster, Sicherheitsvorgabe und unbestätigte IT-Verfügbarkeit."
+      },
+      "prompt": {
+        "en": "Please get Teresa's Thursday visit ready using these messages and the site notes. Save a workable visit pack and draft the coordination for my review.",
+        "de": "Bereite bitte Teresas Besuch am Donnerstag mit diesen Nachrichten und Standortnotizen vor. Speichere ein stimmiges Besuchspaket und entwirf die Abstimmung für meine Prüfung."
+      },
+      "files": [
+        "Visit_Brief.docx"
+      ],
+      "outputs": [
+        "Visit_Agenda.docx",
+        "Visit_People.docx",
+        "Visit_Decisions.docx"
+      ],
+      "procedure": {
+        "en": "Use only CO-36 evidence. Produce three matching saved documents: one-page agenda for Thursday 22 October 10:00-12:00; one-page participant briefing grounded in synthetic responsibilities; decision list separating approved constraints from open choices. Include Sonia's mandatory safety introduction before the 30-minute walk, 10-minute transitions, and at least 20 minutes of personal discussion. Teresa leaves at 12:00; Billie is available only from 11:15 and his technical demo is not confirmed. Never invent attendee biographies, a room booking or acceptance. Save three unsent drafts: Teresa agenda proposal, Sonia safety/logistics questions, Billie feasibility of the 11:15 demo. No invitations or calendar writes.",
+        "de": "Nur CO-36-Belege nutzen. Drei passende gespeicherte Dokumente erstellen: einseitiger Ablauf Donnerstag 22. Oktober 10:00-12:00; einseitiges Teilnehmerbriefing aus synthetischen Zuständigkeiten; Entscheidungsliste mit festen Vorgaben und offenen Punkten. Sonias verpflichtende Sicherheitseinweisung vor dem 30-minütigen Rundgang, zehnminütige Übergänge und mindestens 20 Minuten persönliches Gespräch einplanen. Teresa geht um 12:00; Billie erst ab 11:15 verfügbar, seine Technikdemo ist unbestätigt. Keine Biografien, Raumbuchung oder Zusage erfinden. Drei ungesendete Entwürfe: Teresa Agendavorschlag, Sonia Sicherheits-/Logistikfragen, Billie Machbarkeit der Demo ab 11:15. Keine Einladungen oder Kalendereingriffe."
+      },
+      "human": {
+        "en": "Decide the visit's real purpose and speak to the hosts.",
+        "de": "Eigentliches Besuchsziel entscheiden und Gastgeber persönlich einbinden."
+      },
+      "check": {
+        "en": "Three consistent saved documents; safety before walk; 10:00-12:00, 20 conversation minutes; three drafts.",
+        "de": "Drei stimmige gespeicherte Dokumente; Sicherheit vor Rundgang; 10:00-12:00, 20 Gesprächsminuten; drei Entwürfe."
+      },
+      "asOf": "2026-10-19T14:30:00+02:00"
+    },
+    {
+      "code": "CO-37",
+      "title": {
+        "en": "Day closure",
+        "de": "Tagesabschluss"
+      },
+      "story": {
+        "en": "A deliberately synthetic end-of-day checkpoint records one completed decision, an unsent draft and an unresolved test. It is not a record of earlier Cowork runs.",
+        "de": "Ein ausdrücklich synthetischer Tagesstand belegt eine erledigte Entscheidung, einen ungesendeten Entwurf und einen offenen Test. Kein Protokoll vorheriger Cowork-Läufe."
+      },
+      "prompt": {
+        "en": "Please prepare my day closure from this checkpoint and get tomorrow's morning brief started. Separate completed work, open approvals and anything the evidence doesn't settle.",
+        "de": "Bereite bitte meinen Tagesabschluss aus diesem Zwischenstand vor und fang den Morning Brief für morgen an. Trenne Erledigtes, offene Freigaben und alles, was die Belege nicht klären."
+      },
+      "files": [
+        "Day_Checkpoint.docx",
+        "Tomorrow_Calendar.docx"
+      ],
+      "outputs": [
+        "Day_Closure.docx",
+        "Tomorrow_Brief.docx"
+      ],
+      "procedure": {
+        "en": "Standalone route: use only CO-37 synthetic checkpoint and tomorrow calendar, as of 19 October 17:00. These are staged source records, not Cowork output evidence. Save a one-page closure and one-page draft briefing for 20 October. C01 purchase declined by Teresa in the supplied source; C02 draft prepared but NOT sent/approved; C03 accessibility test completion unknown. The 11:00 review needs 15 minutes preparation; financial reconciliation remains due 22 October. Give top three proposed priorities and source links; no claimed real task completion. Optional real-results route only when the user explicitly selects actual saved results AND separate human approval records: label it as a different route, do not merge staged and real statuses or infer that a draft was sent. No automation.",
+        "de": "Eigenständiger Start: nur synthetischen CO-37-Checkpoint und morgigen Kalender mit Stand 19. Oktober 17:00 nutzen. Das sind vorbereitete Quellenbelege, keine Cowork-Ergebnisse. Einseitigen Abschluss und einseitigen Briefentwurf für 20. Oktober speichern. C01 laut Quelle Kauf von Teresa abgelehnt; C02 Entwurf vorbereitet, NICHT gesendet/freigegeben; C03 Abschluss Barrierefreiheitstest unbekannt. Review 11:00 braucht 15 Minuten Vorbereitung; Finanzabgleich bleibt zum 22. Oktober fällig. Drei vorgeschlagene Prioritäten und Quellenlinks nennen; keine tatsächliche Cowork-Erledigung behaupten. Optionaler echter Folgepfad nur bei ausdrücklich ausgewählten tatsächlichen Ergebnissen UND separaten menschlichen Freigabebelegen: getrennt kennzeichnen, synthetische/echte Zustände nicht mischen und Versand nicht aus Entwurf ableiten. Keine Automation."
+      },
+      "human": {
+        "en": "Set tomorrow's priorities and protect relationship time.",
+        "de": "Prioritäten für morgen setzen und Zeit für Beziehungen schützen."
+      },
+      "check": {
+        "en": "Two saved one-page documents; declined / draft only / unknown separated; no inferred sends.",
+        "de": "Zwei gespeicherte Einseiter; abgelehnt / nur Entwurf / unklar getrennt; kein behaupteter Versand."
+      },
+      "asOf": "2026-10-19T17:00:00+02:00"
+    }
+  ],
+  "sourceMatrix": [
+    {
+      "code": "CO-30",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-31",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-32",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-33",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-34",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-35",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-36",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    },
+    {
+      "code": "CO-37",
+      "documented": [
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/use-cowork",
+        "https://learn.microsoft.com/microsoft-365/copilot/cowork/cowork-faq"
+      ],
+      "local": "Fixture, short request, skill and output contract parity",
+      "tenant": "Presenter checks actual sources, skill activation, saved originals and draft persistence",
+      "liveAcceptance": "OPEN"
+    }
+  ],
+  "materialResearch": "Official executive training currently uses Northwind Traders in Word. No matching ready-to-install Contoso assistant-day fixture found in the reviewed material. Original synthetic Contoso sources authored; no training binaries redistributed.",
+  "workbook": {
+    "preserve": [
+      "P01",
+      "Readme",
+      "OfficeActions"
+    ],
+    "append": [
+      [
+        "A01",
+        "Sydney Mattos",
+        "2026-10-22"
+      ],
+      [
+        "A02",
+        "Billie Vester",
+        null
+      ],
+      [
+        "A03",
+        "Sonia Rees",
+        "2026-10-23"
+      ]
+    ]
+  }
+}

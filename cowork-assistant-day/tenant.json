@@ -1,0 +1,220 @@
+{
+  "presenterAccount": "admin@M365CPI98544940.OnMicrosoft.com",
+  "preserveExistingFiles": [
+    "runs/en/01/Action_Register.xlsx",
+    "runs/en/01/Run_Context.md",
+    "runs/en/02/Action_Register.xlsx",
+    "runs/en/02/Run_Context.md",
+    "runs/en/03/Action_Register.xlsx",
+    "runs/en/03/Run_Context.md",
+    "runs/de/01/Action_Register.xlsx",
+    "runs/de/01/Run_Context.md",
+    "runs/de/02/Action_Register.xlsx",
+    "runs/de/02/Run_Context.md",
+    "runs/de/03/Action_Register.xlsx",
+    "runs/de/03/Run_Context.md"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "VanceD@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com",
+    "SydneyM@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "mails": [
+    "mails-{lang}/30-01_Sydney.eml",
+    "mails-{lang}/30-02_Teresa.eml",
+    "mails-{lang}/30-03_Billie.eml",
+    "mails-{lang}/30-04_Sonia.eml",
+    "mails-{lang}/30-05_Vance.eml",
+    "mails-{lang}/30-06_Sonia.eml",
+    "mails-{lang}/31-01_Teresa.eml",
+    "mails-{lang}/31-02_Billie.eml",
+    "mails-{lang}/32-01_Teresa.eml",
+    "mails-{lang}/32-02_Sonia.eml",
+    "mails-{lang}/33-01_Vance.eml",
+    "mails-{lang}/33-02_Vance.eml",
+    "mails-{lang}/33-03_Sonia.eml",
+    "mails-{lang}/33-04_Billie.eml",
+    "mails-{lang}/33-05_Billie.eml",
+    "mails-{lang}/36-01_Teresa.eml",
+    "mails-{lang}/36-02_Sonia.eml",
+    "mails-{lang}/36-03_Billie.eml"
+  ],
+  "events": [
+    {
+      "fixedDate": "2026-10-19",
+      "start": "10:00",
+      "minutes": 45,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-site",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 site] Site review",
+        "de": "[EAD26 site] Standortreview"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Review handover risks.",
+        "de": "Synthetic EAD26 | Übergaberisiken prüfen."
+      }
+    },
+    {
+      "fixedDate": "2026-10-19",
+      "start": "10:30",
+      "minutes": 30,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-budget",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 budget] Budget discussion",
+        "de": "[EAD26 budget] Budgetgespräch"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Review spending options with Sydney; no approval.",
+        "de": "Synthetic EAD26 | Ausgabenoptionen mit Sydney prüfen; keine Freigabe."
+      }
+    },
+    {
+      "fixedDate": "2026-10-19",
+      "start": "11:00",
+      "minutes": 30,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-visit-b",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 visit-b] Building B walk",
+        "de": "[EAD26 visit-b] Rundgang Gebäude B"
+      },
+      "location": "Building B",
+      "body": {
+        "en": "Synthetic EAD26 | Vance hosts the walk.",
+        "de": "Synthetic EAD26 | Vance begleitet den Rundgang."
+      }
+    },
+    {
+      "fixedDate": "2026-10-19",
+      "start": "13:00",
+      "minutes": 60,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-workshop",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 workshop] Internal workshop",
+        "de": "[EAD26 workshop] Interner Workshop"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Agenda not yet supplied at the morning snapshot.",
+        "de": "Synthetic EAD26 | Zum Morgenstand noch keine Agenda geliefert."
+      }
+    },
+    {
+      "fixedDate": "2026-10-20",
+      "start": "10:00",
+      "minutes": 60,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-focus",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 focus] Protected focus",
+        "de": "[EAD26 focus] Geschützter Fokus"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Protected unless Teresa decides otherwise.",
+        "de": "Synthetic EAD26 | Geschützt, sofern Teresa nichts anderes entscheidet."
+      }
+    },
+    {
+      "fixedDate": "2026-10-20",
+      "start": "11:00",
+      "minutes": 45,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-supplier",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 supplier] Supplier service review",
+        "de": "[EAD26 supplier] Lieferantenreview"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Renewal options; prepare for 15 minutes.",
+        "de": "Synthetic EAD26 | Verlängerungsoptionen; 15 Minuten Vorbereitung."
+      }
+    },
+    {
+      "fixedDate": "2026-10-21",
+      "start": "09:00",
+      "minutes": 60,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-writing",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 writing] Office writing block",
+        "de": "[EAD26 writing] Office-Schreibzeit"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Flexible proposal, not permission to move.",
+        "de": "Synthetic EAD26 | Flexibler Vorschlag, keine Verschiebefreigabe."
+      }
+    },
+    {
+      "fixedDate": "2026-10-22",
+      "start": "10:00",
+      "minutes": 120,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-thursday",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 thursday] Internal visit planning hold",
+        "de": "[EAD26 thursday] Planungsblock interner Besuch"
+      },
+      "location": "Building B",
+      "body": {
+        "en": "Synthetic EAD26 | Own planning hold, no attendance acceptance.",
+        "de": "Synthetic EAD26 | Eigener Planungsblock, keine Teilnehmerzusage."
+      }
+    },
+    {
+      "fixedDate": "2026-10-23",
+      "start": "10:00",
+      "minutes": 30,
+      "timeZone": "W. Europe Standard Time",
+      "scenarioKey": "EAD26-friday",
+      "attendees": [],
+      "subject": {
+        "en": "[EAD26 friday] Weekly office review",
+        "de": "[EAD26 friday] Office-Wochenreview"
+      },
+      "location": "Building A",
+      "body": {
+        "en": "Synthetic EAD26 | Review open decisions.",
+        "de": "Synthetic EAD26 | Offene Entscheidungen prüfen."
+      }
+    }
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot Cowork",
+        "de": "Microsoft Copilot Cowork"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Read Preparation-en.md in the assistant-day folder. Verify the EAD26 Inbox messages and own calendar appointments dated 19-23 October 2026.",
+      "Register contoso-assistant-day.zip once through Customize > Skills > Add menu > Upload skill. Keep Only you. Start a new conversation and select the skill in Sources.",
+      "Presenter performs all eight live checks. No new Cowork backup results supplied; locally generated fixtures are not execution evidence."
+    ],
+    "de": [
+      "Preparation-de.md im Assistenzalltag-Ordner lesen. EAD26-Mails im Posteingang und eigene Kalendertermine vom 19.-23. Oktober 2026 prüfen.",
+      "contoso-assistant-day.zip einmalig über Anpassen > Skills > Menü Hinzufügen > Skill hochladen registrieren. Nur du beibehalten. Neuen Verlauf starten, Skill in Quellen auswählen.",
+      "Presenter führt alle acht Live-Prüfungen durch. Keine neuen Cowork-Backupergebnisse; lokal erzeugte Fixtures sind kein Ausführungsnachweis."
+    ]
+  }
+}

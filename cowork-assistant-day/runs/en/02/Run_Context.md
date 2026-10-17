@@ -1,0 +1,3 @@
+# EAD26 active run 02
+
+Scenario: Contoso Executive Office. Language: en. Read this selected cloud original's actual location: its parent is runs/en/02. Save this run's new files under its outputs/<exercise-code>/ folder. Create the case subfolder if needed; never replace an existing result. Include this run name and exercise code in unsent draft subjects. The only editable business input is this run's Action_Register.xlsx for CO-35. Read the selected case's Case.md for its snapshot and exact source allowlist. A new conversation starts each case; earlier generated files are not required. Do not read sibling cases or previous runs. Baseline is immutable. No send/post/invite/book/pay/automation.

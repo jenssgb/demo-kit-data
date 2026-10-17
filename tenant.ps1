@@ -15,6 +15,9 @@
   Each demo describes what it needs in <demo>/tenant.json:
     mails    ["mails-{lang}/x.eml", ...]   (local demo folder first, then the repo)
     events   [{ subject{de,en}, weekday, start "HH:mm", minutes, attendees["Display Name"], body{de,en} }]
+             optional fixedDate "yyyy-MM-dd", timeZone and scenarioKey instead of weekday (no attendees)
+    presenterAccount  optional exact approved account; verified before any scenario writes
+    preserveExistingFiles  optional relative run inputs never overwritten by installer reruns
     onenote  { notebook, section, pages[{ title{de,en}, file "tenant/pages/x-{lang}.html" }] }
     manual   { de[], en[] }   steps that can't be scripted, printed as a checklist at the end
     links    [{ name{de,en}, url }]  extra links for the Desktop link page and Edge favorites (e.g. a mock web app)
@@ -285,9 +288,10 @@ if ($executiveSettings.Count) {
     $scopes += @('Files.ReadWrite.All', 'Team.ReadBasic.All', 'Channel.ReadBasic.All', 'ChannelMessage.Read.All', 'ChannelMessage.Send', 'Mail.ReadWrite')
 }
 Connect-MgGraph -Scopes $scopes -ContextScope CurrentUser -NoWelcome
-function G($method, $uri, $body, $contentType = 'application/json') {
+function G($method, $uri, $body, $contentType = 'application/json', $headers) {
     $p = @{ Method = $method; Uri = "https://graph.microsoft.com/v1.0$uri" }
     if ($null -ne $body) { $p.Body = $body; $p.ContentType = $contentType }
+    if ($headers) { $p.Headers = $headers }
     Invoke-MgGraphRequest @p
 }
 # GET that returns $null for 4xx/5xx without a terminating error (keeps the log free of 404 noise)
@@ -304,6 +308,25 @@ $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
 Say ("{0} <{1}>" -f $me.displayName, $myMail) Green
 if ($WhatIf) { Say (T 'WhatIf: nothing is changed, only shown.' 'WhatIf: Es wird nichts geaendert, nur angezeigt.') Yellow }
+
+if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.events | Where-Object { $_.fixedDate }).Count }).Count) {
+    $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\DemoCalendar.ps1' } else { $null }
+    if ($helper -and (Test-Path -LiteralPath $helper)) { . $helper }
+    else {
+        $helperCode = (Invoke-WebRequest -Uri (Url 'tools/DemoCalendar.ps1') -UseBasicParsing).Content
+        if ($helperCode -is [byte[]]) { $helperCode = [Text.Encoding]::UTF8.GetString($helperCode) }
+        . ([scriptblock]::Create($helperCode))
+    }
+    foreach ($c in @($configs | Where-Object { $_.Config.presenterAccount })) {
+        Assert-DemoPresenter $c.Config.presenterAccount (Get-MgContext) $me
+    }
+    foreach ($c in $configs) {
+        foreach ($event in @($c.Config.events | Where-Object { $_.fixedDate })) {
+            if (-not $c.Config.presenterAccount) { throw 'Fixed demo events require an explicit presenterAccount guard.' }
+            [void](Get-DemoEventPlan $event $Language)
+        }
+    }
+}
 
 $verifiedSenders = @{}
 foreach ($upn in $requiredUsers) {
@@ -475,6 +498,8 @@ foreach ($it in $Items) {
     if (-not (Test-Path $it.dir)) { continue }
     $lk = $Links.demos[$it.id]
     $lk.files = New-Object Collections.ArrayList
+    $itemConfig = $configs | Where-Object { $_.Item.id -eq $it.id } | Select-Object -First 1
+    $preserveExisting = @($itemConfig.Config.preserveExistingFiles)
     # Only files listed in the manifest (stale local files from older versions are never uploaded)
     $files = if ($it.files) { @($it.files | ForEach-Object { Get-Item -LiteralPath (Join-Path $it.dir ($_ -replace '/', '\')) -ErrorAction SilentlyContinue } | Where-Object { $_ }) }
              else { Get-ChildItem $it.dir -Recurse -File | Where-Object { $_.Name -notin 'manifest.json', 'shared.json', 'tenant.json' -and $_.FullName.Substring($it.dir.Length + 1) -notmatch '^tenant\\' } }
@@ -486,6 +511,11 @@ foreach ($it in $Items) {
         }
         $path = Seg "$($it.drivePath)/$rel"
         $remote = GOpt "/me/drive/root:/$($path)?`$select=size,file,webUrl"
+        if ($remote -and $remote.file -and $rel -in $preserveExisting) {
+            Count 'OneDrive' same; [void]$lk.files.Add(@{ name = $rel; url = $remote.webUrl })
+            Row (T 'preserved' 'erhalten') "$($it.drivePath)/$rel" DarkGray
+            continue
+        }
         $local = Get-QuickXor $f.FullName
         if ($remote -and $remote.file -and $remote.file.hashes -and $remote.file.hashes.quickXorHash -eq $local) {
             Count 'OneDrive' same; [void]$lk.files.Add(@{ name = $rel; url = $remote.webUrl }); continue
@@ -556,6 +586,16 @@ foreach ($c in $configs | Where-Object { $_.Config.events }) {
     foreach ($e in $c.Config.events) {
         $subject = L $e.subject
         try {
+            if ($e.fixedDate) {
+                $tag = Sync-DemoFixedEvent -Event $e -Language $Language -WhatIf:$WhatIf -Request {
+                    param($method, $path, $body)
+                    if ($null -ne $body) { G $method $path (To-AsciiJson $body) }
+                    else { G $method $path $null 'application/json' @{ Prefer = 'outlook.body-content-type="text"' } }
+                }
+                Row $(if ($tag -eq 'same') { T 'unchanged' 'unveraendert' } else { T 'new' 'neu' }) "$subject ($($e.fixedDate) $($e.start) $($e.timeZone))" DarkGray
+                Count 'Calendar' $tag
+                continue
+            }
             $from = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); $to = (Get-Date).AddDays(8).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
             $existing = @((G GET "/me/calendarView?startDateTime=$from&endDateTime=$to&`$select=subject&`$top=200").value) | Where-Object { $_.subject -eq $subject }
             if ($existing) { Row (T 'unchanged' 'unveraendert') $subject DarkGray; Count 'Calendar' same; continue }
