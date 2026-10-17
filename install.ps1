@@ -16,6 +16,8 @@
     Files are cached in %LOCALAPPDATA%\DemoKit and uploaded to the signed-in user's OneDrive (Demo-Kit/<App>/<demo-id>)
     with Microsoft Graph; then tenant.ps1 creates what the demos need in the tenant (mails, meetings, OneNote, see
     <demo>/tenant.json) and prints the steps that have to be done by hand.
+    Approved private scenario settings and ownership state are recovered from the same demo admin's OneDrive
+    after the normal Graph sign-in, so the same command also works on another PC or VM.
   Without -Tenant the files are copied to OneDrive\Demo-Kit on this PC (fallback: Desktop).
   -Language de|en   mail/meeting/OneNote language (default en)
   -WhatIf           shows what would happen without changing the tenant

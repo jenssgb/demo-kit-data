@@ -144,6 +144,7 @@ python tools\check-cowork-assistant-day.py
 .\tools\Test-CoworkAssistantDay.ps1
 python tools\check-cowork-executive-event.py
 .\tools\Test-CoworkExecutiveEvent.ps1
+.\tools\Test-ExecutiveEventState.ps1
 ```
 
 ### Executive-event scenario (LEF26)
@@ -152,7 +153,7 @@ Use the same global setup command, with `-Tenant -Language de` for the German pr
 This scenario additionally needs a deliberately approved **existing demo-only Teams channel**.
 It never creates a team, site, public host or external booking.
 
-An authorized operator first identifies the correct demo tenant and channel, then records the actual IDs in
+Once per tenant, an authorized operator identifies the correct demo tenant and channel, then records the actual IDs in
 `%LOCALAPPDATA%\DemoKit\executive-event-settings.json`:
 
 ```json
@@ -165,8 +166,16 @@ An authorized operator first identifies the correct demo tenant and channel, the
 ```
 
 These are placeholders describing the **private** file format, not deployable fixture values. Do not commit the
-filled file. Missing/invalid settings block only this scenario, visibly; its tenant files/mails/events are not
-written. Other demos continue. A valid configuration still requires matching Graph tenant/account, actual channel
+filled file. The global installer backs up approved settings and each ownership-ledger update to the same demo
+admin's private OneDrive at `DemoKit/executive-event-state-<language>-v1.json`. On another PC or VM it restores
+missing local state automatically after the **same** Graph sign-in; no ZIP, extra setup command or new sign-in
+is required. `-WhatIf` reads and validates this state without restoring files or updating the cache. Run only
+one tenant installer at a time. Conflicting local/cloud state is never silently overwritten.
+The approved destination can be recovered from either language's cache; ownership ledgers are language-specific
+and are never borrowed from a different language.
+
+Missing/invalid state in both locations blocks only this scenario, visibly; other demos continue.
+A valid configuration still requires matching Graph tenant/account, actual channel
 and SharePoint access, and approved additional delegated scopes (`Files.ReadWrite.All`, `Team.ReadBasic.All`,
 `Channel.ReadBasic.All`, `ChannelMessage.Read.All`, `ChannelMessage.Send`, `Mail.ReadWrite`) in the one normal
 browser/window sign-in. No device-code login. Do not grant policies, billing or permissions merely to pass a test.
@@ -181,7 +190,7 @@ Inspect actual conversation membership and mailbox delivery in the tenant before
 The private ownership ledger and exact links live under
 `%LOCALAPPDATA%\DemoKit\executive-event\<tenant-id>\`; actual links also reach the global Desktop link page.
 An untracked existing shared folder or a changed tracked baseline blocks setup rather than overwriting unknown data.
-Keep the ledger when changing PCs; do not delete it to force a rerun.
+The installer recovers this ledger together with the destination on a new PC; do not delete it to force a rerun.
 The ledger's SHA-256 identifies the local upload source; its cTag protects the tracked server version.
 SharePoint enriches these Word packages with document metadata, so downloaded ZIP bytes can differ from the
 original upload. The live fixture audit verified unchanged Word business parts and non-metadata relationships,

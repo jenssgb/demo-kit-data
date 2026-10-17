@@ -1,10 +1,13 @@
 # Loaded only for tenant.json executiveEvent configuration. No writes on import.
-function Get-ExecutiveEventSettings($Config) {
+$script:executiveEventCloudSync = @{}
+function Get-ExecutiveEventSettings($Config, $Settings = $null) {
     $path = Join-Path $env:LOCALAPPDATA 'DemoKit\executive-event-settings.json'
-    if (-not (Test-Path -LiteralPath $path)) {
-        throw "LEF26 requires private settings at $path (tenantId, account, teamId, channelId). Select an approved existing demo channel; no team/site is created."
+    if ($null -eq $Settings) {
+        if (-not (Test-Path -LiteralPath $path)) {
+            throw "LEF26 requires private settings at $path or in the signed-in demo admin's private OneDrive cache. No team/site is created."
+        }
+        $Settings = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json
     }
-    $settings = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json
     foreach ($key in @('tenantId', 'teamId')) {
         $guid = [guid]::Empty
         if (-not [guid]::TryParse([string]$settings.$key, [ref]$guid) -or $guid -eq [guid]::Empty) {
@@ -78,6 +81,10 @@ function Save-ExecutiveEventLedger($Ledger, [string]$Path) {
     $json = ConvertTo-Json -InputObject $Ledger -Depth 25
     [IO.File]::WriteAllText("$Path.tmp", $json, (New-Object Text.UTF8Encoding $false))
     Move-Item -LiteralPath "$Path.tmp" -Destination $Path -Force
+    if ($script:executiveEventCloudSync.ContainsKey($Path)) {
+        $sync = $script:executiveEventCloudSync[$Path]
+        Save-ExecutiveEventCloudState $sync.Config $sync.Settings $sync.Me $sync.Language $Ledger
+    }
 }
 
 function Get-ExecutiveEventLedger($Settings, [string]$Language) {
@@ -92,7 +99,107 @@ function Get-ExecutiveEventLedger($Settings, [string]$Language) {
     $value
 }
 
-function Test-ExecutiveEventDestination($Config, $Settings, $Me, [string]$Language) {
+function Assert-ExecutiveEventCloudState($State, $Config, $Me, [string]$Language) {
+    if ($State.schemaVersion -ne 1 -or $State.language -cne $Language -or -not $State.settings) {
+        throw 'LEF26 private setup cache has an unsupported schema or language.'
+    }
+    $settings = Get-ExecutiveEventSettings $Config $State.settings
+    Assert-ExecutiveEventIdentity $Config $settings (Get-MgContext) $Me
+    $ledger = $State.ledger
+    if ($null -ne $ledger -and ($ledger.scenario -ne 'LEF26' -or
+        $ledger.tenantId -ne $settings.tenantId -or $ledger.account -ne $settings.account -or
+        $ledger.language -cne $Language -or $ledger.teamId -ne $settings.teamId -or
+        $ledger.channelId -cne $settings.channelId -or -not $ledger.driveId -or
+        -not $ledger.parentId -or -not $ledger.rootId)) {
+        throw 'LEF26 private setup cache contains a mismatched ownership ledger.'
+    }
+}
+
+function Get-ExecutiveEventCloudStatePath([ValidateSet('en', 'de')][string]$Language) {
+    "/me/drive/root:/DemoKit/executive-event-state-$Language-v1.json"
+}
+
+function Initialize-ExecutiveEventState($Config, $Me, [ValidateSet('en', 'de')][string]$Language, [switch]$WhatIf) {
+    $context = Get-MgContext
+    if (-not $context -or $context.Account -ne $Config.account -or
+        $Me.userPrincipalName -ne $Config.account -or $Me.mail -ne $Config.account) {
+        throw 'LEF26 blocked: private setup recovery requires the approved demo admin account.'
+    }
+    $state = $null
+    $otherLanguage = if ($Language -eq 'de') { 'en' } else { 'de' }
+    foreach ($cachedLanguage in @($Language, $otherLanguage)) {
+        $item = Invoke-ExecutiveEventGraph GET (Get-ExecutiveEventCloudStatePath $cachedLanguage) -Optional
+        if (-not $item) { continue }
+        $download = [uri]$item.'@microsoft.graph.downloadUrl'
+        if (-not $item.file -or -not $download.IsAbsoluteUri -or $download.Scheme -ne 'https') {
+            throw 'LEF26 private setup cache is not a downloadable OneDrive file.'
+        }
+        $state = Invoke-RestMethod -Uri $download.AbsoluteUri -UseBasicParsing
+        if ($state -is [string]) { $state = $state.TrimStart([char]0xFEFF) | ConvertFrom-Json }
+        Assert-ExecutiveEventCloudState $state $Config $Me $cachedLanguage
+        if ($cachedLanguage -cne $Language) {
+            $state = [pscustomobject]@{
+                schemaVersion = 1; language = $Language; settings = $state.settings
+                ledger = (Get-ExecutiveEventLedger $state.settings $Language)
+            }
+        }
+        break
+    }
+    $settingsPath = Join-Path $env:LOCALAPPDATA 'DemoKit\executive-event-settings.json'
+    $local = if (Test-Path -LiteralPath $settingsPath) { Get-ExecutiveEventSettings $Config } else { $null }
+    if (-not $state) {
+        if (-not $local) { throw 'LEF26 approved private settings are missing locally and in OneDrive. An authorized operator must approve the destination once; no channel is guessed or created.' }
+        Assert-ExecutiveEventIdentity $Config $local $context $Me
+        $state = [pscustomobject]@{ schemaVersion = 1; language = $Language; settings = $local; ledger = (Get-ExecutiveEventLedger $local $Language) }
+        Assert-ExecutiveEventCloudState $state $Config $Me $Language
+    } elseif ($local -and ($local.tenantId -ne $state.settings.tenantId -or
+        $local.account -ne $state.settings.account -or $local.teamId -ne $state.settings.teamId -or
+        $local.channelId -cne $state.settings.channelId)) {
+        throw 'LEF26 local settings differ from the private OneDrive cache. Nothing was overwritten.'
+    }
+    $ledgerPath = Get-ExecutiveEventLedgerPath $state.settings $Language
+    $localLedger = Get-ExecutiveEventLedger $state.settings $Language
+    if ($localLedger -and (($localLedger | ConvertTo-Json -Depth 25 -Compress) -cne
+        ($state.ledger | ConvertTo-Json -Depth 25 -Compress))) {
+        throw 'LEF26 local ownership ledger differs from the private OneDrive cache. Preserve both and review; nothing was overwritten.'
+    }
+    if (-not $WhatIf) {
+        $restore = @(@{ Path = $settingsPath; Value = $state.settings })
+        if ($state.ledger) { $restore += @{ Path = $ledgerPath; Value = $state.ledger } }
+        foreach ($file in $restore) {
+            if (Test-Path -LiteralPath $file.Path) { continue }
+            [IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($file.Path)) | Out-Null
+            $bytes = [Text.Encoding]::UTF8.GetBytes(($file.Value | ConvertTo-Json -Depth 25))
+            $stream = [IO.File]::Open($file.Path, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write)
+            try { $stream.Write($bytes, 0, $bytes.Length) } finally { $stream.Dispose() }
+            Write-Host "  LEF26 restored private setup state from OneDrive: $($file.Path)"
+        }
+    } elseif (-not $local -or ($state.ledger -and -not $localLedger)) {
+        Write-Host '  LEF26 WhatIf: would restore approved private settings and ownership ledger from OneDrive. No writes.'
+    }
+    $state
+}
+
+function Save-ExecutiveEventCloudState($Config, $Settings, $Me, [ValidateSet('en', 'de')][string]$Language, $Ledger) {
+    $state = [pscustomobject]@{ schemaVersion = 1; language = $Language; settings = $Settings; ledger = $Ledger }
+    Assert-ExecutiveEventCloudState $state $Config $Me $Language
+    $folder = Invoke-ExecutiveEventGraph GET '/me/drive/root:/DemoKit' -Optional
+    if (-not $folder) {
+        $folder = Invoke-ExecutiveEventGraph POST '/me/drive/root/children' @{
+            name = 'DemoKit'; folder = @{}; '@microsoft.graph.conflictBehavior' = 'fail'
+        }
+    }
+    if ($null -eq $folder.folder) { throw 'LEF26 private cache parent DemoKit is not a OneDrive folder.' }
+    [void](Invoke-ExecutiveEventGraph PUT "$(Get-ExecutiveEventCloudStatePath $Language):/content" $state)
+}
+
+function Enable-ExecutiveEventCloudSync($Config, $Settings, $Me, [ValidateSet('en', 'de')][string]$Language) {
+    $path = Get-ExecutiveEventLedgerPath $Settings $Language
+    $script:executiveEventCloudSync[$path] = @{ Config = $Config; Settings = $Settings; Me = $Me; Language = $Language }
+    Save-ExecutiveEventCloudState $Config $Settings $Me $Language (Get-ExecutiveEventLedger $Settings $Language)
+}
+
+function Test-ExecutiveEventDestination($Config, $Settings, $Me, [string]$Language, $LedgerOverride = $null) {
     Assert-ExecutiveEventIdentity $Config $Settings (Get-MgContext) $Me
     $team = [uri]::EscapeDataString($Settings.teamId)
     $channel = [uri]::EscapeDataString($Settings.channelId)
@@ -105,7 +212,7 @@ function Test-ExecutiveEventDestination($Config, $Settings, $Me, [string]$Langua
     }
     # Read access is verified here; actual write permission is confirmed only by setup.
     $messages = @(Get-ExecutiveEventPages "$channelPath/messages?`$top=50")
-    $ledger = Get-ExecutiveEventLedger $Settings $Language
+    $ledger = if ($null -ne $LedgerOverride) { $LedgerOverride } else { Get-ExecutiveEventLedger $Settings $Language }
     if ($ledger -and ($ledger.driveId -cne $folder.parentReference.driveId -or $ledger.parentId -cne $folder.id)) {
         throw 'LEF26 channel files destination changed since the ledger was created.'
     }

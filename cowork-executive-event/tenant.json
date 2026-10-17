@@ -186,14 +186,14 @@
     "en": [
       "Verify Cowork access, usage billing, cloud discovery and built-in web research on the presentation device. Local browser control is not required for this scenario.",
       "Install the three trusted skills from this scenario's skills folder through Cowork Customize and Upload skill: contoso-executive-briefing, contoso-event-pack and contoso-event-follow-up. Keep them private. Start new tasks and verify the matching skill under Workspace > Plugins after execution starts; short live requests depend on these instructions. Do not upload duplicates.",
-      "Before using this scenario, an authorized operator records the approved existing demo team/channel and tenant ID in the private executive-event settings file. No sites or teams are created.",
+      "The global tenant installer automatically restores the approved private team/channel settings and ownership ledger from the demo admin's OneDrive on another PC. The destination is approved once per tenant, not configured again on every VM. No sites or teams are created.",
       "Open Preparation-en.md. Inspect actual setup links, calendar conflicts and saved drafts; rehearse all eight demonstrations. Actual mail threads, indexing, UI labels and output folders need tenant verification.",
       "Use a fresh run and conversation. The installer is not a reset. The presenter-only runbook stays in tools/expected, outside indexed inputs."
     ],
     "de": [
       "Cowork-Zugriff, Nutzungsabrechnung, Quellenfindung und integrierte Webrecherche auf dem Präsentationsgerät prüfen. Dieses Szenario benötigt keine lokale Browsersteuerung.",
       "Die drei vertrauenswürdigen Skills aus dem Ordner skills dieses Szenarios über Cowork Anpassen und Skill-Upload installieren: contoso-executive-briefing, contoso-event-pack und contoso-event-follow-up. Privat lassen. Neue Aufgaben starten und nach dem Start den passenden Skill unter Arbeitsbereich > Plug-Ins prüfen; die kurzen Live-Aufträge setzen seine Anweisungen voraus. Keine Duplikate hochladen.",
-      "Vor Verwendung trägt ein berechtigter Operator das freigegebene vorhandene Demo-Team, den Kanal und die Tenant-ID in die private Executive-Event-Konfiguration ein. Keine Sites oder Teams werden angelegt.",
+      "Der globale Tenant-Installer stellt die freigegebene private Team-/Kanal-Konfiguration samt Besitznachweisen auf einem anderen PC automatisch aus dem OneDrive des Demo-Admins wieder her. Das Ziel wird einmal pro Tenant freigegeben, nicht auf jeder VM neu eingerichtet. Keine Sites oder Teams werden angelegt.",
       "Preparation-de.md öffnen. Tatsächliche Setup-Links, Kalenderkonflikte und gespeicherte Entwürfe prüfen; alle acht Demos proben. Mail-Threads, Indexierung, UI-Bezeichnungen und Ergebnisordner im Tenant prüfen.",
       "Frischen Lauf und Verlauf nutzen. Der Installer ist kein Reset. Der Presenter-Leitfaden bleibt unter tools/expected außerhalb indexierter Eingaben."
     ]

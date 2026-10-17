@@ -22,7 +22,8 @@
     manual   { de[], en[] }   steps that can't be scripted, printed as a checklist at the end
     links    [{ name{de,en}, url }]  extra links for the Desktop link page and Edge favorites (e.g. a mock web app)
     requiredUsers ["real.upn@tenant"]  verify current enabled Exchange plans before tenant writes
-    executiveEvent  opt-in LEF26 shared sources, fixed events and Teams discussion; private approved destination required
+    executiveEvent  opt-in LEF26 shared sources, fixed events and Teams discussion; approved private state reused
+                    across PCs from the demo admin's OneDrive after the same Graph sign-in
   Senders set up once are cached locally and in the admin's OneDrive (DemoKit/senders.json): Exchange Online
   (second sign-in) is needed only once per tenant; it then prepares every person of every demo (people.json).
   Running it again creates nothing twice.
@@ -260,18 +261,6 @@ if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
         if ($helperCode -is [byte[]]) { $helperCode = [Text.Encoding]::UTF8.GetString($helperCode) }
         . ([scriptblock]::Create($helperCode))
     }
-    foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
-        try { $executiveSettings[$c.Item.id] = Get-ExecutiveEventSettings $c.Config.executiveEvent }
-        catch {
-            Say ("BLOCKED {0}: {1} No data for this scenario will be written; other demos can continue." -f $c.Item.id, $_) Red
-            $executiveBlocked += $c.Item.id
-        }
-    }
-    $configs = @($configs | Where-Object { $_.Item.id -notin $executiveBlocked })
-    $Items = @($Items | Where-Object { $_.id -notin $executiveBlocked })
-    $mails = @($mails | Where-Object { $_.Demo -notin $executiveBlocked })
-    $people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
-        Where-Object { $_ } | Sort-Object -Unique
 }
 Write-Host ""
 Say (T 'Tenant: signing in (Microsoft Graph) ...' 'Tenant: Anmeldung (Microsoft Graph) ...') Cyan
@@ -284,7 +273,7 @@ Import-Module Microsoft.Graph.Authentication
 $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
 if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
-if ($executiveSettings.Count) {
+if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
     $scopes += @('Files.ReadWrite.All', 'Team.ReadBasic.All', 'Channel.ReadBasic.All', 'ChannelMessage.Read.All', 'ChannelMessage.Send', 'Mail.ReadWrite')
 }
 Connect-MgGraph -Scopes $scopes -ContextScope CurrentUser -NoWelcome
@@ -308,6 +297,27 @@ $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
 Say ("{0} <{1}>" -f $me.displayName, $myMail) Green
 if ($WhatIf) { Say (T 'WhatIf: nothing is changed, only shown.' 'WhatIf: Es wird nichts geaendert, nur angezeigt.') Yellow }
+
+foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
+    try {
+        $state = Initialize-ExecutiveEventState $c.Config.executiveEvent $me $Language -WhatIf:$WhatIf
+        $settings = $state.settings
+        $destination = Test-ExecutiveEventDestination $c.Config.executiveEvent $settings $me $Language $state.ledger
+        if (-not $WhatIf) { Enable-ExecutiveEventCloudSync $c.Config.executiveEvent $settings $me $Language }
+        $executiveSettings[$c.Item.id] = $settings
+        $executiveDestinations[$c.Item.id] = $destination
+        Say 'LEF26: approved private destination and ownership state verified; same one-line setup works across PCs.' Green
+    } catch {
+        Say ("BLOCKED {0}: {1} No scenario data will be written; other demos can continue." -f $c.Item.id, $_) Red
+        $executiveBlocked += $c.Item.id
+    }
+}
+$configs = @($configs | Where-Object { $_.Item.id -notin $executiveBlocked })
+$Items = @($Items | Where-Object { $_.id -notin $executiveBlocked })
+$mails = @($mails | Where-Object { $_.Demo -notin $executiveBlocked })
+$requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
+$people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
+    Where-Object { $_ } | Sort-Object -Unique
 
 if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.events | Where-Object { $_.fixedDate }).Count }).Count) {
     $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\DemoCalendar.ps1' } else { $null }
@@ -345,15 +355,11 @@ foreach ($m in $mails) {
         throw "Mail '$($m.Subject)' does not match a verified demo sender; correct its From name/address before installing."
     }
 }
-foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
-    $executiveDestinations[$c.Item.id] = Test-ExecutiveEventDestination $c.Config.executiveEvent $executiveSettings[$c.Item.id] $me $Language
-}
-
 $report = [ordered]@{}
 function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ new = 0; updated = 0; same = 0; failed = 0; pending = 0 } }; $report[$area][$what]++ }
 foreach ($blocked in $executiveBlocked) {
     Count 'ExecutiveEvent' failed
-    $Links.manual += "[$blocked] BLOCKED: approved private LEF26 destination settings required. Scenario was not installed."
+    $Links.manual += "[$blocked] BLOCKED: private LEF26 state could not be verified or recovered from OneDrive. See the installer log; scenario was not installed."
 }
 
 # ---------- 1) senders (Exchange Online, separate process: Graph and EXO modules clash in one session) ----------
