@@ -62,3 +62,10 @@ $catalog = [ordered]@{
 }
 [IO.File]::WriteAllText((Join-Path $root 'catalog.json'), ($catalog | ConvertTo-Json -Depth 6) + "`n", $utf8)
 foreach ($a in $apps) { Write-Host ("catalog  {0,-14} {1}" -f $a.folder, ($a.demos -join ', ')) }
+
+# Keep the kit's offline source inventory in sync with this same catalog.
+$indexBuilder = Join-Path (Split-Path $Decks -Parent) 'tools\update-materials.py'
+if (Test-Path $indexBuilder) {
+    & python $indexBuilder --data-root $root
+    if ($LASTEXITCODE -ne 0) { throw 'Updating the Demo Kit material inventory failed.' }
+}
