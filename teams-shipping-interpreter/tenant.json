@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Teams",
+        "de": "Teams"
+      },
+      "url": "https://teams.microsoft.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Use the installed scheduled Ops sync meeting with two licensed internal users and headsets. Check Interpreter policy; rehearse German/English. No Polish or consecutive-mode promise."
+    ],
+    "de": [
+      "Die installierte geplante Ops-sync-Besprechung mit zwei lizenzierten internen Benutzern und Headsets verwenden. Interpreter-Richtlinie prüfen; Deutsch/Englisch proben. Kein Polnisch und kein Versprechen für Konsekutivmodus."
+    ]
+  }
+}

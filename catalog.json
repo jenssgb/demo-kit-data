@@ -18,7 +18,10 @@
       },
       "demos": [
         "powerpoint-copilot",
-        "powerpoint-port-operations"
+        "powerpoint-port-operations",
+        "powerpoint-shipping-qbr",
+        "powerpoint-shipping-story",
+        "powerpoint-shipping-interactive"
       ]
     },
     {
@@ -30,7 +33,13 @@
       },
       "demos": [
         "word-excel-copilot",
-        "word-excel-port-operations"
+        "word-excel-port-operations",
+        "word-shipping-brief",
+        "word-shipping-legal",
+        "word-shipping-finalize",
+        "excel-shipping-volumes",
+        "excel-shipping-changes",
+        "excel-shipping-reconcile"
       ]
     },
     {
@@ -41,7 +50,10 @@
         "de": "Outlook"
       },
       "demos": [
-        "outlook-port-operations"
+        "outlook-port-operations",
+        "outlook-shipping-triage",
+        "outlook-shipping-reply",
+        "outlook-shipping-calendar"
       ]
     },
     {
@@ -52,7 +64,10 @@
         "de": "Teams"
       },
       "demos": [
-        "teams-port-operations"
+        "teams-port-operations",
+        "teams-shipping-recap",
+        "teams-shipping-thread",
+        "teams-shipping-interpreter"
       ]
     },
     {
@@ -63,7 +78,8 @@
         "de": "OneDrive"
       },
       "demos": [
-        "onedrive-port-operations"
+        "onedrive-port-operations",
+        "onedrive-shipping-quotes"
       ]
     },
     {
@@ -119,7 +135,8 @@
         "de": "SharePoint"
       },
       "demos": [
-        "sharepoint-port-operations"
+        "sharepoint-port-operations",
+        "sharepoint-dg-knowledge"
       ]
     },
     {
@@ -195,7 +212,15 @@
         "researcher-copilot",
         "notebooks-copilot",
         "prompts-copilot",
-        "chat-port-operations"
+        "chat-port-operations",
+        "chat-servicenow-tickets",
+        "chat-shipping-workiq",
+        "chat-shipping-search",
+        "chat-model-comparison",
+        "chat-dg-notebook",
+        "chat-booking-vision",
+        "chat-shipping-research",
+        "chat-invoice-analyst"
       ]
     },
     {
@@ -207,7 +232,9 @@
       },
       "demos": [
         "agent-builder-copilot",
-        "governance-copilot"
+        "governance-copilot",
+        "agents-dg-skill",
+        "agents-dg-builder"
       ]
     }
   ]

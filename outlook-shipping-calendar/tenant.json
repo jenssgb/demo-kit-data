@@ -1,0 +1,39 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Outlook",
+        "de": "Outlook"
+      },
+      "url": "https://outlook.cloud.microsoft/"
+    }
+  ],
+  "events": [
+    {
+      "subject": {
+        "en": "Fabrikam QBR - shipping rehearsal",
+        "de": "Fabrikam QBR - Versandgeneralprobe"
+      },
+      "weekday": "Thursday",
+      "start": "10:00",
+      "minutes": 45,
+      "onlineMeeting": true,
+      "attendees": [
+        "Teresa Sac",
+        "Sonia Rees"
+      ],
+      "body": {
+        "en": "Synthetic QBR. Review QBR_notes_Fabrikam.docx in Demo-Kit > Outlook > outlook-shipping-calendar. Discuss booking 4711, the missing phone and unvalidated D&D variance.",
+        "de": "Synthetischer QBR. QBR_notes_Fabrikam.docx unter Demo-Kit > Outlook > outlook-shipping-calendar prüfen. Buchung 4711, fehlende Telefonnummer und ungeklärte D&D-Abweichung besprechen."
+      }
+    }
+  ],
+  "mails": [
+    "tenant/1_Teresa_QBR.eml",
+    "tenant/2_Teresa_QBR.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com"
+  ]
+}

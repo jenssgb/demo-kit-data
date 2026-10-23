@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "In an approved existing ServiceNow developer instance create the synthetic CSV incidents. Set the presenter's actual mapped identity in Opened by. Configure the synchronized Tickets connector, restricted user access and a full crawl. No connector, external system or identity mapping is created by this installer."
+    ],
+    "de": [
+      "In einer genehmigten bestehenden ServiceNow-Entwicklungsinstanz die synthetischen CSV-Incidents anlegen. Tatsächlich zugeordnete Präsentatoridentität in Opened by setzen. Synchronisierten Tickets-Connector, eingeschränkten Zugriff und vollen Crawl konfigurieren. Der Installer legt weder Connector noch externes System oder Identitätsmapping an."
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Teams",
+        "de": "Teams"
+      },
+      "url": "https://teams.microsoft.com/"
+    }
+  ],
+  "events": [
+    {
+      "subject": {
+        "en": "Ops sync - vessel delays",
+        "de": "Ops sync - vessel delays"
+      },
+      "weekday": "Tuesday",
+      "start": "10:00",
+      "minutes": 15,
+      "onlineMeeting": true,
+      "attendees": [
+        "Teresa Sac",
+        "Sonia Rees",
+        "Billie Vester"
+      ],
+      "body": {
+        "en": "Synthetic rehearsal: delay status, customer communication and next steps. Use Ops_sync_rehearsal.docx. Record/transcribe only with consent and policy approval. Say owners, times and unresolved questions aloud; enable Facilitator.",
+        "de": "Synthetische Generalprobe: Verspätung, Kundeninformation und nächste Schritte. Ops_sync_rehearsal.docx verwenden. Aufnahme/Transkription nur mit Zustimmung und Richtlinienfreigabe. Verantwortliche, Zeiten und offene Fragen laut nennen; Facilitator aktivieren."
+      }
+    }
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "manual": {
+    "en": [
+      "Rehearse Ops sync - vessel delays with recording, English transcription and Facilitator. Verify Recap, Notes, Tasks and Chapters as available. Ask @Facilitator to create a summary document; save the actual Word result link. The installed script is not a transcript."
+    ],
+    "de": [
+      "Ops sync - vessel delays mit Aufnahme, englischer Transkription und Facilitator proben. Recap, Notizen, Aufgaben und Kapitel nach Verfügbarkeit prüfen. @Facilitator ein Zusammenfassungsdokument erstellen lassen; echten Word-Ergebnislink speichern. Das installierte Skript ist kein Transkript."
+    ]
+  }
+}

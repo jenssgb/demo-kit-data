@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Chat Shipping Search",
+    "de": "Chat Shipping Search"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Revised_ETA_ContosoStar.pdf",
+      "sha256": "ce039111ca62c04ab07559465bc74d1b6b0e260b4322f47782b5cbc48f068075"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Affected_bookings.xlsx",
+      "sha256": "28f067b78d0d0b3f93cb57c14536a82c3e6e4d48054f6ad30833432659174870"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Customer_notice_template.docx",
+      "sha256": "c17b09a63e4fe59438d2d4573c4455298a26ee9e785e948ad7a012814f30895c"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Ops_sync_rehearsal.docx",
+      "sha256": "119cf7ddd993068b9c680749175b6e278fccb7df0e56a38217647f705df65ace"
+    }
+  ]
+}

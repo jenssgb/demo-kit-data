@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Use the approved existing Dangerous Goods - Procedures site, publish the DG DOCX sources, and grant the approved DG Validation group site access separately. Build/test the agent and share Can chat only after approval. Paste real site/agent links into the private Desktop link page; no invented URL."
+    ],
+    "de": [
+      "Genehmigte bestehende Site Dangerous Goods - Procedures verwenden, DG-DOCX-Quellen veröffentlichen und genehmigter DG-Validation-Gruppe gesondert Sitezugriff geben. Agent bauen/testen und erst nach Freigabe mit Can chat teilen. Echte Site-/Agentlinks privat in die Desktop-Linkseite eintragen; keine erfundene URL."
+    ]
+  }
+}

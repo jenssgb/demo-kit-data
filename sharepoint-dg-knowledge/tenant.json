@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "SharePoint",
+        "de": "SharePoint"
+      },
+      "url": "https://www.microsoft365.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "In an approved existing Dangerous Goods - Procedures demo site, publish the five DG training documents and 4-6 draft pages using them. No shipping/safety advice. Obtain owner approval for site access, Site AI settings and Restricted Content Discovery. No site or tenant policy is changed by this installer."
+    ],
+    "de": [
+      "In einer genehmigten bestehenden Demo-Site Dangerous Goods - Procedures die fünf DG-Übungsdokumente und 4-6 darauf beruhende Entwurfsseiten bereitstellen. Keine Transport-/Sicherheitsberatung. Sitezugriff, Site-AI-Einstellungen und Restricted Content Discovery vom Eigentümer freigeben lassen. Der Installer ändert weder Site noch Tenant-Richtlinien."
+    ]
+  }
+}

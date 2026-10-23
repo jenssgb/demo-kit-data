@@ -1,0 +1,26 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "PowerPoint",
+        "de": "PowerPoint"
+      },
+      "url": "https://www.microsoft365.com/"
+    },
+    {
+      "name": {
+        "en": "Brand Kits",
+        "de": "Brand Kits"
+      },
+      "url": "https://office.com/create/brandkit"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Before rehearsal, an approved Brand Manager publishes and shares a synthetic Contoso brand kit. Permissions can take 24 hours. Generate and save the real six-slide QBR; the storyboard is not a Copilot result."
+    ],
+    "de": [
+      "Vor der Probe veröffentlicht und teilt ein genehmigter Brand Manager ein synthetisches Contoso-Brand-Kit. Rechte können 24 Stunden brauchen. Echten QBR mit sechs Folien erzeugen und speichern; das Storyboard ist kein Copilot-Ergebnis."
+    ]
+  }
+}

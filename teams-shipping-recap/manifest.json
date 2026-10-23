@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Teams Shipping Recap",
+    "de": "Teams Shipping Recap"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Ops_sync_rehearsal.docx",
+      "sha256": "119cf7ddd993068b9c680749175b6e278fccb7df0e56a38217647f705df65ace"
+    }
+  ]
+}

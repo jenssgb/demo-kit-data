@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Print booking_4711.pdf or show it on a second screen. Test mobile voice, camera/microphone permissions and screen mirroring; do not expose personal or production content."
+    ],
+    "de": [
+      "booking_4711.pdf ausdrucken oder auf zweitem Bildschirm zeigen. Mobile Spracheingabe, Kamera-/Mikrofonrechte und Bildschirmspiegelung prüfen; keine persönlichen oder produktiven Inhalte zeigen."
+    ]
+  }
+}

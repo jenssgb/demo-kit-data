@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Word Shipping Finalize",
+    "de": "Word Shipping Finalize"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Customer_brief_draft.docx",
+      "sha256": "95e42a38342c42f61672183d9cabfbbc8988711bb75f607373b7dbd02048ad48"
+    }
+  ]
+}

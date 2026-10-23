@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Chat Invoice Analyst",
+    "de": "Chat Invoice Analyst"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "invoice_disputes_Q3.csv",
+      "sha256": "5c2e13d86d167800d207cdd6f994a010f0c37bc5e27a316c01e74f4c814878c7"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "invoices_Q3.csv",
+      "sha256": "cdd32b33840b453e1e6153efccc008d9917d8ba2880fec601b79ea41f603eb57"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Analyst_expected.csv",
+      "sha256": "419ed6b5b28be4f724ac5c031c4aa0acda78d9b0974083eb80a413e760fca39d"
+    }
+  ]
+}

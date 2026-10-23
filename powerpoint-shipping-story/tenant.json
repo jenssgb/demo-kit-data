@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "PowerPoint",
+        "de": "PowerPoint"
+      },
+      "url": "https://www.microsoft365.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Open the real saved six-slide QBR from the preceding PowerPoint exercise. Keep the D&D chart editable; Visualize this slide belongs on the Open issues text slide."
+    ],
+    "de": [
+      "Den echten gespeicherten QBR mit sechs Folien aus der vorherigen PowerPoint-Übung öffnen. D&D-Diagramm bearbeitbar lassen; Visualize this slide auf der Textfolie Open issues nutzen."
+    ]
+  }
+}

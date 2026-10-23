@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Onedrive Shipping Quotes",
+    "de": "Onedrive Shipping Quotes"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Quote_A.pdf",
+      "sha256": "c1e0fd2a9476d5b76939169d22773835a529904ff36edd06ab2e72cfc6729673"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Quote_B.pdf",
+      "sha256": "cc09b503b9d05bfc9c6d373a71e6165ea95426b58738f3289b43e43568002dad"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Quote_C.pdf",
+      "sha256": "448cdc822357a67fe70ad0f091f2e901790a54a29faf03808d6adb47df8210e9"
+    }
+  ]
+}

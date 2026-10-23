@@ -1,0 +1,23 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Outlook",
+        "de": "Outlook"
+      },
+      "url": "https://outlook.cloud.microsoft/"
+    }
+  ],
+  "mails": [
+    "tenant/1_Teresa_Booking_4711.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "mailOptions": [
+    {
+      "subject": "Booking 4711 - new ETA?",
+      "html": true
+    }
+  ]
+}

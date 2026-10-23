@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Word & Excel",
+        "de": "Word & Excel"
+      },
+      "url": "https://www.microsoft365.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Let Copilot edit the cloud DnD_reconciliation.xlsx directly during rehearsal. Preserve the same file for Show Changes; an uploaded result or copied workbook cannot supply that edit history."
+    ],
+    "de": [
+      "Copilot während der Probe die Cloud-Datei DnD_reconciliation.xlsx direkt bearbeiten lassen. Für Show Changes dieselbe Datei behalten; hochgeladene Ergebnisse oder Kopien liefern diesen Verlauf nicht."
+    ]
+  }
+}

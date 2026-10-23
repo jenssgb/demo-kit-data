@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Chat Model Comparison",
+    "de": "Chat Model Comparison"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Model_comparison_scorecard.docx",
+      "sha256": "c2792c6c12a09ee4d5326e18ae63506f0f0bd53d55c83b47de3beb486531bafe"
+    }
+  ]
+}

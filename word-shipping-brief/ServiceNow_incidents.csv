@@ -1,0 +1,5 @@
+Number,Short description,Priority,State,Assigned to
+INC0012345,EDI upload to booking portal fails,2,In Progress,Billie Vester
+INC0012346,EDI upload retries remain queued,2,New,Billie Vester
+INC0012347,EDI upload confirmation missing,2,In Progress,Billie Vester
+INC0012348,Training printer unavailable,3,Resolved,Billie Vester

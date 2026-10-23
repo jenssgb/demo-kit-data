@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Word Shipping Legal",
+    "de": "Word Shipping Legal"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Supplier_Agreement_Draft.docx",
+      "sha256": "8a7a98e34af278b4cb3a2a93ac58163e917b13df68da79f5bbeba6322c21e91a"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Procurement_Playbook.docx",
+      "sha256": "48e1a3c7f52b0a5eda371ca373d2b5b7e00cb89b47cd557a4f0eba2d814ee6ba"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Supplier_Agreement_expected.docx",
+      "sha256": "e4001bdd41de1d505046ea8efb3bafa941ccdbfc4b3a003e1ab8d017e6a010b6"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Verify model availability with the presenter. Only an authorized admin may approve Anthropic subprocessor access; EU/EFTA/UK defaults and EU Data Boundary exclusions must be reviewed. Do not change policy for this demo."
+    ],
+    "de": [
+      "Modellverfügbarkeit mit dem Vorführkonto prüfen. Nur berechtigte Admins dürfen Anthropic freigeben; EU/EFTA/UK-Standards und EU-Data-Boundary-Ausnahme prüfen. Für diese Demo keine Richtlinie ändern."
+    ]
+  }
+}

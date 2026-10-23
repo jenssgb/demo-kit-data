@@ -65,6 +65,50 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual, links). Extra files
   live in `<demo-id>/tenant/`. Neither is part of the file download.
 
+### Shipping rehearsal corpus
+
+The 27 shipping/DG training folders map to 23 workflow groups in the kit's existing app collections,
+not to a customer bundle. `tools\build-shipping-playbook.py` creates original synthetic Contoso
+DOCX/XLSX/PDF/CSV sources, mailbox seeds, scheduled events and administrative-only DG skill instructions.
+`word-shipping-brief` owns the canonical files; `shared.json` makes each other page self-contained.
+English source files are intentional (Excel workbook rules are fully supported in English); the
+kit's instructions, prompts, setup and manual checklists are bilingual.
+`QBR_authored_reference.pptx` is an explicitly authored six-slide fallback with an editable chart
+and speaker notes, not a generated Copilot result or an approved Brand Kit. It is shared by both
+PowerPoint QBR workflows; the live demo still saves and reuses its own reviewed Copilot output.
+
+Run `python tools\build-shipping-playbook.py`, then `.\tools\Update-Manifest.ps1 -All`.
+Validate offline with `python tools\test_shipping.py` and `.\tools\Test-DemoMail.ps1`.
+The data checks cover 216 volume rows, exactly three D&D variances above 5%, five invoice/accrual
+exceptions, the 300-row CSV join/ranking, Office structure and skill package bytes.
+
+The same global `install.ps1 -Tenant` command installs this content. It does **not** publish SharePoint
+sites, create Teams threads/transcripts, install Copilot Chat skills, build agents, publish Brand Kits
+or generate Copilot results. The folder's `tenant.json` manual checklist and the kit page explicitly
+identify those rehearsals and availability gates. A script, storyboard or expected-result CSV is
+never represented as a real transcript, model output or cloud edit history. Actual generated outputs
+must be saved during rehearsal; don't publish private tenant links in this public repository.
+
+Optional `tenant.json` `mailOptions` entries are matched to an exact (optionally localized) mail subject:
+
+```json
+{
+  "mailOptions": [{
+    "subject": "Contoso Star delay - carrier attachments",
+    "attachments": ["Revised_ETA_ContosoStar.pdf", "Affected_bookings.xlsx"],
+    "html": true
+  }]
+}
+```
+
+Each attachment must be listed in that demo's manifest (own or shared file). The combined raw size
+limit is 2 MB; larger evidence belongs in cloud links. `html: true` safely converts the plain EML body
+to HTML, preserving quoted context without claiming that independent emails form a genuine thread.
+Unconfigured mails retain their existing text payload. Existing subject/sender matches are skipped,
+not modified; use a genuinely new synthetic subject when changing an already-installed seed.
+Graph `sendMail` acceptance is not proof of delivery or indexing; verify both before demonstrating
+attachment search or Work IQ. `-WhatIf` validates new-mail payloads without sending them.
+
 ### Work IQ: publish once, demonstrate with other users
 
 The same global `-Tenant` command now includes `workiq-port-operations` (**WIQ26**). Run this setup as the

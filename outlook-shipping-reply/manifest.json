@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Outlook Shipping Reply",
+    "de": "Outlook Shipping Reply"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Carrier_notice_ContosoStar.docx",
+      "sha256": "9cccfe3c47355dfadee806840bd86922eef1005f3be61db1907dfd6edcc87b47"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Chat Shipping Research",
+    "de": "Chat Shipping Research"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Customer_FAQ_emissions.docx",
+      "sha256": "ef1eadad9fb2056eabc9b60b8870f7d593c18ac3fd6897b6cc54ef2f8405e316"
+    }
+  ]
+}

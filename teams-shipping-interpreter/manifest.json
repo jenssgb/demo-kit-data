@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Teams Shipping Interpreter",
+    "de": "Teams Shipping Interpreter"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Interpreter_rehearsal.docx",
+      "sha256": "5025c7ad3229ac0e077fcd161c2823f6a25c98856cd57c74e97c8ebc0d631d00"
+    }
+  ]
+}

@@ -222,6 +222,48 @@ function Get-Resource($item, [string]$rel) {
     finally { Remove-Item $tmp -ErrorAction SilentlyContinue }
 }
 
+function New-DemoSeedMessage($Mail, $Sender, $Recipient, $Item, $Options) {
+    if ($null -ne $Options.html -and $Options.html -isnot [bool]) {
+        throw 'mailOptions.html must be a JSON boolean.'
+    }
+    if ($null -ne $Options.attachments -and $Options.attachments -isnot [array]) {
+        throw 'mailOptions.attachments must be a JSON array of relative paths.'
+    }
+    $body = @{ contentType = 'Text'; content = $Mail.Body }
+    if ($Options.html) {
+        $body = @{ contentType = 'HTML'; content = '<div>' + ([System.Net.WebUtility]::HtmlEncode($Mail.Body) -replace '\r?\n', '<br>') + '</div>' }
+    }
+    $message = @{
+        subject = $Mail.Subject
+        body = $body
+        from = @{ emailAddress = @{ address = $Sender.address; name = $Mail.FromName } }
+        toRecipients = @(@{ emailAddress = @{ address = $Recipient.mail; name = $Recipient.displayName } })
+    }
+    $attachments = @()
+    $size = 0
+    foreach ($path in $Options.attachments) {
+        if ($path -isnot [string] -or [string]::IsNullOrWhiteSpace($path) -or $path -match '(^[/\\]|:|(^|[/\\])\.\.([/\\]|$))') {
+            throw 'Mail attachments must be relative paths within a demo manifest.'
+        }
+        $manifestPath = Join-Path $Item.dir 'manifest.json'
+        $manifest = if (Test-Path $manifestPath) { Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json }
+                    else { Invoke-RestMethod -Uri (Url "$($Item.id)/manifest.json") -UseBasicParsing }
+        if ($path -notin @(@($manifest.files) + @($manifest.shared) | ForEach-Object { $_.path })) {
+            throw "Mail attachment '$path' is not in the $($Item.id) manifest."
+        }
+        [byte[]]$bytes = Get-Resource $Item $path
+        $size += $bytes.Length
+        if ($size -gt 2MB) { throw 'Demo mail attachments exceed the supported 2 MB combined size; use cloud links instead.' }
+        $attachments += @{
+            '@odata.type' = '#microsoft.graph.fileAttachment'
+            name = ($path -split '[/\\]')[-1]
+            contentBytes = [Convert]::ToBase64String($bytes)
+        }
+    }
+    if ($attachments.Count) { $message.attachments = $attachments }
+    @{ message = $message; saveToSentItems = $false }
+}
+
 function Get-TenantConfig($item) {
     $local = Join-Path $item.dir 'tenant.json'
     if (Test-Path $local) { return ([IO.File]::ReadAllText($local, [Text.Encoding]::UTF8).TrimStart([char]0xFEFF) | ConvertFrom-Json) }
@@ -708,11 +750,14 @@ if ($mails.Count) {
                 Where-Object { $_.from.emailAddress.address -eq $s.address }
             if ($found) { Row (T 'unchanged' 'unveraendert') ("{0}: {1}" -f $m.FromName, $m.Subject) DarkGray; Count 'Mails' same; continue }
         } catch { }
+        $config = $configs | Where-Object { $_.Item.id -eq $m.Demo } | Select-Object -First 1
+        $options = @($config.Config.mailOptions | Where-Object {
+            $_ -and $_.subject -and (L $_.subject) -eq $m.Subject
+        })
+        if ($options.Count -gt 1) { throw "Duplicate mailOptions for '$($m.Subject)'." }
+        $option = if ($options.Count) { $options[0] } else { $null }
+        $msg = To-AsciiJson (New-DemoSeedMessage $m $s ([pscustomobject]@{ mail = $myMail; displayName = $me.displayName }) $config.Item $option)
         if ($WhatIf) { Row (T 'new' 'neu') ("{0}: {1}" -f $m.FromName, $m.Subject) Green; Count 'Mails' new; continue }
-        $msg = To-AsciiJson @{ message = @{ subject = $m.Subject; body = @{ contentType = 'Text'; content = $m.Body }
-                                            from = @{ emailAddress = @{ address = $s.address; name = $m.FromName } }
-                                            toRecipients = @(@{ emailAddress = @{ address = $myMail; name = $me.displayName } }) }
-                               saveToSentItems = $false }
         $sent = $false; $waitedMsg = $false
         while (-not $sent) {
             try { G POST '/me/sendMail' $msg | Out-Null; $sent = $true }

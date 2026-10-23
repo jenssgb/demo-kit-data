@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "PowerPoint",
+        "de": "PowerPoint"
+      },
+      "url": "https://www.microsoft365.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Verify Home/Insert > Interactive Slide or the skill before the visit. Rehearse and save the actual interactive slide; if absent, explain the rollout instead. Never ship a static mockup as an interactive result."
+    ],
+    "de": [
+      "Vor dem Besuch Home/Insert > Interactive Slide oder den Skill prüfen. Echte interaktive Folie proben und speichern; fehlt der Einstieg, Rollout erklären. Kein statisches Mockup als interaktives Ergebnis ausgeben."
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Word & Excel",
+        "de": "Word & Excel"
+      },
+      "url": "https://www.microsoft365.com/"
+    },
+    {
+      "name": {
+        "en": "Message Center (admin verification)",
+        "de": "Message Center (Admin-Prüfung)"
+      },
+      "url": "https://admin.microsoft.com/#/MessageCenter"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Word Windows rehearsal: enable Review > Track Changes manually. Verify comments, table of contents, header/footer and page numbers; save the actual result. If unsupported, perform those operations manually."
+    ],
+    "de": [
+      "Word-Windows-Probe: Überprüfen > Änderungen nachverfolgen von Hand einschalten. Kommentare, Inhaltsverzeichnis, Kopf-/Fußzeile und Seitenzahlen prüfen; echtes Ergebnis speichern. Nicht unterstützte Schritte manuell ausführen."
+    ]
+  }
+}

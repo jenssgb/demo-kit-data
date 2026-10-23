@@ -1,0 +1,301 @@
+dispute_id,invoice_id,dispute_reason,corrected_amount_eur
+D-0001,INV26-0001,Duplicate charge,200
+D-0002,INV26-0002,Wrong rate,120
+D-0003,INV26-0003,Free-time dispute,80
+D-0004,INV26-0004,Data mismatch,40
+D-0005,INV26-0005,Other,20
+D-0006,INV26-0006,Duplicate charge,200
+D-0007,INV26-0007,Wrong rate,120
+D-0008,INV26-0008,Free-time dispute,80
+D-0009,INV26-0009,Data mismatch,40
+D-0010,INV26-0010,Other,20
+D-0011,INV26-0011,Duplicate charge,200
+D-0012,INV26-0012,Wrong rate,120
+D-0013,INV26-0013,Free-time dispute,80
+D-0014,INV26-0014,Data mismatch,40
+D-0015,INV26-0015,Other,20
+D-0016,INV26-0016,Duplicate charge,200
+D-0017,INV26-0017,Wrong rate,120
+D-0018,INV26-0018,Free-time dispute,80
+D-0019,INV26-0019,Data mismatch,40
+D-0020,INV26-0020,Other,20
+D-0021,INV26-0021,Duplicate charge,200
+D-0022,INV26-0022,Wrong rate,120
+D-0023,INV26-0023,Free-time dispute,80
+D-0024,INV26-0024,Data mismatch,40
+D-0025,INV26-0025,Other,20
+D-0026,INV26-0026,Duplicate charge,200
+D-0027,INV26-0027,Wrong rate,120
+D-0028,INV26-0028,Free-time dispute,80
+D-0029,INV26-0029,Data mismatch,40
+D-0030,INV26-0030,Other,20
+D-0031,INV26-0031,Duplicate charge,200
+D-0032,INV26-0032,Wrong rate,120
+D-0033,INV26-0033,Free-time dispute,80
+D-0034,INV26-0034,Data mismatch,40
+D-0035,INV26-0035,Other,20
+D-0036,INV26-0036,Duplicate charge,200
+D-0037,INV26-0037,Wrong rate,120
+D-0038,INV26-0038,Free-time dispute,80
+D-0039,INV26-0039,Data mismatch,40
+D-0040,INV26-0040,Other,20
+D-0041,INV26-0041,Duplicate charge,200
+D-0042,INV26-0042,Wrong rate,120
+D-0043,INV26-0043,Free-time dispute,80
+D-0044,INV26-0044,Data mismatch,40
+D-0045,INV26-0045,Other,20
+D-0046,INV26-0046,Duplicate charge,200
+D-0047,INV26-0047,Wrong rate,120
+D-0048,INV26-0048,Free-time dispute,80
+D-0049,INV26-0049,Data mismatch,40
+D-0050,INV26-0050,Other,20
+D-0051,INV26-0051,Duplicate charge,200
+D-0052,INV26-0052,Wrong rate,120
+D-0053,INV26-0053,Free-time dispute,80
+D-0054,INV26-0054,Data mismatch,40
+D-0055,INV26-0055,Other,20
+D-0056,INV26-0056,Duplicate charge,200
+D-0057,INV26-0057,Wrong rate,120
+D-0058,INV26-0058,Free-time dispute,80
+D-0059,INV26-0059,Data mismatch,40
+D-0060,INV26-0060,Other,20
+D-0061,INV26-0061,Duplicate charge,200
+D-0062,INV26-0062,Wrong rate,120
+D-0063,INV26-0063,Free-time dispute,80
+D-0064,INV26-0064,Data mismatch,40
+D-0065,INV26-0065,Other,20
+D-0066,INV26-0066,Duplicate charge,200
+D-0067,INV26-0067,Wrong rate,120
+D-0068,INV26-0068,Free-time dispute,80
+D-0069,INV26-0069,Data mismatch,40
+D-0070,INV26-0070,Other,20
+D-0071,INV26-0071,Duplicate charge,200
+D-0072,INV26-0072,Wrong rate,120
+D-0073,INV26-0073,Free-time dispute,80
+D-0074,INV26-0074,Data mismatch,40
+D-0075,INV26-0075,Other,20
+D-0076,INV26-0076,Duplicate charge,200
+D-0077,INV26-0077,Wrong rate,120
+D-0078,INV26-0078,Free-time dispute,80
+D-0079,INV26-0079,Data mismatch,40
+D-0080,INV26-0080,Other,20
+D-0081,INV26-0081,Duplicate charge,200
+D-0082,INV26-0082,Wrong rate,120
+D-0083,INV26-0083,Free-time dispute,80
+D-0084,INV26-0084,Data mismatch,40
+D-0085,INV26-0085,Other,20
+D-0086,INV26-0086,Duplicate charge,200
+D-0087,INV26-0087,Wrong rate,120
+D-0088,INV26-0088,Free-time dispute,80
+D-0089,INV26-0089,Data mismatch,40
+D-0090,INV26-0090,Other,20
+D-0091,INV26-0091,Duplicate charge,200
+D-0092,INV26-0092,Wrong rate,120
+D-0093,INV26-0093,Free-time dispute,80
+D-0094,INV26-0094,Data mismatch,40
+D-0095,INV26-0095,Other,20
+D-0096,INV26-0096,Duplicate charge,200
+D-0097,INV26-0097,Wrong rate,120
+D-0098,INV26-0098,Free-time dispute,80
+D-0099,INV26-0099,Data mismatch,40
+D-0100,INV26-0100,Other,20
+D-0101,INV26-0101,Duplicate charge,200
+D-0102,INV26-0102,Wrong rate,120
+D-0103,INV26-0103,Free-time dispute,80
+D-0104,INV26-0104,Data mismatch,40
+D-0105,INV26-0105,Other,20
+D-0106,INV26-0106,Duplicate charge,200
+D-0107,INV26-0107,Wrong rate,120
+D-0108,INV26-0108,Free-time dispute,80
+D-0109,INV26-0109,Data mismatch,40
+D-0110,INV26-0110,Other,20
+D-0111,INV26-0111,Duplicate charge,200
+D-0112,INV26-0112,Wrong rate,120
+D-0113,INV26-0113,Free-time dispute,80
+D-0114,INV26-0114,Data mismatch,40
+D-0115,INV26-0115,Other,20
+D-0116,INV26-0116,Duplicate charge,200
+D-0117,INV26-0117,Wrong rate,120
+D-0118,INV26-0118,Free-time dispute,80
+D-0119,INV26-0119,Data mismatch,40
+D-0120,INV26-0120,Other,20
+D-0121,INV26-0121,Duplicate charge,200
+D-0122,INV26-0122,Wrong rate,120
+D-0123,INV26-0123,Free-time dispute,80
+D-0124,INV26-0124,Data mismatch,40
+D-0125,INV26-0125,Other,20
+D-0126,INV26-0126,Duplicate charge,200
+D-0127,INV26-0127,Wrong rate,120
+D-0128,INV26-0128,Free-time dispute,80
+D-0129,INV26-0129,Data mismatch,40
+D-0130,INV26-0130,Other,20
+D-0131,INV26-0131,Duplicate charge,200
+D-0132,INV26-0132,Wrong rate,120
+D-0133,INV26-0133,Free-time dispute,80
+D-0134,INV26-0134,Data mismatch,40
+D-0135,INV26-0135,Other,20
+D-0136,INV26-0136,Duplicate charge,200
+D-0137,INV26-0137,Wrong rate,120
+D-0138,INV26-0138,Free-time dispute,80
+D-0139,INV26-0139,Data mismatch,40
+D-0140,INV26-0140,Other,20
+D-0141,INV26-0141,Duplicate charge,200
+D-0142,INV26-0142,Wrong rate,120
+D-0143,INV26-0143,Free-time dispute,80
+D-0144,INV26-0144,Data mismatch,40
+D-0145,INV26-0145,Other,20
+D-0146,INV26-0146,Duplicate charge,200
+D-0147,INV26-0147,Wrong rate,120
+D-0148,INV26-0148,Free-time dispute,80
+D-0149,INV26-0149,Data mismatch,40
+D-0150,INV26-0150,Other,20
+D-0151,INV26-0151,Duplicate charge,200
+D-0152,INV26-0152,Wrong rate,120
+D-0153,INV26-0153,Free-time dispute,80
+D-0154,INV26-0154,Data mismatch,40
+D-0155,INV26-0155,Other,20
+D-0156,INV26-0156,Duplicate charge,200
+D-0157,INV26-0157,Wrong rate,120
+D-0158,INV26-0158,Free-time dispute,80
+D-0159,INV26-0159,Data mismatch,40
+D-0160,INV26-0160,Other,20
+D-0161,INV26-0161,Duplicate charge,200
+D-0162,INV26-0162,Wrong rate,120
+D-0163,INV26-0163,Free-time dispute,80
+D-0164,INV26-0164,Data mismatch,40
+D-0165,INV26-0165,Other,20
+D-0166,INV26-0166,Duplicate charge,200
+D-0167,INV26-0167,Wrong rate,120
+D-0168,INV26-0168,Free-time dispute,80
+D-0169,INV26-0169,Data mismatch,40
+D-0170,INV26-0170,Other,20
+D-0171,INV26-0171,Duplicate charge,200
+D-0172,INV26-0172,Wrong rate,120
+D-0173,INV26-0173,Free-time dispute,80
+D-0174,INV26-0174,Data mismatch,40
+D-0175,INV26-0175,Other,20
+D-0176,INV26-0176,Duplicate charge,200
+D-0177,INV26-0177,Wrong rate,120
+D-0178,INV26-0178,Free-time dispute,80
+D-0179,INV26-0179,Data mismatch,40
+D-0180,INV26-0180,Other,20
+D-0181,INV26-0181,Duplicate charge,200
+D-0182,INV26-0182,Wrong rate,120
+D-0183,INV26-0183,Free-time dispute,80
+D-0184,INV26-0184,Data mismatch,40
+D-0185,INV26-0185,Other,20
+D-0186,INV26-0186,Duplicate charge,200
+D-0187,INV26-0187,Wrong rate,120
+D-0188,INV26-0188,Free-time dispute,80
+D-0189,INV26-0189,Data mismatch,40
+D-0190,INV26-0190,Other,20
+D-0191,INV26-0191,Duplicate charge,200
+D-0192,INV26-0192,Wrong rate,120
+D-0193,INV26-0193,Free-time dispute,80
+D-0194,INV26-0194,Data mismatch,40
+D-0195,INV26-0195,Other,20
+D-0196,INV26-0196,Duplicate charge,200
+D-0197,INV26-0197,Wrong rate,120
+D-0198,INV26-0198,Free-time dispute,80
+D-0199,INV26-0199,Data mismatch,40
+D-0200,INV26-0200,Other,20
+D-0201,INV26-0201,Duplicate charge,200
+D-0202,INV26-0202,Wrong rate,120
+D-0203,INV26-0203,Free-time dispute,80
+D-0204,INV26-0204,Data mismatch,40
+D-0205,INV26-0205,Other,20
+D-0206,INV26-0206,Duplicate charge,200
+D-0207,INV26-0207,Wrong rate,120
+D-0208,INV26-0208,Free-time dispute,80
+D-0209,INV26-0209,Data mismatch,40
+D-0210,INV26-0210,Other,20
+D-0211,INV26-0211,Duplicate charge,200
+D-0212,INV26-0212,Wrong rate,120
+D-0213,INV26-0213,Free-time dispute,80
+D-0214,INV26-0214,Data mismatch,40
+D-0215,INV26-0215,Other,20
+D-0216,INV26-0216,Duplicate charge,200
+D-0217,INV26-0217,Wrong rate,120
+D-0218,INV26-0218,Free-time dispute,80
+D-0219,INV26-0219,Data mismatch,40
+D-0220,INV26-0220,Other,20
+D-0221,INV26-0221,Duplicate charge,200
+D-0222,INV26-0222,Wrong rate,120
+D-0223,INV26-0223,Free-time dispute,80
+D-0224,INV26-0224,Data mismatch,40
+D-0225,INV26-0225,Other,20
+D-0226,INV26-0226,Duplicate charge,200
+D-0227,INV26-0227,Wrong rate,120
+D-0228,INV26-0228,Free-time dispute,80
+D-0229,INV26-0229,Data mismatch,40
+D-0230,INV26-0230,Other,20
+D-0231,INV26-0231,Duplicate charge,200
+D-0232,INV26-0232,Wrong rate,120
+D-0233,INV26-0233,Free-time dispute,80
+D-0234,INV26-0234,Data mismatch,40
+D-0235,INV26-0235,Other,20
+D-0236,INV26-0236,Duplicate charge,200
+D-0237,INV26-0237,Wrong rate,120
+D-0238,INV26-0238,Free-time dispute,80
+D-0239,INV26-0239,Data mismatch,40
+D-0240,INV26-0240,Other,20
+D-0241,INV26-0241,Duplicate charge,200
+D-0242,INV26-0242,Wrong rate,120
+D-0243,INV26-0243,Free-time dispute,80
+D-0244,INV26-0244,Data mismatch,40
+D-0245,INV26-0245,Other,20
+D-0246,INV26-0246,Duplicate charge,200
+D-0247,INV26-0247,Wrong rate,120
+D-0248,INV26-0248,Free-time dispute,80
+D-0249,INV26-0249,Data mismatch,40
+D-0250,INV26-0250,Other,20
+D-0251,INV26-0251,Duplicate charge,200
+D-0252,INV26-0252,Wrong rate,120
+D-0253,INV26-0253,Free-time dispute,80
+D-0254,INV26-0254,Data mismatch,40
+D-0255,INV26-0255,Other,20
+D-0256,INV26-0256,Duplicate charge,200
+D-0257,INV26-0257,Wrong rate,120
+D-0258,INV26-0258,Free-time dispute,80
+D-0259,INV26-0259,Data mismatch,40
+D-0260,INV26-0260,Other,20
+D-0261,INV26-0261,Duplicate charge,200
+D-0262,INV26-0262,Wrong rate,120
+D-0263,INV26-0263,Free-time dispute,80
+D-0264,INV26-0264,Data mismatch,40
+D-0265,INV26-0265,Other,20
+D-0266,INV26-0266,Duplicate charge,200
+D-0267,INV26-0267,Wrong rate,120
+D-0268,INV26-0268,Free-time dispute,80
+D-0269,INV26-0269,Data mismatch,40
+D-0270,INV26-0270,Other,20
+D-0271,INV26-0271,Duplicate charge,200
+D-0272,INV26-0272,Wrong rate,120
+D-0273,INV26-0273,Free-time dispute,80
+D-0274,INV26-0274,Data mismatch,40
+D-0275,INV26-0275,Other,20
+D-0276,INV26-0276,Duplicate charge,200
+D-0277,INV26-0277,Wrong rate,120
+D-0278,INV26-0278,Free-time dispute,80
+D-0279,INV26-0279,Data mismatch,40
+D-0280,INV26-0280,Other,20
+D-0281,INV26-0281,Duplicate charge,200
+D-0282,INV26-0282,Wrong rate,120
+D-0283,INV26-0283,Free-time dispute,80
+D-0284,INV26-0284,Data mismatch,40
+D-0285,INV26-0285,Other,20
+D-0286,INV26-0286,Duplicate charge,200
+D-0287,INV26-0287,Wrong rate,120
+D-0288,INV26-0288,Free-time dispute,80
+D-0289,INV26-0289,Data mismatch,40
+D-0290,INV26-0290,Other,20
+D-0291,INV26-0291,Duplicate charge,200
+D-0292,INV26-0292,Wrong rate,120
+D-0293,INV26-0293,Free-time dispute,80
+D-0294,INV26-0294,Data mismatch,40
+D-0295,INV26-0295,Other,20
+D-0296,INV26-0296,Duplicate charge,200
+D-0297,INV26-0297,Wrong rate,120
+D-0298,INV26-0298,Free-time dispute,80
+D-0299,INV26-0299,Data mismatch,40
+D-0300,INV26-0300,Other,20

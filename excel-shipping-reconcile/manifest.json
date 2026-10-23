@@ -1,0 +1,27 @@
+{
+  "title": {
+    "en": "Excel Shipping Reconcile",
+    "de": "Excel Shipping Reconcile"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Carrier_invoices_Q3.xlsx",
+      "sha256": "88d97801f8a3f8832eed67643ef0922f24d830a664cb17ee0c5202bbe0562dc7"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Carrier_reconciliation_expected.csv",
+      "sha256": "760433f7e9ee6d588a38b5faf302aa12f3e395ee5ecc6bc7c39c7178ca8c5c44"
+    }
+  ]
+}

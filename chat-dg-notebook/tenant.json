@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Create DG process review manually in Copilot Notebooks. Add the checklist, approved procedures page, real saved meeting recap, QBR email and Survey_results.xlsx explicitly. If email reference selection is unavailable, omit it and state the reduced scope. Generate Audio overview before the session; daily limits may apply."
+    ],
+    "de": [
+      "DG process review in Copilot Notebooks manuell anlegen. Checkliste, genehmigte Verfahrensseite, echtes gespeichertes Besprechungsergebnis, QBR-Mail und Survey_results.xlsx ausdrücklich hinzufügen. Ist die Mail-Auswahl nicht verfügbar, weglassen und geringeren Umfang nennen. Audioüberblick vorher erzeugen; Tageslimits möglich."
+    ]
+  }
+}

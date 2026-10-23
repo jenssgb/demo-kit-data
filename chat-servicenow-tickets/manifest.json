@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Chat Servicenow Tickets",
+    "de": "Chat Servicenow Tickets"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "ServiceNow_incidents.csv",
+      "sha256": "1a1d34a29a6f67c95a40cf4f41cbe0be5e6b51edf20256588fedcc290dd9717a"
+    }
+  ]
+}

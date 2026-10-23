@@ -1,0 +1,168 @@
+{
+  "title": {
+    "en": "Word Shipping Brief",
+    "de": "Word Shipping Brief"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [
+    {
+      "path": "Affected_bookings.xlsx",
+      "sha256": "28f067b78d0d0b3f93cb57c14536a82c3e6e4d48054f6ad30833432659174870"
+    },
+    {
+      "path": "Analyst_expected.csv",
+      "sha256": "419ed6b5b28be4f724ac5c031c4aa0acda78d9b0974083eb80a413e760fca39d"
+    },
+    {
+      "path": "booking_4711.pdf",
+      "sha256": "c99b04b0e424c28dcaae79d35076e08c58899a385640823ffb2d9b15eb697f83"
+    },
+    {
+      "path": "Booking_list.xlsx",
+      "sha256": "28f067b78d0d0b3f93cb57c14536a82c3e6e4d48054f6ad30833432659174870"
+    },
+    {
+      "path": "Carrier_invoices_Q3.xlsx",
+      "sha256": "88d97801f8a3f8832eed67643ef0922f24d830a664cb17ee0c5202bbe0562dc7"
+    },
+    {
+      "path": "Carrier_notice_ContosoStar.docx",
+      "sha256": "9cccfe3c47355dfadee806840bd86922eef1005f3be61db1907dfd6edcc87b47"
+    },
+    {
+      "path": "Carrier_reconciliation_expected.csv",
+      "sha256": "760433f7e9ee6d588a38b5faf302aa12f3e395ee5ecc6bc7c39c7178ca8c5c44"
+    },
+    {
+      "path": "Channel_thread_seed.docx",
+      "sha256": "1ee96206830cf1067c36ef7210e2bc666db426e8f89b8987f7caf45170cf083e"
+    },
+    {
+      "path": "Customer_brief_draft.docx",
+      "sha256": "95e42a38342c42f61672183d9cabfbbc8988711bb75f607373b7dbd02048ad48"
+    },
+    {
+      "path": "Customer_FAQ_emissions.docx",
+      "sha256": "ef1eadad9fb2056eabc9b60b8870f7d593c18ac3fd6897b6cc54ef2f8405e316"
+    },
+    {
+      "path": "Customer_notice_template.docx",
+      "sha256": "c17b09a63e4fe59438d2d4573c4455298a26ee9e785e948ad7a012814f30895c"
+    },
+    {
+      "path": "DG_contact_and_handoff.docx",
+      "sha256": "6304fcb65a3b918f9bc8c1a5a7a0972106fc840cccbb5f208096e241ef198eae"
+    },
+    {
+      "path": "DG_lithium_booking.docx",
+      "sha256": "5a57b1baeed62f4fd5a53e0d6ea746a1b11ba0983aac9f9ac60a67580e6b28bc"
+    },
+    {
+      "path": "DG_precheck_checklist.docx",
+      "sha256": "c0ee89d77f842764ab62552633b09450583fd9bd7d42c228f52318a3c017da55"
+    },
+    {
+      "path": "DG_procedures.docx",
+      "sha256": "8cf722ea5a607fbfee0547074a7476ceec8447a65f9c135c8b1399c3a76971b6"
+    },
+    {
+      "path": "DG_source_register.docx",
+      "sha256": "41bfa5d391f08ad8bad1cfb6b13ccfd05929c89bb5483b177008df9b496097d4"
+    },
+    {
+      "path": "dg-pre-check.zip",
+      "sha256": "44ad23e0c9e7d5ad058c0e13617734d57ca9f68157be79dcd8dc80c6b1ef677a"
+    },
+    {
+      "path": "DnD_expected.csv",
+      "sha256": "cd6f01df1b09ca1afa5f4ffc101e66a1a6c48a5d82c2bf25a399f8d43a5319bf"
+    },
+    {
+      "path": "DnD_reconciliation.xlsx",
+      "sha256": "daa4a5ae59a00fdc1d16b82abdad442aca051c10260b1f09d80b4dbba4e33a83"
+    },
+    {
+      "path": "Interpreter_rehearsal.docx",
+      "sha256": "5025c7ad3229ac0e077fcd161c2823f6a25c98856cd57c74e97c8ebc0d631d00"
+    },
+    {
+      "path": "invoice_disputes_Q3.csv",
+      "sha256": "5c2e13d86d167800d207cdd6f994a010f0c37bc5e27a316c01e74f4c814878c7"
+    },
+    {
+      "path": "invoices_Q3.csv",
+      "sha256": "cdd32b33840b453e1e6153efccc008d9917d8ba2880fec601b79ea41f603eb57"
+    },
+    {
+      "path": "Model_comparison_scorecard.docx",
+      "sha256": "c2792c6c12a09ee4d5326e18ae63506f0f0bd53d55c83b47de3beb486531bafe"
+    },
+    {
+      "path": "Ops_sync_rehearsal.docx",
+      "sha256": "119cf7ddd993068b9c680749175b6e278fccb7df0e56a38217647f705df65ace"
+    },
+    {
+      "path": "Procurement_Playbook.docx",
+      "sha256": "48e1a3c7f52b0a5eda371ca373d2b5b7e00cb89b47cd557a4f0eba2d814ee6ba"
+    },
+    {
+      "path": "QBR_authored_reference.pptx",
+      "sha256": "405eaa37b37d1a2d53b63fe37b7963d67ae98e95774e9b4a644b69ef937e01f7"
+    },
+    {
+      "path": "QBR_notes_Fabrikam.docx",
+      "sha256": "79b15bef65233d7ff860e7648ca8da2f6103cc6728fc21d3fe5cc27a2a1a572c"
+    },
+    {
+      "path": "QBR_storyboard.docx",
+      "sha256": "b6ba09bef0249488f07515d849049ddc2dafaa230f209e3484e528b23b14a827"
+    },
+    {
+      "path": "Quote_A.pdf",
+      "sha256": "c1e0fd2a9476d5b76939169d22773835a529904ff36edd06ab2e72cfc6729673"
+    },
+    {
+      "path": "Quote_B.pdf",
+      "sha256": "cc09b503b9d05bfc9c6d373a71e6165ea95426b58738f3289b43e43568002dad"
+    },
+    {
+      "path": "Quote_C.pdf",
+      "sha256": "448cdc822357a67fe70ad0f091f2e901790a54a29faf03808d6adb47df8210e9"
+    },
+    {
+      "path": "Revised_ETA_ContosoStar.pdf",
+      "sha256": "ce039111ca62c04ab07559465bc74d1b6b0e260b4322f47782b5cbc48f068075"
+    },
+    {
+      "path": "ServiceNow_incidents.csv",
+      "sha256": "1a1d34a29a6f67c95a40cf4f41cbe0be5e6b51edf20256588fedcc290dd9717a"
+    },
+    {
+      "path": "skills/dg-pre-check/SKILL.md",
+      "sha256": "8b09850ce8dd059ec3d1374143266cd671fe6116e786bfbe8c4aa7b23557d9b6"
+    },
+    {
+      "path": "Supplier_Agreement_Draft.docx",
+      "sha256": "8a7a98e34af278b4cb3a2a93ac58163e917b13df68da79f5bbeba6322c21e91a"
+    },
+    {
+      "path": "Supplier_Agreement_expected.docx",
+      "sha256": "e4001bdd41de1d505046ea8efb3bafa941ccdbfc4b3a003e1ab8d017e6a010b6"
+    },
+    {
+      "path": "Survey_results.xlsx",
+      "sha256": "65f5e0154daeeac97e0c05ade1736d10ac394b40e5cb34c8e4d53ccfec17bea8"
+    },
+    {
+      "path": "Volumes_2026.xlsx",
+      "sha256": "07517749898adf416bef557108c6ffb0e738a3fe17840cc688370c4fb4bb4a17"
+    }
+  ]
+}

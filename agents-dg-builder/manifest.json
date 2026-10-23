@@ -1,0 +1,42 @@
+{
+  "title": {
+    "en": "Agents Dg Builder",
+    "de": "Agents Dg Builder"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_procedures.docx",
+      "sha256": "8cf722ea5a607fbfee0547074a7476ceec8447a65f9c135c8b1399c3a76971b6"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_precheck_checklist.docx",
+      "sha256": "c0ee89d77f842764ab62552633b09450583fd9bd7d42c228f52318a3c017da55"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_contact_and_handoff.docx",
+      "sha256": "6304fcb65a3b918f9bc8c1a5a7a0972106fc840cccbb5f208096e241ef198eae"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_source_register.docx",
+      "sha256": "41bfa5d391f08ad8bad1cfb6b13ccfd05929c89bb5483b177008df9b496097d4"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_lithium_booking.docx",
+      "sha256": "5a57b1baeed62f4fd5a53e0d6ea746a1b11ba0983aac9f9ac60a67580e6b28bc"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": {
+    "en": "Powerpoint Shipping Interactive",
+    "de": "Powerpoint Shipping Interactive"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "DnD_reconciliation.xlsx",
+      "sha256": "daa4a5ae59a00fdc1d16b82abdad442aca051c10260b1f09d80b4dbba4e33a83"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DnD_expected.csv",
+      "sha256": "cd6f01df1b09ca1afa5f4ffc101e66a1a6c48a5d82c2bf25a399f8d43a5319bf"
+    }
+  ]
+}

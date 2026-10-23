@@ -1,0 +1,6 @@
+Booking,Exception,Accrual EUR,Invoice EUR
+5008,Amount mismatch,1175,1325
+5019,Amount mismatch,1450,1600
+5040,Amount mismatch,1975,2125
+5055,Accrual only,2350,
+5999,Invoice only,,1250

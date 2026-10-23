@@ -1,0 +1,26 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    },
+    {
+      "name": {
+        "en": "Message Center (admin verification)",
+        "de": "Message Center (Admin-Prüfung)"
+      },
+      "url": "https://admin.microsoft.com/#/MessageCenter"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Check MC1493223 and the presenter's Agents and Skills UI before rehearsal. Only demonstrate direct Chat skill creation/use after tenant verification. Agent Builder custom skills are a separate Frontier preview. Keep the dg-pre-check ZIP ready; do not claim automatic installation or create a substitute agent silently."
+    ],
+    "de": [
+      "Vor der Probe MC1493223 und Agents and Skills im Vorführkonto prüfen. Direkte Chat-Skill-Erstellung/Nutzung erst nach Tenant-Prüfung vorführen. Agent-Builder-Skills sind eine getrennte Frontier-Preview. dg-pre-check-ZIP bereithalten; keine automatische Installation oder stillen Ersatzagenten behaupten."
+    ]
+  }
+}

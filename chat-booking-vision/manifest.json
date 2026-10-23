@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Chat Booking Vision",
+    "de": "Chat Booking Vision"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "booking_4711.pdf",
+      "sha256": "c99b04b0e424c28dcaae79d35076e08c58899a385640823ffb2d9b15eb697f83"
+    }
+  ]
+}

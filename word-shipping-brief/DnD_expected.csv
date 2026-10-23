@@ -1,0 +1,7 @@
+Customer,Contracted EUR,Billed EUR,Variance percent,Above 5 percent
+Fabrikam,12400,13950,12.500000,True
+Northwind,8200,8350,1.829268,False
+Tailspin,15600,17100,9.615385,True
+Wide World,6900,6950,0.724638,False
+Adatum,10300,10920,6.019417,True
+Contoso Retail,9800,9900,1.020408,False

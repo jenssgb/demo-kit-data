@@ -1,0 +1,44 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "mails": [
+    "tenant/1_Teresa_Delay_notice.eml",
+    "tenant/2_Teresa_Delay_notice.eml",
+    "tenant/3_Teresa_Delay_notice.eml",
+    "tenant/4_Teresa_Delay_notice.eml",
+    "tenant/5_Teresa_Delay_notice.eml",
+    "tenant/6_Teresa_Delay_notice.eml",
+    "tenant/7_Billie_Other.eml",
+    "tenant/8_Billie_Other.eml",
+    "tenant/9_Billie_Other.eml",
+    "tenant/10_Teresa_Attachments.eml"
+  ],
+  "mailOptions": [
+    {
+      "subject": "Contoso Star delay - carrier attachments",
+      "attachments": [
+        "Revised_ETA_ContosoStar.pdf",
+        "Affected_bookings.xlsx"
+      ]
+    }
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "manual": {
+    "en": [
+      "Work IQ readiness: as the presenter, verify real mailbox and document citations without attachments. File upload and mail submission are not indexing or delivery proofs. Teams evidence requires the rehearsed meeting/thread."
+    ],
+    "de": [
+      "Work-IQ-Bereitschaft: als Präsentator echte Mail- und Dokumentzitate ohne Anhänge prüfen. Upload und Mailübergabe sind keine Indizierungs- oder Zustellnachweise. Teams-Nachweise brauchen die geprobte Besprechung/Unterhaltung."
+    ]
+  }
+}

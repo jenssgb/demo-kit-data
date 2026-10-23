@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Teams Shipping Thread",
+    "de": "Teams Shipping Thread"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Channel_thread_seed.docx",
+      "sha256": "1ee96206830cf1067c36ef7210e2bc666db426e8f89b8987f7caf45170cf083e"
+    }
+  ]
+}

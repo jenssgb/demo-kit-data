@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Outlook Shipping Calendar",
+    "de": "Outlook Shipping Calendar"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "QBR_notes_Fabrikam.docx",
+      "sha256": "79b15bef65233d7ff860e7648ca8da2f6103cc6728fc21d3fe5cc27a2a1a572c"
+    }
+  ]
+}

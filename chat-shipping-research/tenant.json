@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot",
+        "de": "Microsoft Copilot"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Start the actual Researcher report at least 45 minutes before the session; review citations and save its history. Researcher: 25 queries/user/month. Do not portray the draft FAQ as legal authority."
+    ],
+    "de": [
+      "Echten Researcher-Bericht mindestens 45 Minuten vor dem Termin starten; Zitate prüfen und Verlauf behalten. Researcher: 25 Anfragen pro Benutzer/Monat. FAQ-Entwurf nicht als Rechtsquelle darstellen."
+    ]
+  }
+}

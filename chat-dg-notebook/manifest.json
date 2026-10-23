@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Chat Dg Notebook",
+    "de": "Chat Dg Notebook"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_precheck_checklist.docx",
+      "sha256": "c0ee89d77f842764ab62552633b09450583fd9bd7d42c228f52318a3c017da55"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_procedures.docx",
+      "sha256": "8cf722ea5a607fbfee0547074a7476ceec8447a65f9c135c8b1399c3a76971b6"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Ops_sync_rehearsal.docx",
+      "sha256": "119cf7ddd993068b9c680749175b6e278fccb7df0e56a38217647f705df65ace"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "Survey_results.xlsx",
+      "sha256": "65f5e0154daeeac97e0c05ade1736d10ac394b40e5cb34c8e4d53ccfec17bea8"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": {
+    "en": "Agents Dg Skill",
+    "de": "Agents Dg Skill"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "DG_precheck_checklist.docx",
+      "sha256": "c0ee89d77f842764ab62552633b09450583fd9bd7d42c228f52318a3c017da55"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "booking_4711.pdf",
+      "sha256": "c99b04b0e424c28dcaae79d35076e08c58899a385640823ffb2d9b15eb697f83"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "skills/dg-pre-check/SKILL.md",
+      "sha256": "8b09850ce8dd059ec3d1374143266cd671fe6116e786bfbe8c4aa7b23557d9b6"
+    },
+    {
+      "from": "word-shipping-brief",
+      "path": "dg-pre-check.zip",
+      "sha256": "44ad23e0c9e7d5ad058c0e13617734d57ca9f68157be79dcd8dc80c6b1ef677a"
+    }
+  ]
+}

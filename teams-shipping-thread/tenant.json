@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Teams",
+        "de": "Teams"
+      },
+      "url": "https://teams.microsoft.com/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Use Channel_thread_seed.docx in an approved Contoso Shipping Ops / Ops - Vessel delays channel. Post the main message and 12 replies with the named internal CDX accounts; do not impersonate users. Verify >1,000 characters. Channel Agent requires Public Preview, app permission and Loop; pre-generate its report."
+    ],
+    "de": [
+      "Channel_thread_seed.docx im genehmigten Kanal Contoso Shipping Ops / Ops - Vessel delays verwenden. Hauptnachricht und 12 Antworten mit den genannten internen CDX-Konten posten; keine Identitäten vortäuschen. >1.000 Zeichen prüfen. Channel Agent braucht Public Preview, App-Freigabe und Loop; Bericht vorab erzeugen."
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Excel Shipping Volumes",
+    "de": "Excel Shipping Volumes"
+  },
+  "next": {
+    "en": [
+      "Run the global -Tenant command; rehearse this app's page and check the manual prerequisites."
+    ],
+    "de": [
+      "Das globale -Tenant-Setup ausführen; diese App-Seite proben und die manuellen Voraussetzungen prüfen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-shipping-brief",
+      "path": "Volumes_2026.xlsx",
+      "sha256": "07517749898adf416bef557108c6ffb0e738a3fe17840cc688370c4fb4bb4a17"
+    }
+  ]
+}
