@@ -1,0 +1,101 @@
+{
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "mails": [
+    "tenant/{lang}/WIQ-M01.eml",
+    "tenant/{lang}/WIQ-M02.eml",
+    "tenant/{lang}/WIQ-M03.eml",
+    "tenant/{lang}/WIQ-M04.eml"
+  ],
+  "workIqShared": {
+    "scenario": "WIQ26",
+    "folder": "Demo-Kit-Work-IQ-WIQ26",
+    "documents": [
+      "en/WIQ-D01_brief.docx",
+      "de/WIQ-D01_brief.docx",
+      "en/WIQ-D02_status_v1.docx",
+      "de/WIQ-D02_status_v1.docx",
+      "en/WIQ-D03_status_v2.docx",
+      "de/WIQ-D03_status_v2.docx",
+      "en/WIQ-D04_ct_1001.docx",
+      "de/WIQ-D04_ct_1001.docx",
+      "en/WIQ-D05_ct_1002.docx",
+      "de/WIQ-D05_ct_1002.docx",
+      "en/WIQ-D06_ct_1003.docx",
+      "de/WIQ-D06_ct_1003.docx",
+      "en/WIQ-D07_ct_1004.docx",
+      "de/WIQ-D07_ct_1004.docx",
+      "en/WIQ-D08_ct_1005.docx",
+      "de/WIQ-D08_ct_1005.docx",
+      "en/WIQ-D09_ct_1006.docx",
+      "de/WIQ-D09_ct_1006.docx",
+      "en/WIQ-D10_ct_1007.docx",
+      "de/WIQ-D10_ct_1007.docx",
+      "en/WIQ-D11_ct_1008.docx",
+      "de/WIQ-D11_ct_1008.docx",
+      "en/WIQ-D12_ct_1009.docx",
+      "de/WIQ-D12_ct_1009.docx",
+      "en/WIQ-D13_ct_1010.docx",
+      "de/WIQ-D13_ct_1010.docx",
+      "en/WIQ-D14_ct_1011.docx",
+      "de/WIQ-D14_ct_1011.docx",
+      "en/WIQ-D15_ct_1012.docx",
+      "de/WIQ-D15_ct_1012.docx",
+      "en/WIQ-D16_teresa.docx",
+      "de/WIQ-D16_teresa.docx",
+      "en/WIQ-D17_sonia.docx",
+      "de/WIQ-D17_sonia.docx",
+      "en/WIQ-D18_billie.docx",
+      "de/WIQ-D18_billie.docx",
+      "en/WIQ-D19_approval_control.docx",
+      "de/WIQ-D19_approval_control.docx",
+      "en/WIQ-D20_exercise_clock.docx",
+      "de/WIQ-D20_exercise_clock.docx",
+      "en/WIQ-D21_comparison.docx",
+      "de/WIQ-D21_comparison.docx",
+      "en/WIQ-D22_obsolete_draft.docx",
+      "de/WIQ-D22_obsolete_draft.docx",
+      "en/WIQ-D23_handover_notes.docx",
+      "de/WIQ-D23_handover_notes.docx",
+      "en/WIQ-D24_source_map.docx",
+      "de/WIQ-D24_source_map.docx"
+    ],
+    "event": {
+      "subject": {
+        "en": "[WIQ26] Contoso port handover - rehearsal",
+        "de": "[WIQ26] Contoso-Hafenuebergabe - Generalprobe"
+      },
+      "body": {
+        "en": "Synthetic WIQ26 rehearsal. Teresa: CT-1002 manifest and CT-1005 release approval; Sonia: CT-1003 inspection; Billie: CT-1008 written cut-off. Four holds remain open. This invitation does not create a transcript.",
+        "de": "Synthetische WIQ26-Generalprobe. Teresa: CT-1002 Manifest und CT-1005 Freigabe; Sonia: CT-1003 Prüfung; Billie: CT-1008 schriftlicher Annahmeschluss. Vier Sperren bleiben offen. Diese Einladung erstellt kein Transkript."
+      },
+      "weekday": "Thursday",
+      "start": "10:00",
+      "minutes": 30
+    }
+  },
+  "manual": {
+    "en": [
+      "Admin publishes this shared demo once with the global -Tenant command; other presenters do not rerun setup or need admin roles.",
+      "As each presenter, open the WIQ26 SharePoint link in a [WIQ26-M02] inbox message; confirm WIQ-D03 opens, the four messages arrived and the WIQ26 rehearsal invitation is in Outlook. Accept the invitation if needed.",
+      "Use Microsoft 365 Copilot (Premium), verify Work IQ is available and on, and rehearse unassisted discovery. Check the site's/library's search visibility. Install ahead of the session; uploading is not proof of indexing."
+    ],
+    "de": [
+      "Admin veröffentlicht diese gemeinsame Demo einmal mit dem globalen -Tenant-Befehl; andere Vorführende führen das Setup nicht erneut aus und brauchen keine Adminrolle.",
+      "Mit jedem Vorführkonto den WIQ26-SharePoint-Link in einer [WIQ26-M02]-Mail öffnen; WIQ-D03, Eingang der vier Mails und die WIQ26-Einladung in Outlook prüfen. Einladung bei Bedarf annehmen.",
+      "Microsoft 365 Copilot (Premium) nutzen, verfügbares und eingeschaltetes Work IQ prüfen und die Suche ohne Anhänge proben. Suchbarkeit von Website/Bibliothek prüfen. Vor dem Termin installieren; Upload ist kein Indexierungsnachweis."
+    ]
+  },
+  "links": [
+    {
+      "name": {
+        "en": "Microsoft Copilot Chat",
+        "de": "Microsoft Copilot Chat"
+      },
+      "url": "https://copilot.cloud.microsoft/chat"
+    }
+  ]
+}

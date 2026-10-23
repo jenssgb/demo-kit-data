@@ -1,0 +1,38 @@
+{
+  "scenario": "WIQ26",
+  "logicalDocuments": 24,
+  "physicalDocuments": 48,
+  "messagesPerLanguage": 4,
+  "totalContainers": 115,
+  "heldContainers": 43,
+  "readyContainers": 72,
+  "holds": {
+    "CT-1002": [
+      12,
+      "Teresa Sac",
+      "corrected manifest"
+    ],
+    "CT-1003": [
+      6,
+      "Sonia Rees",
+      "authorized inspection outcome"
+    ],
+    "CT-1005": [
+      14,
+      "Teresa Sac",
+      "release approval"
+    ],
+    "CT-1008": [
+      11,
+      "Billie Vester",
+      "written carrier cut-off"
+    ]
+  },
+  "checks": [
+    "CT-1005 packing list received; release pending",
+    "CT-1008 slot provisional; confirmation missing",
+    "No delivery promise",
+    "M02 and WIQ-D03 both cited and opened as presenter",
+    "Actual next calendar date, no fabricated transcript"
+  ]
+}

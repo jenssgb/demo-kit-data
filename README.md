@@ -13,10 +13,12 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 ```
 
 - It installs **all** demos of the kit. `catalog.json` lists every app and its demos. Each demo lands in
-  `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`.
+  `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`, except shared **Work IQ / WIQ26**
+  evidence: admin publishes that once to SharePoint for eligible colleagues (see below).
 - New demos in the catalog are picked up automatically. **Run it once per presenter account** (ideally the day before a session,
   because Copilot only finds files once they are indexed) and run it again after kit updates. A rerun adds new and
-  changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Nothing is created twice.
+  changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Shared WIQ26 does not require a presenter install;
+  use the same publishing admin for its reruns.
 - The command never changes. There are no customer bundles.
 - Options:
   - `-WhatIf` shows everything without changing the tenant. Try this first.
@@ -63,7 +65,48 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual, links). Extra files
   live in `<demo-id>/tenant/`. Neither is part of the file download.
 
-### Contoso port-operations rehearsal
+### Work IQ: publish once, demonstrate with other users
+
+The same global `-Tenant` command now includes `workiq-port-operations` (**WIQ26**). Run this setup as the
+demo administrator, ideally ahead of the session; adding `-WhatIf` first previews without tenant writes.
+It publishes **24 distinct DOCX documents in EN/DE (48 files)** into the **existing tenant root SharePoint
+document library**, folder `Demo-Kit-Work-IQ-WIQ26`. It grants folder-only **read** access to all enabled,
+internal `Member` users with an enabled Exchange service plan and a mail address. Guests, disabled accounts
+and Teams-only users are excluded; existing broader inherited permissions are not removed.
+
+Four real evidence messages are submitted individually to each eligible user's **primary inbox**, with the
+shared folder link, and one real rehearsal invitation includes the audience. Other users **do not rerun the
+installer**, need no admin role and do not rely on the admin's private files/chat history. Each still needs
+the appropriate Copilot license, Work IQ availability and tenant policy access. The admin needs existing
+write access to the root library and consent to delegated `Sites.Read.All`, `Files.ReadWrite.All` and
+`User.Read.All` in the existing bundled Graph sign-in. Missing access is explicitly **BLOCKED**; no site,
+admin role, search-policy change, custom vector index or API billing is created.
+
+Canonical documents are not duplicated into the admin's regular demo OneDrive folder. The Desktop link page
+and Edge favorites contain the actual shared folder URL. Mails use the selected setup language; both document
+languages are shared. `tools\build-workiq.py` reuses the established port builder's Office styling/packages;
+run `tools\Update-Manifest.ps1 -All` afterward. Test gold under `tenant\expected.json` is not uploaded/indexed.
+
+Rerun **as the same admin** to update documents and include newly eligible users. The private admin OneDrive
+folder `DemoKit-WIQ26-State-<tenant-id>` keeps publisher/tenant-checked submission state across PCs. A
+non-expiring `installer-lock` prevents concurrent runs; only remove that specific lock after a crashed run
+and after confirming no installer remains active. Pending/uncertain mail sends are **never automatically
+resent**: inspect Sent Items/Exchange message trace before repairing the matching private state entry.
+Do not delete the ledger to retry blindly. This prevents a timeout from silently creating duplicate mail.
+A future calendar invitation is preserved. If it has become past, rerunning as the same admin moves that
+same event to the next Thursday at 10:00 local installer time, without creating another event. New eligible
+attendees are added without removing manually added ones.
+
+Uploading is **not** an indexing proof, HTTP 202 is **not** delivery confirmation, and a calendar invitation
+is **not** a transcript. As the actual presenter, open `[WIQ26-M02]`, its shared folder and
+`en\WIQ-D03_status_v2.docx` (or `de`), verify all four mails and the real invitation, and then rehearse the
+kit's **WI-01** prompts without attachments. Require both real mail and document citations and all four
+holds to remain unresolved. Microsoft manages semantic indexing; prepare ahead and verify actual discovery,
+not an assumed timing SLA. Direct Work IQ API/CLI/MCP consent and billing are a separate, unconfigured path.
+
+Offline integration checks: `tools\Test-WorkIqShared.ps1`; corpus checks: `python tools\check-workiq.py`.
+
+### Other port-operations app rehearsals
 
 The per-app `*-port-operations` folders share one original synthetic storyline: 12 shipments, 115 containers,
 four held shipments / 43 containers, and an intentionally important distinction between document receipt and

@@ -1,0 +1,208 @@
+{
+  "title": {
+    "en": "Work IQ: shared Contoso port evidence",
+    "de": "Work IQ: gemeinsame Contoso-Hafennachweise"
+  },
+  "next": {
+    "en": [
+      "Admin: global -Tenant setup. Presenter: open the shared link from the WIQ26 inbox message."
+    ],
+    "de": [
+      "Admin: globales -Tenant-Setup. Vorführkonto: gemeinsamen Link aus der WIQ26-Mail öffnen."
+    ]
+  },
+  "files": [
+    {
+      "path": "de/WIQ-D01_brief.docx",
+      "sha256": "a6bea57b5941f3c68091a046b778ed85e9607fc9b0f84c300ccb6da3f30a4df0"
+    },
+    {
+      "path": "de/WIQ-D02_status_v1.docx",
+      "sha256": "3838b3808bab226e60d81b6e8b345b30f51ec97a8ee5b8e00951813d3777b7e2"
+    },
+    {
+      "path": "de/WIQ-D03_status_v2.docx",
+      "sha256": "0c07f66eceea2307a5b3a79c9dda5fdeac13177ff0417e2215edf0d2a3f0c43f"
+    },
+    {
+      "path": "de/WIQ-D04_ct_1001.docx",
+      "sha256": "3148d946744d143f7948433ba6b4e53e51a4dabdbdc52896370ba609bae3f702"
+    },
+    {
+      "path": "de/WIQ-D05_ct_1002.docx",
+      "sha256": "99cc3ddb96fb53bc9e7636e722df11910d376e07d910613de07a1425afc5155b"
+    },
+    {
+      "path": "de/WIQ-D06_ct_1003.docx",
+      "sha256": "e485024bd2e55e282e3198e9bfede8888ae02b4e00a0cee5fe40f920d46116b5"
+    },
+    {
+      "path": "de/WIQ-D07_ct_1004.docx",
+      "sha256": "9cb5895dc291aa408b8590c02379f40bfacf911be5a3468103b01086667f4d98"
+    },
+    {
+      "path": "de/WIQ-D08_ct_1005.docx",
+      "sha256": "8189790140cba79aa9f94348adf09a2fb6cda774630446d343267f408c233435"
+    },
+    {
+      "path": "de/WIQ-D09_ct_1006.docx",
+      "sha256": "fb956ddc6875a946433930ab244e805137ae807692540027e920f06642f1ad1f"
+    },
+    {
+      "path": "de/WIQ-D10_ct_1007.docx",
+      "sha256": "355f914a74c63c879352675469e00101b077bf8255343990b5fb1fdb7d697f84"
+    },
+    {
+      "path": "de/WIQ-D11_ct_1008.docx",
+      "sha256": "e09d2928fb964a386b5e01515330fd10b99c2ff43df473a9034a9cd0305d411d"
+    },
+    {
+      "path": "de/WIQ-D12_ct_1009.docx",
+      "sha256": "b00e5eea502a0c13352ca3af3bbc65b4fae386b0bb0c5539c9f4a7362a43a222"
+    },
+    {
+      "path": "de/WIQ-D13_ct_1010.docx",
+      "sha256": "6e5b69d250ddfcd5bb2508115ced840391f7bdcae6a4cf4ebbf39d2aa4c63efc"
+    },
+    {
+      "path": "de/WIQ-D14_ct_1011.docx",
+      "sha256": "fc5dce301689343ca21ebbcb0ddd65773ea20024902025921729891e77dba3d8"
+    },
+    {
+      "path": "de/WIQ-D15_ct_1012.docx",
+      "sha256": "f087a021b592de60d16bdccbc24557d8ff486ae40f160c9517e62ba82f8be693"
+    },
+    {
+      "path": "de/WIQ-D16_teresa.docx",
+      "sha256": "6a25a9003cb83eea844e0fd441ae5ed4180f1227292bbe9a0071106dd36b1d1e"
+    },
+    {
+      "path": "de/WIQ-D17_sonia.docx",
+      "sha256": "b89b030419d5440ccc4c2a3e4964db10ed908aa8d6791e3906303cf7532f9f1c"
+    },
+    {
+      "path": "de/WIQ-D18_billie.docx",
+      "sha256": "08e5a24460e712db73fc6be278fb9387a4e30f8c722dfea633047a617c791622"
+    },
+    {
+      "path": "de/WIQ-D19_approval_control.docx",
+      "sha256": "1198ea074cc06fd76220f278bf02b25141e5321d3fa3cfe1de3e5b083d6b6cee"
+    },
+    {
+      "path": "de/WIQ-D20_exercise_clock.docx",
+      "sha256": "eee772172ab4591b9a0b4be3a34042bfd0a6bb150f3456ba8d1d4656e38d08d8"
+    },
+    {
+      "path": "de/WIQ-D21_comparison.docx",
+      "sha256": "9dc99ba440111e0443119cc46c2098d5fb1776a5e19325155e6b2e4741387879"
+    },
+    {
+      "path": "de/WIQ-D22_obsolete_draft.docx",
+      "sha256": "d7f83fc3a9b4e2aac928a8b4f8c6b5de91d11d610916c3cc0f3663f04ed55987"
+    },
+    {
+      "path": "de/WIQ-D23_handover_notes.docx",
+      "sha256": "24dd352ddc814a50d6d1bb580b4157c78fa9af89593bcc2c84d84f70b16679e2"
+    },
+    {
+      "path": "de/WIQ-D24_source_map.docx",
+      "sha256": "2ac1fe30d9f08ad1f95f64a95b2ff817311c3406861442fdd1dd142145b17fe1"
+    },
+    {
+      "path": "en/WIQ-D01_brief.docx",
+      "sha256": "b4c24337009fd92b605868bd3715f3dfa3072e7fece7638bd672a4c97dfb2131"
+    },
+    {
+      "path": "en/WIQ-D02_status_v1.docx",
+      "sha256": "38ac06d625914f53561164b408ced1fdd4dd67c9786c85aff9b5c4ac55cf63b4"
+    },
+    {
+      "path": "en/WIQ-D03_status_v2.docx",
+      "sha256": "7b9f563ebac3cf8d6e07565d7a26c2b69c41998b964dc43cd25360a2b31bca54"
+    },
+    {
+      "path": "en/WIQ-D04_ct_1001.docx",
+      "sha256": "ef7ae8fd29940ee2362af98badf3c37882abd1625338f68e95e2d3e8445dc0b5"
+    },
+    {
+      "path": "en/WIQ-D05_ct_1002.docx",
+      "sha256": "46a5d45f941cdb215b2f89e04749668b645b515ecb28614723dd3f84e2676862"
+    },
+    {
+      "path": "en/WIQ-D06_ct_1003.docx",
+      "sha256": "1967ee339e651666f86ce399680772cea203c6370863f8a9f738b9fdcf70aadd"
+    },
+    {
+      "path": "en/WIQ-D07_ct_1004.docx",
+      "sha256": "a1df20f789e7ee7dc5fd6afa91f21b164b9cbd9a1a922c75b2060ae7ea2428ec"
+    },
+    {
+      "path": "en/WIQ-D08_ct_1005.docx",
+      "sha256": "cfd9e0d101f0a6f80a732c72901fcd5d3d05c7fe97c7dfa1b0a3b76c6d43b26c"
+    },
+    {
+      "path": "en/WIQ-D09_ct_1006.docx",
+      "sha256": "5eb6e8796b67cee00bfb09e384507154725ef60c4193d9b478f7b111663b41ba"
+    },
+    {
+      "path": "en/WIQ-D10_ct_1007.docx",
+      "sha256": "466fd792d67e472b395860bb3468940beb9245790424e47988401bcf23789a6c"
+    },
+    {
+      "path": "en/WIQ-D11_ct_1008.docx",
+      "sha256": "37c30e9c4efce288f53e3986f658b5660f20bb4812292b8e6e0bf1603f448e30"
+    },
+    {
+      "path": "en/WIQ-D12_ct_1009.docx",
+      "sha256": "8e2320eb81b5602ae7c16725e0cbc314f35bfd1e38a181ca1c94c102b62cd5ed"
+    },
+    {
+      "path": "en/WIQ-D13_ct_1010.docx",
+      "sha256": "5905ca957a51a508fb58cbfb2a568bee6d22eb342575735221be14f11d875854"
+    },
+    {
+      "path": "en/WIQ-D14_ct_1011.docx",
+      "sha256": "a269a7866bbaf52e7bb6e274cd47124ae3c83b34966dc6179ae5383bf67b2161"
+    },
+    {
+      "path": "en/WIQ-D15_ct_1012.docx",
+      "sha256": "ab8676a1e44a182ea874e4bb0ab168998e79bf8e3acab175289c542b95025865"
+    },
+    {
+      "path": "en/WIQ-D16_teresa.docx",
+      "sha256": "c2f7dde2ee3baed0bca95d35ffad490a7f720780bd4aa582562470fbc5a9563e"
+    },
+    {
+      "path": "en/WIQ-D17_sonia.docx",
+      "sha256": "5f9ffc218fcdf57f259e5121d122302c020e44aa74e2d4f9397ce28828dd3bcb"
+    },
+    {
+      "path": "en/WIQ-D18_billie.docx",
+      "sha256": "ed92e7a7706c51cec665d81ea7fb3f73500dfcdff8086129161f30f904760394"
+    },
+    {
+      "path": "en/WIQ-D19_approval_control.docx",
+      "sha256": "85b9083306feb6555b095a545466f51d771334fe92d5cc1cae35b279a6eda1b1"
+    },
+    {
+      "path": "en/WIQ-D20_exercise_clock.docx",
+      "sha256": "0033512ba101e238114b5c1c62b1afb10258e4c65f812520cfd75e0fcff740e0"
+    },
+    {
+      "path": "en/WIQ-D21_comparison.docx",
+      "sha256": "45ed4273f8a2a7d525b1d02dfffd4a986b667c97f062f5b1201f43a1f7d4c2ca"
+    },
+    {
+      "path": "en/WIQ-D22_obsolete_draft.docx",
+      "sha256": "0ab2d78989ff08ae1f2764a7b056bebdd5aa29908ab24a8d409685ba9d51515e"
+    },
+    {
+      "path": "en/WIQ-D23_handover_notes.docx",
+      "sha256": "e138b8a8f61aabe5e91d3b31a99295ccaa3a275c0a457a935ba8220f76c20a53"
+    },
+    {
+      "path": "en/WIQ-D24_source_map.docx",
+      "sha256": "ac54c03a5fcfb71cf1f10454ccbbda3175421c9db9f30ee72a9fe2fe504bda65"
+    }
+  ]
+}

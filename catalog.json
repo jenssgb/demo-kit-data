@@ -187,10 +187,11 @@
       "id": "copilot-chat",
       "folder": "Copilot-Chat",
       "title": {
-        "en": "Copilot Chat: Researcher, Notebooks, Prompts",
-        "de": "Copilot Chat: Researcher, Notebooks, Prompts"
+        "en": "Copilot Chat: Work IQ, Researcher, Notebooks",
+        "de": "Copilot Chat: Work IQ, Researcher, Notebooks"
       },
       "demos": [
+        "workiq-port-operations",
         "researcher-copilot",
         "notebooks-copilot",
         "prompts-copilot",

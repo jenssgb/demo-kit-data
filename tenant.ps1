@@ -24,6 +24,8 @@
     requiredUsers ["real.upn@tenant"]  verify current enabled Exchange plans before tenant writes
     executiveEvent  opt-in LEF26 shared sources, fixed events and Teams discussion; approved private state reused
                     across PCs from the demo admin's OneDrive after the same Graph sign-in
+    workIqShared  opt-in WIQ26 corpus in the existing root SharePoint library, folder read grants and individual
+                  mailbox evidence for eligible internal users; published once by admin, not per presenter
   Send As grants are cached per tenant AND presenter, locally and in that presenter's OneDrive.
   Exchange Online needs an administrator sign-in once per presenter, preparing everyone in people.json.
   Running it again creates nothing twice.
@@ -294,10 +296,20 @@ Import-Module Microsoft.Graph.Authentication
 $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
 if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
+if (@($configs | Where-Object { $_.Config.workIqShared }).Count) {
+    $scopes += @('Sites.Read.All', 'Files.ReadWrite.All', 'User.Read.All')
+    $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\WorkIqShared.ps1' } else { $null }
+    if ($helper -and (Test-Path -LiteralPath $helper)) { . $helper }
+    else {
+        $helperCode = (Invoke-WebRequest -Uri (Url 'tools/WorkIqShared.ps1') -UseBasicParsing).Content
+        if ($helperCode -is [byte[]]) { $helperCode = [Text.Encoding]::UTF8.GetString($helperCode) }
+        . ([scriptblock]::Create($helperCode))
+    }
+}
 if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
     $scopes += @('Files.ReadWrite.All', 'Team.ReadBasic.All', 'Channel.ReadBasic.All', 'ChannelMessage.Read.All', 'ChannelMessage.Send', 'Mail.ReadWrite')
 }
-Connect-MgGraph -Scopes $scopes -ContextScope CurrentUser -NoWelcome
+Connect-MgGraph -Scopes @($scopes | Sort-Object -Unique) -ContextScope CurrentUser -NoWelcome
 function G($method, $uri, $body, $contentType = 'application/json', $headers) {
     $p = @{ Method = $method; Uri = "https://graph.microsoft.com/v1.0$uri" }
     if ($null -ne $body) { $p.Body = $body; $p.ContentType = $contentType }
@@ -313,7 +325,7 @@ function GOpt($uri) {
 if ($null -eq $Links) { $Links = @{} }
 if (-not $Links.demos) { $Links.demos = [ordered]@{} }
 foreach ($it in $Items) { if (-not $Links.demos[$it.id]) { $Links.demos[$it.id] = @{} } }
-$me = G GET '/me?$select=displayName,userPrincipalName,mail'
+$me = G GET '/me?$select=id,displayName,userPrincipalName,mail'
 $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
 Say ("{0} <{1}>" -f $me.displayName, $myMail) Green
@@ -551,6 +563,7 @@ foreach ($it in $Items) {
     $lk = $Links.demos[$it.id]
     $lk.files = New-Object Collections.ArrayList
     $itemConfig = $configs | Where-Object { $_.Item.id -eq $it.id } | Select-Object -First 1
+    if ($itemConfig.Config.workIqShared) { continue }
     $preserveExisting = @($itemConfig.Config.preserveExistingFiles)
     # Only files listed in the manifest (stale local files from older versions are never uploaded)
     $files = if ($it.files) { @($it.files | ForEach-Object { Get-Item -LiteralPath (Join-Path $it.dir ($_ -replace '/', '\')) -ErrorAction SilentlyContinue } | Where-Object { $_ }) }
@@ -666,6 +679,21 @@ foreach ($c in $configs | Where-Object { $_.Config.events }) {
     }
 }
 
+# Shared evidence is published once by the administrator, not copied to every user's OneDrive.
+$sharedIds = @($configs | Where-Object { $_.Config.workIqShared } | ForEach-Object { $_.Item.id })
+foreach ($c in @($configs | Where-Object { $_.Config.workIqShared })) {
+    try {
+        $sharedLinks = @(Invoke-WorkIqSharedSetup -Config $c.Config.workIqShared -Item $c.Item -Me $me -Senders $senders -Mails @($mails | Where-Object { $_.Demo -eq $c.Item.id }) -Language $Language -WhatIf:$WhatIf -SendAsWaitMinutes $SendAsWaitMinutes)
+        $Links.demos[$c.Item.id].sharedLinks = $sharedLinks
+        Count 'WorkIQShared' $(if ($WhatIf) { 'pending' } else { $sharedLinks[0].result })
+    } catch {
+        Row 'BLOCKED' "WIQ26: $_" Red
+        Count 'WorkIQShared' failed
+        $Links.manual += "[$($c.Item.id)] BLOCKED: shared Work IQ setup incomplete. Inspect the installer log; do not claim presenter readiness."
+    }
+}
+$mails = @($mails | Where-Object { $_.Demo -notin $sharedIds })
+
 # ---------- 5) mails (last, so "Send As" has time to replicate) ----------
 if ($mails.Count) {
     Write-Host ""
@@ -712,7 +740,7 @@ $report.GetEnumerator() | ForEach-Object {
 
 $manual = @(foreach ($c in $configs) { foreach ($m in @(L $c.Config.manual)) { if ($m) { [pscustomobject]@{ Demo = $c.Item.id; Text = ($m -replace '\*\*', '') } } } })
 foreach ($c in $configs) {
-    $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } }) + @($Links.demos[$c.Item.id].executiveLinks | Where-Object { $_ })
+    $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } }) + @($Links.demos[$c.Item.id].executiveLinks | Where-Object { $_ }) + @($Links.demos[$c.Item.id].sharedLinks | Where-Object { $_ })
 }
 $Links.manual = @($Links.manual | Where-Object { $_ }) + @($manual | ForEach-Object { "[{0}] {1}" -f $_.Demo, $_.Text })
 if ($manual.Count) {
