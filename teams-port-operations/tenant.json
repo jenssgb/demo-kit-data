@@ -1,0 +1,45 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Teams",
+        "de": "Teams"
+      },
+      "url": "https://teams.microsoft.com/"
+    }
+  ],
+  "events": [
+    {
+      "subject": {
+        "en": "Contoso port handover rehearsal",
+        "de": "Contoso Hafenübergabe - Generalprobe"
+      },
+      "weekday": "Monday",
+      "start": "10:00",
+      "minutes": 30,
+      "onlineMeeting": true,
+      "attendees": [
+        "Teresa Sac",
+        "Sonia Rees",
+        "Billie Vester"
+      ],
+      "body": {
+        "en": "Synthetic Contoso rehearsal. Review the 12-shipment source table, the 15:00 document update and the 4 unresolved holds. No real customer commitments. Rehearse with transcription only after participant consent and in accordance with tenant policy.",
+        "de": "Synthetische Contoso-Generalprobe. Die 12 Sendungen, das Dokumenten-Update von 15 Uhr und die 4 offenen Sperren besprechen. Keine echten Kundenzusagen. Transkription nur nach Zustimmung der Teilnehmenden und gemäß Tenant-Richtlinie verwenden."
+      }
+    }
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "SoniaR@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ],
+  "manual": {
+    "en": [
+      "Rehearse the installed Contoso port handover Teams meeting with consent and transcription; verify saved transcript access for the presenter before using meeting Copilot."
+    ],
+    "de": [
+      "Die installierte Contoso-Hafenübergabe in Teams mit Zustimmung und Transkription proben; vor Copilot den Zugriff des Präsentators auf das gespeicherte Transkript prüfen."
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "SharePoint",
+        "de": "SharePoint"
+      },
+      "url": "https://www.microsoft365.com/launch/sharepoint"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Approve a private SharePoint demo site and give the presenter normal page-edit access through the existing tenant process. Do not use a production site."
+    ],
+    "de": [
+      "Eine private SharePoint-Demosite freigeben und dem Präsentator über den bestehenden Tenant-Prozess normale Seitenbearbeitung ermöglichen. Keine Produktivsite verwenden."
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Planner",
+        "de": "Planner"
+      },
+      "url": "https://planner.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "In an approved demo-only Microsoft 365 Group plan, create the ten source tasks from task_seeds.txt and record actual rehearsal progress. Verify Reports and Planner Agent for the presenter; do not purchase a premium plan just for this exercise."
+    ],
+    "de": [
+      "In einem freigegebenen Microsoft-365-Gruppenplan nur für Demos die zehn Quellaufgaben aus task_seeds.txt anlegen und den tatsächlichen Probestand pflegen. Reports und Planner Agent für das Konto prüfen; für diese Übung keinen Premiumplan kaufen."
+    ]
+  }
+}

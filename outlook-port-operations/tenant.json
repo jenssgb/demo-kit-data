@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Outlook",
+        "de": "Outlook"
+      },
+      "url": "https://outlook.cloud.microsoft/"
+    }
+  ],
+  "mails": [
+    "mails-{lang}/1_Teresa_Port_Exception.eml",
+    "mails-{lang}/2_Billie_Carrier_Confirmation.eml"
+  ],
+  "requiredUsers": [
+    "TeresaS@M365CPI98544940.OnMicrosoft.com",
+    "BillieV@M365CPI98544940.OnMicrosoft.com"
+  ]
+}

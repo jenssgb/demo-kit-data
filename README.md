@@ -5,7 +5,8 @@ All content is fictional (**Contoso**). The repo holds no customer data and no c
 
 ## One command for everything
 
-Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Administrator** in a CDX tenant), and run:
+Open **PowerShell** on the demo VM and sign in to Graph as the account that will actually present the demos. This can
+be a dedicated non-admin presenter. An Exchange administrator authenticates separately when sender grants need setup:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Tenant
@@ -13,7 +14,7 @@ Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Admi
 
 - It installs **all** demos of the kit. `catalog.json` lists every app and its demos. Each demo lands in
   `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`.
-- New demos in the catalog are picked up automatically. **Run it once per tenant** (ideally the day before a session,
+- New demos in the catalog are picked up automatically. **Run it once per presenter account** (ideally the day before a session,
   because Copilot only finds files once they are indexed) and run it again after kit updates. A rerun adds new and
   changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Nothing is created twice.
 - The command never changes. There are no customer bundles.
@@ -35,15 +36,19 @@ Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Admi
 | Files | Uploaded with Microsoft Graph to the signed-in user's OneDrive (`Demo-Kit/<App>/<demo-id>`). Unchanged files are skipped by `quickXorHash`. |
 | Mails | Real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**). |
 | Senders | Existing mailboxes are found by display name (Teresa Sac, Billie Vester). People not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox. |
-| Meetings | Graph `POST /me/events` with attendees on the next matching weekday; optional guarded fixed-date scenarios create own appointments without attendees. |
+| Meetings | Graph `POST /me/events` with attendees on the next matching weekday; `onlineMeeting: true` requests a real Teams meeting. Optional guarded fixed-date scenarios create own appointments without attendees. |
 | OneNote | Notebook, section and pages via Graph (delegated). |
-| Not possible by API | Sensitivity labels and DLP, brand kit, skills upload, cost policy, Cowork browser access, Teams meeting with transcript. These are printed as a checklist at the end. |
+| Rehearsal / approved tenant setup | Transcript-enabled meeting rehearsal, attaching the video's original transcript, OneNote desktop opening, brand kit, skills, policies and approved SharePoint/Planner destinations. These are printed as a checklist; the installer does not fabricate meeting history, change billing, or create arbitrary sites/groups. |
 
 - **Sign-ins:**
   - One Microsoft Graph sign-in in a browser window, consenting to all listed permissions.
-  - Exchange Online, once per tenant. Set-up senders are cached locally and in the admin's OneDrive
-    (`DemoKit/senders.json`), and that one sign-in prepares every person of every demo (`people.json`).
-  - Needs Exchange admin rights (Global Admin is fine).
+  - Exchange Online, once per **presenter**. Choose an Exchange administrator of the same tenant; Send As targets
+    the signed-in Graph presenter, not that administrator. Do not give the presenter an admin role.
+  - Grants are cached per tenant and presenter, locally as `DemoKit\senders-v3-<tenant-id>-<presenter-hash>.json`
+    and in that presenter's OneDrive (`DemoKit/senders-v3.json`). The envelope must match both identities.
+    Legacy tenant-only caches are intentionally not trusted for a new presenter. The sign-in prepares `people.json`.
+  - Account-locked historical scenarios are explicitly reported as **BLOCKED** and skipped for other presenters.
+    Their guards are not removed; the generic app demos continue.
 - The modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if
   missing.
 - "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
@@ -57,6 +62,25 @@ Open **PowerShell** on the demo VM, signed in as the demo admin (e.g. **MOD Admi
   something goes wrong.
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual, links). Extra files
   live in `<demo-id>/tenant/`. Neither is part of the file download.
+
+### Contoso port-operations rehearsal
+
+The per-app `*-port-operations` folders share one original synthetic storyline: 12 shipments, 115 containers,
+four held shipments / 43 containers, and an intentionally important distinction between document receipt and
+release approval. The Word/Excel folder owns the source files; `shared.json` makes the other app folders
+self-contained. `tools\build-port-operations.py` rebuilds the DOCX/XLSX/CSV, localized EML, OneNote HTML and an
+original English-narrated MP4 with timed WebVTT. It uses the existing `python-docx`, `openpyxl`, `Pillow` and
+`imageio-ffmpeg` packages plus an installed English Windows speech voice. Run `tools\Update-Manifest.ps1 -All`
+after rebuilding. No Microsoft screenshots, real shipment identifiers or customer data are included.
+
+For a read-only account/connectivity check, use `tools\Test-DemoAccount.ps1 -ExpectedAccount <presenter-UPN>`.
+Add `-Connect` only when ready for the normal browser sign-in; `-Report` can write a **private**, uncommitted JSON
+report. It never assigns licenses/roles or enables billing. A missing context fails explicitly. License evidence,
+app access and a completed live Copilot rehearsal are different checks: a locally generated package or a successful
+Graph read is **not** proof that the demo account is ready.
+
+Local checks: `tools\Test-PresenterSetup.ps1`, `tools\Test-Cowork-Mailbox.ps1` and
+`python tools\check-port-operations.py`. The kit holds the bilingual click paths, prompts, limits and official sources.
 
 ## Demo people = real users of the CDX demo tenant
 
@@ -300,7 +324,7 @@ Mitchell, Tailspin Toys) wird ein freigegebenes Postfach.
 - `Desktop\Demo-Kit - Links.html` (nach App gruppiert).
 - Im Terminal **als Administrator** zusätzlich Edge-Favoriten: Ordner **Demo Kit** mit einem Unterordner pro App.
 - Log unter `Desktop\DemoKit-Logs`. Bei Fehlern diese Datei schicken.
-- Die Exchange-Anmeldung (zweites Login) ist nur einmal pro Tenant nötig.
+- Die Exchange-Anmeldung (mit einem Administrator desselben Tenants) ist einmal pro Präsentatorkonto nötig.
 
 **Neue Demo:**
 1. Ordner und `manifest.json` anlegen, optional `shared.json` / `tenant.json`.

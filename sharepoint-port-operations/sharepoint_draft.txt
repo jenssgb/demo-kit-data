@@ -1,0 +1,1 @@
+Contoso port handover: 12 shipments contain 115 containers. Four unresolved holds affect 43 containers. CT-1005's packing list has arrived, but release approval remains pending. CT-1008's carrier cut-off is not confirmed. Teresa, Sonia and Billie are following up the missing evidence. No delivery date is confirmed.

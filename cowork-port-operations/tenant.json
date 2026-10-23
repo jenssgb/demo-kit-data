@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Cowork",
+        "de": "Cowork"
+      },
+      "url": "https://copilot.cloud.microsoft/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Verify Cowork access and an already-approved spending policy for the presenter. This package does not enable billing or change the budget. Rehearse the bounded port task with its three explicitly selected files."
+    ],
+    "de": [
+      "Cowork-Zugriff und eine bereits genehmigte Ausgabenrichtlinie für das Konto prüfen. Dieses Paket aktiviert keine Abrechnung und ändert kein Budget. Die begrenzte Hafenaufgabe mit den drei ausdrücklich ausgewählten Dateien proben."
+    ]
+  }
+}

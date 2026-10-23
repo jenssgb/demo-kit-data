@@ -1,0 +1,11 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Copilot Chat",
+        "de": "Copilot Chat"
+      },
+      "url": "https://copilot.cloud.microsoft/chat"
+    }
+  ]
+}

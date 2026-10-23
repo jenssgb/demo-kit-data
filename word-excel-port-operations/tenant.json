@@ -1,0 +1,18 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Word",
+        "de": "Word"
+      },
+      "url": "https://www.microsoft365.com/launch/word"
+    },
+    {
+      "name": {
+        "en": "Excel",
+        "de": "Excel"
+      },
+      "url": "https://www.microsoft365.com/launch/excel"
+    }
+  ]
+}

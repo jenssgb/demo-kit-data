@@ -17,7 +17,8 @@
         "de": "PowerPoint Ende zu Ende"
       },
       "demos": [
-        "powerpoint-copilot"
+        "powerpoint-copilot",
+        "powerpoint-port-operations"
       ]
     },
     {
@@ -28,7 +29,41 @@
         "de": "Word & Excel Ende zu Ende"
       },
       "demos": [
-        "word-excel-copilot"
+        "word-excel-copilot",
+        "word-excel-port-operations"
+      ]
+    },
+    {
+      "id": "outlook",
+      "folder": "Outlook",
+      "title": {
+        "en": "Outlook",
+        "de": "Outlook"
+      },
+      "demos": [
+        "outlook-port-operations"
+      ]
+    },
+    {
+      "id": "teams",
+      "folder": "Teams",
+      "title": {
+        "en": "Teams",
+        "de": "Teams"
+      },
+      "demos": [
+        "teams-port-operations"
+      ]
+    },
+    {
+      "id": "onedrive",
+      "folder": "OneDrive",
+      "title": {
+        "en": "OneDrive",
+        "de": "OneDrive"
+      },
+      "demos": [
+        "onedrive-port-operations"
       ]
     },
     {
@@ -39,7 +74,85 @@
         "de": "OneNote Ende zu Ende"
       },
       "demos": [
-        "onenote-copilot"
+        "onenote-copilot",
+        "onenote-port-operations"
+      ]
+    },
+    {
+      "id": "whiteboard",
+      "folder": "Whiteboard",
+      "title": {
+        "en": "Whiteboard",
+        "de": "Whiteboard"
+      },
+      "demos": [
+        "whiteboard-port-operations"
+      ]
+    },
+    {
+      "id": "loop",
+      "folder": "Loop",
+      "title": {
+        "en": "Loop",
+        "de": "Loop"
+      },
+      "demos": [
+        "loop-port-operations"
+      ]
+    },
+    {
+      "id": "forms",
+      "folder": "Forms",
+      "title": {
+        "en": "Forms",
+        "de": "Forms"
+      },
+      "demos": [
+        "forms-port-operations"
+      ]
+    },
+    {
+      "id": "sharepoint",
+      "folder": "SharePoint",
+      "title": {
+        "en": "SharePoint",
+        "de": "SharePoint"
+      },
+      "demos": [
+        "sharepoint-port-operations"
+      ]
+    },
+    {
+      "id": "planner",
+      "folder": "Planner",
+      "title": {
+        "en": "Planner",
+        "de": "Planner"
+      },
+      "demos": [
+        "planner-port-operations"
+      ]
+    },
+    {
+      "id": "clipchamp",
+      "folder": "Clipchamp",
+      "title": {
+        "en": "Clipchamp",
+        "de": "Clipchamp"
+      },
+      "demos": [
+        "clipchamp-port-operations"
+      ]
+    },
+    {
+      "id": "viva-engage",
+      "folder": "Viva Engage",
+      "title": {
+        "en": "Viva Engage",
+        "de": "Viva Engage"
+      },
+      "demos": [
+        "engage-port-operations"
       ]
     },
     {
@@ -66,7 +179,8 @@
         "cowork-customer-qbr",
         "cowork-disruption-response",
         "cowork-steering-to-board",
-        "cowork-rfi-rfp"
+        "cowork-rfi-rfp",
+        "cowork-port-operations"
       ]
     },
     {
@@ -79,7 +193,8 @@
       "demos": [
         "researcher-copilot",
         "notebooks-copilot",
-        "prompts-copilot"
+        "prompts-copilot",
+        "chat-port-operations"
       ]
     },
     {

@@ -1,0 +1,14 @@
+Situation
+Contoso coordinates a fictional twelve-shipment handover across Rotterdam and Hamburg. There are 115 containers. Four shipments, covering 43 containers, have an unresolved hold. The other eight shipments cover 72 containers. All quantities, events and company activities are synthetic.
+
+Decision
+The operations lead needs a verified exception list before Monday 15:00. Teresa Sac owns CT-1002 and CT-1005 document follow-up. Sonia Rees owns CT-1003 inspection follow-up. Billie Vester owns CT-1008 carrier confirmation. A confirmed delivery date is not available.
+
+Control
+A document received is not a release authorization. Never describe a held shipment as released. Only the authorized operational process can clear a hold. The training material is not customs, legal, safety or routing advice. Do not send a customer commitment without the operations lead's review.
+
+Source precedence
+port_exceptions.xlsx is the original snapshot. port_status_v1.docx is the 14:00 update. port_status_v2.docx is the 15:00 update: CT-1005's packing list has arrived, but release approval remains pending. CT-1008's cut-off is still unconfirmed. Do not silently merge a newer update into the original workbook.
+
+Reusable clock
+Monday is the exercise's fictional operating day, not a claim about today's date. Use the actual calendar date shown in the installed Contoso port handover meeting for a live rehearsal. Keep all output drafts in the demo account's OneDrive.

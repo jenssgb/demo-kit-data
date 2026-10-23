@@ -1,0 +1,13 @@
+CONTOSO SYNTHETIC REHEARSAL TASKS
+Paste these ten tasks into an approved group-based demo plan.
+
+Verify CT-1002 manifest
+Review CT-1005 packing list
+Obtain CT-1005 release decision
+Obtain CT-1003 inspection outcome
+Confirm CT-1008 carrier cut-off
+Compare the 14:00 and 15:00 updates
+Draft stakeholder update
+Review held-container totals
+Prepare handover agenda
+Review draft before sharing

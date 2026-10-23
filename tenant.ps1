@@ -14,7 +14,7 @@
     OneNote   Graph /me/onenote (delegated, app-only isn't supported)
   Each demo describes what it needs in <demo>/tenant.json:
     mails    ["mails-{lang}/x.eml", ...]   (local demo folder first, then the repo)
-    events   [{ subject{de,en}, weekday, start "HH:mm", minutes, attendees["Display Name"], body{de,en} }]
+    events   [{ subject{de,en}, weekday, start "HH:mm", minutes, attendees["Display Name"], body{de,en}, onlineMeeting? }]
              optional fixedDate "yyyy-MM-dd", timeZone and scenarioKey instead of weekday (no attendees)
     presenterAccount  optional exact approved account; verified before any scenario writes
     preserveExistingFiles  optional relative run inputs never overwritten by installer reruns
@@ -24,8 +24,8 @@
     requiredUsers ["real.upn@tenant"]  verify current enabled Exchange plans before tenant writes
     executiveEvent  opt-in LEF26 shared sources, fixed events and Teams discussion; approved private state reused
                     across PCs from the demo admin's OneDrive after the same Graph sign-in
-  Senders set up once are cached locally and in the admin's OneDrive (DemoKit/senders.json): Exchange Online
-  (second sign-in) is needed only once per tenant; it then prepares every person of every demo (people.json).
+  Send As grants are cached per tenant AND presenter, locally and in that presenter's OneDrive.
+  Exchange Online needs an administrator sign-in once per presenter, preparing everyone in people.json.
   Running it again creates nothing twice.
   Keep this file ASCII-only (it is loaded with Invoke-RestMethod on Windows PowerShell 5.1).
 #>
@@ -179,6 +179,27 @@ function Assert-DemoSender($Sender, [string]$Name, [string]$ExpectedAddress) {
     }
 }
 
+function Read-DemoSenderCache($Value, [string]$TenantId, [string]$Presenter) {
+    if ($Value -is [string]) { $Value = $Value.TrimStart([char]0xFEFF) | ConvertFrom-Json }
+    if ($Value.version -ne 3 -or -not $TenantId -or -not $Presenter -or
+        $Value.tenantId -ne $TenantId -or $Value.presenter -ne $Presenter -or -not $Value.senders) {
+        throw 'Sender cache does not prove Send As setup for this tenant and presenter; Exchange verification is required.'
+    }
+    $result = @{}
+    foreach ($p in $Value.senders.PSObject.Properties) { $result[$p.Name] = $p.Value }
+    return ,$result
+}
+
+function Set-DemoOnlineMeeting($Event, [hashtable]$Payload) {
+    if ($null -ne $Event.onlineMeeting -and $Event.onlineMeeting -isnot [bool]) {
+        throw 'onlineMeeting must be a JSON boolean.'
+    }
+    if ($Event.onlineMeeting) {
+        $Payload.isOnlineMeeting = $true
+        $Payload.onlineMeetingProvider = 'teamsForBusiness'
+    }
+}
+
 function Get-Resource($item, [string]$rel) {
     $rel = $rel.Replace('{lang}', $Language)
     $local = Join-Path $item.dir ($rel -replace '/', '\')
@@ -319,6 +340,7 @@ $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Wh
 $people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
     Where-Object { $_ } | Sort-Object -Unique
 
+$presenterBlocked = @()
 if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.events | Where-Object { $_.fixedDate }).Count }).Count) {
     $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\DemoCalendar.ps1' } else { $null }
     if ($helper -and (Test-Path -LiteralPath $helper)) { . $helper }
@@ -328,8 +350,16 @@ if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.event
         . ([scriptblock]::Create($helperCode))
     }
     foreach ($c in @($configs | Where-Object { $_.Config.presenterAccount })) {
-        Assert-DemoPresenter $c.Config.presenterAccount (Get-MgContext) $me
+        try { Assert-DemoPresenter $c.Config.presenterAccount (Get-MgContext) $me }
+        catch {
+            Row 'BLOCKED' "$($c.Item.id): account-locked scenario was not installed for this presenter." Red
+            $presenterBlocked += $c.Item.id
+            $Links.manual += "[$($c.Item.id)] BLOCKED: scenario requires its approved presenterAccount. No scenario data was written; generic app demos can continue."
+        }
     }
+    $configs = @($configs | Where-Object { $_.Item.id -notin $presenterBlocked })
+    $Items = @($Items | Where-Object { $_.id -notin $presenterBlocked })
+    $mails = @($mails | Where-Object { $_.Demo -notin $presenterBlocked })
     foreach ($c in $configs) {
         foreach ($event in @($c.Config.events | Where-Object { $_.fixedDate })) {
             if (-not $c.Config.presenterAccount) { throw 'Fixed demo events require an explicit presenterAccount guard.' }
@@ -338,6 +368,9 @@ if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.event
     }
 }
 
+$people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
+    Where-Object { $_ } | Sort-Object -Unique
+$requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $verifiedSenders = @{}
 foreach ($upn in $requiredUsers) {
     if (($upn -split '@')[-1] -ne $domain) { throw "Demo user $upn belongs to another tenant domain; sign in to the prepared CDX tenant." }
@@ -357,6 +390,7 @@ foreach ($m in $mails) {
 }
 $report = [ordered]@{}
 function Count($area, $what) { if (-not $report[$area]) { $report[$area] = @{ new = 0; updated = 0; same = 0; failed = 0; pending = 0 } }; $report[$area][$what]++ }
+foreach ($blocked in $presenterBlocked) { Count 'AccountLocked' failed }
 foreach ($blocked in $executiveBlocked) {
     Count 'ExecutiveEvent' failed
     $Links.manual += "[$blocked] BLOCKED: private LEF26 state could not be verified or recovered from OneDrive. See the installer log; scenario was not installed."
@@ -365,31 +399,37 @@ foreach ($blocked in $executiveBlocked) {
 # ---------- 1) senders (Exchange Online, separate process: Graph and EXO modules clash in one session) ----------
 $senders = @{}
 $others = @($people | Where-Object { $_ -ne $me.displayName })
-# Senders already set up are cached locally and in the admin's OneDrive (DemoKit/senders.json), so Exchange Online
-# (a second sign-in with password + MFA) is needed only once per tenant - on any PC.
-$cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-v2-{0}.json" -f $domain.ToLowerInvariant())
-$odCache = '/me/drive/root:/DemoKit/senders.json'
+$senderContext = Get-MgContext
+$senderHash = [Security.Cryptography.SHA256]::Create()
+try { $presenterKey = -join ($senderHash.ComputeHash([Text.Encoding]::UTF8.GetBytes($me.userPrincipalName.ToLowerInvariant())) | ForEach-Object { $_.ToString('x2') }) }
+finally { $senderHash.Dispose() }
+$cacheFile = Join-Path $env:LOCALAPPDATA ("DemoKit\senders-v3-{0}-{1}.json" -f $senderContext.TenantId, $presenterKey)
+$odCache = '/me/drive/root:/DemoKit/senders-v3.json'
 $cache = @{}
 $odKeys = @{}
 if (-not $RefreshSenders) {
     if (Test-Path $cacheFile) {
-        try { (Get-Content $cacheFile -Raw | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $cache[$_.Name] = $_.Value } } catch { }
+        try { $cache = Read-DemoSenderCache (Get-Content $cacheFile -Raw) $senderContext.TenantId $me.userPrincipalName }
+        catch { Write-Warning "Local sender cache ignored: $_" }
     }
     try {
         $item = GOpt $odCache
         if ($item -and $item.'@microsoft.graph.downloadUrl') {
             $od = Invoke-RestMethod -Uri $item.'@microsoft.graph.downloadUrl' -UseBasicParsing
-            if ($od -is [string]) { $od = $od.TrimStart([char]0xFEFF) | ConvertFrom-Json }
-            foreach ($p in $od.PSObject.Properties) { $odKeys[$p.Name] = $true; if (-not $cache[$p.Name]) { $cache[$p.Name] = $p.Value } }
+            $cloudSenders = Read-DemoSenderCache $od $senderContext.TenantId $me.userPrincipalName
+            foreach ($n in $cloudSenders.Keys) { $odKeys[$n] = $true; if (-not $cache[$n]) { $cache[$n] = $cloudSenders[$n] } }
         }
-    } catch { }
+    } catch { Write-Warning "Cloud sender cache could not be reused: $_" }
 }
 function Save-SenderCache {
     if ($WhatIf -or -not $cache.Count) { return }
-    $json = ConvertTo-Json $cache -Depth 3
-    try { New-Item -ItemType Directory -Force (Split-Path $cacheFile) | Out-Null; [IO.File]::WriteAllText($cacheFile, $json) } catch { }
+    $envelope = @{ version = 3; tenantId = $senderContext.TenantId; presenter = $me.userPrincipalName; senders = $cache }
+    $json = ConvertTo-Json $envelope -Depth 5
+    try { New-Item -ItemType Directory -Force (Split-Path $cacheFile) | Out-Null; [IO.File]::WriteAllText($cacheFile, $json) }
+    catch { Write-Warning "Could not save local sender cache: $_" }
     if (@($cache.Keys | Where-Object { -not $odKeys[$_] }).Count) {
-        try { G PUT "$($odCache):/content" (To-AsciiJson $cache) 'application/json' | Out-Null; foreach ($k in @($cache.Keys)) { $odKeys[$k] = $true } } catch { }
+        try { G PUT "$($odCache):/content" (To-AsciiJson $envelope) 'application/json' | Out-Null; foreach ($k in @($cache.Keys)) { $odKeys[$k] = $true } }
+        catch { Write-Warning "Could not save cloud sender cache: $_" }
     }
 }
 foreach ($n in $verifiedSenders.Keys) {
@@ -397,7 +437,7 @@ foreach ($n in $verifiedSenders.Keys) {
 }
 if ($others.Count -and -not @($others | Where-Object { -not $cache[$_] }).Count) {
     Write-Host ""
-    Say (T 'Senders and attendees (already set up in this tenant - no Exchange sign-in needed)' 'Absender und Teilnehmende (in diesem Tenant schon eingerichtet - keine Exchange-Anmeldung noetig)') Cyan
+    Say (T 'Senders and attendees (already set up for this presenter - no Exchange sign-in needed)' 'Absender und Teilnehmende (fuer diesen Praesentator eingerichtet - keine Exchange-Anmeldung noetig)') Cyan
     foreach ($n in $others) { $senders[$n] = $cache[$n]; Row (T 'unchanged' 'unveraendert') ("{0} <{1}>" -f $n, $cache[$n].address) DarkGray; Count 'Senders' same }
     $others = @()
     Save-SenderCache
@@ -409,9 +449,9 @@ if ($others.Count) {
     try { $all = @(Invoke-RestMethod -Uri (Url 'people.json') -UseBasicParsing) } catch { }
     $others = @(@($others) + @($all | Where-Object { $_ -and $_ -ne $me.displayName -and -not $cache[$_] }) | Sort-Object -Unique)
     Write-Host ""
-    Say (T 'Senders and attendees (Exchange Online, one-time per tenant) ...' 'Absender und Teilnehmende (Exchange Online, einmalig pro Tenant) ...') Cyan
+    Say (T 'Senders and attendees: sign in as an Exchange administrator of this tenant. Grants target the Graph presenter, not the administrator.' 'Absender und Teilnehmende: Als Exchange-Administrator dieses Tenants anmelden. Rechte gelten fuer den Graph-Praesentator, nicht den Administrator.') Cyan
     $tmpIn = [IO.Path]::GetTempFileName(); $tmpOut = [IO.Path]::GetTempFileName(); $tmpPs = [IO.Path]::GetTempFileName() + '.ps1'
-    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; domain = $domain; names = $others; verifiedSenders = $verifiedSenders; whatIf = [bool]$WhatIf }))
+    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; tenantId = $senderContext.TenantId; domain = $domain; names = $others; verifiedSenders = $verifiedSenders; whatIf = [bool]$WhatIf }))
     [IO.File]::WriteAllText($tmpPs, @'
 param($In, $Out, [switch]$NoWam)
 $ErrorActionPreference = 'Stop'
@@ -422,7 +462,7 @@ if (-not (Get-Module -ListAvailable ExchangeOnlineManagement)) {
     Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force -AllowClobber
 }
 Import-Module ExchangeOnlineManagement
-$conn = @{ UserPrincipalName = $cfg.upn; ShowBanner = $false }
+$conn = @{ ShowBanner = $false }
 if ($NoWam) { $conn.DisableWAM = $true }
 try { Connect-ExchangeOnline @conn }
 catch {
@@ -431,6 +471,11 @@ catch {
         [IO.File]::WriteAllText($Out, 'WAM'); exit
     }
     throw
+}
+$connections = @(Get-ConnectionInformation | Where-Object { $_.State -eq 'Connected' -and -not $_.IsEopSession })
+if ($connections.Count -ne 1 -or -not $cfg.tenantId -or $connections[0].TenantID -ne $cfg.tenantId) {
+    Disconnect-ExchangeOnline -Confirm:$false | Out-Null
+    throw 'Exchange administrator belongs to a different or unverified tenant. No Send As permissions were changed.'
 }
 $res = @()
 foreach ($n in $cfg.names) {
@@ -455,7 +500,8 @@ foreach ($n in $cfg.names) {
             $o.created = $true
         }
         $o.address = "$($r.PrimarySmtpAddress)"
-        $has = Get-RecipientPermission -Identity $r.Identity -Trustee $cfg.upn -AccessRights SendAs -ErrorAction SilentlyContinue
+        $has = @(Get-RecipientPermission -Identity $r.Identity -Trustee $cfg.upn -AccessRights SendAs -ErrorAction Stop |
+            Where-Object { -not $_.Deny -and $_.AccessControlType -eq 'Allow' })
         if (-not $has -and -not $cfg.whatIf) { Add-RecipientPermission -Identity $r.Identity -Trustee $cfg.upn -AccessRights SendAs -Confirm:$false | Out-Null; $o.granted = $true }
         elseif (-not $has) { $o.granted = $true }
     } catch { $o.error = "$_" }
@@ -612,6 +658,7 @@ foreach ($c in $configs | Where-Object { $_.Config.events }) {
             $ev = @{ subject = $subject; body = @{ contentType = 'text'; content = (L $e.body) }
                      start = @{ dateTime = $start.ToString('yyyy-MM-ddTHH:mm:ss'); timeZone = $tz }
                      end = @{ dateTime = $end.ToString('yyyy-MM-ddTHH:mm:ss'); timeZone = $tz } }
+            Set-DemoOnlineMeeting $e $ev
             if ($att.Count) { $ev.attendees = $att }
             if (-not $WhatIf) { G POST '/me/events' (To-AsciiJson $ev) | Out-Null }
             Row (T 'new' 'neu') ("{0} ({1:ddd dd.MM. HH:mm})" -f $subject, $start) Green; Count 'Calendar' new

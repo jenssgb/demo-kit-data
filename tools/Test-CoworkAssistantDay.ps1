@@ -74,7 +74,7 @@ $script:failPost = $false; $script:posts = 0; $script:pagination = $false
 # Import the actual generic legacy helpers without executing sign-in/setup.
 $tenant = Get-Content (Join-Path $root 'tenant.ps1') -Raw -Encoding UTF8
 $ast = [Management.Automation.Language.Parser]::ParseInput($tenant, [ref]$null, [ref]$null)
-foreach ($name in @('Next-Weekday', 'L', 'To-AsciiJson', 'Assert-DemoMailbox', 'Assert-DemoSender', 'Read-Eml', 'Decode-Words')) {
+foreach ($name in @('Next-Weekday', 'L', 'To-AsciiJson', 'Assert-DemoMailbox', 'Assert-DemoSender', 'Read-Eml', 'Decode-Words', 'Set-DemoOnlineMeeting')) {
     $node = $ast.Find({ param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name }.GetNewClosure(), $true)
     . ([scriptblock]::Create($node.Extent.Text))
 }

@@ -1,0 +1,32 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "OneNote",
+        "de": "OneNote"
+      },
+      "url": "https://onenote.cloud.microsoft/"
+    }
+  ],
+  "onenote": {
+    "notebook": "Contoso Port Operations",
+    "section": "Handover",
+    "pages": [
+      {
+        "title": {
+          "en": "Port handover notes",
+          "de": "Notizen zur Hafenübergabe"
+        },
+        "file": "tenant/pages/handover-{lang}.html"
+      }
+    ]
+  },
+  "manual": {
+    "en": [
+      "Open the installed Contoso Port Operations notebook once in OneNote for Windows; verify the Handover section and page."
+    ],
+    "de": [
+      "Das installierte Notizbuch Contoso Port Operations einmal in OneNote für Windows öffnen; Abschnitt Handover und Seite prüfen."
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "title": {
+    "en": "Contoso port operations - Loop",
+    "de": "Contoso-Hafenbetrieb - Loop"
+  },
+  "next": {
+    "en": [
+      "Open the matching app page in the Demo Kit."
+    ],
+    "de": [
+      "Die passende App-Seite im Demo Kit öffnen."
+    ]
+  },
+  "files": [],
+  "shared": [
+    {
+      "from": "word-excel-port-operations",
+      "path": "port_operations_brief.docx",
+      "sha256": "0cded078167a39e34d5c5a1639bef97bb8f93a5cb3fec39b296b241c920f7d88"
+    },
+    {
+      "from": "word-excel-port-operations",
+      "path": "port_exceptions.xlsx",
+      "sha256": "dc430f37692534567dc62612f6ab3013b8ed1dacdacecec711d22ec11e7191d8"
+    },
+    {
+      "from": "word-excel-port-operations",
+      "path": "port_status_v1.docx",
+      "sha256": "959c3fbcaa7afed46c049b36c08d48cdefc3c8d299bea8e1c8d9a1936059302d"
+    },
+    {
+      "from": "word-excel-port-operations",
+      "path": "port_status_v2.docx",
+      "sha256": "4e652bd6e1bfb146ee34ac392abf9fac6856c692a69e4d32784b9362aa91ee67"
+    },
+    {
+      "from": "word-excel-port-operations",
+      "path": "handover_notes.txt",
+      "sha256": "b82e95f5797a08a51eec77816f6c5e8267513f9fc6fc3093d608ff56eb0cd059"
+    }
+  ]
+}

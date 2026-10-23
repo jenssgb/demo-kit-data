@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "name": {
+        "en": "Clipchamp",
+        "de": "Clipchamp"
+      },
+      "url": "https://m365.cloud.microsoft/launch/Clipchamp/"
+    }
+  ],
+  "manual": {
+    "en": [
+      "Attach/generate the original English transcript for port_handover_briefing.mp4 in the Microsoft 365 player; verify Copilot returns timestamps. The adjacent VTT file is not attached automatically."
+    ],
+    "de": [
+      "Das englische Originaltranskript für port_handover_briefing.mp4 im Microsoft-365-Player anhängen/erzeugen; Zeitmarken in Copilot prüfen. Die benachbarte VTT-Datei wird nicht automatisch angehängt."
+    ]
+  }
+}

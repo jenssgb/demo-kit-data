@@ -1,0 +1,13 @@
+Shipment,Port,Consignee,Containers,Delay hours,Status,Owner,Next action,Due
+CT-1001,Rotterdam,Fabrikam,18,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
+CT-1002,Rotterdam,Tailspin Toys,12,18,Document hold,Teresa Sac,Obtain corrected manifest,Monday 15:00
+CT-1003,Hamburg,Fabrikam,6,24,Inspection hold,Sonia Rees,Obtain authorized inspection outcome,Monday 16:00
+CT-1004,Hamburg,Contoso,10,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
+CT-1005,Rotterdam,Contoso,14,12,Document hold,Teresa Sac,Obtain missing packing list,Monday 15:00
+CT-1006,Hamburg,Tailspin Toys,9,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
+CT-1007,Rotterdam,Fabrikam,7,0,Ready,Billie Vester,Verify portal status,Monday 15:00
+CT-1008,Hamburg,Contoso,11,8,Carrier hold,Billie Vester,Obtain written cut-off confirmation,Monday 15:00
+CT-1009,Rotterdam,Tailspin Toys,5,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
+CT-1010,Hamburg,Fabrikam,13,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
+CT-1011,Rotterdam,Contoso,4,0,Ready,Billie Vester,Verify portal status,Monday 15:00
+CT-1012,Hamburg,Tailspin Toys,6,0,Ready,Teresa Sac,Confirm gate slot,Monday 15:00
