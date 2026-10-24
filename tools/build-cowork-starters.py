@@ -6,6 +6,7 @@ No tenant changes. Expected answers stay outside the installed demo folder.
 import argparse
 import importlib.util
 import json
+import subprocess
 from copy import deepcopy
 from datetime import datetime
 from email.message import EmailMessage
@@ -302,7 +303,7 @@ def build_data():
     })
 
 
-def demo_page():
+def _authored_page():
     steps = [{
         "kind": "callout", "tone": "info",
         "title": bi("Start with familiar work", "Mit vertrauter Arbeit beginnen"),
@@ -374,6 +375,26 @@ def demo_page():
     }
 
 
+def _compact_page(page, deck):
+    helper = ROOT.parent / "demo-kit-new2026" / "tools" / "compact-decks.mjs"
+    result = subprocess.run(
+        ["node", str(helper), "--page", deck],
+        input=json.dumps(page, ensure_ascii=False),
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    )
+    return json.loads(result.stdout)
+
+
+def demo_page():
+    """Emit compact JSON using the sibling kit's catalog/baseline adapter, not its deck."""
+    return _compact_page(_authored_page(), "cowork")
+
+
+def rfi_page(page, deck="cowork"):
+    """Keep both RFI views compact even if an upstream producer supplies tutorials."""
+    return _compact_page(page, deck)
+
+
 def build_decks(decks):
     if not decks.is_dir():
         raise FileNotFoundError(f"Deck folder not found: {decks}")
@@ -406,11 +427,15 @@ def build_decks(decks):
         for lang in ("en", "de"):
             if note[lang] not in deck["meta"]["scope"][lang]:
                 deck["meta"]["scope"][lang] += " " + note[lang]
+    cowork["demos"] = [
+        rfi_page(d) if d["id"] == "cowork-rfi-rfp" else d for d in cowork["demos"]
+    ]
     write_json(decks / "cowork.json", cowork)
     write_json(decks / "cowork-bonn.json", bonn)
     rfi = deepcopy(next(d for d in cowork["demos"] if d["id"] == "cowork-rfi-rfp"))
     del rfi["data"]
     rfi["band"] = "rfi"
+    rfi = rfi_page(rfi, "rfi-rfp")
     write_json(decks / "rfi-rfp.json", {
         "meta": {
             "title": bi("RFI / RFP", "RFI / RFP"), "version": "1.0", "date": DATE, "order": 2,

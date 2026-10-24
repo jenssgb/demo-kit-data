@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import subprocess
 from datetime import datetime
 from email.message import EmailMessage
 from email.policy import SMTP
@@ -520,7 +521,7 @@ def runbook(lang):
     return "\n\n".join(parts)
 
 
-def page():
+def _authored_page():
     steps = [
         {"kind": "callout", "tone": "info", "title": bi("Less screen time. More human interaction.", "Weniger Bildschirmzeit. Mehr menschliche Begegnung."),
          "text": bi("Eight independent office cases, from inbox triage to a coordinated internal visit. They complement the separate leadership-event story. Each starts independently and produces saved work; no delegation or automation is assumed.",
@@ -599,6 +600,17 @@ def page():
             "why": bi("Prepare real work while keeping decisions, trust and relationships human.",
                       "Echte Arbeit vorbereiten, Entscheidungen, Vertrauen und Beziehungen menschlich halten."),
             "steps": steps, "sources": [{"label": bi(en, de), "url": url} for en, de, url in SOURCES]}
+
+
+def page():
+    """Emit compact JSON using the sibling kit's catalog/baseline adapter, not its deck."""
+    helper = ROOT.parent / "demo-kit-new2026" / "tools" / "compact-decks.mjs"
+    result = subprocess.run(
+        ["node", str(helper), "--page", "cowork"],
+        input=json.dumps(_authored_page(), ensure_ascii=False),
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    )
+    return json.loads(result.stdout)
 
 
 def build_data():

@@ -1,7 +1,9 @@
 """Check installed starter inputs, replay isolation and JSON-view parity."""
 import hashlib
+import importlib.util
 import json
 from collections import defaultdict
+from copy import deepcopy
 from email import policy
 from email.parser import BytesParser
 from pathlib import Path
@@ -26,6 +28,10 @@ cowork = read_json(DECKS / "cowork.json")
 bonn = read_json(DECKS / "cowork-bonn.json")
 rfi = read_json(DECKS / "rfi-rfp.json")
 page = next(d for d in cowork["demos"] if d["id"] == "cowork-starters")
+spec = importlib.util.spec_from_file_location("starter_builder", ROOT / "tools" / "build-cowork-starters.py")
+builder = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(builder)
+assert page == builder.demo_page(), "Compact generator and canonical page differ"
 mirror = next(d for d in bonn["demos"] if d["id"] == page["id"])
 assert presentation_content(page) == presentation_content(mirror)
 assert "data" not in mirror and bonn["files"]["demoData"] == {}
@@ -33,14 +39,48 @@ assert presentation_content(rfi["demos"][0]) == presentation_content(
     next(d for d in cowork["demos"] if d["id"] == "cowork-rfi-rfp"))
 assert rfi["files"]["demoData"] == {} and "data" not in rfi["demos"][0]
 assert not rfi.get("hidden")
+rfi_page = next(d for d in cowork["demos"] if d["id"] == "cowork-rfi-rfp")
+assert [s["kind"] for s in rfi_page["steps"]] == ["section", "prompt"]
+assert set([rfi_page["steps"][0]["anchor"], *rfi_page["steps"][0]["aliases"]]) == {
+    "abschnitt-0", "abschnitt-4", "abschnitt-7", "abschnitt-10",
+}
+for lang in ("en", "de"):
+    inputs = rfi_page["steps"][1]["files"][lang]
+    assert len(inputs) == 4, "Only the workbook, grouped live KB, active skill and Atlas"
+    knowledge = inputs[1]
+    expected_knowledge = {
+        f"cowork-rfi-rfp/knowledge/{lang}/{p.name}"
+        for p in (ROOT / "cowork-rfi-rfp" / "knowledge" / lang).iterdir()
+        if p.suffix == ".pdf" or p.name == "Source_Index.md"
+    }
+    assert len(expected_knowledge) == 14
+    assert set(knowledge["materialIds"]) == expected_knowledge
+    assert all(Path(material).name in knowledge["location"] for material in expected_knowledge)
+    assert inputs[0]["materialIds"] == [
+        f"cowork-rfi-rfp/runs/{lang}/compact/01/RFI_Compact_Run_01.xlsx"
+    ]
+    assert inputs[2]["kind"] == "skill" and inputs[2]["origin"] == "manual"
+    assert inputs[3]["kind"] == "site" and inputs[3]["origin"] == "manual"
+tutorial = deepcopy(rfi_page)
+tutorial["steps"][0]["aliases"].remove("abschnitt-0")
+tutorial["steps"][:0] = [
+    {"kind": "section", "title": {"en": "Choose a fresh run", "de": "Frischen Lauf wählen"},
+     "anchor": "abschnitt-0"},
+    {"kind": "action", "items": {"en": ["Read Preparation-en.md."], "de": ["Preparation-de.md lesen."]}},
+]
+assert builder.rfi_page(tutorial) == rfi_page, "RFI producer must remove reintroduced tutorials"
+assert builder.rfi_page(rfi["demos"][0], "rfi-rfp") == rfi["demos"][0]
 assert [s["exercise"]["code"] for s in page["steps"] if s["kind"] == "section"] == [
     "CO-19", "CO-20", "CO-21", "CO-22",
 ]
 assert sum(s["kind"] == "prompt" for s in page["steps"]) == 8
 for s in page["steps"]:
+    assert s["kind"] in {"section", "prompt"} and "screen" not in s
     if s["kind"] == "prompt":
         assert s["preparation"]["en"] and s["preparation"]["de"]
         assert s["text"]["en"] and s["text"]["de"]
+        for lang in ("en", "de"):
+            assert all(f["kind"] and f["origin"] for f in s["files"][lang])
 for f in DECKS.glob("*.json"):
     d = read_json(f)
     assert all(p["band"] in {b["id"] for b in d["bands"]} for p in d["demos"]), f
@@ -62,9 +102,10 @@ for lang in ("en", "de"):
         assert str(msg["Subject"]).startswith("[CO-19]")
         assert msg["To"].addresses[0].username == "admin"
         assert msg.get_body(preferencelist=("plain",)).get_content().strip()
-        assert any(str(msg["Subject"]) in s.get("text", {}).get(lang, "") for s in page["steps"] if s["kind"] == "content")
-    meeting_reference = next(s for s in page["steps"] if s["kind"] == "content" and event["subject"][lang] in s["text"][lang])
-    assert event["body"][lang] in meeting_reference["text"][lang]
+        assert any(str(msg["Subject"]) in f["name"] for s in page["steps"] if s["kind"] == "prompt"
+                   for f in s["files"][lang] if f["kind"] == "email")
+    assert any(event["subject"][lang] in f["name"] for s in page["steps"] if s["kind"] == "prompt"
+               for f in s["files"][lang] if f["kind"] == "event")
 
 baseline = None
 paths = []

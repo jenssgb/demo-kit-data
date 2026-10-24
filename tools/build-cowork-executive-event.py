@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import subprocess
 from datetime import datetime
 from email.message import EmailMessage
 from email.policy import SMTP
@@ -898,7 +899,7 @@ def rehearsal_checklist(lang):
     return introduction + "\n" + "\n".join(rows) + boundary
 
 
-def page():
+def _authored_page():
     steps = [
         {"kind": "callout", "tone": "info", "title": bi("Less screen time. More human interaction.", "Weniger Bildschirmzeit. Mehr menschliche Begegnung."),
          "text": bi("Eight assistant jobs, from a saved reply to coordinated event follow-up, in one synthetic Contoso story. A last-minute change and a clearly staged post-event snapshot show the progression. Inspect saved work, not just chat answers.",
@@ -972,6 +973,17 @@ def page():
         "steps": steps,
         "sources": [{"label": bi(en, de), "url": url} for en, de, url in SOURCES],
     }
+
+
+def page():
+    """Emit compact JSON using the sibling kit's catalog/baseline adapter, not its deck."""
+    helper = ROOT.parent / "demo-kit-new2026" / "tools" / "compact-decks.mjs"
+    result = subprocess.run(
+        ["node", str(helper), "--page", "cowork"],
+        input=json.dumps(_authored_page(), ensure_ascii=False),
+        text=True, encoding="utf-8", capture_output=True, check=True,
+    )
+    return json.loads(result.stdout)
 
 
 def build_deck(decks):

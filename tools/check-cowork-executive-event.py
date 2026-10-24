@@ -59,6 +59,7 @@ sections = [s for s in page["steps"] if s["kind"] == "section"]
 assert [s["exercise"]["code"] for s in sections if "exercise" in s] == expected["codes"]
 assert len(sections) == expected["stageDemonstrations"] == 8
 assert len([s for s in page["steps"] if s["kind"] == "prompt"]) == 8
+assert all(s["kind"] in {"section", "prompt"} and "screen" not in s for s in page["steps"])
 assert expected["codes"] == ["CO-26", "CO-27", "CO-28", "CO-29", "CO-23", "CO-24", "CO-25"]
 assert len(set(expected["codes"])) == 7, "The existing controlled change stays in CO-24; never reuse or renumber codes"
 for lang in ("en", "de"):
@@ -101,7 +102,8 @@ for lang in ("en", "de"):
     assert {"en": "A01-A05", "de": "A01 bis A05"}[lang] in followup_instructions
     for step in page["steps"]:
         if step["kind"] == "prompt":
-            assert step["text"][lang] and step["preparation"][lang] and step["expect"][lang]
+            assert step["text"][lang] and step["preparation"][lang]
+            assert all(f["kind"] and f["origin"] for f in step["files"][lang])
             assert "Act as" not in step["text"][lang]
             assert len(step["text"][lang].split()) <= 60, "Live requests must remain short; procedures belong in skills"
             assert "\n" not in step["text"][lang] and "https://" not in step["text"][lang]
@@ -135,9 +137,11 @@ for lang in ("en", "de"):
         assert sender.addr_spec == config["people"][sender.display_name]
         assert message["To"].addresses[0].addr_spec.lower() == config["account"].lower()
         assert str(message["Subject"]).startswith("[LEF26-BEFORE-")
-        assert any(str(message["Subject"]) in s.get("text", {}).get(lang, "") for s in page["steps"] if s["kind"] == "content")
+        assert any(str(message["Subject"]) in f["name"] for s in page["steps"] if s["kind"] == "prompt"
+                   for f in s["files"][lang] if f["kind"] == "email")
     for reply in config["mailReplies"]:
-        assert any(reply["parentSubject"][lang] in s.get("text", {}).get(lang, "") for s in page["steps"] if s["kind"] == "content")
+        assert any(reply["parentSubject"][lang] in f["name"] for s in page["steps"] if s["kind"] == "prompt"
+                   for f in s["files"][lang] if f["kind"] == "email")
     for path in [PACKAGE / "baseline" / lang / "Action_Register.xlsx",
                  *(PACKAGE / "runs" / lang / f"{i:02}" / "Action_Register.xlsx" for i in range(1, 5))]:
         workbook = load_workbook(path)

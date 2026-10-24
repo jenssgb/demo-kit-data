@@ -37,6 +37,10 @@ sections = [s for s in page["steps"] if s["kind"] == "section"]
 prompts = [s for s in page["steps"] if s["kind"] == "prompt"]
 assert [s["exercise"]["code"] for s in sections] == codes
 assert len(prompts) == 8
+assert all(s["kind"] in {"section", "prompt"} and "screen" not in s for s in page["steps"])
+for prompt in prompts:
+    for lang in ("en", "de"):
+        assert all(f["kind"] and f["origin"] for f in prompt["files"][lang])
 expected = read(ROOT / "tools" / "expected" / f"{B.ID}.json")
 assert expected["caseContracts"] == B.CASES
 assert len(expected["sourceMatrix"]) == 8
@@ -165,12 +169,18 @@ catalog = read(ROOT / "catalog.json")
 assert B.ID in json.dumps(catalog)
 assert "tools/expected" not in json.dumps(manifest)
 
-# Existing event data and skills must stay exactly as published.
+# The approved global compact migration preserves existing prompt/exercise identities.
 old = subprocess.check_output(["git", "show", "HEAD:decks/cowork.json"], cwd=deck_path.parent.parent)
 previous = json.loads(old)
-assert [d for d in deck["demos"] if d["id"] != B.ID] == [d for d in previous["demos"] if d["id"] != B.ID], "Existing pages changed"
+assert [d["id"] for d in deck["demos"]] == [d["id"] for d in previous["demos"]]
+for current, original in zip(deck["demos"], previous["demos"]):
+    assert [s["text"] for s in current["steps"] if s["kind"] == "prompt"] == [
+        s["text"] for s in original["steps"] if s["kind"] == "prompt"], current["id"]
+    identity = lambda d: [(e["code"], e["chatTitle"]) for e in
+                         [d.get("exercise"), *(s.get("exercise") for s in d["steps"])] if e]
+    assert identity(current) == identity(original), current["id"]
 for path in (ROOT / "cowork-executive-event" / "skills").rglob("*"):
     if path.is_file():
         committed = subprocess.check_output(["git", "show", f"HEAD:{path.relative_to(ROOT).as_posix()}"], cwd=ROOT)
         assert committed == path.read_bytes(), f"Existing event skill changed: {path}"
-print("PASS: eight bilingual independent cases, short requests, genuine source boundaries, Office inputs, skill, reset copies, manifest/catalog and unchanged existing event pages/skills. Live acceptance remains OPEN.")
+print("PASS: eight compact bilingual independent cases, immutable requests/identities, explicit sources, Office inputs, skill, reset copies, manifest/catalog and unchanged event skills. Live acceptance remains OPEN.")
