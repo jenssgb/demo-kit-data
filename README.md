@@ -106,6 +106,40 @@ before tenant writes. An Exchange administrator authenticates separately only wh
 - Each demo describes its tenant data in `<demo-id>/tenant.json` (mails, events, onenote, manual, links). Extra files
   live in `<demo-id>/tenant/`. Neither is part of the file download.
 
+### First central run: progress and completion
+
+The first run for a selected user is **not just a permission change**. It uploads a complete new set of eligible
+demo files into that user's isolated tree, one file at a time. This also happens when switching from the older
+individual-folder sharing layout. Hundreds of file checks/uploads can make this run lengthy; do not promise
+a fixed duration. In a real run without `-WhatIf`, green `new` rows identify uploaded files. New rows mean progress, but an old
+screenshot alone cannot establish that the current process is still advancing.
+
+The shared root is published after ordinary file uploads and permission verification. Notebook/calendar/mail
+setup continues afterward; the links email is submitted near the end. The final area table, Desktop/Edge/log
+output and a returned PowerShell prompt identify completion. A later run with the **same publishing admin and
+selected user** reuses the tree and skips unchanged uploads and recorded mail submissions, but still checks
+files and other setup state.
+
+As the selected user, the correct start folder has the breadcrumb
+**publisher › DemoKit-Presenters › user ID › Demo-Kit**, with app folders such as **PowerPoint**, **Word-Excel**
+and **Copilot-Chat** underneath. Do not try to open the publisher's general **Demo-Kit** folder or add every app
+folder separately. Add a shortcut to the **whole inner Demo-Kit folder** once using **Add shortcut to My files**.
+Microsoft's [shared-folder instructions](https://support.microsoft.com/en-us/onedrive/add-shortcuts-to-shared-folders-in-onedrive)
+describe selecting the shared folder and choosing that command. Opening the folder successfully is not evidence
+that the shortcut has been added or that the sync client is configured.
+
+**Observed check, 2026-10-27:** the submitted console output reported 494 new OneDrive files, one root sharing
+grant, two unchanged notebook grants, 41 mail submissions and one links-message submission, with no failures in
+those areas. Two `AccountLocked` entries were deliberately excluded private scenarios, not failed ordinary
+uploads. A screenshot from the selected recipient showed the new shared root and app folders opening successfully.
+These are observations from one run, not fixed totals for the growing catalog. Shortcut creation, desktop sync,
+mail delivery and Copilot indexing/retrieval were **not** confirmed by this evidence.
+
+That run also printed `Failed to clear the persisted MSAL token cache during Disconnect-MgGraph` after the
+summary and then returned to the prompt. Record this as an authentication-cleanup warning separately from the
+area results; do not claim the persisted cache was cleared. It is not, on its own, a reason to restart installation
+or resubmit mail. Inspect any actual `Failed`, `Later` or `BLOCKED` entries independently.
+
 ### Shipping rehearsal corpus
 
 The 27 shipping/DG training folders map to 23 workflow groups in the kit's existing app collections,
