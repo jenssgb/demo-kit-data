@@ -314,6 +314,17 @@ if ($SelfTest) {
 }
 
 # ---------- sign in ----------
+$moduleHelper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\DemoModules.ps1' } else { $null }
+if ($moduleHelper -and (Test-Path -LiteralPath $moduleHelper)) { . $moduleHelper }
+else {
+    $moduleCode = (Invoke-WebRequest -Uri (Url 'tools/DemoModules.ps1') -UseBasicParsing -ErrorAction Stop).Content
+    if ($moduleCode -is [byte[]]) { $moduleCode = [Text.Encoding]::UTF8.GetString($moduleCode) }
+    . ([scriptblock]::Create($moduleCode))
+}
+Say (T 'Checking required PowerShell modules ...' 'Pruefe benoetigte PowerShell-Module ...') Cyan
+$graphModule = Install-DemoModule 'Microsoft.Graph.Authentication'
+$exchangeModule = if ($people.Count) { Install-DemoModule 'ExchangeOnlineManagement' } else { $null }
+Import-Module $graphModule -ErrorAction Stop
 $executiveBlocked = @()
 $executiveDestinations = @{}
 $executiveSettings = @{}
@@ -329,12 +340,6 @@ if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
 }
 Write-Host ""
 Say (T 'Tenant: signing in (Microsoft Graph) ...' 'Tenant: Anmeldung (Microsoft Graph) ...') Cyan
-if (-not (Get-Module -ListAvailable Microsoft.Graph.Authentication)) {
-    Say (T 'Installing module Microsoft.Graph.Authentication (current user) ...' 'Installiere Modul Microsoft.Graph.Authentication (aktueller Benutzer) ...') DarkGray
-    if ($PSVersionTable.PSEdition -ne 'Core') { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force | Out-Null }
-    Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -Force -AllowClobber
-}
-Import-Module Microsoft.Graph.Authentication
 $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
 $scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
 if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
@@ -505,17 +510,12 @@ if ($others.Count) {
     Write-Host ""
     Say (T 'Senders and attendees: sign in as an Exchange administrator of this tenant. Grants target the Graph presenter, not the administrator.' 'Absender und Teilnehmende: Als Exchange-Administrator dieses Tenants anmelden. Rechte gelten fuer den Graph-Praesentator, nicht den Administrator.') Cyan
     $tmpIn = [IO.Path]::GetTempFileName(); $tmpOut = [IO.Path]::GetTempFileName(); $tmpPs = [IO.Path]::GetTempFileName() + '.ps1'
-    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; tenantId = $senderContext.TenantId; domain = $domain; names = $others; verifiedSenders = $verifiedSenders; whatIf = [bool]$WhatIf }))
+    [IO.File]::WriteAllText($tmpIn, (To-AsciiJson @{ upn = $me.userPrincipalName; tenantId = $senderContext.TenantId; domain = $domain; names = $others; verifiedSenders = $verifiedSenders; whatIf = [bool]$WhatIf; exchangeModule = $exchangeModule }))
     [IO.File]::WriteAllText($tmpPs, @'
 param($In, $Out, [switch]$NoWam)
 $ErrorActionPreference = 'Stop'
 $cfg = Get-Content $In -Raw | ConvertFrom-Json
-if (-not (Get-Module -ListAvailable ExchangeOnlineManagement)) {
-    Write-Host '    Installing module ExchangeOnlineManagement (current user) ...'
-    if ($PSVersionTable.PSEdition -ne 'Core') { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force | Out-Null }
-    Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force -AllowClobber
-}
-Import-Module ExchangeOnlineManagement
+Import-Module $cfg.exchangeModule -ErrorAction Stop
 $conn = @{ ShowBanner = $false }
 if ($NoWam) { $conn.DisableWAM = $true }
 try { Connect-ExchangeOnline @conn }

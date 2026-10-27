@@ -51,8 +51,14 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
     Legacy tenant-only caches are intentionally not trusted for a new presenter. The sign-in prepares `people.json`.
   - Account-locked historical scenarios are explicitly reported as **BLOCKED** and skipped for other presenters.
     Their guards are not removed; the generic app demos continue.
-- The modules `Microsoft.Graph.Authentication` and `ExchangeOnlineManagement` are installed for the current user if
-  missing.
+- Required PowerShell modules are checked before sign-in and installed automatically for the current user.
+  The installer uses tested versions of `Microsoft.Graph.Authentication`, `ExchangeOnlineManagement` and its
+  `PowerShellGet` / `PackageManagement` dependencies. Existing matching versions are reused.
+  If `Install-Module` fails (including Gallery download 404s), it downloads the same package from the official
+  `cdn.powershellgallery.com` endpoint, verifies its pinned SHA-256 checksum and manifest, and installs it under
+  `%LOCALAPPDATA%\DemoKit\Modules`. Downloads retry up to three times; an unverifiable package stops setup.
+  This also works during `-WhatIf`: local prerequisites are installed, but tenant changes remain preview-only.
+  No separate manual package installation or extra sign-in is needed. The fixed command above is unchanged.
 - "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
   later".
 - **After each run:**
