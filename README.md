@@ -5,8 +5,9 @@ All content is fictional (**Contoso**). The repo holds no customer data and no c
 
 ## One command for everything
 
-Open **PowerShell** on the demo VM and sign in to Graph as the account that will actually present the demos. This can
-be a dedicated non-admin presenter. An Exchange administrator authenticates separately when sender grants need setup:
+Open **PowerShell** on the demo VM and sign in to Graph as the **demo administrator**. The script lists enabled
+internal tenant users with Exchange mailboxes; **choose the demo user by number**. Empty input or `Q` cancels
+before tenant writes. An Exchange administrator authenticates separately only when sender grants need setup:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Tenant
@@ -14,10 +15,14 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 
 - It installs **all** demos of the kit. `catalog.json` lists every app and its demos. Each demo lands in
   `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`, except shared **Work IQ / WIQ26**
-  evidence: admin publishes that once to SharePoint for eligible colleagues (see below).
+  evidence: admin publishes that once to SharePoint for eligible colleagues (see below). For another selected user,
+  ordinary files remain in the admin's OneDrive and the individual demo folders are shared with **editing access**.
+  The selected user receives demo mail, meeting invitations and a **Demo Kit - links and preparation** email.
+  Open those links as the demo user; shared folders are not personal OneDrive copies or automatic prompt attachments.
 - New demos in the catalog are picked up automatically. **Run it once per presenter account** (ideally the day before a session,
   because Copilot only finds files once they are indexed) and run it again after kit updates. A rerun adds new and
-  changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Shared WIQ26 does not require a presenter install;
+  changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Use the **same publishing admin** for reruns.
+  Choosing the signed-in user retains personal setup. Shared WIQ26 does not require a presenter install;
   use the same publishing admin for its reruns.
 - The command never changes. There are no customer bundles.
 - Options:
@@ -35,22 +40,29 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 
 | What | How |
 | --- | --- |
-| Files | Uploaded with Microsoft Graph to the signed-in user's OneDrive (`Demo-Kit/<App>/<demo-id>`). Unchanged files are skipped by `quickXorHash`. |
-| Mails | Real received mails from the right senders: Graph `sendMail` with `from` (delegated `Mail.Send.Shared` + Exchange **Send As**). |
+| Files | Uploaded to the signed-in publisher's OneDrive (`Demo-Kit/<App>/<demo-id>`); for another selected user, only the individual demo folders receive authenticated editing grants. No anonymous or organization-wide links. Unchanged files are skipped by `quickXorHash`. |
+| Mails | Submitted to the chosen user's mailbox with the right `from` (delegated `Mail.Send.Shared` + publisher's Exchange **Send As**). Submission is not proof of delivery. No access to the target inbox is requested or assumed. |
 | Senders | Existing mailboxes are found by display name (Teresa Sac, Billie Vester). People not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox. |
-| Meetings | Graph `POST /me/events` with attendees on the next matching weekday; `onlineMeeting: true` requests a real Teams meeting. Optional guarded fixed-date scenarios create own appointments without attendees. |
-| OneNote | Notebook, section and pages via Graph (delegated). |
+| Meetings | Publisher organizes the meeting and invites the selected user along with the existing cast. Reruns add a missing selected attendee without removing previous attendees. `onlineMeeting: true` requests a Teams meeting. Private fixed-date scenarios are excluded from central sharing. Invitation processing still needs checking. |
+| OneNote | Notebook, section and pages are created under the publisher via delegated Graph. An exact OneNote drive package is shared for editing; ambiguous or not-yet-discoverable notebooks explicitly fail sharing and need a rerun. The presenter opens the shared notebook once in their app. |
 | Rehearsal / approved tenant setup | Transcript-enabled meeting rehearsal, attaching the video's original transcript, OneNote desktop opening, brand kit, skills, policies and approved SharePoint/Planner destinations. These are printed as a checklist; the installer does not fabricate meeting history, change billing, or create arbitrary sites/groups. |
 
 - **Sign-ins:**
   - One Microsoft Graph sign-in in a browser window, consenting to all listed permissions.
-  - Exchange Online, once per **presenter**. Choose an Exchange administrator of the same tenant; Send As targets
-    the signed-in Graph presenter, not that administrator. Do not give the presenter an admin role.
-  - Grants are cached per tenant and presenter, locally as `DemoKit\senders-v3-<tenant-id>-<presenter-hash>.json`
-    and in that presenter's OneDrive (`DemoKit/senders-v3.json`). The envelope must match both identities.
-    Legacy tenant-only caches are intentionally not trusted for a new presenter. The sign-in prepares `people.json`.
-  - Account-locked historical scenarios are explicitly reported as **BLOCKED** and skipped for other presenters.
-    Their guards are not removed; the generic app demos continue.
+  - Exchange Online, once per **sending Graph account**. Choose an Exchange administrator of the same tenant;
+    Send As targets that Graph account, not the selected recipient. The recipient needs no administrator role.
+  - Grants are cached per tenant and sending account, locally as `DemoKit\senders-v3-<tenant-id>-<presenter-hash>.json`
+    and in that publisher's OneDrive (`DemoKit/senders-v3.json`). The envelope must match both identities.
+    Changing the selected recipient does not invalidate the publisher's sender grants. The sign-in prepares `people.json`.
+  - Account-locked and private executive scenarios are **BLOCKED** before their writes when preparing another user.
+    Choosing oneself retains their existing account and ownership checks. WIQ26 shared publishing is unchanged.
+- Central mail submissions are recorded per tenant, publisher, selected recipient and language in the publisher's
+  private `DemoKit-Presenter-State-<tenant>-<recipient>-<language>` OneDrive folder, outside the shared demo tree.
+  A cloud `installer-lock` prevents simultaneous sends for the same recipient. A pending/unknown submission is
+  **never automatically resent**: check the publisher's Sent Items or Exchange trace, then repair only the
+  affected ledger entry. After a crashed run, remove only `installer-lock` after confirming no installer is active.
+  Explicitly rejected requests can be retried. Recorded submissions do not establish delivery.
+  Offline regressions: `.\tools\Test-CentralSetup.ps1` (Windows PowerShell 5.1 and PowerShell 7; no sign-in).
 - Required PowerShell modules are checked before sign-in and installed automatically for the current user.
   The installer uses tested versions of `Microsoft.Graph.Authentication`, `ExchangeOnlineManagement` and its
   `PowerShellGet` / `PackageManagement` dependencies. Existing matching versions are reused.
@@ -64,6 +76,8 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
 - "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
   later".
 - **After each run:**
+  - For central setup the chosen demo user receives the shared folder/notebook links and manual checklist by mail.
+    Mail, invitation processing, Copilot licensing, indexing and live retrieval must still be rehearsed as that user.
   - `Desktop\Demo-Kit - Links.html` holds, grouped by app: the OneDrive links of all files, OneNote, extra links
     (e.g. Contoso Atlas) and the manual checklist.
   - In a terminal started **as administrator**, the same links also appear as Edge favorites: folder **Demo Kit**,

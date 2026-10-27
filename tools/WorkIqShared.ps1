@@ -1,7 +1,7 @@
 # Shared synthetic evidence; delegated Graph access never implies access to somebody else's mailbox.
 function Invoke-WiqGraph {
     param([string]$Method, [string]$Path, $Body, [switch]$AllowNotFound, [string]$InputFile)
-    if ($Path -notmatch '^/(?!/)' -or $Path -match '[\r\n]') { throw 'WIQ26: invalid Graph path.' }
+    if ($Path -notmatch '^/(?!/)' -or $Path -match '[\r\n]') { throw 'Demo Kit: invalid Graph path.' }
     $params = @{ Method = $Method; Uri = "https://graph.microsoft.com/v1.0$Path"; SkipHttpErrorCheck = $true; StatusCodeVariable = 'status'; OutputType = 'PSObject' }
     if ($InputFile) { $params.InputFilePath = $InputFile; $params.ContentType = 'application/octet-stream' }
     elseif ($null -ne $Body) { $params.Body = ConvertTo-Json $Body -Depth 30 -Compress; $params.ContentType = 'application/json' }
@@ -9,7 +9,7 @@ function Invoke-WiqGraph {
     $result = Invoke-MgGraphRequest @params
     if ($status -eq 404 -and $AllowNotFound -and $Method -eq 'GET') { return $null }
     if ($status -lt 200 -or $status -ge 300 -or $status -eq 207) {
-        $failure = New-Object InvalidOperationException "WIQ26: Graph $Method $Path returned HTTP $status. Inspect the installer log; no automatic write retry."
+        $failure = New-Object InvalidOperationException "Demo Kit: Graph $Method $Path returned HTTP $status. Inspect the installer log; no automatic write retry."
         $failure.Data['HttpStatus'] = [int]$status
         $failure.Data['GraphCode'] = [string]$result.error.code
         throw $failure
@@ -26,7 +26,7 @@ function Send-WiqMessage($Message, [int]$WaitMinutes) {
             return
         } catch {
             if ($_.Exception.Data['HttpStatus'] -eq 403 -and $_.Exception.Data['GraphCode'] -eq 'ErrorSendAsDenied' -and [datetime]::UtcNow -lt $deadline) {
-                if (-not $announced) { Write-Host 'WIQ26: waiting for the existing Exchange Send As grant to replicate...'; $announced = $true }
+                if (-not $announced) { Write-Host 'Demo Kit: waiting for the existing Exchange Send As grant to replicate...'; $announced = $true }
                 Start-Sleep -Seconds 30
             } else { throw }
         }

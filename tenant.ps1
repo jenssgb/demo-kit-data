@@ -26,8 +26,12 @@
                     across PCs from the demo admin's OneDrive after the same Graph sign-in
     workIqShared  opt-in WIQ26 corpus in the existing root SharePoint library, folder read grants and individual
                   mailbox evidence for eligible internal users; published once by admin, not per presenter
-  Send As grants are cached per tenant AND presenter, locally and in that presenter's OneDrive.
-  Exchange Online needs an administrator sign-in once per presenter, preparing everyone in people.json.
+  After Graph sign-in, choose a mailbox-enabled demo user from the tenant list before any writes.
+  For another user, share individual demo folders/notebooks for editing, send mail and invitations to them,
+  and send a links/checklist email. Private account-locked scenarios are blocked before their writes.
+  Choosing the signed-in account retains personal setup and its existing ownership checks.
+  Send As grants are cached per tenant AND sending Graph account, never the selected recipient.
+  Exchange Online needs an administrator sign-in once per sending account, preparing everyone in people.json.
   Running it again creates nothing twice.
   Keep this file ASCII-only (it is loaded with Invoke-RestMethod on Windows PowerShell 5.1).
 #>
@@ -341,14 +345,16 @@ if (@($configs | Where-Object { $_.Config.executiveEvent }).Count) {
 Write-Host ""
 Say (T 'Tenant: signing in (Microsoft Graph) ...' 'Tenant: Anmeldung (Microsoft Graph) ...') Cyan
 $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Where-Object { $_ } | Sort-Object -Unique)
-$scopes = @('User.Read', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
+$scopes = @('User.Read', 'User.Read.All', 'Files.ReadWrite', 'Mail.ReadBasic', 'Mail.Send', 'Mail.Send.Shared', 'Calendars.ReadWrite', 'Notes.ReadWrite')
 if ($requiredUsers.Count) { $scopes += 'User.Read.All' }
 if (@($configs | Where-Object { $_.Config.workIqShared }).Count) {
     $scopes += @('Sites.Read.All', 'Files.ReadWrite.All', 'User.Read.All')
-    $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\WorkIqShared.ps1' } else { $null }
+}
+foreach ($helperName in @('WorkIqShared', 'PresenterSetup')) {
+    $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot "tools\$helperName.ps1" } else { $null }
     if ($helper -and (Test-Path -LiteralPath $helper)) { . $helper }
     else {
-        $helperCode = (Invoke-WebRequest -Uri (Url 'tools/WorkIqShared.ps1') -UseBasicParsing).Content
+        $helperCode = (Invoke-WebRequest -Uri (Url "tools/$helperName.ps1") -UseBasicParsing -ErrorAction Stop).Content
         if ($helperCode -is [byte[]]) { $helperCode = [Text.Encoding]::UTF8.GetString($helperCode) }
         . ([scriptblock]::Create($helperCode))
     }
@@ -371,12 +377,27 @@ function GOpt($uri) {
 }
 if ($null -eq $Links) { $Links = @{} }
 if (-not $Links.demos) { $Links.demos = [ordered]@{} }
+$Links.manual = @($Links.manual | Where-Object { $_ })
 foreach ($it in $Items) { if (-not $Links.demos[$it.id]) { $Links.demos[$it.id] = @{} } }
 $me = G GET '/me?$select=id,displayName,userPrincipalName,mail'
 $myMail = if ($me.mail) { $me.mail } else { $me.userPrincipalName }
 $domain = ($me.userPrincipalName -split '@')[1]
 Say ("{0} <{1}>" -f $me.displayName, $myMail) Green
 if ($WhatIf) { Say (T 'WhatIf: nothing is changed, only shown.' 'WhatIf: Es wird nichts geaendert, nur angezeigt.') Yellow }
+$presenter = Select-DemoPresenter -Language $Language
+$centralSetup = $presenter.id -ne $me.id
+$centralBlocked = @()
+if ($centralSetup) {
+    $centralBlocked = @($configs | Where-Object { $_.Config.presenterAccount -or $_.Config.executiveEvent } | ForEach-Object { $_.Item.id })
+    foreach ($id in $centralBlocked) {
+        Row 'BLOCKED' "$id requires its approved account and private ownership state; central sharing is not permitted." Red
+        $Links.manual += "[$id] BLOCKED: account-locked/private scenario requires its approved account. It was not installed or shared with the selected user."
+        $Links.demos.Remove($id)
+    }
+    $configs = @($configs | Where-Object { $_.Item.id -notin $centralBlocked })
+    $Items = @($Items | Where-Object { $_.id -notin $centralBlocked })
+    $mails = @($mails | Where-Object { $_.Demo -notin $centralBlocked })
+}
 
 foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
     try {
@@ -399,7 +420,7 @@ $requiredUsers = @($configs | ForEach-Object { @($_.Config.requiredUsers) } | Wh
 $people = @($mails | ForEach-Object FromName) + @($configs | ForEach-Object { $_.Config.events } | Where-Object { $_ } | ForEach-Object { $_.attendees }) |
     Where-Object { $_ } | Sort-Object -Unique
 
-$presenterBlocked = @()
+$presenterBlocked = @($centralBlocked)
 if (@($configs | Where-Object { $_.Config.presenterAccount -or @($_.Config.events | Where-Object { $_.fixedDate }).Count }).Count) {
     $helper = if ($PSScriptRoot) { Join-Path $PSScriptRoot 'tools\DemoCalendar.ps1' } else { $null }
     if ($helper -and (Test-Path -LiteralPath $helper)) { . $helper }
@@ -636,8 +657,23 @@ foreach ($it in $Items) {
         $label = if ($tag -eq 'new') { T 'new' 'neu' } else { T 'updated' 'aktualisiert' }
         Row $label "$($it.drivePath)/$rel" $(if ($tag -eq 'new') { 'Green' } else { 'Yellow' })
     }
-    $folder = GOpt "/me/drive/root:/$(Seg $it.drivePath)?`$select=webUrl"
+    $folder = GOpt "/me/drive/root:/$(Seg $it.drivePath)?`$select=id,folder,webUrl"
     if ($folder) { $lk.web = $folder.webUrl }
+    if ($centralSetup) {
+        try {
+            if ($folder) {
+                $tag = Grant-DemoPresenterAccess $folder $presenter -WhatIf:$WhatIf
+                Count 'Sharing' $tag
+                if (-not $WhatIf) { $lk.presenterShared = $true }
+            } elseif ($WhatIf) {
+                Row 'WhatIf' "Would share $($it.drivePath) with $($presenter.mail) after upload." Yellow
+                Count 'Sharing' pending
+            } else { throw "Uploaded folder $($it.drivePath) could not be resolved; sharing is not confirmed." }
+        } catch {
+            Row 'BLOCKED' "Sharing $($it.id): $_" Red; Count 'Sharing' failed
+            $Links.manual += "[$($it.id)] BLOCKED: folder sharing incomplete; see the publisher's installer log."
+        }
+    }
     if (-not $firstFolder) { $firstFolder = ($it.drivePath -split '/')[0] }
 }
 if ($report['OneDrive'] -and $report['OneDrive'].new -eq 0 -and $report['OneDrive'].updated -eq 0) { Say (T 'all files up to date' 'alle Dateien aktuell') DarkGray }
@@ -660,7 +696,6 @@ foreach ($c in $configs | Where-Object { $_.Config.onenote }) {
     try {
         $nb = @((G GET '/me/onenote/notebooks?$select=id,displayName,links').value) | Where-Object { $_.displayName -eq $on.notebook } | Select-Object -First 1
         if (-not $nb -and -not $WhatIf) { $nb = G POST '/me/onenote/notebooks' (To-AsciiJson @{ displayName = $on.notebook }); Row (T 'new' 'neu') (T "notebook $($on.notebook)" "Notizbuch $($on.notebook)") Green }
-        if ($nb -and $nb.links -and $nb.links.oneNoteWebUrl) { $Links.demos[$c.Item.id].onenote = @{ name = "OneNote: $($on.notebook)"; url = $nb.links.oneNoteWebUrl.href } }
         $sec = $null
         if ($nb) {
             $sec = @((G GET "/me/onenote/notebooks/$($nb.id)/sections?`$select=id,displayName").value) | Where-Object { $_.displayName -eq $on.section } | Select-Object -First 1
@@ -678,7 +713,15 @@ foreach ($c in $configs | Where-Object { $_.Config.onenote }) {
             }
             Row (T 'new' 'neu') $title Green; Count 'OneNote' new
         }
-    } catch { Row (T 'error' 'Fehler') "OneNote: $_" Red; Count 'OneNote' failed }
+        if ($centralSetup -and $nb) {
+            $tag = Share-DemoNotebook $on.notebook $presenter -WhatIf:$WhatIf
+            Count 'NotebookSharing' $tag
+        }
+        if ($nb -and $nb.links -and $nb.links.oneNoteWebUrl) { $Links.demos[$c.Item.id].onenote = @{ name = "OneNote: $($on.notebook)"; url = $nb.links.oneNoteWebUrl.href } }
+    } catch {
+        Row (T 'error' 'Fehler') "OneNote: $_" Red; Count 'OneNote' failed
+        if ($centralSetup) { $Links.manual += "[$($c.Item.id)] BLOCKED: OneNote creation/sharing incomplete; see the publisher's installer log." }
+    }
 }
 
 # ---------- 4) meetings ----------
@@ -704,7 +747,7 @@ foreach ($c in $configs | Where-Object { $_.Config.events }) {
                 continue
             }
             $from = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ'); $to = (Get-Date).AddDays(8).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
-            $existing = @((G GET "/me/calendarView?startDateTime=$from&endDateTime=$to&`$select=subject&`$top=200").value) | Where-Object { $_.subject -eq $subject }
+            $existing = if (-not $centralSetup) { @((G GET "/me/calendarView?startDateTime=$from&endDateTime=$to&`$select=subject&`$top=200").value) | Where-Object { $_.subject -eq $subject } } else { @() }
             if ($existing) { Row (T 'unchanged' 'unveraendert') $subject DarkGray; Count 'Calendar' same; continue }
             $day = Next-Weekday $e.weekday
             $start = [datetime]::ParseExact("$($day.ToString('yyyy-MM-dd')) $($e.start)", 'yyyy-MM-dd HH:mm', [Globalization.CultureInfo]::InvariantCulture)
@@ -715,6 +758,13 @@ foreach ($c in $configs | Where-Object { $_.Config.events }) {
                      end = @{ dateTime = $end.ToString('yyyy-MM-ddTHH:mm:ss'); timeZone = $tz } }
             Set-DemoOnlineMeeting $e $ev
             if ($att.Count) { $ev.attendees = $att }
+            if ($centralSetup) {
+                $ev.transactionId = Get-DemoDeliveryKey "$((Get-MgContext).TenantId)/$($me.id)/$subject/$($ev.start.dateTime)"
+                $tag = Sync-DemoPresenterInvitation $ev $presenter -WhatIf:$WhatIf
+                Row $tag "$subject -> $($presenter.mail)" Green
+                Count 'Calendar' $tag
+                continue
+            }
             if (-not $WhatIf) { G POST '/me/events' (To-AsciiJson $ev) | Out-Null }
             Row (T 'new' 'neu') ("{0} ({1:ddd dd.MM. HH:mm})" -f $subject, $start) Green; Count 'Calendar' new
         } catch { Row (T 'error' 'Fehler') "$subject : $_" Red; Count 'Calendar' failed }
@@ -744,19 +794,28 @@ if ($mails.Count) {
     foreach ($m in $mails) {
         $s = $senders[$m.FromName]
         if (-not $s) { Row (T 'skipped' 'uebersprungen') ("{0} ({1})" -f $m.Subject, (T "no sender $($m.FromName)" "kein Absender $($m.FromName)")) Red; Count 'Mails' failed; continue }
-        try {
+        if (-not $centralSetup) { try {
             $q = [uri]::EscapeDataString("subject eq '$($m.Subject -replace "'", "''")'")
             $found = @((G GET "/me/mailFolders/inbox/messages?`$filter=$q&`$select=subject,from&`$top=25").value) |
                 Where-Object { $_.from.emailAddress.address -eq $s.address }
             if ($found) { Row (T 'unchanged' 'unveraendert') ("{0}: {1}" -f $m.FromName, $m.Subject) DarkGray; Count 'Mails' same; continue }
-        } catch { }
+        } catch { } }
         $config = $configs | Where-Object { $_.Item.id -eq $m.Demo } | Select-Object -First 1
         $options = @($config.Config.mailOptions | Where-Object {
             $_ -and $_.subject -and (L $_.subject) -eq $m.Subject
         })
         if ($options.Count -gt 1) { throw "Duplicate mailOptions for '$($m.Subject)'." }
         $option = if ($options.Count) { $options[0] } else { $null }
-        $msg = To-AsciiJson (New-DemoSeedMessage $m $s ([pscustomobject]@{ mail = $myMail; displayName = $me.displayName }) $config.Item $option)
+        $payload = New-DemoSeedMessage $m $s $presenter $config.Item $option
+        if ($centralSetup) {
+            try {
+                $tag = Send-DemoPresenterMessage $payload $me $presenter $Language -WaitMinutes $SendAsWaitMinutes -WhatIf:$WhatIf
+                Row $tag ("{0}: {1} -> {2} (submission, not delivery confirmation)" -f $m.FromName, $m.Subject, $presenter.mail) Green
+                Count 'Mails' $tag
+            } catch { Row 'BLOCKED' "$($m.Subject): $_" Red; Count 'Mails' failed }
+            continue
+        }
+        $msg = To-AsciiJson $payload
         if ($WhatIf) { Row (T 'new' 'neu') ("{0}: {1}" -f $m.FromName, $m.Subject) Green; Count 'Mails' new; continue }
         $sent = $false; $waitedMsg = $false
         while (-not $sent) {
@@ -779,10 +838,6 @@ foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
     Invoke-ExecutiveEventMailReplies -Config $c.Config.executiveEvent -Settings $executiveSettings[$c.Item.id] -Language $Language -WhatIf:$WhatIf
 }
 Write-Host ""
-$report.GetEnumerator() | ForEach-Object {
-    [pscustomobject]@{ Area = $_.Key; New = $_.Value.new; Updated = $_.Value.updated; Unchanged = $_.Value.same; Later = $_.Value.pending; Failed = $_.Value.failed }
-} | Format-Table -AutoSize | Out-String | Write-Host
-
 $manual = @(foreach ($c in $configs) { foreach ($m in @(L $c.Config.manual)) { if ($m) { [pscustomobject]@{ Demo = $c.Item.id; Text = ($m -replace '\*\*', '') } } } })
 foreach ($c in $configs) {
     $Links.demos[$c.Item.id].extra = @(foreach ($l in @($c.Config.links)) { if ($l -and $l.url) { @{ name = (L $l.name); url = $l.url } } }) + @($Links.demos[$c.Item.id].executiveLinks | Where-Object { $_ }) + @($Links.demos[$c.Item.id].sharedLinks | Where-Object { $_ })
@@ -794,7 +849,35 @@ if ($manual.Count) {
     foreach ($m in $manual) { $n++; Write-Host ("  {0,2}. [{1}] {2}" -f $n, $m.Demo, $m.Text) }
     Write-Host ""
 }
-if ($firstFolder -and -not $WhatIf) {
+if ($centralSetup) {
+    $rows = @(foreach ($it in $Items) {
+        $lk = $Links.demos[$it.id]
+        if ($lk.presenterShared) { "[$($it.id)] $($it.drivePath): $($lk.web)" }
+        if ($lk.onenote) { "[$($it.id)] $($lk.onenote.name): $($lk.onenote.url)" }
+        foreach ($link in @($lk.extra | Where-Object { $_.url })) { "[$($it.id)] $($link.name): $($link.url)" }
+    })
+    $body = L @{ en = "Demo setup links and preparation. Folder and notebook links are listed only after the sharing request succeeds. Other app links may need separate access. Shared files are not personal OneDrive copies or automatically attached Copilot sources."; de = "Demo-Links und Vorbereitung. Ordner- und Notizbuchlinks werden erst nach erfolgreicher Freigabe aufgefuehrt. Andere App-Links koennen gesonderte Rechte brauchen. Freigegebene Dateien sind keine eigenen OneDrive-Kopien oder automatisch ausgewaehlten Copilot-Quellen." }
+    $body += "`n`n" + ($rows -join "`n") + "`n`n" + ($Links.manual -join "`n")
+    $failures = @($report.GetEnumerator() | Where-Object { $_.Value.failed -or $_.Value.pending } | ForEach-Object { "BLOCKED/PENDING $($_.Key): Failed=$($_.Value.failed), Later=$($_.Value.pending)" })
+    if ($failures.Count) { $body += "`n`n" + ($failures -join "`n") }
+    $body += "`n`n" + (L @{ en = "Check your inbox, process meeting invitations and open shared notebooks once. Submission, folder access and setup do not prove delivery, Copilot licensing or indexing. Inspect any Failed/Blocked entries in the installer's log before presenting."; de = "Posteingang pruefen, Besprechungseinladungen bearbeiten und freigegebene Notizbuecher einmal oeffnen. Versand, Freigabe und Setup bestaetigen weder Zustellung noch Copilot-Lizenz oder Indexierung. Failed/Blocked-Eintraege im Installationslog vor der Demo pruefen." })
+    $payload = @{ message = @{
+        subject = (L @{ en = 'Demo Kit - links and preparation'; de = 'Demo Kit - Links und Vorbereitung' })
+        body = @{ contentType = 'Text'; content = $body }
+        from = @{ emailAddress = @{ address = $myMail; name = $me.displayName } }
+        toRecipients = @(@{ emailAddress = @{ address = $presenter.mail; name = $presenter.displayName } })
+    } }
+    try {
+        $tag = Send-DemoPresenterMessage $payload $me $presenter $Language -Revision (Get-DemoDeliveryKey $body) -WhatIf:$WhatIf
+        Count 'PresenterLinks' $tag
+        if ($WhatIf) { Say ("WhatIf: would send demo links to $($presenter.mail).") Yellow }
+        else { Say ("Demo links submission recorded for $($presenter.mail) (delivery still needs checking).") Green }
+    } catch { Row 'BLOCKED' "Presenter links: $_" Red; Count 'PresenterLinks' failed }
+}
+$report.GetEnumerator() | ForEach-Object {
+    [pscustomobject]@{ Area = $_.Key; New = $_.Value.new; Updated = $_.Value.updated; Unchanged = $_.Value.same; Later = $_.Value.pending; Failed = $_.Value.failed }
+} | Format-Table -AutoSize | Out-String | Write-Host
+if ($firstFolder -and -not $WhatIf -and -not $centralSetup) {
     try { $web = (G GET "/me/drive/root:/$(Seg $firstFolder)?`$select=webUrl").webUrl; $Links.root = $web; Say ("OneDrive: $web") Green } catch { }
 }
 if (-not $executiveSettings.Count) { Disconnect-MgGraph | Out-Null }
