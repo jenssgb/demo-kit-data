@@ -59,6 +59,8 @@ be a dedicated non-admin presenter. An Exchange administrator authenticates sepa
   `%LOCALAPPDATA%\DemoKit\Modules`. Downloads retry up to three times; an unverifiable package stops setup.
   This also works during `-WhatIf`: local prerequisites are installed, but tenant changes remain preview-only.
   No separate manual package installation or extra sign-in is needed. The fixed command above is unchanged.
+  When GitHub revision lookup is available, all files in a run use that immutable commit, avoiding mixed
+  old/new scripts from branch-URL caches immediately after an update.
 - "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
   later".
 - **After each run:**

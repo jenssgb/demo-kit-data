@@ -15,6 +15,11 @@ if ($text.IndexOf("Install-DemoModule 'Microsoft.Graph.Authentication'") -gt $te
 if ($text -notmatch 'exchangeModule = \$exchangeModule' -or $text -notmatch 'Import-Module \$cfg.exchangeModule -ErrorAction Stop') {
     throw 'The Exchange child must reuse the module installed by its parent.'
 }
+$installer = [Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot '..\install.ps1'), [ref]$tokens, [ref]$errors)
+if ($errors.Count) { throw ($errors | Out-String) }
+if ($installer.Extent.Text -notmatch '\$raw = "https://raw.githubusercontent.com/\$Repo/\$revision"') {
+    throw 'A run must fetch its tenant script and helper from the same immutable revision when available.'
+}
 
 $originalModulePath = $env:PSModulePath
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ('demo-kit-module-test-' + [guid]::NewGuid().ToString('N'))

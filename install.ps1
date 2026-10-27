@@ -66,7 +66,15 @@ try {
     $log = Join-Path $logDir ("demo-kit{0}-{1:yyyyMMdd-HHmmss}.log" -f $(if ($Tenant) { '-tenant' } else { '' }), (Get-Date))
     Get-ChildItem $logDir -Filter *.log | Sort-Object LastWriteTime -Descending | Select-Object -Skip 19 | Remove-Item -Force -ErrorAction SilentlyContinue
     Start-Transcript -Path $log | Out-Null
-    $commit = try { (Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/commits/$Branch" -UseBasicParsing -TimeoutSec 5).sha.Substring(0, 7) } catch { '?' }
+    $commit = try {
+        $revision = (Invoke-RestMethod -Uri "https://api.github.com/repos/$Repo/commits/$Branch" -UseBasicParsing -TimeoutSec 15).sha
+        if ($revision -notmatch '^[a-f0-9]{40}$') { throw 'GitHub did not return a valid commit.' }
+        $raw = "https://raw.githubusercontent.com/$Repo/$revision"
+        $revision.Substring(0, 7)
+    } catch {
+        Write-Warning "Could not resolve a fixed installer revision; using branch URLs: $_"
+        '?'
+    }
     $os = try { (Get-CimInstance Win32_OperatingSystem).Caption } catch { [Environment]::OSVersion.VersionString }
     Write-Host ("  Demo Kit data | {0:yyyy-MM-dd HH:mm:ss} | {1} | {2}\{3} | {4} | PowerShell {5} | {6}@{7} ({8})" -f (Get-Date), $env:COMPUTERNAME, $env:USERDOMAIN, $env:USERNAME, $os, $PSVersionTable.PSVersion, $Repo, $Branch, $commit) -ForegroundColor DarkGray
     Write-Host ("  Demo={0} Tenant={1} Language={2} WhatIf={3} RemoveLegacy={4} Target={5}" -f ($Demo -join ','), [bool]$Tenant, $Language, [bool]$WhatIf, [bool]$RemoveLegacy, $Target) -ForegroundColor DarkGray
