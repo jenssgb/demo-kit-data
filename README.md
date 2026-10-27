@@ -13,12 +13,19 @@ before tenant writes. An Exchange administrator authenticates separately only wh
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/jenssgb/demo-kit-data/main/install.ps1))) -Tenant
 ```
 
-- It installs **all** demos of the kit. `catalog.json` lists every app and its demos. Each demo lands in
-  `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`, except shared **Work IQ / WIQ26**
-  evidence: admin publishes that once to SharePoint for eligible colleagues (see below). For another selected user,
-  ordinary files remain in the admin's OneDrive and the individual demo folders are shared with **editing access**.
+- It installs **all** eligible demos of the kit. `catalog.json` lists every app and its demos. When choosing oneself,
+  files land in `OneDrive\Demo-Kit\<App>\<demo-id>`, for example `Demo-Kit\Cowork\cowork-copilot`.
+  For another selected user, ordinary files remain in the admin's OneDrive under
+  `DemoKit-Presenters/<user-id>/Demo-Kit/<App>/<demo-id>`. Only that user's inner **Demo-Kit** folder is shared
+  with **editing access**, with a native OneDrive invitation on the first grant. The existing general
+  `Demo-Kit` folder, other users' trees and private delivery state are never shared as the start folder.
+  Shared **Work IQ / WIQ26** evidence stays in its existing SharePoint location (see below).
   The selected user receives demo mail, meeting invitations and a **Demo Kit - links and preparation** email.
-  Open those links as the demo user; shared folders are not personal OneDrive copies or automatic prompt attachments.
+  Open the **Demo-Kit** start link as the demo user and select **Add shortcut to My files** once. It then appears
+  under **My files › Demo-Kit**. Sign the OneDrive sync client in as that user to sync it to File Explorer.
+  In Copilot, select the cloud original through **+ › Attach cloud files**, rather than uploading another copy.
+  A shortcut does not automatically select sources in a prompt or establish Copilot indexing.
+  Shortcut/sync availability still depends on the tenant's OneDrive policies.
 - New demos in the catalog are picked up automatically. **Run it once per presenter account** (ideally the day before a session,
   because Copilot only finds files once they are indexed) and run it again after kit updates. A rerun adds new and
   changed files and skips unchanged ones (SHA-256 / `quickXorHash`). Use the **same publishing admin** for reruns.
@@ -40,7 +47,7 @@ before tenant writes. An Exchange administrator authenticates separately only wh
 
 | What | How |
 | --- | --- |
-| Files | Uploaded to the signed-in publisher's OneDrive (`Demo-Kit/<App>/<demo-id>`); for another selected user, only the individual demo folders receive authenticated editing grants. No anonymous or organization-wide links. Unchanged files are skipped by `quickXorHash`. |
+| Files | Self setup retains `Demo-Kit/<App>/<demo-id>`. Central setup uploads only eligible ordinary demos under `DemoKit-Presenters/<user-id>/Demo-Kit/<App>/<demo-id>` and shares that one inner root with the selected authenticated user. Confirmed write permission is required before publishing its links; unchanged files are skipped by `quickXorHash`. No anonymous or organization-wide links. |
 | Mails | Submitted to the chosen user's mailbox with the right `from` (delegated `Mail.Send.Shared` + publisher's Exchange **Send As**). Submission is not proof of delivery. No access to the target inbox is requested or assumed. |
 | Senders | Existing mailboxes are found by display name (Teresa Sac, Billie Vester). People not in the tenant become **shared mailboxes** (Exchange Online PowerShell). A tenant user **without a mailbox** (e.g. Teams license only) is an error, never a look-alike mailbox. |
 | Meetings | Publisher organizes the meeting and invites the selected user along with the existing cast. Reruns add a missing selected attendee without removing previous attendees. `onlineMeeting: true` requests a Teams meeting. Private fixed-date scenarios are excluded from central sharing. Invitation processing still needs checking. |
@@ -62,7 +69,17 @@ before tenant writes. An Exchange administrator authenticates separately only wh
   **never automatically resent**: check the publisher's Sent Items or Exchange trace, then repair only the
   affected ledger entry. After a crashed run, remove only `installer-lock` after confirming no installer is active.
   Explicitly rejected requests can be retried. Recorded submissions do not establish delivery.
-  Offline regressions: `.\tools\Test-CentralSetup.ps1` (Windows PowerShell 5.1 and PowerShell 7; no sign-in).
+  Offline regressions: `.\tools\Test-CentralSetup.ps1` and `.\tools\Test-PresenterFolders.ps1`
+  (Windows PowerShell 5.1 and PowerShell 7; no sign-in).
+- Existing installations are not moved or deleted and earlier individual demo grants are not revoked.
+  The first central run with the new layout uploads a separate recipient-scoped set; later runs reuse it.
+  Use the new start link and select sources from this folder, not older per-demo links.
+  Previously shared copies can remain discoverable to Copilot; this change does not claim to remove duplicates.
+  Private/account-locked demos are filtered before choosing upload paths and never copied into this tree.
+  The user's one-time shortcut/sync step is not impersonated through Graph and requires no new admin sign-in.
+  References: [Graph sharing](https://learn.microsoft.com/graph/api/driveitem-invite?view=graph-rest-1.0),
+  [folder creation](https://learn.microsoft.com/graph/api/driveitem-post-children?view=graph-rest-1.0),
+  [OneDrive shared shortcuts](https://support.microsoft.com/en-us/onedrive/add-shortcuts-to-shared-folders-in-onedrive).
 - Required PowerShell modules are checked before sign-in and installed automatically for the current user.
   The installer uses tested versions of `Microsoft.Graph.Authentication`, `ExchangeOnlineManagement` and its
   `PowerShellGet` / `PackageManagement` dependencies. Existing matching versions are reused.
@@ -76,7 +93,9 @@ before tenant writes. An Exchange administrator authenticates separately only wh
 - "Send As" on new shared mailboxes can take a while. The script waits up to 20 minutes, otherwise it says "run again
   later".
 - **After each run:**
-  - For central setup the chosen demo user receives the shared folder/notebook links and manual checklist by mail.
+  - For central setup the chosen demo user receives one shared **Demo-Kit** start link, notebook links and the
+    one-time **Add shortcut to My files** instruction by mail. The same verified start link is in the
+    publisher's Desktop page and Edge favorites; failed sharing does not publish inaccessible file links.
     Mail, invitation processing, Copilot licensing, indexing and live retrieval must still be rehearsed as that user.
   - `Desktop\Demo-Kit - Links.html` holds, grouped by app: the OneDrive links of all files, OneNote, extra links
     (e.g. Contoso Atlas) and the manual checklist.

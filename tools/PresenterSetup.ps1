@@ -40,7 +40,7 @@ function Select-DemoPresenter {
     }
 }
 
-function Grant-DemoPresenterAccess($Item, $Presenter, [switch]$WhatIf) {
+function Grant-DemoPresenterAccess($Item, $Presenter, [switch]$WhatIf, [switch]$SendInvitation) {
     if (-not $Presenter.id -or -not $Item.id -or
         ($null -eq $Item.folder -and $Item.package.type -ne 'oneNote')) {
         throw 'Only an identified demo folder or OneNote notebook may be shared with the selected user.'
@@ -50,14 +50,95 @@ function Grant-DemoPresenterAccess($Item, $Presenter, [switch]$WhatIf) {
     if (@($permissions | Where-Object { 'write' -in $_.roles -and (Test-WiqReadPermission $_ $Presenter) }).Count) { return 'same' }
     if ($WhatIf) { Write-Host "    Would grant folder/notebook editing access to $($Presenter.mail): $($Item.webUrl)"; return 'new' }
     $grant = Invoke-WiqGraph POST "$path/invite" @{
-        recipients = @(@{ objectId = $Presenter.id }); requireSignIn = $true; sendInvitation = $false
+        recipients = @(@{ objectId = $Presenter.id }); requireSignIn = $true; sendInvitation = [bool]$SendInvitation
         roles = @('write'); retainInheritedPermissions = $true
     }
     if (-not @($grant.value).Count -or
         @($grant.value | Where-Object { $_.error -or -not $_.id -or 'write' -notin $_.roles }).Count) {
         throw "Editing access was not fully granted to $($Presenter.mail); do not claim this demo is ready."
     }
+    $confirmed = @(Get-WiqPages "$path/permissions")
+    if (-not @($confirmed | Where-Object { 'write' -in $_.roles -and (Test-WiqReadPermission $_ $Presenter) }).Count) {
+        throw "Editing permission for $($Presenter.mail) was not confirmed after sharing; do not claim this demo is ready."
+    }
     'new'
+}
+
+function Set-DemoPresenterPaths($Items, $Configs, $Presenter) {
+    if (-not $Presenter.id -or $Presenter.id -notmatch '^[a-zA-Z0-9-]+$' -or -not $Presenter.mail) {
+        throw 'A verified selected user is required for the shared demo folder.'
+    }
+    $root = "DemoKit-Presenters/$($Presenter.id)/Demo-Kit"
+    foreach ($item in $Items) {
+        $config = @($Configs | Where-Object { $_.Item.id -eq $item.id })
+        if (@($config | Where-Object { $_.Config.presenterAccount -or $_.Config.executiveEvent }).Count) {
+            throw "Private/account-locked demo $($item.id) cannot enter the shared folder."
+        }
+        if (@($config | Where-Object { $_.Config.workIqShared }).Count) { continue }
+        $relative = if ($item.drivePath.StartsWith("$root/", [StringComparison]::Ordinal)) {
+            $item.drivePath.Substring($root.Length + 1)
+        } elseif ($item.drivePath.StartsWith('Demo-Kit/', [StringComparison]::Ordinal)) {
+            $item.drivePath.Substring('Demo-Kit/'.Length)
+        } else { throw "Unexpected demo upload path for $($item.id)." }
+        $parts = @($relative -split '/')
+        if ($parts.Count -ne 2 -or $parts[1] -cne $item.id -or
+            @($parts | Where-Object { -not $_ -or $_ -in '.', '..' -or $_ -match '[\\:\r\n]' }).Count) {
+            throw "Unsafe demo upload path for $($item.id)."
+        }
+        $item.drivePath = "$root/$relative"
+    }
+    $root
+}
+
+function Get-DemoDriveFolder([string]$Path, [hashtable]$Cache, [switch]$WhatIf) {
+    $parts = @($Path -split '/')
+    if (@($parts | Where-Object { -not $_ -or $_ -in '.', '..' -or $_ -match '[\\:\r\n]' }).Count) {
+        throw 'A safe relative demo folder path is required.'
+    }
+    $parent = '/me/drive/root'
+    $key = ''
+    foreach ($name in $parts) {
+        $key = if ($key) { "$key/$name" } else { $name }
+        if (-not $Cache.ContainsKey($key)) {
+            $folder = if ($WhatIf) {
+                Invoke-WiqGraph GET "$($parent):/$([uri]::EscapeDataString($name))" -AllowNotFound
+            } else { Get-WiqFolder $parent $name }
+            if (-not $folder -and $WhatIf) { return $null }
+            if (-not $folder.id -or $null -eq $folder.folder) { throw "Demo folder $key could not be confirmed." }
+            $Cache[$key] = $folder
+        }
+        $parent = "/me/drive/items/$([uri]::EscapeDataString($Cache[$key].id))"
+    }
+    $Cache[$key]
+}
+
+function Publish-DemoPresenterRoot([string]$Path, $Items, $Links, $Presenter, [hashtable]$Cache, [string]$Language = 'en', [switch]$WhatIf) {
+    if (-not $Presenter.id -or $Path -cne "DemoKit-Presenters/$($Presenter.id)/Demo-Kit") {
+        throw 'Only the selected user-specific Demo-Kit folder may be shared as the start folder.'
+    }
+    $ordinary = @($Items | Where-Object { $_.drivePath.StartsWith("$Path/", [StringComparison]::Ordinal) })
+    if (-not $ordinary.Count) { return 'same' }
+    $folder = Get-DemoDriveFolder $Path $Cache -WhatIf:$WhatIf
+    if (-not $folder -and $WhatIf) {
+        Write-Host "    Would share one Demo-Kit folder with $($Presenter.mail); the user adds one OneDrive shortcut."
+        return 'pending'
+    }
+    if ($folder.webUrl -notmatch '^https://') { throw 'The shared demo start folder has no confirmed web URL.' }
+    $result = Grant-DemoPresenterAccess $folder $Presenter -SendInvitation -WhatIf:$WhatIf
+    if (-not $WhatIf) {
+        $instruction = if ($Language -eq 'de') {
+            "Als $($Presenter.mail) den freigegebenen Ordner oeffnen: $($folder.webUrl) . Einmal oben 'Verknuepfung zu Meine Dateien hinzufuegen' (Add shortcut to My files) waehlen. OneDrive mit diesem Benutzer anmelden, um den Ordner im Explorer zu synchronisieren, soweit Tenant-Richtlinien es erlauben. Dateien danach in Copilot ueber + > Attach cloud files auswaehlen; nicht erneut hochladen. Freigabe und Verknuepfung bestaetigen keine Copilot-Indizierung."
+        } else {
+            "As $($Presenter.mail), open the shared folder: $($folder.webUrl) . Once, select 'Add shortcut to My files' at the top. Sign the OneDrive sync client in as this user to sync the folder in File Explorer, subject to tenant policy. In Copilot, select files through + > Attach cloud files; do not upload another copy. Sharing and shortcuts do not establish Copilot indexing."
+        }
+        $Links.root = $folder.webUrl
+        $Links.manual = @($Links.manual | Where-Object { $_ }) + @($instruction)
+        foreach ($item in $ordinary) {
+            if ($Links.demos[$item.id].web) { $Links.demos[$item.id].presenterShared = $true }
+        }
+        Write-Host $instruction -ForegroundColor Cyan
+    }
+    $result
 }
 
 function Share-DemoNotebook([string]$Name, $Presenter, [switch]$WhatIf) {

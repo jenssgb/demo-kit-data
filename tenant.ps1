@@ -27,7 +27,8 @@
     workIqShared  opt-in WIQ26 corpus in the existing root SharePoint library, folder read grants and individual
                   mailbox evidence for eligible internal users; published once by admin, not per presenter
   After Graph sign-in, choose a mailbox-enabled demo user from the tenant list before any writes.
-  For another user, share individual demo folders/notebooks for editing, send mail and invitations to them,
+  For another user, upload ordinary demos into one recipient-scoped Demo-Kit folder and share it for editing.
+  The recipient adds one OneDrive shortcut; notebooks are shared separately. Send mail and invitations to them,
   and send a links/checklist email. Private account-locked scenarios are blocked before their writes.
   Choosing the signed-in account retains personal setup and its existing ownership checks.
   Send As grants are cached per tenant AND sending Graph account, never the selected recipient.
@@ -398,6 +399,10 @@ if ($centralSetup) {
     $Items = @($Items | Where-Object { $_.id -notin $centralBlocked })
     $mails = @($mails | Where-Object { $_.Demo -notin $centralBlocked })
 }
+$Links.centralSetup = $centralSetup
+$Links.root = $null
+$presenterRootPath = $null
+if ($centralSetup) { $presenterRootPath = Set-DemoPresenterPaths $Items $configs $presenter }
 
 foreach ($c in @($configs | Where-Object { $_.Config.executiveEvent })) {
     try {
@@ -621,15 +626,32 @@ Write-Host ""
 Say (T 'Files -> OneDrive' 'Dateien -> OneDrive') Cyan
 function Seg($p) { (($p -split '/') | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/' }
 $firstFolder = $null
+$folderCache = @{}
 foreach ($it in $Items) {
-    if (-not (Test-Path $it.dir)) { continue }
+    if (-not (Test-Path -LiteralPath $it.dir -PathType Container)) {
+        if ($centralSetup) { Row 'BLOCKED' "Missing local demo folder: $($it.id)" Red; Count 'OneDrive' failed }
+        continue
+    }
     $lk = $Links.demos[$it.id]
     $lk.files = New-Object Collections.ArrayList
     $itemConfig = $configs | Where-Object { $_.Item.id -eq $it.id } | Select-Object -First 1
     if ($itemConfig.Config.workIqShared) { continue }
+    if ($centralSetup) {
+        try { [void](Get-DemoDriveFolder $it.drivePath $folderCache -WhatIf:$WhatIf) }
+        catch {
+            Row 'BLOCKED' "Demo folder $($it.id): $_" Red; Count 'OneDrive' failed
+            $Links.manual += "[$($it.id)] BLOCKED: upload folder could not be prepared."
+            continue
+        }
+    }
     $preserveExisting = @($itemConfig.Config.preserveExistingFiles)
     # Only files listed in the manifest (stale local files from older versions are never uploaded)
-    $files = if ($it.files) { @($it.files | ForEach-Object { Get-Item -LiteralPath (Join-Path $it.dir ($_ -replace '/', '\')) -ErrorAction SilentlyContinue } | Where-Object { $_ }) }
+    $files = if ($centralSetup) {
+        @(foreach ($rel in $it.files) {
+            try { Get-Item -LiteralPath (Join-Path $it.dir ($rel -replace '/', '\')) -ErrorAction Stop }
+            catch { Row 'BLOCKED' "Missing manifest file $($it.id)/$rel : $_" Red; Count 'OneDrive' failed }
+        })
+    } elseif ($it.files) { @($it.files | ForEach-Object { Get-Item -LiteralPath (Join-Path $it.dir ($_ -replace '/', '\')) -ErrorAction SilentlyContinue } | Where-Object { $_ }) }
              else { Get-ChildItem $it.dir -Recurse -File | Where-Object { $_.Name -notin 'manifest.json', 'shared.json', 'tenant.json' -and $_.FullName.Substring($it.dir.Length + 1) -notmatch '^tenant\\' } }
     foreach ($f in $files) {
         $rel = $f.FullName.Substring($it.dir.Length).TrimStart('\') -replace '\\', '/'
@@ -638,6 +660,10 @@ foreach ($it in $Items) {
             continue
         }
         $path = Seg "$($it.drivePath)/$rel"
+        if ($centralSetup -and $rel.Contains('/')) {
+            try { [void](Get-DemoDriveFolder "$($it.drivePath)/$($rel.Substring(0, $rel.LastIndexOf('/')))" $folderCache -WhatIf:$WhatIf) }
+            catch { Row 'BLOCKED' "Upload folder $($it.id)/$rel : $_" Red; Count 'OneDrive' failed; continue }
+        }
         $remote = GOpt "/me/drive/root:/$($path)?`$select=size,file,webUrl"
         if ($remote -and $remote.file -and $rel -in $preserveExisting) {
             Count 'OneDrive' same; [void]$lk.files.Add(@{ name = $rel; url = $remote.webUrl })
@@ -657,26 +683,21 @@ foreach ($it in $Items) {
         $label = if ($tag -eq 'new') { T 'new' 'neu' } else { T 'updated' 'aktualisiert' }
         Row $label "$($it.drivePath)/$rel" $(if ($tag -eq 'new') { 'Green' } else { 'Yellow' })
     }
-    $folder = GOpt "/me/drive/root:/$(Seg $it.drivePath)?`$select=id,folder,webUrl"
+    $folder = if ($centralSetup) { $folderCache[$it.drivePath] } else { GOpt "/me/drive/root:/$(Seg $it.drivePath)?`$select=id,folder,webUrl" }
     if ($folder) { $lk.web = $folder.webUrl }
-    if ($centralSetup) {
-        try {
-            if ($folder) {
-                $tag = Grant-DemoPresenterAccess $folder $presenter -WhatIf:$WhatIf
-                Count 'Sharing' $tag
-                if (-not $WhatIf) { $lk.presenterShared = $true }
-            } elseif ($WhatIf) {
-                Row 'WhatIf' "Would share $($it.drivePath) with $($presenter.mail) after upload." Yellow
-                Count 'Sharing' pending
-            } else { throw "Uploaded folder $($it.drivePath) could not be resolved; sharing is not confirmed." }
-        } catch {
-            Row 'BLOCKED' "Sharing $($it.id): $_" Red; Count 'Sharing' failed
-            $Links.manual += "[$($it.id)] BLOCKED: folder sharing incomplete; see the publisher's installer log."
-        }
-    }
     if (-not $firstFolder) { $firstFolder = ($it.drivePath -split '/')[0] }
 }
-if ($report['OneDrive'] -and $report['OneDrive'].new -eq 0 -and $report['OneDrive'].updated -eq 0) { Say (T 'all files up to date' 'alle Dateien aktuell') DarkGray }
+if ($centralSetup) {
+    try {
+        if ($report['OneDrive'].failed) { throw 'Some demo files failed to upload; the new shared start folder is not published.' }
+        $tag = Publish-DemoPresenterRoot $presenterRootPath $Items $Links $presenter $folderCache -Language $Language -WhatIf:$WhatIf
+        Count 'Sharing' $tag
+    } catch {
+        Row 'BLOCKED' "Demo-Kit start folder: $_" Red; Count 'Sharing' failed
+        $Links.manual += 'BLOCKED: Demo-Kit start-folder sharing incomplete; no working shared start link is claimed.'
+    }
+}
+if ($report['OneDrive'] -and $report['OneDrive'].failed -eq 0 -and $report['OneDrive'].new -eq 0 -and $report['OneDrive'].updated -eq 0) { Say (T 'all files up to date' 'alle Dateien aktuell') DarkGray }
 # Folders of older kit versions (Demo-<customer>) hold the same files - Copilot would find duplicates
 foreach ($l in @($Legacy)) {
     if (-not $l) { continue }
@@ -856,7 +877,13 @@ if ($centralSetup) {
         if ($lk.onenote) { "[$($it.id)] $($lk.onenote.name): $($lk.onenote.url)" }
         foreach ($link in @($lk.extra | Where-Object { $_.url })) { "[$($it.id)] $($link.name): $($link.url)" }
     })
-    $body = L @{ en = "Demo setup links and preparation. Folder and notebook links are listed only after the sharing request succeeds. Other app links may need separate access. Shared files are not personal OneDrive copies or automatically attached Copilot sources."; de = "Demo-Links und Vorbereitung. Ordner- und Notizbuchlinks werden erst nach erfolgreicher Freigabe aufgefuehrt. Andere App-Links koennen gesonderte Rechte brauchen. Freigegebene Dateien sind keine eigenen OneDrive-Kopien oder automatisch ausgewaehlten Copilot-Quellen." }
+    $body = L @{ en = "Demo setup links and preparation. Individual folder/notebook links are listed only after sharing succeeds. Other app links may need separate access. Shared files are not personal OneDrive copies or automatically attached Copilot sources."; de = "Demo-Links und Vorbereitung. Einzelne Ordner-/Notizbuchlinks werden erst nach erfolgreicher Freigabe aufgefuehrt. Andere App-Links koennen gesonderte Rechte brauchen. Freigegebene Dateien sind keine eigenen OneDrive-Kopien oder automatisch ausgewaehlten Copilot-Quellen." }
+    if ($Links.root) {
+        $body += "`n`nDemo-Kit: $($Links.root)`n" + (L @{
+            en = "Open this shared start folder and select Add shortcut to My files once."
+            de = "Diesen freigegebenen Startordner oeffnen und einmal Add shortcut to My files (Verknuepfung zu Meine Dateien hinzufuegen) waehlen."
+        })
+    }
     $body += "`n`n" + ($rows -join "`n") + "`n`n" + ($Links.manual -join "`n")
     $failures = @($report.GetEnumerator() | Where-Object { $_.Value.failed -or $_.Value.pending } | ForEach-Object { "BLOCKED/PENDING $($_.Key): Failed=$($_.Value.failed), Later=$($_.Value.pending)" })
     if ($failures.Count) { $body += "`n`n" + ($failures -join "`n") }

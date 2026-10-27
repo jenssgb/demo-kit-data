@@ -167,11 +167,14 @@ function Get-LinkGroups {
     foreach ($id in $links.demos.Keys) {
         $d = $links.demos[$id]
         $l = @()
-        if ($d.web) { $l += @{ name = (T 'OneDrive folder' 'OneDrive-Ordner'); url = $d.web } }
+        $canUseFiles = -not $links.centralSetup -or $d.presenterShared
+        if ($canUseFiles -and $d.web) { $l += @{ name = (T 'OneDrive folder' 'OneDrive-Ordner'); url = $d.web } }
         if ($d.onenote) { $l += $d.onenote }
         foreach ($x in @($d.extra)) { if ($x) { $l += $x } }
-        if ($d.files -and @($d.files).Count) { foreach ($f in $d.files) { if ($f.url) { $l += @{ name = $f.name; url = $f.url } } } }
-        else { foreach ($f in @($d.local)) { $l += @{ name = $f; url = (FileUri (Join-Path $d.dir ($f -replace '/', '\'))) } } }
+        if ($canUseFiles) {
+            if ($d.files -and @($d.files).Count) { foreach ($f in $d.files) { if ($f.url) { $l += @{ name = $f.name; url = $f.url } } } }
+            else { foreach ($f in @($d.local)) { $l += @{ name = $f; url = (FileUri (Join-Path $d.dir ($f -replace '/', '\'))) } } }
+        }
         if (-not $apps.Contains($d.app)) { $apps[$d.app] = New-Object Collections.ArrayList }
         [void]$apps[$d.app].Add(@{ name = $d.title; links = $l })
     }
